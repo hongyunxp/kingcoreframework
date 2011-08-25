@@ -59,6 +59,10 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 		implements DaoJdbc, Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * 日志对象
 	 */
 	protected static Logger log = Logger.getLogger( DaoJdbcSpringImpl.class );
