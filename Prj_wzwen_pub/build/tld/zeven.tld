@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+<tlibversion>2.0</tlibversion>
+<jspversion>1.1</jspversion>
+<shortname>woo</shortname>
+
+<tag>
+	<name>multiple</name>
+	<tagclass>com.kingcore.framework.tag.MultipleTag</tagclass>
+	<bodycontent>JSP</bodycontent>
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>radix</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>notMultiple</name>
+	<tagclass>com.kingcore.framework.tag.NotMultipleTag</tagclass>
+	<bodycontent>JSP</bodycontent>
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>radix</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>equal</name>
+	<tagclass>com.kingcore.framework.tag.EqualTag</tagclass>
+	<bodycontent>JSP</bodycontent>
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>property</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnIndex</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnName</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>value</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>parameter</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>cookie</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>scope</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+<tag>
+	<name>notEqual</name>
+	<tagclass>com.kingcore.framework.tag.NotEqualTag</tagclass>
+	<bodycontent>JSP</bodycontent>
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>property</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnIndex</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnName</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>value</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>parameter</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>cookie</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>scope</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>write</name>
+	<tagclass>com.kingcore.framework.tag.WriteTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>property</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>columnIndex</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnName</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>format</name>
+		<required>false</required>
+		<rtexprvalue>false</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>scope</name>
+		<required>false</required>
+		<rtexprvalue>false</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>escape</name>
+		<required>false</required>
+		<rtexprvalue>false</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>iterate</name>
+	<tagclass>com.kingcore.framework.tag.IterateTag</tagclass>
+	<bodycontent>JSP</bodycontent>
+
+	<attribute>
+		<name>id</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>property</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>indexId</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnIndex</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>columnName</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>scope</name>
+		<required>false</required>
+		<rtexprvalue>false</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>navigator</name>
+	<tagclass>com.kingcore.framework.tag.NavigatorTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>type</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>path</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>scope</name>
+		<required>false</required>
+		<rtexprvalue>false</rtexprvalue>
+	</attribute>
+</tag>
+
+
+<tag>
+	<name>listBox</name>
+	<tagclass>com.kingcore.framework.tag.ListBoxTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>dataSetName</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>id</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>defaultValue</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>disabled</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	
+	<attribute>
+		<name>size</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	
+	<attribute>
+		<name>multiple</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onClick</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>ondblClick</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>blank</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onChange</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onBlur</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>together</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>style</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onFocus</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+
+<tag>
+	<name>clobOutput</name>
+	<tagclass>com.kingcore.framework.tag.ClobOutputTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>sql</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+
+<tag>
+	<name>sqltree</name>
+	<tagclass>com.kingcore.framework.tag.SqlTreeTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>sqlH1</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>sqlH2</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>lbbh</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>lbmc</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>bh</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>mc</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>mainmenu</name>
+	<tagclass>com.kingcore.framework.tag.J2MainMenuTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>filePath</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>request</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>session</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+<tag>
+	<name>connbean</name>
+	<tagclass>com.kingcore.framework.tag.SetConnBeanTag</tagclass>
+	<bodycontent>JSP</bodycontent>
+
+	<attribute>
+		<name>id</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>clazz</name>
+		<required>false</required>
+	</attribute>
+	<attribute>
+		<name>scope</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>aa</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+<tag>
+	<name>checklogon</name>
+	<tagclass>com.kingcore.framework.tag.CheckLogonTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>name</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>page</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>param</name>
+	<tagclass>com.kingcore.framework.tag.ParamTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>value</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>contextpath</name>
+	<tagclass>com.kingcore.framework.tag.ContextPathTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>path</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+	<name>servletPath</name>
+	<tagclass>com.kingcore.framework.tag.ServletPathTag</tagclass>
+	<bodycontent>empty</bodycontent>
+</tag>
+
+
+<tag>
+	<name>applicationRootUrl</name>
+	<tagclass>com.kingcore.framework.tag.ApplicationRootUrlTag</tagclass>
+	<bodycontent>empty</bodycontent>
+</tag>
+
+<tag>
+	<name>servletPath</name>
+	<tagclass>com.kingcore.framework.tag.ServletPathTag</tagclass>
+	<bodycontent>empty</bodycontent>
+</tag>
+
+<tag>
+	<name>absolutepath</name>
+	<tagclass>com.kingcore.framework.tag.AbsolutePathTag</tagclass>
+	<bodycontent>jsp</bodycontent>
+	
+	<attribute>
+		<name>path</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	
+	<attribute>
+		<name>server</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	
+	<attribute>
+		<name>action</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+
+<tag>
+	<name>absolutepathwithtabpage</name>
+	<tagclass>com.kingcore.framework.tag.AbsolutePathWithTabpageTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>path</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>server</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>tabpage</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>requestpage</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+
+
+<tag>
+	<name>sqllist</name>
+	<tagclass>com.kingcore.framework.tag.SqlListTag</tagclass>
+	<bodycontent>empty</bodycontent>
+
+	<attribute>
+		<name>sql</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>name</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>show</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>value</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>defaultValue</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	
+	<attribute>
+		<name>size</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	
+	<attribute>
+		<name>multiple</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onClick</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>ondblClick</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>blank</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onChange</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onBlur</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>together</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>style</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+
+	<attribute>
+		<name>onFocus</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+</tag>
+
+<tag>
+    <name>redirect</name>
+    <tagclass>com.kingcore.framework.tag.RedirectTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+	Encodes the url attribute and possible param tags in the body
+      and set redirect headers.
+    </info>
+    <attribute>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+
+<tag>
+    <name>pagepath</name>
+    <tagclass>com.kingcore.framework.tag.PagePathTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+	Encodes the url attribute and possible param tags in the body
+      and set redirect headers.
+    </info>
+    <attribute>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+  
+<tag>
+    <name>param</name>
+    <tagclass>com.kingcore.framework.tag.ParamTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+	Adds a param to the URL encoded by encodeURL
+    </info>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>value</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+
+</taglib>

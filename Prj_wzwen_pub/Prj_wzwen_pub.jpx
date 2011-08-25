@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--JBuilder XML Project-->
+<project>
+  <property category="generalFormatting" name="blockIndent" value="4"/>
+  <property category="generalFormatting" name="tabSize" value="4"/>
+  <property category="idl" name="ProcessIDL" value="false"/>
+  <property category="javadoc" name="custom.tags.1" value="todo;a;To Do:"/>
+  <property category="runtime" name="DefaultConfiguration" value="-1"/>
+  <property category="runtime" name="ExcludeDefaultForZero" value="1"/>
+  <property category="serverservices" name="disabled.services" value=""/>
+  <property category="serverservices" name="single.server.name" value="WebLogic Platform Server 8.x"/>
+  <property category="sys" name="AuthorLabel" value="@author"/>
+  <property category="sys" name="BackupPath" value="temporary/bak"/>
+  <property category="sys" name="CheckStable" value="1"/>
+  <property category="sys" name="Company" value=""/>
+  <property category="sys" name="CompanyLabel" value="Company:"/>
+  <property category="sys" name="Copyright" value="Copyright (c) 2002-2005 WUZEWN"/>
+  <property category="sys" name="CopyrightLabel" value="Copyright:"/>
+  <property category="sys" name="DefaultPath" value="src"/>
+  <property category="sys" name="Description" value=""/>
+  <property category="sys" name="DescriptionLabel" value="Description:"/>
+  <property category="sys" name="DocPath" value="temporary/doc;D%|/Woo_webapps/pda/project/wangwin/00%u5f00%u53d1%u89c4%u8303%u6587%u6863/temp_wpub_javadoc;D%|/Woo_webapps/pda/project/wangwin/02%u7cfb%u7edf%u6846%u67b6%u6280%u672f%u96c6/temp_wpub_javadoc;../../../Woo_webapps/pda/project/wangwin/02%u7cfb%u7edf%u6846%u67b6%u6280%u672f%u96c6/temp_wpub_javadoc;../../webapps/pda/project/wangwin/02%u7cfb%u7edf%u6846%u67b6%u6280%u672f%u96c6/temp_wpub_javadoc"/>
+  <property category="sys" name="Etacsufbo" value="1"/>
+  <property category="sys" name="ExcludeClassEnabled" value="0"/>
+  <property category="sys" name="IncludeTestPath" value="1"/>
+  <property category="sys" name="InstanceVisibility" value="2"/>
+  <property category="sys" name="JDK" value="java version 1.4.2_01-b06"/>
+  <property category="sys" name="JvmVersion" value="1.2"/>
+  <property category="sys" name="LastTag" value="0"/>
+  <property category="sys" name="Libraries" value="WebLogic 8.x Client;wzwen-lib"/>
+  <property category="sys" name="MakeStable" value="0"/>
+  <property category="sys" name="OutPath" value="temporary/classes"/>
+  <property category="sys" name="SourcePath" value="src;test;src_wzw-net"/>
+  <property category="sys" name="TestPath" value="src_wzw-net"/>
+  <property category="sys" name="Title" value=""/>
+  <property category="sys" name="TitleLabel" value="Title:"/>
+  <property category="sys" name="Version" value="1.0"/>
+  <property category="sys" name="VersionLabel" value="@version"/>
+  <property category="sys" name="WorkingDirectory" value="."/>
+  <property category="sys" name="max.package.levels" value="8"/>
+  <node name="Standard Doclet" type="Javadoc">
+    <property category="docletJavadoc" name="author" value="1"/>
+    <property category="docletJavadoc" name="use" value="1"/>
+    <property category="docletJavadoc" name="version" value="1"/>
+    <property category="javadoc" name="documentAllPackages" value="0"/>
+    <property category="javadoc" name="packages.1" value="com"/>
+    <property category="javadoc" name="packages.10" value="com.kingcore.framework.base.service"/>
+    <property category="javadoc" name="packages.11" value="com.kingcore.framework.base.util"/>
+    <property category="javadoc" name="packages.12" value="com.kingcore.framework.base.view"/>
+    <property category="javadoc" name="packages.13" value="com.kingcore.framework.bean"/>
+    <property category="javadoc" name="packages.14" value="com.kingcore.framework.bean.timer"/>
+    <property category="javadoc" name="packages.15" value="com.kingcore.framework.bean.value"/>
+    <property category="javadoc" name="packages.16" value="com.kingcore.framework.context"/>
+    <property category="javadoc" name="packages.17" value="com.kingcore.framework.exception"/>
+    <property category="javadoc" name="packages.18" value="com.kingcore.framework.jdbc"/>
+    <property category="javadoc" name="packages.19" value="com.kingcore.framework.security"/>
+    <property category="javadoc" name="packages.2" value="com.jspsmart.upload"/>
+    <property category="javadoc" name="packages.20" value="com.kingcore.framework.tag"/>
+    <property category="javadoc" name="packages.21" value="com.kingcore.framework.tag.jndi"/>
+    <property category="javadoc" name="packages.22" value="com.kingcore.framework.tag.sql"/>
+    <property category="javadoc" name="packages.23" value="com.kingcore.framework.upload"/>
+    <property category="javadoc" name="packages.24" value="com.kingcore.framework.util"/>
+    <property category="javadoc" name="packages.25" value="wzw.bean"/>
+    <property category="javadoc" name="packages.26" value="wzw.image"/>
+    <property category="javadoc" name="packages.27" value="wzw.jdbc"/>
+    <property category="javadoc" name="packages.28" value="wzw.lang"/>
+    <property category="javadoc" name="packages.29" value="wzw.mail"/>
+    <property category="javadoc" name="packages.3" value="com.kingcore.framework"/>
+    <property category="javadoc" name="packages.30" value="wzw.text"/>
+    <property category="javadoc" name="packages.31" value="wzw.util"/>
+    <property category="javadoc" name="packages.4" value="com.kingcore.framework.base.controller"/>
+    <property category="javadoc" name="packages.5" value="com.kingcore.framework.base.dao"/>
+    <property category="javadoc" name="packages.6" value="com.kingcore.framework.base.database"/>
+    <property category="javadoc" name="packages.7" value="com.kingcore.framework.base.entitybean"/>
+    <property category="javadoc" name="packages.8" value="com.kingcore.framework.base.mgrbean"/>
+    <property category="javadoc" name="packages.9" value="com.kingcore.framework.base.model"/>
+    <property category="nodeJavadoc" name="directory" value="E%|/Woo_Java/webapps/pda/project/wangwin/02%u7cfb%u7edf%u6846%u67b6%u6280%u672f%u96c6/temp_wpub_javadoc"/>
+    <property category="nodeJavadoc" name="displayAllOutput" value="0"/>
+  </node>
+  <file path="build/build2.xml">
+    <property category="ant" name="isantfile" value="1"/>
+  </file>
+</project>
