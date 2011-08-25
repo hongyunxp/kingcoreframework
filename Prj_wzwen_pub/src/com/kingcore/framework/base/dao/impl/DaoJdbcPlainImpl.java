@@ -74,74 +74,7 @@ public class DaoJdbcPlainImpl
 	/* ************************** 下面是@deprecated 的内容 ************************************* */
 
 	public static final String CHANGE_PAGE = "changepage";
-	
-    /**
-     * <pre>根据请求对象 HttpServletRequest ，获得要查询的页面的信息。
-     *   本方法是为了兼容以前的代码，该方法以及其支持的方法都不建议再使用。</pre>
-     * @deprecated 建议在Web 层(Action类)获取 PageCtrlInfor 信息
-     * @param request
-     * @return
-    private int[] getPageParameter(HttpServletRequest request) {
-
-		String action = request.getParameter("Action");
-		log.debug(" param action is " + action);
-		
-		// page control parameters.
-		int[] pageParams = new int[3];
-		String str_rowCount = request.getParameter("rowCount");
-		String str_pageSize = request.getParameter("pageSize");
-		String str_pageNumber = request.getParameter("pageNumber");
-		
-		//get rowCount value.
-		int rowCount=-1;
-		if(str_rowCount!=null){
-			try{
-				rowCount = Integer.parseInt(str_rowCount);
-			}catch(Exception te){
-				log.warn("warning!! parameter rowCount is " + str_rowCount);
-				log.debug("debug", te);
-				///te.pri ntStackTrace();
-				//throw te;
-			}
-		}
-		
-		//get pageSize value.
-		int pageSize=30;
-		if(str_pageSize!=null){ 
-			try{
-				pageSize = Integer.parseInt(str_pageSize);
-			}catch(Exception te){
-				log.fatal("error! pageSize is " + str_pageSize);
-				log.debug("debug", te);
-				/// te.pri ntStackTrace();
-				// throw te;
-			} 
-		}
-		
-		//get pageNumber value.
-		int pageNumber=1;
-		if(str_pageNumber!=null){ 
-			try{
-				pageNumber = Integer.parseInt(str_pageNumber);
-			}catch(Exception te){
-				log.fatal("error! pageNumber is " + str_pageNumber);
-				log.debug("debug", te);
-				/// te.pri ntStackTrace();
-				
-				pageNumber=1;
-				//// this.setPageNumber(1);
-			} 
-		}
-		
-		pageParams[0] = rowCount;
-		pageParams[1] = pageSize;
-		pageParams[2] = pageNumber;
-		
-		return pageParams;
-    }
-     */
-
-	
+	 
 	/**
 	 * <pre>主动释放数据库的连结 wzw on 2006-9-24
 	 * 连接释放之后，该类对象就不能执行数据库操作了，
@@ -178,21 +111,6 @@ public class DaoJdbcPlainImpl
 		return doQueryDataSet( sql_datas, sql_count, getPageParameter(request) );
 	}
 	 */
-	
-	
-	/**
-	 * 根据当前的数据库的特殊规则对需要插入的内容做特殊处理。
-	 * 		针对字符串类型(Varchar)，数字(Number)、日期(Date)和二进制(LOB)类型不用这个处理。
-	 * 		escape2Sql 替换 convertString 方法。
-	 * 		-- 当前是针对 Oracle 数据库，将 ' 符号 替换为 '' ，才能插入到数据库中。
-	 * @deprecated replaced by escape2Sql(String str)
-	 * @param src 需要保存到数据库的一个字段。
-	 * @return
-	protected String convertString(String str) {
-		
-		return ((PooledConnection)conn).getDatabaseManager().escape2Sql(str);
-	}
-	 */
 
 	/**
 	 * 暂时不使用，而是采用直接得到连结 wzw on 2006-9-24
@@ -215,25 +133,6 @@ public class DaoJdbcPlainImpl
 	}
 	 */
 
-	/**
-	 *  获取Oracle数据库指定序列的下一个序列值。
-	 *    本方法限定了是Oracle的序列方式，不建议使用，用 getIdentityValue(tblName)替换；
-	 *  
-	 * @deprecated 用 getIdentityValue(tblName)替换
-	 * @param seqName 序列对象名称，如"seq_employee"
-	 * @return 序列的下一个值
-	 * @throws SQLException 数据库操作失败异常。
-	public int getSequenceValue( String seqName) 
-	  throws SQLException {
-		if(this.conn==null || this.conn.isClosed()) {
-			return DBUtils.getSequenceValue( seqName);
-		}else {
-			/// return ((PooledConnection)conn).getDatabaseManager().getSequenceValue( seqName, conn);
-			return DBUtils.getSequenceValue( seqName, conn);	// oracle 获取序列可以共用连接
-		}
-	}
-	 */
-
 	/* ************************** @deprecated 的内容完毕 ************************************* */
 
 	private static final long serialVersionUID = 1L;
@@ -241,7 +140,7 @@ public class DaoJdbcPlainImpl
 	/**
 	 * 日志记录对象。
 	 */
-	protected final static Logger log = Logger.getLogger(com.kingcore.framework.base.dao.impl.DaoJdbcPlainImpl.class);
+	protected final static Logger log = Logger.getLogger( DaoJdbcPlainImpl.class);
 	
 	/// private DataSource dataSource = ApplicationContext.getInstance().getDataSourceProvider().getDataSource(); 
 
@@ -270,13 +169,6 @@ public class DaoJdbcPlainImpl
 	 * @throws SQLException 
 	 */
 	protected Connection getConnection() throws SQLException{
-//		if(this.conn==null || this.conn.isClosed() ) {
-//			this.conn = ApplicationContext.getInstance().getDataSourceManager().getConnection( );
-//			log.debug("获取新连接时hashcode="+this.conn.hashCode()+"，本类hashcode="+this.hashCode()+"。调用路径："+showTrace(8) ); //
-//		}else{
-//			log.debug("使用已有连接hashcode="+this.conn.hashCode()+"，本类hashcode="+this.hashCode()+"。调用路径："+showTrace(8) ); //
-//		}
-//		return this.conn;
 		return this.getConnection( this.getDataSourceName() );
 	}
 
@@ -368,11 +260,6 @@ public class DaoJdbcPlainImpl
 //		}
 	}
 	 */
-	
-//	private RowSet doQuery(String sql, Connection conn )
-//	 throws SQLException {
-//		return DBUtils.doQuery(sql, conn );
-//	}
 
 	
 	/**
@@ -391,17 +278,8 @@ public class DaoJdbcPlainImpl
 	 * @return The number of rows updated.
 	 * @throws SQLException
 	 */
-	protected int executeUpdate( String sql ) throws SQLException {    
-		
+	protected int executeUpdate( String sql ) throws SQLException {
 		return executeUpdate(sql, null, null);
-		//return doUpdate(sql, null, null);
-//		if(this.conn==null || this.conn.isClosed()) {
-//			log.debug("---------this.conn is useless");
-//			return DbUtils.executeUpdate( sql );
-//		}else {
-//			log.debug("---------this.conn is useful");
-//			return DbUtils.executeUpdate( sql , conn);			
-//		}
 	}
 	
 	/**
@@ -443,6 +321,7 @@ public class DaoJdbcPlainImpl
 				}
 				l_conn = this.conn;
 			}
+			// begin : 处理数据库操作部分 -------------------------------------------------->
 			 
 			if(args!=null){		// has params or not??
 				ps = l_conn.prepareStatement(sql);
@@ -454,14 +333,14 @@ public class DaoJdbcPlainImpl
 					SqlUtils.setStatementArg(ps, args, argTypes);
 				}
 				intReturn = ps.executeUpdate();
-				stmt = ps; //for close 
+		        stmt = ps; //用于后面关闭。
 				
 			}else{
 				stmt = l_conn.createStatement();
 				intReturn = stmt.executeUpdate(sql);
 			}
-			
-			
+
+			// end : 处理数据库操作部分 --------------------------------------------------<			
 			if(isConnCreated && l_conn!=null){		// 提交
 				log.debug("---------isConnCreated is true,so commit conn.");
 				l_conn.commit();
@@ -521,11 +400,13 @@ public class DaoJdbcPlainImpl
 				}
 				l_conn = this.conn;
 			}
+			// begin : 处理数据库操作部分 -------------------------------------------------->
         	
         	stmt = l_conn.createStatement();
             addBatch( stmt, list);
             returns = stmt.executeBatch();
-            
+
+			// end : 处理数据库操作部分 --------------------------------------------------<
             if( isConnCreated && l_conn!=null){
             	l_conn.commit() ;	 	//对于外部传入的连接，不提交，不回滚，不关闭
             }
@@ -554,17 +435,6 @@ public class DaoJdbcPlainImpl
             }
         }
         
-        // return null;
-    
-		
-//		if( this.conn==null || this.conn.isClosed()) {
-//			log.debug("doBath without this.conn.");
-//			return DbUtils.executeBatch( list );
-//		}else {
-//			log.debug("doBath with this.conn.");
-//			return DbUtils.executeBatch( list, conn );
-//			
-//		}
 	}
 
 	/**
@@ -629,7 +499,6 @@ public class DaoJdbcPlainImpl
 		Integer iobj = (Integer)query(sql, args, argTypes, new TypeResultSetExtractor( Types.INTEGER, false) ); 
 		return iobj.intValue();
 	}
-	
 
 	
 	/**
@@ -823,7 +692,6 @@ public class DaoJdbcPlainImpl
 	 */
 	protected RowSet queryForRowSet( String sql, Object[] args, int[] argTypes) throws SQLException {
 
-		// return this.doQuery( sql );	// not PreparedStatement
 		return (RowSet) query(sql, args, argTypes, new RowSetResultSetExtractor() );
 	}
 	
@@ -941,7 +809,6 @@ public class DaoJdbcPlainImpl
 	 * @throws SQLException 数据库操作失败异常。
 	 */
 	protected long identity( String tblName ) {
- 
 		
 		DatabaseManager databaseManager = null;
 		boolean isConnCreated = false;
@@ -960,6 +827,7 @@ public class DaoJdbcPlainImpl
 				}
 				l_conn = this.conn;
 			}
+			// begin : 处理数据库操作部分 -------------------------------------------------->
 		
 			if(l_conn instanceof PlainConnection){
 				log.debug("---------get DatabaseManager from PlainConnection.");
@@ -970,6 +838,8 @@ public class DaoJdbcPlainImpl
 			}
 			
 			return databaseManager.getIdentityValue(tblName.toUpperCase(), l_conn);
+
+			// end : 处理数据库操作部分 --------------------------------------------------<
 			
 		}catch(SQLException sqle){
             log.error("debug", sqle);
@@ -1023,7 +893,37 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 */
 	protected int getLastInsertIdentity(DatabaseManager databaseManager ) throws SQLException {
-		return databaseManager.getLastInsertIdentity( this.conn );
+
+		boolean isConnCreated = false;
+		//PreparedStatement ps = null;
+		//Statement stmt = null;
+		Connection l_conn = null;
+		//int intReturn = 0 ;
+		try{
+			//先查找是否有事务管理，有则加入现有事务，没有这是用this.conn成员对象
+			l_conn = this.getConnection( TransactionType.MAYBE_TRANSACTION );
+			if(l_conn==null){
+				if( this.conn==null || this.conn.isClosed() ) {
+					this.conn = this.getConnection();
+					isConnCreated = true;
+					log.debug("---------get new conn and assign to this.conn");
+				}
+				l_conn = this.conn;
+			}
+			// begin : 处理数据库操作部分 -------------------------------------------------->
+				
+			return databaseManager.getLastInsertIdentity( l_conn );
+
+			// end : 处理数据库操作部分 --------------------------------------------------<
+		}catch(SQLException e){
+			log.error(e);
+			throw e;
+			
+		}finally{
+			if (isConnCreated ) {
+				wzw.util.DbUtils.closeQuietly(l_conn);
+			}
+		}
 	}
 	
 
@@ -1195,6 +1095,7 @@ public class DaoJdbcPlainImpl
 				}
 				l_conn = this.conn;
 			}
+			// begin : 处理数据库操作部分 -------------------------------------------------->
 		
 			if(l_conn instanceof PlainConnection){
 				log.debug("---------get DatabaseManager from PlainConnection.");
@@ -1203,6 +1104,8 @@ public class DaoJdbcPlainImpl
 				log.debug("---------get DatabaseManager from ApplicationContext.");
 				databaseManager = ApplicationContext.getInstance().getDatabaseManager();
 			}
+			
+			// end : 处理数据库操作部分 --------------------------------------------------<
 			
 		}catch(SQLException sqle){
             log.error("debug", sqle);
@@ -1324,60 +1227,7 @@ public class DaoJdbcPlainImpl
 	   
 	   */
 	
-	
-//	public DAO(DataSource ds) {
-//	this.ds = ds;
-//	}
-	
-//	public void setDataSource(DataSource ds) {
-//	this.ds = ds;
-//	}
-	
-	
-//	protected void close(ResultSet rs) {
-//	if (rs != null) {
-//	try {
-//	rs.close();
-//	} catch (SQLException e) {
-//	}
-//	rs = null;
-//	}
-//	}
-	
-//	protected void close(PreparedStatement pstmt) {
-//	if (pstmt != null) {
-//	try {
-//	pstmt.close();
-//	} catch (SQLException e) {
-//	}
-//	pstmt = null;
-//	}
-//	}
-	
-//	protected void close(Connection conn) {
-//	if (conn != null) {
-//	try {
-//	conn.close();
-//	} catch (SQLException e) {
-//	log.debug("debug", e);
-//	/// e.pri ntStackTrace();
-//	}
-//	conn = null;
-//	}
-//	}
-	
-//	protected void rollback(Connection conn) {
-//	if (conn != null) {
-//	try {
-//	conn.rollback();
-//	} catch (SQLException e) {
-//	log.debug("debug", e);
-//	///e.pri ntStackTrace();
-//	}
-//	conn = null;
-//	}
-//	}
-	
+	 
 //	/**
 //	 * @deprecated
 //	 */
@@ -1393,25 +1243,7 @@ public class DaoJdbcPlainImpl
 //		}
 //		return column.toLowerCase();
 //	}
-
-
-//	/**
-//	 * @deprecated
-//	 * @param name
-//	 * @return
-//	 */
-//	protected String sql2javaName(String name) {
-//		String column = "";
-//		for (int i = 0; i < name.length(); i++) {
-//			if (name.charAt(i) == '_') {
-//				column += ++i<name.length()?String.valueOf(name.charAt(i)).toUpperCase():"";
-//			} else {
-//				column += name.charAt(i);
-//			}
-//		}
-//		return column;
-//	}
-	
+ 
 	
 //	/**
 //	 * Zeven set 'public ' to 'protected'.
@@ -1563,8 +1395,7 @@ public class DaoJdbcPlainImpl
 		}
 
 		DatabaseManager dbm = getCurrentDatabaseManager();
-		String sql = dbm.getSubResultSetSql( sql_datas, 
-					pageSize*(pageNumber-1)+1,  pageSize  );
+		String sql = dbm.getSubResultSetSql( sql_datas, pageSize*(pageNumber-1)+1,  pageSize  );
 
 		return sql;
 	}
@@ -1691,129 +1522,7 @@ public class DaoJdbcPlainImpl
 //							dataSet.getPageSize()  );
 //
 //		return sql;
-//	}
-	
-	
-//	/**
-//	 * 做内部查询。
-//	 * @param sql
-//	 * @return
-//	 * @throws Exception
-//	 */
-//	private Page doInnerQuery(  String sql ) throws Exception
-//	{
-//		//log.debug("doQuery()此次查询的sql语句为：" + sql );
-//		RowSet datas = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		//ResultSetMetaData rsmd = null;
-//		int count = 0;
-//		//int i = 0, colcount = 0;
-//		//String[] colName;
-//		boolean isConnCreated = false;
-//
-//		try
-//		{
-//			//.out.println("doQuery()此次查询的sql语句为："  );
-//			if( this.conn==null || this.conn.isClosed() ) {
-//				// cann't using self's getConnection() method.
-//				this.conn = getConnection();
-//				isConnCreated = true;
-//			}
-//			
-//			//.out.println("1---" +sql);
-//			pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-//			//SQLUtils.fillStatement( pstmt, this.getParams() ) ;
-//			//.out.println("2---" +sql);
-//			rs = pstmt.executeQuery();
-//			//.out.println("3---" +sql);
-////			if(rs.next()){
-////			rs.last();
-////			//.out.println("size"+rs.getRow());
-////			rs.beforeFirst();
-////			}else{
-////			.out.println("no cord");
-////			}
-//			//log.fatal("have executeQuery get hsdgs--------jyj") ;
-//			
-//			//.out.println(sql);
-//			
-//			//datas.populate( rs ) ;
-//			
-//			datas = this.resultSet2RowSet( rs );
-//			
-//			//.out.println("4---" +sql);
-//			/////  count = datas.size() ;
-//			//.out.println("5---" +sql);
-//			//.out.println("count="+count);
-//			
-//			
-//			//rsmd = set.getMetaData();
-//			//colcount = rsmd.getColumnCount();
-//			//colName = new String[colcount];
-//			//for (i = 1; i <= colcount; i++)
-//			//{
-//			//    colName[i - 1] = rsmd.getColumnName(i);
-//			//}
-//			//
-//			//set = pstmt.executeQuery();  twice??
-//			//log.fatal("have executeQuery2 " + colName[1]);
-//			//while (set.next())
-//			//{
-//			//    count++;
-//			//   log.fatal("have executeQuery3 "+set.getObject(colName[1]));
-//			//    if (count < start + 1 || count > end + 1)
-//			//        continue;
-//			//    DataBean bean = new DataBean();
-//			//    for (i = 0; i < colcount; i++)
-//			//    {
-//			//        bean.put(colName[i], set.getObject(colName[i]));
-//			//    }
-//			//    datas.add(bean);
-//			//}
-//		}
-//		catch (SQLException se)
-//		{
-//			log.fatal("doQuery()中出SQLException错误，错误为：" + se.getMessage() + "\n\tsql statement is:"+sql );
-//			log.debug("debug", se);
-//			/// se.pri ntStackTrace();
-//			throw se;
-//			///mapping.findForward("");
-//		}
-//		catch (Exception e)
-//		{
-//			log.fatal("doQuery()中出Exception错误，错误为：" + e.getMessage() + "\n\tsql statement is:"+sql );
-//			log.debug( e.getMessage(), e );
-//			/// e.pri ntStackTrace();
-//			/// mapping.findForward("");
-//			throw e;
-//		}
-//		finally
-//		{
-//			try
-//			{
-//				if (rs != null)
-//				{
-//					rs.close();
-//				}
-//				if (pstmt != null)
-//				{
-//					pstmt.close();
-//				}
-//				if ( isConnCreated && conn!=null )
-//				{
-//					conn.close();
-//				}
-//			}
-//			catch (SQLException se)
-//			{
-//				log.fatal("doQuery的finally中关闭出错，错误为：" + se.getMessage());
-//			}
-//		}
-//		//.out.println("str_pageSize "+ pageSize);
-//		return new Page(datas, 0, 0, 0, count);
-//	}
-
+//	} 
 
 	/** 
 	 * <pre>
@@ -1881,6 +1590,7 @@ public class DaoJdbcPlainImpl
 				}
 				l_conn = this.conn;
 			}
+			// begin : 处理数据库操作部分 -------------------------------------------------->
 
 			log.debug("--------------wzw--2------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
 			//log.debug("--------------wzw--2------------"+ ((l_conn==null)?"is null":"not null") );
@@ -1896,17 +1606,18 @@ public class DaoJdbcPlainImpl
 					SqlUtils.setStatementArg(ps, args, argTypes);
 				}
 		        rs = ps.executeQuery();
-
+		        stmt = ps; //用于后面关闭。
 			}
 
 	        //crs.populate( rs ) ;
 	        //RowSet crs = resultSet2RowSet( rs ) ;
 	        objReturn =  rse.extractData(rs);
 
+			// begin : 处理数据库操作部分 --------------------------------------------------<
+	        
 		}finally{
 
-			DbUtils.closeQuietly( ps );
-			
+			//DbUtils.closeQuietly( ps );
 			if(isConnCreated){				// 查询，只需要关闭，不需要提交or回滚
 				log.debug("-----------1---wzw--需要关闭conn begin------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
 				DbUtils.closeQuietly(l_conn, stmt, rs);
@@ -1946,7 +1657,7 @@ public class DaoJdbcPlainImpl
 		Object objReturn = null;
 		try{
 			log.debug("--------------wzw--1------------"+ ((this.conn==null||this.conn.isClosed())?"not connected":"connected") );
-			log.debug("--------------wzw--1------------"+ ((this.conn==null)?"is null":"not null") );
+			//log.debug("--------------wzw--1------------"+ ((this.conn==null)?"is null":"not null") );
 			//先查找是否有事务管理，有则加入现有事务，没有这是用this.conn成员对象
 			l_conn = this.getConnection( TransactionType.MAYBE_TRANSACTION ); //有事务则先加入事务
 			if(l_conn==null){
@@ -1959,7 +1670,7 @@ public class DaoJdbcPlainImpl
 			}
 
 			log.debug("--------------wzw--2------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
-			log.debug("--------------wzw--2------------"+ ((l_conn==null)?"is null":"not null") );
+			//log.debug("--------------wzw--2------------"+ ((l_conn==null)?"is null":"not null") );
 			if (args==null) {		// Statement
 				stmt = l_conn.createStatement();
 		        rs = stmt.executeQuery(sql);
@@ -1972,7 +1683,7 @@ public class DaoJdbcPlainImpl
 					SqlUtils.setStatementArg(ps, args, argTypes);
 				}
 		        rs = ps.executeQuery();
-
+		        stmt = ps; //用于后面关闭。
 			}
 
 	        //crs.populate( rs ) ;
@@ -1981,21 +1692,13 @@ public class DaoJdbcPlainImpl
 
 		}finally{
 
-			DbUtils.closeQuietly( ps );
-			
+			//DbUtils.closeQuietly( ps );
 			if(isConnCreated){				// 查询，只需要关闭，不需要提交or回滚
 				log.debug("-----------1---wzw--需要关闭conn begin------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
-				log.debug("-----------2---wzw--需要关闭conn begin------------"+ ((l_conn==null)?"is null":"not null") );
 				DbUtils.closeQuietly(l_conn, stmt, rs);
-        		log.debug("-----------3---wzw--需要关闭conn end------------"+ (l_conn.isClosed()?"conn isClosed":"conn not closed") );
-				log.debug("-----------4---wzw--需要关闭conn end------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
-				log.debug("-----------5---wzw--需要关闭conn end------------"+ ((l_conn==null)?"is null":"not null") );
 			}else{
 				log.debug("--------------wzw--不需要关闭conn begin------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
-				log.debug("--------------wzw--不需要关闭conn begin------------"+ ((l_conn==null)?"is null":"not null") );
 				DbUtils.closeQuietly( null, stmt , rs);
-				log.debug("--------------wzw--不需要关闭conn end------------"+ ((l_conn==null||l_conn.isClosed())?"not connected":"connected") );
-				log.debug("--------------wzw--不需要关闭conn end------------"+ ((l_conn==null)?"is null":"not null") );
 			}
 		}
 		
