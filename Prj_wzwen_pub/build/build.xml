@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by x (xht) -->
+<project name="scm" default="makeear" basedir=".">
+	<target name="init">
+		<property name="prj.root" location="${basedir}\.."/>	
+		<property name="kingcore.src" location="${prj.root}\src;${prj.root}\src_impl;${prj.root}\src_wzw-net"/>
+        <property name="kingcore.build" location="${prj.root}\Tmp\classes"/>
+		<property name="build.home" value="${prj.root}\build"/>
+		<property name="tomcat-home" value="D:/Server/Tomcat-5.5.23"/>
+		<property name="bea-home" value="D:/bea"/>
+		<property name="weblogic-home" value="${bea-home}/weblogic81"/>
+		<property name="wzwen-lib" value="E:/Woo_Java/lib_wzwen"/>
+		<property name="wzwlib" value="${prj.root}\build\lib"/>
+
+		<property name="project.home" location="${basedir}\.."/>
+        <property name="project.build" location="${project.home}\build"/>
+		<property name="project.classes" value="${project.build}\classes"/>
+		<property name="project.lib" value="${project.build}\lib"/>
+
+		<property name="bea.home" location="d:\bea\user_projects\yyjdomain\applications"/>
+		<property name="bea.lib" location="d:\bea\weblogic81\server\lib"/>
+		<property name="scm.prj" location="F:\work\prj\lib"/>
+		<property name="cerp.prj" location="F:\work\prj\wfapp"/>
+		<property name="oracle_class" value="D:\bea\classes12.zip"/>
+
+
+		<property name="component.classpath" value="${wzwlib};"/>
+		<!-- web -->
+		<property name="scm.defaultroot" location="F:\work\supplychain\defaultroot"/>
+		<property name="web.dist" location=".\web"/>
+		<property name="web.warxml" location="${web.dist}"/>
+		<property name="web.war" location="${web.dist}"/>
+		<!-- ejb -->
+		<property name="ejb.dist" location="${build.home}\classes"/>
+		<property name="ejb.ejbjarxml" location="${ejb.dist}/"/>
+		<property name="ejb.ear" location="${ejb.dist}"/>
+		<!-- ear -->
+		<property name="scm.ear" location=".\application"/>
+		<property name="scm.war" location=".\web"/>
+		<property name="scm.ejb" location=".\ejb"/>
+		
+		<!--develop-->
+		<property name="dev.xml" location=".\dev_xml"/>
+
+		<!--profile for web-->
+		<property name="profile.xml" location="E:\web-xml_back"/>
+
+		<!-- woo 2004-11-24 -->
+		<property name="localweb.dist" location="D:\bea\user_projects\yyjdomain\applications"/>
+	</target>
+
+	<target name="kingcore_jar" depends="init" description="pub jar for wzwen">
+		<delete dir="${kingcore.build}"/>
+		<mkdir dir="${kingcore.build}"/>
+		<javac srcdir="${kingcore.src}" destdir="${kingcore.build}" excludes="**/Test*.java" deprecation="off" debug="true">
+			<classpath>
+				<fileset dir="${wzwen-lib}">
+					<include name="activation.jar"/>
+					<include name="mail.jar"/>
+					<include name="classes12.jar"/>
+					<include name="commons-beanutils.jar"/>
+					<include name="commons-fileupload-1.0.jar"/>
+					<include name="commons-logging.jar"/>
+					<include name="commons-dbutils-1.0.jar"/>
+					<include name="jdom.jar"/>
+					<include name="log4j-1.2.9.jar"/>
+					<include name="rowset.jar"/>
+					<include name="ocrs12.jar"/>
+					<include name="sun-rowset.jar"/>
+					<include name="servlet.jar"/>
+					<include name="struts.jar"/>
+					<include name="xercesImpl.jar"/>
+
+					<include name="**/*.jar"/>
+				</fileset>
+				<pathelement path="${weblogic-home}/server/lib/weblogic.jar"/>
+				<pathelement path="${tomcat-home}/common/lib/naming-factory-dbcp.jar"/>
+			</classpath>
+		</javac>
+
+		<copy todir="${kingcore.build}">
+			<fileset dir="${prj.root}\src" 
+			    includes="*.properties,*.xml"/>	
+			<fileset dir="${prj.root}\src_wzw-net" 
+			    includes="*.properties,*.xml"/>			    
+		</copy>
+
+		<!-- <delete file="${ejb.dist}/*.*"/>
+		<copy todir="${ejb.dist}">
+			<fileset dir="${kingcore.build}" 
+			    includes="**/*.class" 
+			    excludes="**/Test*.class,
+			    **/frame/**/*.class,
+                **/*_jsp.class, 
+			    **/controller/**/*.class"/>			    
+			<fileset dir="${ejb.ejbjarxml}" includes="META-INF/*.xml"/>
+		</copy> -->
+
+		<!-- <delete file="${ejb.ear}/st_scmejb.jar" quiet="true"/>  -->
+		<delete file="${build.home}/kingcore.jar" quiet="true"/>
+		<jar jarfile="${project.lib}/kingcore.jar" basedir="${kingcore.build}">
+			<manifest>
+				<attribute name="Extension-Name" value="Kingcore Framework"/>
+				<attribute name="Specification-Title" value="Kingcore Framework"/>
+				<attribute name="Specification-Version" value="Kingcore Framework 2.0"/>
+				<attribute name="Implementation-Version" value="Kingcore Framework 2.0"/>
+				<attribute name="Implementation-Vendor" value="Zeven in VangV"/>
+			</manifest>
+		</jar>
+		<delete dir="${ejb.dist}" quiet="true"/>
+		
+		<!-- <java classname="weblogic.ejbc" fork="yes" classpath="${component.classpath}">
+			<arg line="-J-mx192m  -compiler javac ${ejb.ear}/kingcore.jar ${ejb.ear}/kingcore.jar"/>
+		</java> -->
+		<!-- <delete file="${ejb.ear}/st_scmejb.jar" quiet="true"/>
+				<delete  dir="${ejb.dist}/scmejb"/> -->
+		<!-- <copy file="${build.home}/kingcore.jar" tofile="D:/tomcat-5.5.9/webapps/adminsystem/WEB-INF/lib/kingcore.jar"/>
+		<copy file="${build.home}/kingcore.jar" tofile="D:/tomcat-5.5.9/webapps/wooshop/WEB-INF/lib/kingcore.jar"/>
+		<copy file="${build.home}/kingcore.jar" tofile="D:/tomcat-5.5.9/webapps/dbtags-examples/WEB-INF/lib/kingcore.jar"/> -->
+		
+		<!-- <copy file="${build.home}/kingcore.jar" tofile="E:/Work_Java/Prj_wangwin/build/lib/kingcore.jar"/> -->
+		<!-- <copy file="${build.home}/kingcore.jar" tofile="${project.lib}/kingcore.jar"/> -->
+
+
+		<!-- copy kingcore.jar -->
+		<!-- <copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/Prj_wangwin/wangwin/WEB-INF/lib"/>
+		<copy file="${project.lib}/kingcore.jar" todir="${wzwen-lib}" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/Prj_vangv_vstore/vstore/WEB-INF/lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/Prj_vangv_portal/vangv/WEB-INF/lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/Prj_vangv_net/wangwin/WEB-INF/lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/prj_admin/alliance/WEB-INF/lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/prj_admin/alliance_service/WEB-INF/lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/Prj_vcmarket/vcmarket/WEB-INF/lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:/Work_Java/Prj_vcmarket/commerce_service/WEB-INF/lib" overwrite="true"/> -->
+
+		<!-- <copy file="${project.lib}/kingcore.jar" todir="E:\Work_Java\Prj_vcmarket\build\lib\vcmarket_service-lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:\Work_Java\Prj_vcmarket\build\lib\vcmarket-lib" overwrite="true"/> -->
+		
+		<copy file="${project.lib}/kingcore.jar" todir="D:\Program Files\Kingcore\Director\lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:\Woo_Java\Prj_wzwen_pda\pda\WEB-INF\lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore.jar" todir="E:\Woo_Java\Prj_zeven_admin\sysadmin\WEB-INF\lib" overwrite="true"/>
+		
+		<!-- copy zeven.tld -->
+		<copy file="${project.build}/tld/zeven.tld" todir="E:/Work_Java/Prj_vangv_net/wangwin/WEB-INF/tld"/>
+		<copy file="${project.build}/tld/zeven.tld" todir="E:/Work_Java/prj_admin/alliance/WEB-INF/tld"/>
+		<copy file="${project.build}/tld/zeven.tld" todir="E:/Work_Java/Prj_vcmarket/vcmarket/WEB-INF/tld"/>
+
+		<!-- javadoc for kingcore.jar -->
+		<javadoc access="protected" author="true" destdir="${prj.root}/tmp/doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.4" sourcepath="${kingcore.src}" splitindex="true" use="true" version="true" packagenames="*">		
+			<classpath>
+				<fileset dir="${wzwen-lib}">
+					<include name="activation.jar"/>
+					<include name="**/*.jar"/>
+				</fileset>
+				<pathelement path="${weblogic-home}/server/lib/weblogic.jar"/>
+				<pathelement path="${tomcat-home}/common/lib/naming-factory-dbcp.jar"/>
+			</classpath>
+		</javadoc>
+		<delete file="${prj.root}/tmp/doc/kingcore_javadoc.jar" quiet="true"/>
+		<jar jarfile="${prj.root}/tmp/doc/kingcore_javadoc.jar" basedir="${prj.root}/tmp/doc"/>
+
+	</target>
+
+
+	<target name="wzw-net_jar" depends="init" description="pub jar for wzw">
+
+		<delete dir="${project.classes}"/>
+		<mkdir dir="${project.classes}"/>
+		<javac srcdir="${project.home}\src_wzw-net" destdir="${project.classes}" excludes="**/Test*.java" deprecation="off" debug="true">
+			<classpath>
+				<fileset dir="${project.lib}">
+					<include name="**/*.jar"/>
+					<include name="**/*.zip"/>
+				</fileset>
+			</classpath>
+		</javac>
+
+		<jar jarfile="${project.lib}/wzw-net.jar" basedir="${project.classes}"/>
+		<delete dir="${project.classes}"/>
+
+	</target>
+
+	<target name="ear-nobuild" depends="init" description="make ear of scm without build">
+        <delete file="${scm.ear}/ear/*.jar"/>
+        <delete file="${scm.ear}/ear/*.war"/>
+		<copy todir="${scm.ear}/ear">
+			<fileset dir="${scm.ejb}" includes="*.jar" excludes="st*.jar"/>
+		</copy>
+		<copy todir="${scm.ear}/ear">
+			<fileset dir="${scm.war}/" includes="*.war"/>
+		</copy>
+		<copy file="${cerp.prj}/fininterface.jar" tofile="${scm.ear}/ear/fininterface.jar"/>
+        <copy file="${scm.prj}/jakarta-poi-1.5.1.jar" tofile="${scm.ear}/ear/jakarta-poi-1.5.1.jar"/>
+        <copy file="${scm.prj}/dumb-common-1.0.jar" tofile="${scm.ear}/ear/dumb-common-1.0.jar"/>
+        <copy file="${scm.prj}/commons-lang-1.0.1.jar" tofile="${scm.ear}/ear/commons-lang-1.0.1.jar"/>
+        <copy file="${scm.prj}/gisproduce_client.jar" tofile="${scm.ear}/ear/gisproduce_client.jar"/>
+        <copy file="${scm.prj}/quality_client.jar" tofile="${scm.ear}/ear/quality_client.jar"/>
+        <copy file="${scm.prj}/wfclient.jar" tofile="${scm.ear}/ear/wfclient.jar"/>
+	</target>
+
+	<target name="core" depends="init,scmejb-jar,scm-war" description="build all ejb jar for scm">
+		<copy todir="${scm.ear}/ear">
+			<fileset dir="${scm.war}/" includes="*.war"/>
+		</copy>
+		<copy todir="${scm.ear}/ear">
+			<fileset dir="${scm.ejb}" includes="*.jar" excludes="st*.jar"/>
+		</copy>
+		<copy file="${cerp.prj}/fininterface.jar" tofile="${scm.ear}/ear/fininterface.jar"/>
+		<copy file="${scm.prj}/jakarta-poi-1.5.1.jar" tofile="${scm.ear}/ear/jakarta-poi-1.5.1.jar"/>
+        <copy file="${scm.prj}/dumb-common-1.0.jar" tofile="${scm.ear}/ear/dumb-common-1.0.jar"/>
+        <copy file="${scm.prj}/commons-lang-1.0.1.jar" tofile="${scm.ear}/ear/commons-lang-1.0.1.jar"/>
+        <copy file="${scm.prj}/gisproduce_client.jar" tofile="${scm.ear}/ear/gisproduce_client.jar"/>
+        <copy file="${scm.prj}/quality_client.jar" tofile="${scm.ear}/ear/quality_client.jar"/>
+        <copy file="${scm.prj}/wfclient.jar" tofile="${scm.ear}/ear/wfclient.jar"/>
+	</target>
+
+	<target name="moveear" depends="init,core" description="move ear to bea home">
+		<copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${scm.prj}/scm.ear"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${scm.src}" destdir="${scm.build}" excludes="**/Test*.java" deprecation="off" debug="true">
+			<classpath>
+				<fileset dir="${scm.prj}">
+					<include name="wfclient.jar"/>
+					<include name="jakarta-poi-1.5.1.jar"/>
+					<!--<include name="quality_client.jar"/>-->
+					<include name="rm_client.jar"/>
+					<include name="rm_control.jar"/>
+					<include name="mwlog.jar"/>
+					<include name="log4j.jar"/>
+					<include name="client.jar"/>
+					<include name="orgclient.jar"/>
+				</fileset>
+				<!--<pathelement path="${cerp.prj}\fininterface.jar"/>-->
+				<pathelement path="d:\Program Files\JBuilder9\extras\castor\lib\junit_3.5.jar"/>
+				<pathelement path="${weblogic-home}/server/lib/weblogic.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="makeear" depends="init,core" description="make ear">
+		<delete file="${scm.ear}/scm.ear"/>
+		<mkdir dir="${scm.ear}/tmp"/>
+		<mkdir dir="${scm.ear}/tmp/META-INF"/>
+		<copy todir="${scm.ear}/tmp">
+			<fileset dir="${scm.ear}/ear" includes="*.jar"/>
+			<fileset dir="${scm.ear}/ear" includes="*.war"/>
+		</copy>
+		<copy todir="${scm.ear}/tmp/META-INF">
+			<fileset dir="${scm.ear}/META-INF" includes="*.xml"/>
+		</copy>
+		<jar destfile="${scm.ear}/scm.ear" basedir="${scm.ear}/tmp" includes="**/*.*" manifest="${scm.ear}/META-INF/MANIFEST.MF"/>
+		<delete file="${bea.home}/scmejb.jar"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${scm.prj}/scm.ear"/>
+		<delete dir="${scm.ear}/tmp"/>
+	</target>
+
+	<target name="makeear_quick" depends="init,ear-nobuild" description="make ear quick">
+		<delete dir="${scm.ear}/tmp"/>
+		<delete file="${scm.ear}/scm.ear"/>
+		<mkdir dir="${scm.ear}/tmp"/>
+		<mkdir dir="${scm.ear}/tmp/META-INF"/>
+		<copy todir="${scm.ear}/tmp">
+			<fileset dir="${scm.ear}/ear" includes="*.jar"/>
+			<fileset dir="${scm.ear}/ear" includes="*.war"/>
+		</copy>
+		<copy todir="${scm.ear}/tmp/META-INF">
+			<fileset dir="${scm.ear}/META-INF" includes="*.xml"/>
+		</copy>
+		<jar destfile="${scm.ear}/scm.ear" basedir="${scm.ear}/tmp" includes="**/*.*" manifest="${scm.ear}/META-INF/MANIFEST.MF"/>
+		<!--<copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>-->
+		<copy file="${scm.ear}/scm.ear" tofile="${scm.prj}/scm.ear"/>
+        <copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>
+		<delete dir="${scm.ear}/tmp"/>
+	</target>
+
+
+	<target name="scmejb-jar" depends="init" description="ejb jar for scmejb">
+		<mkdir dir="${ejb.dist}/scmejb"/>
+		<copy todir="${ejb.dist}/scmejb">
+			<fileset dir="${scm.build}" 
+			    includes="**/*.class" 
+			    excludes="**/Test*.class,
+			    **/frame/**/*.class,
+                **/*_jsp.class, 
+			    **/controller/**/*.class"/>
+			    
+			<fileset dir="${ejb.ejbjarxml}" includes="META-INF/*.xml"/>
+		</copy>
+		<delete file="${ejb.ear}/scmejb.jar" quiet="true"/>
+		<delete file="${ejb.ear}/st_scmejb.jar" quiet="true"/> 
+		<jar jarfile="${ejb.ear}/st_scmejb.jar" basedir="${ejb.dist}/scmejb" manifest="${ejb.ejbjarxml}/META-INF/MANIFEST.MF"/>
+		
+		<java classname="weblogic.ejbc" fork="yes" classpath="${component.classpath}">
+			<arg line="-J-mx192m  -compiler javac ${ejb.ear}/st_scmejb.jar ${ejb.ear}/scmejb.jar"/>
+		</java> 
+		<delete file="${ejb.ear}/st_scmejb.jar" quiet="true"/> 
+		<delete  dir="${ejb.dist}/scmejb"/>
+	</target>
+
+	<target name="scm-war" depends="init" description="war for scm">
+		<delete file="${web.dist}/scm.war"/>
+		<war destfile="${web.dist}/scm.war" webxml="${web.warxml}/WEB-INF/web.xml" update="true">
+			<fileset dir="${scm.defaultroot}">
+				<exclude name="**/web.xml"/>
+				<exclude name="**/weblogic.xml"/>
+				<exclude name="**/*.class"/>
+				<exclude name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${web.warxml}" includes="**/weblogic.xml"/>
+			<lib dir="${scm.prj}">
+				<include name="uiframe.jar"/>
+				<include name="wfclient.jar"/>
+				<include name="jakarta-poi-1.5.1.jar"/>
+				<include name="quality_client.jar"/>
+                <!--<include name="gisproduce_client.jar"/>-->
+			</lib>
+			<classes dir="${scm.build}" 
+			        includes="**/*.class" 
+			        excludes="**/*.dependency-info/**,
+			        **/*EJB.class,
+			        **/*Test.class,
+                    **/Test*.class,
+			        **/entitybean/*Bean.class,
+			        **/mgrbean/*Bean.class"/>
+		</war>
+	</target>
+
+	<target name="scm-war-profile" depends="init" description="war for scm with profile">
+		<delete file="${web.dist}/scm.war"/>
+		<war destfile="${web.dist}/scm.war" webxml="${web.warxml}/WEB-INF/web.xml" update="true">
+			<fileset dir="${scm.defaultroot}">
+				<exclude name="**/web.xml"/>
+				<exclude name="**/weblogic.xml"/>
+				<exclude name="**/*.class"/>
+				<exclude name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${web.warxml}" includes="**/weblogic.xml"/>
+			<lib dir="${scm.prj}">
+				<include name="uiframe.jar"/>
+				<include name="wfclient.jar"/>
+				<include name="jakarta-poi-1.5.1.jar"/>
+				<include name="dumb-profile-1.0.jar"/>
+				<!--<include name="quality_client.jar"/>-->
+			</lib>
+			<classes dir="${scm.build}" 
+			        includes="**/*.class" 
+			        excludes="**/*.dependency-info/**,
+			        **/*EJB.class,
+			        **/*Test.class,
+                    **/Test*.class,
+			        **/entitybean/*Bean.class,
+			        **/mgrbean/*Bean.class"/>
+		</war>
+	</target>
+
+
+	<target name="clean" depends="init" description="clean all packages">
+		<delete file="${scm.ear}/scm.ear"/>
+		<delete>
+			<fileset dir="${scm.ear}/ear" includes="*.jar"/>
+			<fileset dir="${scm.ejb}/" includes="scmejb.jar"/>
+		</delete>
+		<delete file="${web.dist}/scm.war"/>
+	</target>
+	
+	<target name="makeejbonly" depends="init,scmejb-jar,ear-nobuild" description="make ear with ejb only">
+		<delete dir="${scm.ear}/tmp"/>
+		<delete file="${scm.ear}/scm.ear"/>
+		<mkdir dir="${scm.ear}/tmp"/>
+		<mkdir dir="${scm.ear}/tmp/META-INF"/>
+		<copy todir="${scm.ear}/tmp">
+			<fileset dir="${scm.ear}/ear" includes="*.jar"/>
+		</copy>
+		<copy todir="${scm.ear}/tmp/META-INF">
+			<fileset dir="${dev.xml}/META-INF" includes="*.xml"/>
+		</copy>
+		<jar destfile="${scm.ear}/scm.ear" basedir="${scm.ear}/tmp" includes="**/*.*" manifest="${dev.xml}/META-INF/MANIFEST.MF"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>
+		<delete dir="${scm.ear}/tmp"/>
+	</target>
+	
+	<target name="makeejbonly_quick" depends="init,ear-nobuild" description="make ear with ejb only">
+		<delete dir="${scm.ear}/tmp"/>
+		<delete file="${scm.ear}/scm.ear"/>
+		<mkdir dir="${scm.ear}/tmp"/>
+		<mkdir dir="${scm.ear}/tmp/META-INF"/>
+		<copy todir="${scm.ear}/tmp">
+			<fileset dir="${scm.ear}/ear" includes="*.jar"/>
+		</copy>
+		<copy todir="${scm.ear}/tmp/META-INF">
+			<fileset dir="${dev.xml}/META-INF" includes="*.xml"/>
+		</copy>
+		<jar destfile="${scm.ear}/scm.ear" basedir="${scm.ear}/tmp" includes="**/*.*" manifest="${dev.xml}/META-INF/MANIFEST.MF"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>
+		<delete dir="${scm.ear}/tmp"/>
+	</target>
+	
+	<target name="makewaronly" depends="init" description="copy web files to bea">
+		<copy todir="${bea.home}/scm/WEB-INF/lib">
+			<fileset dir="${scm.prj}">
+				<include name="uiframe.jar"/>
+				<include name="wfclient.jar"/>
+				<include name="jakarta-poi-1.5.1.jar"/>
+				<!--<include name="quality_client.jar"/>-->
+			</fileset>
+		</copy>
+
+		<copy todir="${bea.home}/scm/WEB-INF">
+			<!--<fileset dir="${profile.xml}/normal">
+				<include name="*.xml"/>
+			</fileset>
+
+-->
+			<fileset dir="${web.warxml}/WEB-INF">
+				<include name="*.xml"/>
+			</fileset>
+
+		</copy>
+		<copy todir="${bea.home}\scm">
+			<fileset dir="${scm.defaultroot}">
+				<exclude name="**/web.xml"/>
+				<exclude name="**/weblogic.xml"/>
+				<exclude name="**/*.class"/>
+				<exclude name="**/*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${bea.home}/scm/WEB-INF/classes">
+			<fileset dir="${scm.build}"> 
+			        <include name="**/*.class"/> 
+			        <exclude name="**/*.dependency-info/**"/>
+			        <exclude name="**/*EJB.class"/>
+			        <exclude name="**/*Test.class"/>
+			        <exclude name="**/entitybean/*Bean.class"/>
+			        <exclude name="**/mgrbean/*Bean.class"/>
+			</fileset>
+		</copy>
+	</target>
+
+
+	<target name="makewaronly-profile" depends="init" description="copy web files to bea">
+		<copy todir="${bea.home}/scm/WEB-INF/lib">
+			<fileset dir="${scm.prj}">
+				<include name="uiframe.jar"/>
+				<include name="wfclient.jar"/>
+				<include name="jakarta-poi-1.5.1.jar"/>
+				<include name="dumb-profile-1.0.jar"/>
+				<!--<include name="quality_client.jar"/>-->
+			</fileset>
+		</copy>
+		<copy todir="${bea.home}/scm/WEB-INF">
+			<fileset dir="${profile.xml}/profile">
+				<include name="*.xml"/>
+			</fileset>
+			<!--
+			<fileset dir="${web.warxml}/WEB-INF">
+				<include name="*.xml"/>
+			</fileset>
+			-->
+		</copy>
+		<copy todir="${bea.home}\scm">
+			<fileset dir="${scm.defaultroot}">
+				<exclude name="**/web.xml"/>
+				<exclude name="**/weblogic.xml"/>
+				<exclude name="**/*.class"/>
+				<exclude name="**/*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${bea.home}/scm/WEB-INF/classes">
+			<fileset dir="${scm.build}"> 
+			        <include name="**/*.class"/> 
+			        <exclude name="**/*.dependency-info/**"/>
+			        <exclude name="**/*EJB.class"/>
+			        <exclude name="**/*Test.class"/>
+			        <exclude name="**/entitybean/*Bean.class"/>
+			        <exclude name="**/mgrbean/*Bean.class"/>
+			</fileset>
+		</copy>
+	</target>
+
+
+	<!-- wuzewen 2004-11-26 -->
+	<target name="makeearbutwar" depends="init,core2" description="make ear">
+		<delete file="${scm.ear}/scm.ear"/>
+		<mkdir dir="${scm.ear}/tmp"/>
+		<mkdir dir="${scm.ear}/tmp/META-INF"/>
+		<copy todir="${scm.ear}/tmp">
+			<fileset dir="${scm.ear}/ear" includes="*.jar"/>
+			<!-- <fileset dir="${scm.ear}/ear" includes="*.war"/> -->
+		</copy>
+		<copy todir="${scm.ear}/tmp/META-INF">
+			<fileset dir="${scm.ear}/META-INF" includes="*.xml"/>
+		</copy>
+		<jar destfile="${scm.ear}/scm.ear" basedir="${scm.ear}/tmp" includes="**/*.*" manifest="${scm.ear}/META-INF/MANIFEST.MF"/>
+		<delete file="${bea.home}/scmejb.jar"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${bea.home}/scm.ear"/>
+		<copy file="${scm.ear}/scm.ear" tofile="${scm.prj}/scm.ear"/>
+		<delete dir="${scm.ear}/tmp"/>
+	</target>
+	<target name="core2" depends="init,scmejb-jar" description="build all ejb jar for scm">
+		<!-- <copy todir="${scm.ear}/ear">
+			<fileset dir="${scm.war}/" includes="*.war"/>
+		</copy> -->
+		<copy todir="${scm.ear}/ear">
+			<fileset dir="${scm.ejb}" includes="*.jar" excludes="st*.jar"/>
+		</copy>
+		<copy file="${cerp.prj}/fininterface.jar" tofile="${scm.ear}/ear/fininterface.jar"/>
+		<copy file="${scm.prj}/jakarta-poi-1.5.1.jar" tofile="${scm.ear}/ear/jakarta-poi-1.5.1.jar"/>
+        <copy file="${scm.prj}/dumb-common-1.0.jar" tofile="${scm.ear}/ear/dumb-common-1.0.jar"/>
+        <copy file="${scm.prj}/commons-lang-1.0.1.jar" tofile="${scm.ear}/ear/commons-lang-1.0.1.jar"/>
+        <copy file="${scm.prj}/gisproduce_client.jar" tofile="${scm.ear}/ear/gisproduce_client.jar"/>
+        <copy file="${scm.prj}/quality_client.jar" tofile="${scm.ear}/ear/quality_client.jar"/>
+	</target>
+
+
+</project>

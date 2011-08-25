@@ -1,0 +1,35 @@
+系统功能类的继承规范
+Zeven on 2007-11-28
+
+凡是位于/***/base/***目录下，或者名称为Base***.class的类，都是用于继承，而不要直接使用。
+
+
+== ====================================== Vcmarket系统的基类/Core类继承的规范示例：
+public abstract class VcmarketAction extends BaseAction { ... }
+public abstract class VcmarketDwr extends BaseDwr { ... }
+
+public interface VcmarketService extends Service{ ... }
+public abstract class VcmarketServiceImpl extends ServiceImpl implements VcmarketService { ... }
+
+public interface VcmarketDaoJdbc extends DaoJdbc{ ... }
+public abstract class VcmarketDaoJdbcPlainImpl extends DaoJdbcPlainImpl implements VcmarketDaoJdbc{ ... }
+
+public class VcmarketServiceLocator extends ServiceLocator { ... }
+
+
+== ====================================== Vcmarket系统的业务类继承的规范示例(以用户模块为例)：
+// ----------------- controller:
+public class UserDealAction extends VcmarketAction　{　...　}
+public class UserDealDwr extends VcmarketDwr　{　...　}
+
+// ----------------- Service/service
+public interface UserDealService extends VcmarketService { ... }
+public class UserDealServiceImpl extends VcmarketServiceImpl implements UserDealService { ... }
+
+// ----------------- dao:
+public interface UserDealDao extends VcmarketDaoJdbc　{　...　}
+public class UserDealDaoImpl extends VcmarketDaoJdbcPlainImpl implements UserDealDao {　...　}
+
+// ----------------- ws(web service)
+public UserDealService extends VcmarketBaseService { ... }
+
