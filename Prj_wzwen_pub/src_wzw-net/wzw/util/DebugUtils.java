@@ -128,4 +128,23 @@ public class DebugUtils {
 		}
 		
 	}
+	
+
+	public static String getCallTrace( ){
+		return getCallTrace(99);
+	}
+	/**
+	 * 展示调用路径
+	 */
+	public static String getCallTrace(int maxdepth)
+    {
+      String stack="调用路径：\n";
+      StackTraceElement[] trace = new Exception().getStackTrace();
+      for (int i = 1; i < Math.min(maxdepth + 1, trace.length); i++)
+      {
+        stack += "\t[" + trace[i].hashCode() + "]" + trace[i] + "\n";
+      }
+      return stack;
+    }
+    
 }
