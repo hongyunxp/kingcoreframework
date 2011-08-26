@@ -29,5 +29,5 @@ public interface ResultSetBeanExtractor {  //extends ResultSetExtractor
 
 	Object extractData(ResultSet rs, Class<?> beanClass, boolean isList) throws SQLException; //extends ResultSetExtractor {
 
-	public String formatColumnLabel(String columnLabel);
+	public String generatePropertyName(String columnLabel);
 }
