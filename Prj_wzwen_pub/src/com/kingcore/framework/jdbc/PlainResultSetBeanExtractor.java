@@ -87,7 +87,7 @@ public class PlainResultSetBeanExtractor implements ResultSetBeanExtractor, Resu
 		this.beanObject = beanObject;
 	}
 
-	public String formatColumnLabel(String columnLabel) {
+	public String generatePropertyName(String columnLabel) {
 		return columnLabel==null?null:columnLabel.toLowerCase();
 	}
 

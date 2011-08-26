@@ -72,7 +72,7 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	    String[] columnNames = new String[columnsCount];   
 	    String colNameForSetter = null;
 	    for (int i = 0; i < columnsCount; i++) { //首字母转为大写
-	    	colNameForSetter = formatColumnLabel(rsmd.getColumnLabel(i + 1));
+	    	colNameForSetter = generatePropertyName(rsmd.getColumnLabel(i + 1));
 	        columnNames[i] = colNameForSetter.substring(0,1).toUpperCase() +
 	        						colNameForSetter.substring(1);   
 	    }  
@@ -131,7 +131,7 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	 * @param columnLabel
 	 * @return
 	 */
-	public String formatColumnLabel(String columnLabel) {
+	public String generatePropertyName(String columnLabel) {
 		if (columnLabel==null) {
 			return null;
 		}
@@ -148,9 +148,9 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	
 	public static void main(String[] args) {
 		SmartResultSetBeanExtractor srsbe = new SmartResultSetBeanExtractor();
-		System.out.println(srsbe.formatColumnLabel("user_name"));  //return userName 
-		System.out.println(srsbe.formatColumnLabel("userName"));   //return username 
-		System.out.println(srsbe.formatColumnLabel("USERNAME"));
+		System.out.println(srsbe.generatePropertyName("user_name"));  //return userName 
+		System.out.println(srsbe.generatePropertyName("userName"));   //return username 
+		System.out.println(srsbe.generatePropertyName("USERNAME"));
 	}
 
 }
