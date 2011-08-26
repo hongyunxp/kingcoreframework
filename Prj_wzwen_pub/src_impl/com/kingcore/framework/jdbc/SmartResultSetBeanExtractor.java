@@ -137,19 +137,19 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 		}
 		columnLabel = columnLabel.toLowerCase();
 		StringBuffer sbf = new StringBuffer();
-        Matcher m = pattern.matcher( columnLabel );
-        while(m.find())
-            m.appendReplacement(sbf, m.group(1).substring(1).toUpperCase());
-        m.appendTail(sbf);
-
+        Matcher matcher = pattern.matcher( columnLabel );
+        while(matcher.find()){
+        	String replacement = matcher.group(1).substring(1).toUpperCase();
+            matcher.appendReplacement(sbf, replacement);
+        }
+        matcher.appendTail(sbf);
 		return sbf.toString();
-
 	}
 	
 	public static void main(String[] args) {
 		SmartResultSetBeanExtractor srsbe = new SmartResultSetBeanExtractor();
-		System.out.println(srsbe.formatColumnLabel("user_name"));
-		System.out.println(srsbe.formatColumnLabel("userName"));
+		System.out.println(srsbe.formatColumnLabel("user_name"));  //return userName 
+		System.out.println(srsbe.formatColumnLabel("userName"));   //return username 
 		System.out.println(srsbe.formatColumnLabel("USERNAME"));
 	}
 
