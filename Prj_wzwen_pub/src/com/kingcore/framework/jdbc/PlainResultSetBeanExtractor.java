@@ -79,16 +79,16 @@ public class PlainResultSetBeanExtractor implements ResultSetBeanExtractor, Resu
 
 	}
 	
-	public Class getBeanObject() {
+	public Class<?> getBeanObject() {
 		return beanObject;
 	}
 
-	public void setBeanObject(Class beanObject) {
+	public void setBeanObject(Class<?> beanObject) {
 		this.beanObject = beanObject;
 	}
 
 	public String formatColumnLabel(String columnLabel) {
-		return columnLabel;
+		return columnLabel==null?null:columnLabel.toLowerCase();
 	}
 
 }
