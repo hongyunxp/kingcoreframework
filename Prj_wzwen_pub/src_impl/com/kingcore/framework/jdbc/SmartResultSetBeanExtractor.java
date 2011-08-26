@@ -18,8 +18,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+ 
 
 
 /**
@@ -67,8 +70,11 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	    ResultSetMetaData rsmd = rs.getMetaData();   
 	    int columnsCount = rsmd.getColumnCount();   
 	    String[] columnNames = new String[columnsCount];   
-	    for (int i = 0; i < columnsCount; i++) {   
-	        columnNames[i] = formatColumnLabel(rsmd.getColumnLabel(i + 1));   
+	    String colNameForSetter = null;
+	    for (int i = 0; i < columnsCount; i++) { //首字母转为大写
+	    	colNameForSetter = formatColumnLabel(rsmd.getColumnLabel(i + 1));
+	        columnNames[i] = colNameForSetter.substring(0,1).toUpperCase() +
+	        						colNameForSetter.substring(1);   
 	    }  
 
 	    Object obj = null;
@@ -117,6 +123,7 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	    return objList;   
 	}
 
+    private static Pattern pattern = Pattern.compile("(_[a-z]{1})");
 	/**
 	 * 将数据库的列明格式为Bean的属性名，可以根据自己的规则over write本方法。
 	 *    比如数据库列名 user_name -->属性名 userName
@@ -125,8 +132,25 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	 * @return
 	 */
 	public String formatColumnLabel(String columnLabel) {
-		return columnLabel;
+		if (columnLabel==null) {
+			return null;
+		}
+		columnLabel = columnLabel.toLowerCase();
+		StringBuffer sbf = new StringBuffer();
+        Matcher m = pattern.matcher( columnLabel );
+        while(m.find())
+            m.appendReplacement(sbf, m.group(1).substring(1).toUpperCase());
+        m.appendTail(sbf);
+
+		return sbf.toString();
+
 	}
 	
+	public static void main(String[] args) {
+		SmartResultSetBeanExtractor srsbe = new SmartResultSetBeanExtractor();
+		System.out.println(srsbe.formatColumnLabel("user_name"));
+		System.out.println(srsbe.formatColumnLabel("userName"));
+		System.out.println(srsbe.formatColumnLabel("USERNAME"));
+	}
 
 }
