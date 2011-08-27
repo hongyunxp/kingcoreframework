@@ -69,11 +69,11 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	    //取得ResultSet的列名   
 	    ResultSetMetaData rsmd = rs.getMetaData();   
 	    int columnsCount = rsmd.getColumnCount();   
-	    String[] columnNames = new String[columnsCount];   
+	    String[] setMethodNames = new String[columnsCount];   
 	    String colNameForSetter = null;
 	    for (int i = 0; i < columnsCount; i++) { //首字母转为大写
 	    	colNameForSetter = generatePropertyName(rsmd.getColumnLabel(i + 1));
-	        columnNames[i] = colNameForSetter.substring(0,1).toUpperCase() +
+	        setMethodNames[i] = "set" + colNameForSetter.substring(0,1).toUpperCase() +
 	        						colNameForSetter.substring(1);   
 	    }  
 
@@ -83,14 +83,14 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	    while (rs.next()) {   
 	        //反射, 从ResultSet绑定到JavaBean   
 	    	obj = bean.newInstance();
-	        for (int i = 0; i < columnNames.length; i++) {   
+	        for (int i = 0; i < setMethodNames.length; i++) {   
 	            //取得Set方法   
-	            String setMethodName = "set" + columnNames[i];   
+	            String setMethodName = setMethodNames[i];   
 	            //遍历Method   
 	            for (int j = 0; j < methods.length; j++) {   
 	                if (methods[j].getName().equalsIgnoreCase(setMethodName)) {   
 	                    setMethodName = methods[j].getName();   
-	                    Object value = rs.getObject(columnNames[i]);  
+	                    Object value = rs.getObject(setMethodNames[i]);  
 
 	                    //实行Set方法   
 	                    try {   
