@@ -595,17 +595,35 @@ public class WebPageNavigator implements Navigator {
 	* 	</p>
 	* @param rows 每页显示的最大行数
 	* @param commandName Command的URL
+	* @param nvlCount 导航中间同时显示的链接数，默认可以6
 	* @return 查询导航信息html代码
 	*/
 	public String getPagesPnfl2( )
 	{
+		return getPagesPnfl(this.path, this.getRowCount(), this.getPageSize(),
+				nvlCount, this.currentPageIndex ); 
+	}
+	
+	/**
+	 * <p>本方法具体生成导航的html代码，只使用参数，不使用任何成员对象，
+	 *       可以很拷贝移植到js中。</p>
+	 * @param p_path
+	 * @param p_rowCount
+	 * @param p_pageSize
+	 * @param p_nvlCount
+	 * @param p_currentPageIndex
+	 * @return
+	 */
+	protected String getPagesPnfl(String p_path, int p_rowCount, int p_pageSize, 
+			 int p_nvlCount, int p_currentPageIndex) {
 		
-		if(getRowCount()<1){
+		if(p_rowCount<1){  //getRowCount()
 			return "<div class='page_box'>当前没有记录！</div>"; 
 		}
-		String commandName = this.path;
+		int t_pageCount = (p_rowCount - 1) / p_pageSize + 1;
+		String commandName = p_path;  //this.path
 		String action = "changepage"; //QueryAction.CHANGE_PAGE;
-		pageSize = getPageSize();	//;rows;
+		// pageSize = getPageSize();	//;rows;
 
 		StringBuffer pubHref = new StringBuffer();
 		pubHref
@@ -615,20 +633,21 @@ public class WebPageNavigator implements Navigator {
 			.append("Action=")
 			.append(action)
 			.append("&rowCount=")
-			.append(rowCount)
+			.append(p_rowCount)
 			.append("&pageSize=")
-			.append(pageSize);
+			.append(p_pageSize);
 			
 		StringBuffer sb = new StringBuffer();
 		
 		sb.append( "<div class='page_box'>");
 
-		if (hasPreviousPage())
+		boolean t_hasPreviousPage = p_currentPageIndex>1?true:false;
+		if ( t_hasPreviousPage )
 		{
 			sb
 			.append( pubHref )
 			.append("&pageNumber=")
-			.append(String.valueOf(currentPageIndex - 1))
+			.append(String.valueOf( p_currentPageIndex - 1))
 			.append("\" class='page_up'><span>上一页</span></a>");
 		}
 		else
@@ -638,16 +657,16 @@ public class WebPageNavigator implements Navigator {
 		}
 
 		// ...234567891011...
-		int fpi = currentPageIndex- nvlCount/2;
-		if(fpi>=pageCount-nvlCount){
-			fpi=pageCount-nvlCount;
+		int fpi = p_currentPageIndex- p_nvlCount/2;
+		if(fpi>=t_pageCount- p_nvlCount){
+			fpi=t_pageCount- p_nvlCount;
 		}
 		if(fpi<1){
 			fpi=1;
 		}
 		if(fpi>1){
 			
-			if(1==currentPageIndex){
+			if(1== p_currentPageIndex){
 				sb
 				.append( "<span class='current_page'>1</span>" );
 			}else{
@@ -665,8 +684,8 @@ public class WebPageNavigator implements Navigator {
 		}
 		
 		int iCnt=0;
-		while(iCnt< nvlCount && fpi<=pageCount){
-			if(fpi==currentPageIndex){	// 当前页
+		while(iCnt< p_nvlCount && fpi<= t_pageCount){
+			if(fpi== p_currentPageIndex){	// 当前页
 				sb
 				.append("<span class='current_page'>"+ fpi++ +"</span>");
 				
@@ -681,31 +700,32 @@ public class WebPageNavigator implements Navigator {
 			
 			iCnt++;
 		}
-		if(pageCount>=fpi){
-			if(pageCount>fpi){
+		if( t_pageCount>=fpi){
+			if( t_pageCount>fpi){
 				sb
 				.append("<span>...</span>");
 			}
 			
-			if(pageCount==currentPageIndex){  // 当前页
+			if( t_pageCount==p_currentPageIndex){  // 当前页
 				sb
-				.append( "<span class='current_page'>"+pageCount+"</span>" );
+				.append( "<span class='current_page'>"+t_pageCount+"</span>" );
 			}else{
 				sb
 				.append( pubHref )
 				.append("&pageNumber=")
-				.append( String.valueOf( getPageCount() ) )
-				.append("\">"+pageCount+"</a>");
+				.append( String.valueOf( t_pageCount ) )
+				.append("\">"+ t_pageCount+"</a>");
 			}
 		}
 		
 		//
-		if (hasNextPage())
+		boolean t_hasNextPage = p_currentPageIndex<t_pageCount?true:false;
+		if ( t_hasNextPage )
 		{
 			sb
 			.append( pubHref )
 			.append("&pageNumber=")
-			.append(String.valueOf(currentPageIndex + 1))
+			.append(String.valueOf( p_currentPageIndex + 1))
 			.append("\" class='page_down'><span>下一页</span></a>");
 		}
 		else
@@ -715,17 +735,17 @@ public class WebPageNavigator implements Navigator {
 		}
 		
 		//<span>共30页,到</span>
-		if (pageCount > 1 ){
-			sb.append("<span>共"+this.getPageCount()+"页,到</span>");
+		if ( t_pageCount > 1 ){
+			sb.append("<span>共"+ t_pageCount+"页,到</span>");
 		}else{
-			sb.append("<span>共"+this.getPageCount()+"页</span>");
+			sb.append("<span>共"+ t_pageCount+"页</span>");
 		
 		}
 		
 		// 要求页数大于1才会出现“跳转到...”功能
 		// 执行请求的条件： 
 		//      > 填写的也号 必须在1->总页数的之间，并且不能等于当前页号
-		if (pageCount > 1 )
+		if ( t_pageCount > 1 )
 		{
 			String id = "toPage";	//commandName + "pageNumber";
 				//name=\"pageNumber\" id=\"toPage\" 
@@ -743,11 +763,11 @@ public class WebPageNavigator implements Navigator {
 			.append("').value<1||document.getElementById('")
 			.append(id)
 			.append("').value>")
-			.append( pageCount )
+			.append( t_pageCount )
 			.append("||document.getElementById('")
 			.append(id)
 			.append("').value==")
-			.append(currentPageIndex)
+			.append( p_currentPageIndex)
 			.append(")){document.getElementById('toPageHref').href+='&pageNumber='+")
 			.append("document.getElementById('")
 			.append(id)
@@ -759,7 +779,6 @@ public class WebPageNavigator implements Navigator {
 		sb.append("</div>");
 		return sb.toString(); 
 	}
-
 	
 //	/**
 //	 *  基本构造函数。

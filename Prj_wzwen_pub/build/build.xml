@@ -3,6 +3,7 @@
 <project name="scm" default="makeear" basedir=".">
 	<target name="init">
 		<property name="prj.root" location="${basedir}\.."/>	
+		<property name="prj.version" value="2.0"/>
 		<property name="kingcore.src" location="${prj.root}\src;${prj.root}\src_impl;${prj.root}\src_wzw-net"/>
         <property name="kingcore.build" location="${prj.root}\Tmp\classes"/>
 		<property name="build.home" value="${prj.root}\build"/>
@@ -102,8 +103,8 @@
 			<manifest>
 				<attribute name="Extension-Name" value="Kingcore Framework"/>
 				<attribute name="Specification-Title" value="Kingcore Framework"/>
-				<attribute name="Specification-Version" value="Kingcore Framework 2.0"/>
-				<attribute name="Implementation-Version" value="Kingcore Framework 2.0"/>
+				<attribute name="Specification-Version" value="Kingcore Framework ${prj.version}"/>
+				<attribute name="Implementation-Version" value="Kingcore Framework ${prj.version}"/>
 				<attribute name="Implementation-Vendor" value="Zeven in VangV"/>
 			</manifest>
 		</jar>
@@ -146,7 +147,7 @@
 		<copy file="${project.build}/tld/zeven.tld" todir="E:/Work_Java/Prj_vcmarket/vcmarket/WEB-INF/tld"/>
 
 		<!-- javadoc for kingcore.jar -->
-		<javadoc access="protected" author="true" destdir="${prj.root}/tmp/doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.4" sourcepath="${kingcore.src}" splitindex="true" use="true" version="true" packagenames="*">		
+		<javadoc access="protected" author="true" destdir="${prj.root}/tmp/doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.5" sourcepath="${kingcore.src}" splitindex="true" use="true" version="true" packagenames="*">		
 			<classpath>
 				<fileset dir="${wzwen-lib}">
 					<include name="activation.jar"/>
@@ -156,8 +157,8 @@
 				<pathelement path="${tomcat-home}/common/lib/naming-factory-dbcp.jar"/>
 			</classpath>
 		</javadoc>
-		<delete file="${prj.root}/tmp/doc/kingcore_javadoc.jar" quiet="true"/>
-		<jar jarfile="${prj.root}/tmp/doc/kingcore_javadoc.jar" basedir="${prj.root}/tmp/doc"/>
+		<delete file="${prj.root}/tmp/doc/kingcore_javadoc-${prj.version}.jar" quiet="true"/>
+		<jar jarfile="${prj.root}/tmp/doc/kingcore_javadoc-${prj.version}.jar" basedir="${prj.root}/tmp/doc"/>
 
 	</target>
 
