@@ -160,7 +160,6 @@ public class  DbBean {
 			log.debug("executeUpdate,sql="+sql); //只有调试代码的时候输出，不作为一般的提示信息输出。
 			var_stmt.executeUpdate(sql);
 			//this.conn.commit();   //不需要提交：如果获取了新conn，则自动提交；如果使用已存在的，则不管提交与回滚；
-
 			
 		} catch(SQLException se) {
 			if(isConnCreated && this.conn!=null){
@@ -1729,6 +1728,9 @@ public class  DbBean {
 
 	        //crs.populate( rs ) ;
 	        //RowSet crs = resultSet2RowSet( rs ) ;
+//			if (rse==null) {
+//				//
+//			}
 	        objReturn =  rse.extractData( rs);
 
 		}finally{

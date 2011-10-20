@@ -23,6 +23,7 @@ import java.util.HashMap;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
+import com.kingcore.framework.context.ApplicationContext;
 import com.kingcore.framework.context.DatabaseManager;
 
 /**
@@ -59,9 +60,12 @@ public class RowSetResultSetExtractor implements ResultSetExtractor {
 
 	}
 
+	/**
+	 * 这里需要改进，暂时由Director使用。
+	 */
 	public Object extractData(ResultSet rs) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return  ApplicationContext.getInstance().getDatabaseManager().resultSet2RowSet(rs);
+		//return null;
 	}
 
 }
