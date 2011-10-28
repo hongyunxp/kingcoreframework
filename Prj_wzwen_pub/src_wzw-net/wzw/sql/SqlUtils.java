@@ -61,8 +61,14 @@ public class SqlUtils {
     public static void setStatementArg(PreparedStatement ps,
     		int paramIndex, int sqlType, Object inValue) throws SQLException {	//, String typeName
     
-		if (sqlType == Types.VARCHAR) {
+    	if (inValue==null) {
+        	ps.setNull(paramIndex, sqlType);
+        	
+		}else if (sqlType == Types.VARCHAR) {
 			ps.setString(paramIndex, inValue.toString());
+			
+		}else if (sqlType == Types.INTEGER) {
+			ps.setInt(paramIndex, Integer.parseInt(inValue.toString()));
 		}
 		else if (sqlType == Types.DECIMAL || sqlType == Types.NUMERIC) {
 			if (inValue instanceof BigDecimal) {
