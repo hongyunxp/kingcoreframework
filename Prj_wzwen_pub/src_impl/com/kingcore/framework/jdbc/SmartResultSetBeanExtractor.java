@@ -64,15 +64,17 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	private Object bindDataToDto(ResultSet rs, Class<?> bean, boolean isList) throws SQLException, InstantiationException, IllegalAccessException {  // throws Exception  
  
 	    //取得Method方法   
-	    Method[] methods = bean.getClass().getMethods();  
+	    Method[] methods = bean.getMethods();   //.getClass() 
 
 	    //取得ResultSet的列名   
 	    ResultSetMetaData rsmd = rs.getMetaData();   
 	    int columnsCount = rsmd.getColumnCount();   
-	    String[] setMethodNames = new String[columnsCount];   
+	    String[] columnLabels = new String[columnsCount];
+	    String[] setMethodNames = new String[columnsCount];
 	    String colNameForSetter = null;
 	    for (int i = 0; i < columnsCount; i++) { //首字母转为大写
-	    	colNameForSetter = generatePropertyName(rsmd.getColumnLabel(i + 1));
+	    	columnLabels[i] = rsmd.getColumnLabel(i + 1);
+	    	colNameForSetter = generatePropertyName(columnLabels[i]);
 	        setMethodNames[i] = "set" + colNameForSetter.substring(0,1).toUpperCase() +
 	        						colNameForSetter.substring(1);   
 	    }  
@@ -87,15 +89,17 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	            //取得Set方法   
 	            String setMethodName = setMethodNames[i];   
 	            //遍历Method   
-	            for (int j = 0; j < methods.length; j++) {   
-	                if (methods[j].getName().equalsIgnoreCase(setMethodName)) {   
+            	//System.out.println("=====================begin" );
+	            for (int j = 0; j < methods.length; j++) {     
+                	//System.out.println("---"+methods[j].getName());
+	                if (methods[j].getName().equalsIgnoreCase(setMethodName)) { 
 	                    setMethodName = methods[j].getName();   
-	                    Object value = rs.getObject(setMethodNames[i]);  
+	                    Object value = rs.getObject(columnLabels[i]);  
 
 	                    //实行Set方法   
 	                    try {   
 	                        //JavaBean内部属性和ResultSet中一致时候   
-	                        Method setMethod = bean.getClass().getMethod(   
+	                        Method setMethod = bean.getMethod(     //.getClass()
 	                                setMethodName, value.getClass());   
 	                        setMethod.invoke(obj, value);   
 	                    } catch (Exception e) {   
