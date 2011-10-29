@@ -53,7 +53,7 @@
 	<target name="kingcore_jar" depends="init" description="pub jar for wzwen">
 		<delete dir="${kingcore.build}"/>
 		<mkdir dir="${kingcore.build}"/>
-		<javac srcdir="${kingcore.src}" destdir="${kingcore.build}" excludes="**/Test*.java" deprecation="off" debug="true">
+		<javac srcdir="${kingcore.src}" destdir="${kingcore.build}" excludes="**/Tmp*.java" deprecation="off" debug="true">
 			<classpath>
 				<fileset dir="${wzwen-lib}">
 					<include name="activation.jar"/>
