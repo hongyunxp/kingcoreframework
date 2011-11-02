@@ -8,8 +8,6 @@ package com.kingcore.framework;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import wzw.util.I18nUtils;
-
 /**
  * <p>系统常量，跨系统公用的。
  *  说明：凡是位于 "**xx/base/xx**" 目录下、或者名称为 Base***.class 的类(接口)，
