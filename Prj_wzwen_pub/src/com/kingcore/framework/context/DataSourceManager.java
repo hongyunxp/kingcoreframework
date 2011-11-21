@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011 ChangSha XNS Science & Technology CO,.LTD. All rights reserved.
+ * Copyright (C) 2011 Kingcore Science & Technology CO,.LTD. All rights reserved.
  * XNS PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
