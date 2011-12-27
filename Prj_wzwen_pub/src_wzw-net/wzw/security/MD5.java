@@ -8,10 +8,6 @@ Last Modified:10,Mar,2001
 *************************************************/
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
-/*************************************************
-md5 类实现了RSA Data Security, Inc.在提交给IETF
-的RFC1321中的MD5 message-digest 算法。
-*************************************************/
 
 /**
  * Zeven: 采用utf-8字符集，在不同的操作系统平台没有中文问题。

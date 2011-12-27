@@ -36,11 +36,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.kingcore.framework.Constants;
-import com.sun.rowset.CachedRowSetImpl;
 import com.kingcore.framework.bean.Page;
 import com.kingcore.framework.bean.QueryDataSet;
 import com.kingcore.framework.util.ObjectManager;
 import com.kingcore.framework.util.SQLUtils;
+import com.sun.rowset.CachedRowSetImpl;
 
 /**
  * <p>封装了一些执行查询时的操作，所有执行查询列表的Acting类都可以扩展此类。</p>

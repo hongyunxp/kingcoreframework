@@ -25,7 +25,6 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
-
 import com.kingcore.framework.jdbc.ConnectionManager;
 
 /**

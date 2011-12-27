@@ -11,6 +11,8 @@
 
 package com.kingcore.framework.transaction;
 
+import java.util.HashMap;
+
 /**
  * <p>java类文件的说明...</p>
  * @author Zeven on 2011-8-9

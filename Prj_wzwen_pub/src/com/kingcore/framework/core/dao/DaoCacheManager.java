@@ -14,8 +14,8 @@ package com.kingcore.framework.core.dao;
 
 import org.apache.log4j.Logger;
 
-import com.opensymphony.oscache.base.NeedsRefreshException;
 import com.kingcore.framework.cache.CacheManager;
+import com.opensymphony.oscache.base.NeedsRefreshException;
 
 /**
  * 数据访问缓存管理器。

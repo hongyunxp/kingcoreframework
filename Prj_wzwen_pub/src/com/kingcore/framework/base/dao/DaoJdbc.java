@@ -14,8 +14,6 @@ package com.kingcore.framework.base.dao;
 import java.sql.Connection;
 import java.util.HashMap;
 
-import com.kingcore.framework.context.ApplicationContext;
-
 /**
  * <p>»ùÀà£ºDao Jdbc first interface.</p>
  * @author Zeven on 2008-6-4
