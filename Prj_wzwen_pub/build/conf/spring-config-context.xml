@@ -57,7 +57,7 @@
 	
 	<!--  // available resultSetBeanExtractor below:
 	    PlainDataSourceManager需要配置属性，
-			而com.kingcore.framework.jdbc.ConnectionManager只需要配置 system-datasources-conf.xml文件即可。 -->
+			而com.kingcore.framework.jdbc.ConnectionManager只需要配置 system-datasource-conf.xml文件即可。 -->
     <bean id="plainDataSourceManager" class="com.kingcore.framework.context.PlainDataSourceManager">
 		<property name="dataSources">
 			<map>
