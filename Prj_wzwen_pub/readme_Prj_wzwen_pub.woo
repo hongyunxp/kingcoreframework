@@ -1,12 +1,15 @@
-<script>
-                              -- wpub.jar framework --
-
+<script>                  -- kingcore.jar framework --
 系统简介：
 	系统名称：wpub framework；
 	开源协议：系统基于LGPL开源协议发布；
         开源位置：https://kingcoreframework.googlecode.com/svn/Prj_wzwen_pub/ 
 
-~'= -----------------------------------------> wpub.jar V2.0(build2008)
+~'= -----------------------------------------> kingcore.jar V2.0.0.1(build2011)
+   > 数据库连接池配置文件system-datasources-conf.xml 改成 system-datasource-conf.xml;
+   > 打包 springframework 的 ResultSetExtractro.java；
+   > 增加了 BaseContants 常量类；
+
+~'= -----------------------------------------> kingcore.jar V2.0(build2008)
 2007基于struts1.x, spring2.x, 
 包的一致性依赖于 ***spring-framework-2.5.6.SEC01-with-dependencies.zip 。
 
@@ -15,7 +18,7 @@
 > 更多的支持 getter, setter 方式，更多对象化；
 > web层组合数据和导航对象，其他层分开；
 
-~'= -----------------------------------------> wpub.jar V1.0(build2006)
+~'= -----------------------------------------> kingcore.jar V1.0(build2006)
 2005
 支持多数据源取数；
 支持兼容多数据类型；
