@@ -44,7 +44,7 @@ public class DeleteFromDBBean {
 	 */
     public CachedRowSet crs;
     /**
-     *	系统查询结果集缓存数，在system-datasources-conf.xml文件中配置，小于1表示不缓存。
+     *	系统查询结果集缓存数，在system-datasource-conf.xml文件中配置，小于1表示不缓存。
      */
 	private static int QUERY_ROWSET_CACHE = -1 ;
 	//protected Statement myStmt,inerStmt;
@@ -708,7 +708,7 @@ public class DeleteFromDBBean {
 		if(this.QUERY_ROWSET_CACHE<0){
 	        Vector vec = new Vector() ;
 	        vec.add( "date-cache@query-rowset-cache" ) ;
-	        vec = XmlUtils.getElementValues(getClass().getResourceAsStream("/conf/system-datasources-conf.xml"),vec) ;
+	        vec = XmlUtils.getElementValues(getClass().getResourceAsStream("/conf/system-datasource-conf.xml"),vec) ;
 	        if(vec == null ){
 	        	//throw new FileNotFoundException("对应的数据库配置文件不存在！") ;
 	        	log.error("对应的数据库配置文件不存在！") ;

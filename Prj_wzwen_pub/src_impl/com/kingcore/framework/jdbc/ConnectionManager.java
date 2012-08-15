@@ -42,7 +42,7 @@ import com.kingcore.framework.context.DataSourceManager;
 
 public class ConnectionManager implements DataSource, DataSourceManager{ //¡¨Ω”≥ÿ¿‡
 	 
-	private static final String Database_ConfigFile_ = "system-datasources-conf.xml";
+	private static final String Database_ConfigFile_ = "system-datasource-conf.xml";
 	
 	private static ConnectionManager instance;
 	private static int clients;
