@@ -478,6 +478,7 @@ public class MD5 {
 			System.out.println("MD5(\"admin\"):" + md5.getMD5ofStr("admin"));
 			System.out.println("MD5(\"123\"):" + md5.getMD5ofStr("123"));
 			System.out.println("MD5(\"中文\"):" + md5.getMD5ofStr("中文"));
+			System.out.println("MD5(\"中文\"):" + md5.getMD5ofStr("严重告警,对象类型：host,编号：172.168.2.41,项目：cpu,子项参数：cpu,值：60.7%,时间：60.7%CREATE"));
 			System.out.println("MD5(\"a\"):" + md5.getMD5ofStr("a"));
 			System.out.println("MD5(\"abc\"):" + md5.getMD5ofStr("abc"));
 			System.out.println("MD5(\"message digest\"):" + md5.getMD5ofStr("message digest"));
