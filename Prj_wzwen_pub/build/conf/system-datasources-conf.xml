@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="gbk"?>
+
+<!-- WZW 2005-3-19 系统配置文件建议不要经常性的存储，如果是经常性的存储值，配置在web.xml文件中 -->
+<system-config>
+
+	<!-- === 数据库配置 采用static对象构件连接池,配置如下(if modify must reload app) === -->
+	<data-sources>
+
+		<data-source key="wzw_mysql_db-127.0.0.1" type="BasicDataSource">
+			<driverClassName value="com.mysql.jdbc.Driver"/>
+			<databaseManagerName value="com.kingcore.framework.context.MySqlDatabase"/>
+			<url value="jdbc:mysql://127.0.0.1:3306/wzw_mysql_db"/>
+			<username value="root"/>
+			<password value="root"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<data-source key="infor_mysql_db-127.0.0.1" type="BasicDataSource">
+			<driverClassName value="com.mysql.jdbc.Driver"/>
+			<databaseManagerName value="com.kingcore.framework.context.MySqlDatabase"/>
+			<url value="jdbc:mysql://127.0.0.1:3306/information_schema"/>
+			<username value="root"/>
+			<password value="root"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<data-source key="oddsmatrixdb-10.0.4.162" type="BasicDataSource">
+			<driverClassName value="com.mysql.jdbc.Driver"/>
+			<databaseManagerName value="com.kingcore.framework.context.MySqlDatabase"/>
+			<url value="jdbc:mysql://10.0.4.162:3306/oddsmatrixdb"/>
+			<username value="betbrain"/>
+			<password value="betbrain"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<data-source key="oddsmatrixoddsdb-127.0.0.1" type="BasicDataSource">
+			<driverClassName value="com.mysql.jdbc.Driver"/>
+			<databaseManagerName value="com.kingcore.framework.context.MySqlDatabase"/>
+			<url value="jdbc:mysql://127.0.0.1:3306/oddsmatrixoddsdb"/>
+			<username value="root"/>
+			<password value="879825"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+		<data-source key="vcmarket-root-root" type="BasicDataSource">
+			<driverClassName value="com.mysql.jdbc.Driver"/>
+			<databaseManagerName value="com.kingcore.framework.context.MySqlDatabase"/>
+			<url value="jdbc:mysql://190.10.2.8:3306/wangwin"/>
+			<username value="root"/>
+			<password value="root"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+		<!-- db is wzwdb and user is wzw,this is default connection -->
+		<data-source type="BasicDataSource">
+			<driverClassName value="com.microsoft.jdbc.sqlserver.SQLServerDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.PlainDatabase"/>
+			<url value="jdbc:microsoft:sqlserver://wuzewen:1433;databaseName=wzwdb;SelectMethod=Cursor;"/>
+			<username value="wzw"/>
+			<password value="wzw"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<!-- db is wzwdb and user is wzw -->
+		<data-source key="wzwdb" type="BasicDataSource">
+			<driverClassName value="com.microsoft.jdbc.sqlserver.SQLServerDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.PlainDatabase"/>
+			<url value="jdbc:microsoft:sqlserver://wuzewen:1433;databaseName=wzwdb;SelectMethod=Cursor;"/>
+			<username value="wzw"/>
+			<password value="wzw"/>
+			<maxCount value="10"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<!-- db is cwbase1 and user is wzw -->
+		<data-source key="cwbase1" type="BasicDataSource">
+			<driverClassName value="com.microsoft.jdbc.sqlserver.SQLServerDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.PlainDatabase"/>
+			<url value="jdbc:microsoft:sqlserver://wuzewen:1433;databaseName=cwbase1;SelectMethod=Cursor;"/>
+			<username value="lc0019999"/>
+			<password value="cwbase"/>
+			<maxCount value="15"/>
+			<minCount value="5"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<!-- db is stdata and user is water -->
+		<data-source key="water-stdata" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.0.1:1521:stdata"/>
+			<username value="water"/>
+			<password value="manager"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<!-- db is stdata and user is testwater -->
+		<data-source key="testwater-stdata" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.0.1:1521:stdata"/>
+			<username value="testwater"/>
+			<password value="manager"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<!--  -->
+		<data-source key="oa-aben" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.0.4:1521:aben"/>
+			<username value="oa"/>
+			<password value="manager"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<data-source key="wf-aben" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.0.4:1521:aben"/>
+			<username value="WF"/>
+			<password value="manager"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<!-- db is sttech and user is yx_rqyxxt -->
+		<data-source key="yx_rqyxxt-sttech" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.0.11:1521:sttech"/>
+			<username value="yx_rqyxxt"/>
+			<password value="yx2004"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+
+		<!-- db is wangwin and user is wangwin on 2006-9-7 -->
+		<data-source key="vangv_net-newwangwin-wangwin" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@190.10.2.8:1521:orcl"/>
+			<username value="newwangwin"/>
+			<password value="wangwin"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+
+		<!-- db is wangwin and user is wangwin on 2006-9-7 -->
+		<data-source key="wangwin-wangwin" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@190.10.2.8:1521:orcl"/>
+			<username value="wangwin"/>
+			<password value="wangwin"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<data-source key="wangwin-vim" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@190.10.2.7:1522:orcl"/>
+			<username value="jabberd2"/>
+			<password value="secret
+"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+		
+		<!-- db is aben and user is water -->
+		<data-source key="water-aben" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.0.4:1521:aben"/>
+			<username value="water"/>
+			<password value="manager"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+		<!-- db is aben and user is water -->
+		<data-source key="xns-dsj" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@192.168.14.113:1521:ora9"/>
+			<username value="userdsj"/>
+			<password value="userdsj"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+		<!-- db is aben and user is water -->
+		<data-source key="websys-websys01" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@172.16.33.248:1521:yysdev"/>
+			<username value="websys"/>
+			<password value="websys01"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+		<data-source key="wapsys-wapsys01" type="BasicDataSource">
+			<driverClassName value="oracle.jdbc.driver.OracleDriver"/>
+			<databaseManagerName value="com.kingcore.framework.context.OracleDatabase"/>
+			<url value="jdbc:oracle:thin:@172.16.33.248:1521:yysdev"/>
+			<username value="wapsys"/>
+			<password value="wapsys01"/>
+			<maxCount value="15"/>
+			<minCount value="2"/>
+			<maxActive value="6"/>
+			<maxWait value="5000"/>
+			<defaultAutoCommit value="false"/>
+			<defaultReadOnly value="false"/>
+		</data-source>
+
+	</data-sources>
+
+	<!-- ============= 数据缓存机制(wzw on 2005-7-24) ============= -->
+	<date-cache>
+		<!-- 查询结果集缓存数 -->
+		<query-rowset-cache>7</query-rowset-cache>
+	</date-cache>
+
+</system-config>
