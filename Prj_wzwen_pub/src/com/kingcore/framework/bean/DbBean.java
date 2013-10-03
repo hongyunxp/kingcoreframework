@@ -361,7 +361,16 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		
 		return super.sysDatetime();
 	}
-
+	
+	/**
+	 * add by wzw on 2013
+	 * 在多数据源的情况下，根据需要设置当前要使用的数据源。如果不设置则使用系统默认的数据源。
+	 */
+	public void setDataSourceName(String dataSourceName) {
+		
+		super.setDataSourceName(dataSourceName);
+	}
+	
 	public boolean updateBlobColumn(String tablename, String picField,
 			String sqlWhere, String strPath) throws Exception {
 		

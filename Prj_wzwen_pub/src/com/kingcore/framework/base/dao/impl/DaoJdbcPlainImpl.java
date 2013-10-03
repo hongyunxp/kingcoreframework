@@ -1825,7 +1825,7 @@ public class DaoJdbcPlainImpl
 
 	//目前的dataSourceName，初始默认为系统级别的默认值。
 	protected String currentDataSourceName = ApplicationContext.getInstance().getDataSourceManager().getDefaultDataSourceName();
-	private void setDataSourceName(String dataSourceName) {
+	protected void setDataSourceName(String dataSourceName) {
 		this.currentDataSourceName = dataSourceName;
 		
 	}
