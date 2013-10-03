@@ -1,7 +1,7 @@
 
 
-package com.wzwen.example ;
-
+package com.kingcore.example ;
+ 
 import java.sql.Connection;
 import java.util.Map;
 

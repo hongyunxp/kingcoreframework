@@ -33,6 +33,7 @@ import com.kingcore.framework.jdbc.TypeResultSetExtractor;
 
 
 /**
+ * @deprecated preference to com.kingcore.framework.bean.DbBean ;
  * <p>封装了一些对数据的操作：
  * 		获取数据库连接池的连接，执行批量更新，提交事务等等。
  *   最好的DbBean类，通过设置 ApplicationContext, 支持多数据源注入，并提供数据库事务支持；
