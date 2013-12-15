@@ -3,7 +3,7 @@
 <project name="scm" default="makeear" basedir=".">
 	<target name="init">
 		<property name="prj.root" location="${basedir}\.."/>	
-		<property name="prj.version" value="2.0"/>
+		<property name="prj.version" value="3.2"/>
 		<property name="kingcore.src" location="${prj.root}\src;${prj.root}\src_impl;${prj.root}\src_wzw-net"/>
         <property name="kingcore.build" location="${prj.root}\Tmp\classes"/>
 		<property name="build.home" value="${prj.root}\build"/>
@@ -98,14 +98,14 @@
 		</copy> -->
 
 		<!-- <delete file="${ejb.ear}/st_scmejb.jar" quiet="true"/>  -->
-		<delete file="${build.home}/kingcore.jar" quiet="true"/>
-		<jar jarfile="${project.lib}/kingcore.jar" basedir="${kingcore.build}">
+		<delete file="${build.home}/kingcore-${prj.version}.jar" quiet="true"/>
+		<jar jarfile="${project.lib}/kingcore-${prj.version}.jar" basedir="${kingcore.build}">
 			<manifest>
 				<attribute name="Extension-Name" value="Kingcore Framework"/>
 				<attribute name="Specification-Title" value="Kingcore Framework"/>
 				<attribute name="Specification-Version" value="Kingcore Framework ${prj.version}"/>
 				<attribute name="Implementation-Version" value="Kingcore Framework ${prj.version}"/>
-				<attribute name="Implementation-Vendor" value="Zeven in VangV"/>
+				<attribute name="Implementation-Vendor" value="Zeven in KingCore"/>
 			</manifest>
 		</jar>
 		<delete dir="${ejb.dist}" quiet="true"/>
@@ -137,9 +137,9 @@
 		<!-- <copy file="${project.lib}/kingcore.jar" todir="E:\Work_Java\Prj_vcmarket\build\lib\vcmarket_service-lib" overwrite="true"/>
 		<copy file="${project.lib}/kingcore.jar" todir="E:\Work_Java\Prj_vcmarket\build\lib\vcmarket-lib" overwrite="true"/> -->
 		
-		<copy file="${project.lib}/kingcore.jar" todir="D:\Program Files\Kingcore\Director\lib" overwrite="true"/>
-		<copy file="${project.lib}/kingcore.jar" todir="E:\Woo_Java\Prj_wzwen_pda\pda\WEB-INF\lib" overwrite="true"/>
-		<copy file="${project.lib}/kingcore.jar" todir="E:\Woo_Java\Prj_zeven_admin\sysadmin\WEB-INF\lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="D:\Program Files\Kingcore\Director\lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="E:\Woo_Java\Prj_wzwen_pda\pda\WEB-INF\lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="E:\Woo_Java\Prj_zeven_admin\sysadmin\WEB-INF\lib" overwrite="true"/>
 		
 		<!-- copy zeven.tld -->
 		<copy file="${project.build}/tld/zeven.tld" todir="E:/Work_Java/Prj_vangv_net/wangwin/WEB-INF/tld"/>

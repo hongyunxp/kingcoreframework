@@ -21,7 +21,7 @@
 SETLOCAL
 
 @rem ***************** 初始化环境变量
-set ANT_HOME=D:\Program\ant
+set ANT_HOME=D:\Program\apache-ant
 @rem set JAVA_HOME=D:\bea\jdk142_08
 set JAVA_HOME=D:\Program Files\Java\jdk1.5
 if "%JAVA_HOME%" == "" set JAVA_HOME=D:\Program files\Java\jdk1.5

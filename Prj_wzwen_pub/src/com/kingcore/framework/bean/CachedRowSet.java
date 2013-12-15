@@ -565,7 +565,7 @@ public class CachedRowSet implements RowSet,DataSet {
 	/* (non-Javadoc)
 	 * @see javax.sql.RowSet#setTypeMap(java.util.Map)
 	 */
-	public void setTypeMap(Map arg0) throws SQLException {
+	public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
 
 	}
@@ -993,7 +993,7 @@ public class CachedRowSet implements RowSet,DataSet {
 	/* (non-Javadoc)
 	 * @see java.sql.ResultSet#getObject(int, java.util.Map)
 	 */
-	public Object getObject(int arg0, Map arg1) throws SQLException {
+	public Object getObject(int arg0, Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1001,7 +1001,7 @@ public class CachedRowSet implements RowSet,DataSet {
 	/* (non-Javadoc)
 	 * @see java.sql.ResultSet#getObject(java.lang.String, java.util.Map)
 	 */
-	public Object getObject(String arg0, Map arg1) throws SQLException {
+	public Object getObject(String arg0, Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1741,6 +1741,5 @@ public class CachedRowSet implements RowSet,DataSet {
 	public int size() {
 		return this.list.size();
 	}
-	
 
 }

@@ -74,9 +74,9 @@ public class ApplicationContext {
 	
 
 	/**
-	 * 默认为WebLogic 容器，其他还有Tomcat容器。
+	 * 默认为Tomcat 容器，其他还有WebLogic等容器。
 	 */
-	private ServletContainer servletContainer = null;
+	private ServletContainer servletContainer = new TomcatContainer();
 	
 	
 	public static ApplicationContext getInstance() {

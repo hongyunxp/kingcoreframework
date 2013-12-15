@@ -457,4 +457,20 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 		return configPath;
 	}
 
+	/**
+	 * for jdk update to 1.6
+	 */
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+		System.err.println("±¾·½·¨ÔÚjdk1.5Éý¼¶µ½1.6¹ý³ÌÖÐ»¹Ã»ÓÐÊµÏÖ");
+		return null;
+	}
+
+	/**
+	 * for jdk update to 1.6
+	 */
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+		System.err.println("±¾·½·¨ÔÚjdk1.5Éý¼¶µ½1.6¹ý³ÌÖÐ»¹Ã»ÓÐÊµÏÖ");
+		return false;
+	}
+
 }

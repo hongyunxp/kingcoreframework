@@ -10,11 +10,10 @@
  * with Zeven.woo
  */
 
-package com.kingcore.framework.base.controller;
+package com.kingcore.framework.cache;
 
 import org.apache.log4j.Logger;
 
-import com.kingcore.framework.cache.CacheManager;
 import com.opensymphony.oscache.base.NeedsRefreshException;
 
 /**

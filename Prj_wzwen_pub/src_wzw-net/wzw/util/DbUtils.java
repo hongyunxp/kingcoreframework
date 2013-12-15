@@ -955,7 +955,8 @@ public class DbUtils {
 		DataSource datasource = null;
         Connection conn = null;
 
-		datasource = (DataSource)HttpUtils.getObjectInApplication( request, org.apache.struts.Globals.DATA_SOURCE_KEY) ;
+        String DATA_SOURCE_KEY_IN_STRUTS1 = "org.apache.struts.action.DATA_SOURCE";
+		datasource = (DataSource)HttpUtils.getObjectInApplication( request, DATA_SOURCE_KEY_IN_STRUTS1 ) ;
 		if(datasource!=null)	//在使用前一定要做null判断
 			conn = datasource.getConnection();
 		//if cann't find ds in application,get it in jndi...

@@ -11,6 +11,7 @@ import java.sql.SQLWarning;
 import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.kingcore.framework.bean.DbBean;
 import com.kingcore.framework.context.DatabaseManager;
@@ -201,10 +202,10 @@ public class PlainConnection implements Connection // abstract
     	return con.getTypeMap();
     }
 
-    public void setTypeMap(java.util.Map map) throws SQLException
-    {
-    	con.setTypeMap (map);
-    }
+	public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
+		con.setTypeMap(map);
+		
+	}
 
     public void cleanUpConnection() throws SQLException
     {
@@ -251,5 +252,20 @@ public class PlainConnection implements Connection // abstract
 		this.databaseManager = databaseManager;
 	}
 
+	/**
+	 * for jdk update to 1.6
+	 */
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+		System.err.println("本方法在jdk1.5升级到1.6过程中还没有实现");
+		return null;
+	}
+
+	/**
+	 * for jdk update to 1.6
+	 */
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+		System.err.println("本方法在jdk1.5升级到1.6过程中还没有实现");
+		return false;
+	}
 
 }

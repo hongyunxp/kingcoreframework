@@ -1,18 +1,15 @@
+Created by wzw.
 版本升级说明：
 
 ================================================ V3.2
-'~= ---------------------------- 升级内容
-'~= 配置文件
-	简化配置，使用kingcore-framework-context.xml
+配置文件：使用kingcore-framework-context.xml
 
 
 ================================================ V3.0
-'~= ---------------------------- 升级内容
-'~= 配置文件
-	请使用kingcore-framework-context.xml文件或内容，不使用spring-config-context.xml。
+配置文件：kingcore-framework-context.xml 3.0版本
 
 
 ================================================ V2.0,V1.0
-'~= ---------------------------- 升级内容
-'~= 配置文件
-	spring-config-context.xml
+配置文件：spring-config-context.xml
+
+
