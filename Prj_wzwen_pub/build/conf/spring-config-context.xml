@@ -3,16 +3,7 @@
   "http://www.springframework.org/dtd/spring-beans.dtd"> 
 
 <beans>
-    <!-- v1.0
-	set DataSourceManager, other availiable choice are:
-	<bean id="servletContainer" name="dataSourceManager" class="com.kingcore.framework.context.WebLogicContainer">
-	<bean id="servletContainer" name="dataSourceManager" class="com.kingcore.framework.jdbc.ConnectionManager">
-    <bean id="servletContainer" name="dataSourceManager" class="com.kingcore.framework.context.TomcatContainer">
-        <property name="defaultDataSourceName">
-            <value>jndi/jdbc</value>
-        </property>
-	</bean> -->
-	
+ 
 	<!-- v2.0
 	<bean id="servletContainer" class="com.kingcore.framework.context.TomcatContainer"/>
     <bean id="dataSourceManager" class="com.kingcore.framework.context.PlainDataSourceManager">
@@ -28,81 +19,14 @@
 		</property>		
 	</bean>  -->
 
-	<!-- v3.0 -->
-    <bean id="applicationContext" class="com.kingcore.framework.context.ApplicationContext">
-        <property name="servletContainer">
-			<ref local="tomcatContainer"/> 
+    <!-- v1.0
+	set DataSourceManager, other availiable choice are:
+	<bean id="servletContainer" name="dataSourceManager" class="com.kingcore.framework.context.WebLogicContainer">
+	<bean id="servletContainer" name="dataSourceManager" class="com.kingcore.framework.jdbc.ConnectionManager">
+    <bean id="servletContainer" name="dataSourceManager" class="com.kingcore.framework.context.TomcatContainer">
+        <property name="defaultDataSourceName">
+            <value>jndi/jdbc</value>
         </property>
-        <property name="dataSourceManager">
-			<ref bean="plainDataSourceManager"/> 
-        </property>
-        <property name="resultSetBeanExtractor">
-			<ref bean="plainResultSetBeanExtractor"/> 
-        </property>
-        <!--  保留这里为了兼容部分代码，一般dm只与dataSource/Conn挂钩。 -->
-        <property name="databaseManager">
-			<ref local="mySqlDatabase"/> 
-        </property>
-    </bean>
-
-	<bean id="tomcatContainer" class="com.kingcore.framework.context.TomcatContainer"/>
-	<!-- // available servletContainer below:
-	<bean id="webLogicContainer" class="com.kingcore.framework.context.WebLogicContainer"/> -->
-
-	<bean id="plainResultSetBeanExtractor" 
-	            class="com.kingcore.framework.jdbc.PlainResultSetBeanExtractor"/>
-	<!-- // available resultSetBeanExtractor below:
-	<bean id="smartResultSetBeanExtractor"  
-	           class="com.kingcore.framework.jdbc.SmartResultSetBeanExtractor"/> -->
-	
-	<!--  // available resultSetBeanExtractor below:
-	    PlainDataSourceManager需要配置属性，
-			而com.kingcore.framework.jdbc.ConnectionManager只需要配置 system-datasource-conf.xml文件即可。 -->
-    <bean id="plainDataSourceManager" class="com.kingcore.framework.context.PlainDataSourceManager">
-		<property name="dataSources">
-			<map>
-				<entry key="dataSource1">
-					<ref bean="dataSourceProxy1"/>
-				</entry>
-				<entry key="dataSource2">
-					<ref bean="dataSourceProxy2"/>
-				</entry>
-			</map>
-		</property>
-		<property name="defaultDataSourceName">
-			<value>dataSource</value>
-		</property>		
-	</bean> 
-	<!-- // available dataSourceManager below:
-	<bean name="connectionManager" class="com.kingcore.framework.jdbc.ConnectionManager"/> 
-	-->
-   
-	<bean id="dataSourceProxy1" class="com.kingcore.framework.context.DataSourcePoxy">
-    	<property name="dataSource">
-			<ref bean="dataSource1"/> 
-        </property>
-        <property name="databaseManager">
-			<ref local="mySqlDatabase"/> 
-        </property>  	
-	</bean>
-
-	<bean id="dataSourceProxy2" class="com.kingcore.framework.context.DataSourcePoxy">
-    	<property name="dataSource">
-			<ref bean="dataSource2"/> 
-        </property>
-        <property name="databaseManager">
-			<ref local="oracleDatabase"/> 
-        </property>  	
-	</bean>
-		
-    <bean id="mySqlDatabase" class="com.kingcore.framework.context.MySQLDatabase"/>
-    <bean id="oracleDatabase" class="com.kingcore.framework.context.OracleDatabase"/>
-    <!-- // available databaseManager below:
-	set DatabaseManager, other availiable choice are:
-	<bean id="databaseManager" class="com.kingcore.framework.context.PlainDatabase"/>
-	<bean id="databaseManager" class="com.kingcore.framework.context.SQLServerDatabase"/>
-    <bean id="databaseManager" class="com.kingcore.framework.context.OracleDatabase"/>
-	-->
-
+	</bean> -->
 
 </beans>
