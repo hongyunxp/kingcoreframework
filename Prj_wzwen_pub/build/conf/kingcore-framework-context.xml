@@ -4,11 +4,8 @@
 
 <beans>
 
-	<!-- v3.0 -->
+	<!-- v3.2 -->
     <bean id="applicationContext" class="com.kingcore.framework.context.ApplicationContext">
-        <property name="servletContainer">
-			<ref local="tomcatContainer"/> 
-        </property>
         <property name="dataSourceManager">
 			<ref bean="plainDataSourceManager"/> 
         </property>
@@ -21,19 +18,14 @@
         </property>
     </bean>
 
-	<bean id="tomcatContainer" class="com.kingcore.framework.context.TomcatContainer"/>
-	<!-- // available servletContainer below:
-	<bean id="webLogicContainer" class="com.kingcore.framework.context.WebLogicContainer"/> -->
-
-	<!-- <bean id="plainResultSetBeanExtractor" 
-	            class="com.kingcore.framework.jdbc.PlainResultSetBeanExtractor"/>  -->
-	<!-- // available resultSetBeanExtractor below: -->
 	<bean id="smartResultSetBeanExtractor"  
 	           class="com.kingcore.framework.jdbc.SmartResultSetBeanExtractor"/>
+	<!-- // all available resultSetBeanExtractor below:
+	<bean id="plainResultSetBeanExtractor" 
+	            class="com.kingcore.framework.jdbc.PlainResultSetBeanExtractor"/>
+	<bean id="smartResultSetBeanExtractor"  
+	           class="com.kingcore.framework.jdbc.SmartResultSetBeanExtractor"/>  -->
 	
-	<!--  // available resultSetBeanExtractor below:
-	    PlainDataSourceManager需要配置属性，
-			而com.kingcore.framework.jdbc.ConnectionManager只需要配置 system-datasource-conf.xml文件即可。 -->
     <bean id="plainDataSourceManager" class="com.kingcore.framework.context.PlainDataSourceManager">
 		<property name="dataSources">
 			<map>
@@ -49,7 +41,9 @@
 			<value>dataSource</value>
 		</property>		
 	</bean> 
-	<!-- // available dataSourceManager below:
+	<!--  // another available dataSourceManager below:
+	    PlainDataSourceManager需要配置属性，
+			而com.kingcore.framework.jdbc.ConnectionManager只需要配置 system-datasource-conf.xml文件即可。
 	<bean name="connectionManager" class="com.kingcore.framework.jdbc.ConnectionManager"/> 
 	-->
    
@@ -72,15 +66,17 @@
 	</bean>
 		
     <bean id="mySqlDatabase" class="com.kingcore.framework.context.MySqlDatabase"/>
-    <bean id="oracleDatabase" class="com.kingcore.framework.context.OracleDatabase"/>
-    
-    <!-- // available databaseManager below:
-	set DatabaseManager, other availiable choice are:
+    <bean id="oracleDatabase" class="com.kingcore.framework.context.OracleDatabase"/>    
+    <!-- // all available databaseManager below:
     <bean id="mySqlDatabase" class="com.kingcore.framework.context.MySqlDatabase"/>
     <bean id="oracleDatabase" class="com.kingcore.framework.context.OracleDatabase"/>
 	<bean id="plainDatabase" class="com.kingcore.framework.context.PlainDatabase"/>
 	<bean id="sqlServerDatabase" class="com.kingcore.framework.context.SqlServerDatabase"/>
     <bean id="oracleDatabase" class="com.kingcore.framework.context.OracleDatabase"/>
 	-->
+	
+	<!-- // available servletContainer below:
+	<bean id="tomcatContainer" class="com.kingcore.framework.context.TomcatContainer"/>
+	<bean id="webLogicContainer" class="com.kingcore.framework.context.WebLogicContainer"/> -->
 	
 </beans>
