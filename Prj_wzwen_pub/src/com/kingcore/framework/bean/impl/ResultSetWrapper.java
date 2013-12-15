@@ -591,7 +591,7 @@ public class ResultSetWrapper implements RowSet,DataSet,List {
 	/* (non-Javadoc)
 	 * @see javax.sql.RowSet#setTypeMap(java.util.Map)
 	 */
-	public void setTypeMap(Map arg0) throws SQLException {
+	public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
 
 	}
@@ -1029,7 +1029,7 @@ public class ResultSetWrapper implements RowSet,DataSet,List {
 	/* (non-Javadoc)
 	 * @see java.sql.ResultSet#getObject(int, java.util.Map)
 	 */
-	public Object getObject(int arg0, Map arg1) throws SQLException {
+	public Object getObject(int arg0, Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1037,7 +1037,7 @@ public class ResultSetWrapper implements RowSet,DataSet,List {
 	/* (non-Javadoc)
 	 * @see java.sql.ResultSet#getObject(java.lang.String, java.util.Map)
 	 */
-	public Object getObject(String arg0, Map arg1) throws SQLException {
+	public Object getObject(String arg0, Map<String, Class<?>> map) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1894,6 +1894,5 @@ public class ResultSetWrapper implements RowSet,DataSet,List {
 	public Object[] toArray(Object[] arg0) {
 		return this.list.toArray( arg0);
 	}
-	
 
 }

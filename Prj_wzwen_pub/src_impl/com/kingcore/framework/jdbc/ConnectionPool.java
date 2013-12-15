@@ -296,4 +296,22 @@ public class ConnectionPool implements DataSource { //连接池属性
 
 	}
 
+	/**
+	 * for jdk update to 1.6
+     *  System.err.println("本方法在jdk1.5升级到1.6过程中需要实现");
+	 */
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+	    System.err.println("本方法在jdk1.5升级到1.6过程中还没有实现");
+		return null;
+	}
+
+	/**
+	 * for jdk update to 1.6
+     *  System.err.println("本方法在jdk1.5升级到1.6过程中需要实现");
+	 */
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+	    System.err.println("本方法在jdk1.5升级到1.6过程中还没有实现");
+		return false;
+	}
+
 }
