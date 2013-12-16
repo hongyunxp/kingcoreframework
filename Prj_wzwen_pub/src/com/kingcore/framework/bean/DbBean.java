@@ -120,11 +120,6 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		return super.executeBatch(list);
 	}
 
-	public NavigableDataSet executeQueryDataSet(Navigator navigator,
-			String sql_count, String sql_datas) throws Exception {
-		
-		return super.executeQueryDataSet(navigator, sql_count, sql_datas);
-	}
 
 	public int executeUpdate(String sql, Object[] args, int[] argTypes)
 			throws SQLException {
@@ -142,10 +137,10 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		return super.executeUpdate(sql);
 	}
 
-	public void freeConnection() throws SQLException {
-		
-		super.freeConnection();
-	}
+//	public void freeConnection() throws SQLException {
+//		
+//		super.freeConnection();
+//	}
 
 	public String getClobColumn(String sql) throws Exception {
 		
@@ -162,10 +157,10 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		return super.getConnection(poolName);
 	}
 
-	public DataSource getDataSource() throws SQLException {
-		
-		return super.getDataSource();
-	}
+//	public DataSource getDataSource() throws SQLException {
+//		
+//		return super.getDataSource();
+//	}
 
 	public String getIdentityValue(String tblName) {
 		

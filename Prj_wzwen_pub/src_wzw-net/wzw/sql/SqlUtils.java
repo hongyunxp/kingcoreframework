@@ -133,6 +133,22 @@ public class SqlUtils {
 			if (inValue instanceof String || inValue instanceof StringBuffer || inValue instanceof StringWriter) {
 				ps.setString(paramIndex, inValue.toString());
 			}
+			else if (inValue instanceof Integer) {
+				Integer value = (Integer) inValue;
+				ps.setInt(paramIndex, value);
+			}
+			else if (inValue instanceof Long) {
+				Long value = (Long) inValue;
+				ps.setLong(paramIndex, value);
+			}
+			else if (inValue instanceof Float) {
+				Float value = (Float) inValue;
+				ps.setFloat(paramIndex, value);
+			}
+			else if (inValue instanceof Double) {
+				Double value = (Double) inValue;
+				ps.setDouble(paramIndex, value);
+			}
 			else if (inValue instanceof java.util.Date && !(inValue instanceof java.sql.Date ||
 					inValue instanceof java.sql.Time || inValue instanceof java.sql.Timestamp)) {
 				ps.setTimestamp(paramIndex, new java.sql.Timestamp(((java.util.Date) inValue).getTime()));
