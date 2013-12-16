@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.sql.DataSource;
 import javax.sql.RowSet;
 
 import org.apache.log4j.Logger;
@@ -33,9 +32,7 @@ import wzw.sql.SqlUtils;
 import wzw.util.DbUtils;
 
 import com.kingcore.framework.base.dao.DaoJdbc;
-import com.kingcore.framework.bean.NavigableDataSet;
 import com.kingcore.framework.bean.Navigator;
-import com.kingcore.framework.bean.QueryDataSet;
 import com.kingcore.framework.context.ApplicationContext;
 import com.kingcore.framework.context.DatabaseManager;
 import com.kingcore.framework.jdbc.MapResultSetExtractor;
@@ -75,25 +72,25 @@ public class DaoJdbcPlainImpl
 
 	public static final String CHANGE_PAGE = "changepage";
 	 
-	/**
-	 * <pre>主动释放数据库的连结 wzw on 2006-9-24
-	 * 连接释放之后，该类对象就不能执行数据库操作了，
-	 * 		即便是使用 getConnection()方法之后也不能执行数据库操作了，
-	 * 		所以一个业务操作DAO从开始到结束，如果要主动使用Connection，
-	 * 		则只使用一个Connection，而不是使用多个，而且使用了在一个业务过程中千万不要释放了再获取。
-	 * 		或者完全不管理Connection。</pre>
-	 * @deprecated 直接使用 this.conn.close() 方法关闭连接
-	 * 
-	 */
-	protected void freeConnection() throws SQLException{
-		if(this.conn!=null) {
-			this.conn.close();
-			// Zeven ,主动清除引用。 一般来说掉用了close(),也就不会再执行数据库连接。
-			// 只能使用 conn.close(),不能设置为null,否则将连接池中的对象置为null(空) 了。
-			// 不过如果断开了引用，还可以赋值为null空吗？？？
-			//this.conn = null ;
-		}
-	}
+//	/**
+//	 * <pre>主动释放数据库的连结 wzw on 2006-9-24
+//	 * 连接释放之后，该类对象就不能执行数据库操作了，
+//	 * 		即便是使用 getConnection()方法之后也不能执行数据库操作了，
+//	 * 		所以一个业务操作DAO从开始到结束，如果要主动使用Connection，
+//	 * 		则只使用一个Connection，而不是使用多个，而且使用了在一个业务过程中千万不要释放了再获取。
+//	 * 		或者完全不管理Connection。</pre>
+//	 * @deprecated 直接使用 this.conn.close() 方法关闭连接
+//	 * 
+//	 */
+//	protected void freeConnection() throws SQLException{
+//		if(this.conn!=null) {
+//			this.conn.close();
+//			// Zeven ,主动清除引用。 一般来说掉用了close(),也就不会再执行数据库连接。
+//			// 只能使用 conn.close(),不能设置为null,否则将连接池中的对象置为null(空) 了。
+//			// 不过如果断开了引用，还可以赋值为null空吗？？？
+//			//this.conn = null ;
+//		}
+//	}
 
 
 	/**
@@ -112,13 +109,13 @@ public class DaoJdbcPlainImpl
 	}
 	 */
 
-	/**
-	 * 暂时不使用，而是采用直接得到连结 wzw on 2006-9-24
-	 * @deprecated
-	 */
-	protected DataSource getDataSource() throws SQLException{
-		return null;
-	}
+//	/**
+//	 * 暂时不使用，而是采用直接得到连结 wzw on 2006-9-24
+//	 * @deprecated
+//	 */
+//	protected DataSource getDataSource() throws SQLException{
+//		return null;
+//	}
 
 	
 	/**
@@ -282,6 +279,16 @@ public class DaoJdbcPlainImpl
 		return executeUpdate(sql, null, null);
 	}
 	
+	/**
+	 * add in 2013
+	 * @param sql
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected int executeUpdate(String sql, Object arg) throws SQLException {    
+		return executeUpdate(sql, new Object[]{arg}, null);
+	}
 	/**
 	 * <pre> doUpdate 的PreparedStatement方式。</pre>
 	 * @param sql	带有?的sql语句
@@ -747,6 +754,22 @@ public class DaoJdbcPlainImpl
 	}
 
 	/**
+	 * add in 2013
+	 * @param navigator
+	 * @param sql_count
+	 * @param sql_datas
+	 * @param args
+	 * @param argTypes
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count, String sql_datas,
+					Object[] args) throws SQLException {
+		
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
+		return this.queryForList(sql, args, null);
+	}
+	/**
 	 * <pre>获取指定翻页的List，每行使用一个Map封装数据，即返回类型为List<Map>。
 	 * 	 使用PreparedStatement方式。</pre>
 	 * @param navigator
@@ -778,7 +801,24 @@ public class DaoJdbcPlainImpl
 		return this.queryForList(sql, clazz);
 	}
 	
+	/**
+	 * add in 2013
+	 * @param navigator
+	 * @param sql_count
+	 * @param sql_datas
+	 * @param args
+	 * @param argTypes
+	 * @param clazz
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<?> queryForPagedList(Navigator navigator, String sql_count, String sql_datas, 
+				Object[] args, Class<?> clazz) throws SQLException {
 
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
+		return this.queryForList(sql, args, null, clazz);
+	}
+	
 	/**
 	 * <pre>获取指定翻页的List<JavaBean>。
 	 * 	    使用PreparedStatement方式。</pre>
@@ -1292,73 +1332,73 @@ public class DaoJdbcPlainImpl
 //		return doQueryDataSet( sql_datas, sql_count,pageParams );
 //	}
 	
-	/**
-	 * <pre>
-	 * 查询翻页导航数据。
-	 * 
-	 * </pre>
-	 * @deprecated wzw:建议使用 queryForPaged... 方法，再在页面与导航器等组合。
-	 * @param pageParams 请求的页面信息参数 {rowCount, pageSize, pageNumber}
-	 * @param sql_count 查询总行数的sql语句
-	 * @param sql_datas 查询数据的sql语句
-	 * 
-	 */
-	protected NavigableDataSet executeQueryDataSet( Navigator navigator,
-			String sql_count, String sql_datas) throws Exception
-	{
-		
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas );
-		RowSet crs = this.queryForRowSet( sql_datas );
-		NavigableDataSet dataSet = new QueryDataSet(navigator,null,crs);	//
-		
-		return dataSet;	// not PreparedStatement
-
-//		-------------------------- drop by Zeven on 2008-09-19		
-//		int rowCount = pageParams[0];
-//		int pageSize = pageParams[1];
-//		int pageNumber = pageParams[2];
+//	/**
+//	 * <pre>
+//	 * 查询翻页导航数据。
+//	 * 
+//	 * </pre>
+//	 * @deprecated wzw:建议使用 queryForPaged... 方法，再在页面与导航器等组合。
+//	 * @param pageParams 请求的页面信息参数 {rowCount, pageSize, pageNumber}
+//	 * @param sql_count 查询总行数的sql语句
+//	 * @param sql_datas 查询数据的sql语句
+//	 * 
+//	 */
+//	protected NavigableDataSet executeQueryDataSet( Navigator navigator,
+//			String sql_count, String sql_datas) throws Exception
+//	{
 //		
-//		NavigableDataSet dataSet = new QueryDataSet();	//
-//		dataSet.setPageSize( pageSize );
-//		dataSet.setCurrentPageIndex( pageNumber );
+//		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas );
+//		RowSet crs = this.queryForRowSet( sql_datas );
+//		NavigableDataSet dataSet = new QueryDataSet(navigator,null,crs);	//
 //		
-//		//String action = "query";
-//		
-//		//处理翻页操作
-//		String sql = null;
-//		if ( rowCount<0 )
-//		{
-//			// 先查出行数
-//			sql = sql_count ;
-//			log.debug("get rowCount and"
-//					+"\n\tpageSize="  +pageSize
-//					+"\n\tpageNumber="+pageNumber
-//					+"\n\tsql="+sql);
+//		return dataSet;	// not PreparedStatement
 //
-//			//.out.println("-------------------- this -3------1 ");
-//			RowSet rs=this.doQuery(sql);
-//			if(rs.next()){
-//				rowCount = rs.getInt(1);
-//			}	
-//		}
+////		-------------------------- drop by Zeven on 2008-09-19		
+////		int rowCount = pageParams[0];
+////		int pageSize = pageParams[1];
+////		int pageNumber = pageParams[2];
+////		
+////		NavigableDataSet dataSet = new QueryDataSet();	//
+////		dataSet.setPageSize( pageSize );
+////		dataSet.setCurrentPageIndex( pageNumber );
+////		
+////		//String action = "query";
+////		
+////		//处理翻页操作
+////		String sql = null;
+////		if ( rowCount<0 )
+////		{
+////			// 先查出行数
+////			sql = sql_count ;
+////			log.debug("get rowCount and"
+////					+"\n\tpageSize="  +pageSize
+////					+"\n\tpageNumber="+pageNumber
+////					+"\n\tsql="+sql);
+////
+////			//.out.println("-------------------- this -3------1 ");
+////			RowSet rs=this.doQuery(sql);
+////			if(rs.next()){
+////				rowCount = rs.getInt(1);
+////			}	
+////		}
+////		
+////		// 进一步设置 dataSet 的信息
+////		dataSet.setRowCount(rowCount);
+////		dataSet.setPageCount( (rowCount - 1) / pageSize + 1 );
+////		
+////		//搜索查询
+////		//排序处理
+////		//缺省的查询
+////
+////		// 再查询数据集
+////		sql = this.createQuerySql(sql_datas, dataSet) ;
+////		log.debug("get datas rowCount="+rowCount+" and \n\tsql="+sql );
+////
+////		dataSet.addData( doInnerQuery( sql) );
+////		return dataSet ;
+////		/// this.executeQuery(mapping, request, sql);
 //		
-//		// 进一步设置 dataSet 的信息
-//		dataSet.setRowCount(rowCount);
-//		dataSet.setPageCount( (rowCount - 1) / pageSize + 1 );
-//		
-//		//搜索查询
-//		//排序处理
-//		//缺省的查询
-//
-//		// 再查询数据集
-//		sql = this.createQuerySql(sql_datas, dataSet) ;
-//		log.debug("get datas rowCount="+rowCount+" and \n\tsql="+sql );
-//
-//		dataSet.addData( doInnerQuery( sql) );
-//		return dataSet ;
-//		/// this.executeQuery(mapping, request, sql);
-		
-	}
+//	}
  
 
 	/**
@@ -1773,6 +1813,31 @@ public class DaoJdbcPlainImpl
 	protected Object queryForBean(String sql, Class<?> beanClass ) throws SQLException {
 		return queryForBean(sql, null, null, beanClass);
 	}
+	
+	/**
+	 * a
+	 * @param sql
+	 * @param args
+	 * @param beanClass
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Object queryForBean(String sql, Object arg, Class<?> beanClass ) throws SQLException {
+		return queryForBean(sql, new Object[]{arg}, null, beanClass);
+	}
+	
+	/**
+	 * add on 2013
+	 * @param sql
+	 * @param args
+	 * @param beanClass
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Object queryForBean(String sql, Object[] args, Class<?> beanClass ) throws SQLException {
+		return queryForBean(sql, args, null, beanClass);
+	}
+	
 
 	/**
 	 * <pre>
