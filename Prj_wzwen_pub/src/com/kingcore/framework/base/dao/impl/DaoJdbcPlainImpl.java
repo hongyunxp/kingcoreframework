@@ -280,7 +280,7 @@ public class DaoJdbcPlainImpl
 	}
 	
 	/**
-	 * add in 2013
+	 * @version 3.2
 	 * @param sql
 	 * @param args
 	 * @return
@@ -490,7 +490,23 @@ public class DaoJdbcPlainImpl
 //		}
 	}
 
-
+	protected int queryForInt(String sql, Object arg) throws SQLException {
+		Integer iobj = (Integer)query(sql, new Object[]{arg}, null, new TypeResultSetExtractor( Types.INTEGER, false) ); 
+		return iobj.intValue();
+	}
+	
+	/**
+	 * @version 3.2
+	 * @param sql
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected int queryForInt(String sql, Object[] args ) throws SQLException {
+		Integer iobj = (Integer)query(sql, args, null, new TypeResultSetExtractor( Types.INTEGER, false) ); 
+		return iobj.intValue();
+	}
+	
 	/**
 	 * <pre>
 	 * 根据sql statement，获取符合条件的数据的整数。
@@ -524,7 +540,26 @@ public class DaoJdbcPlainImpl
 		return queryForString(sql, null, null);
 	}
 
-
+	/*
+	 * @version 3.2
+	 */
+	protected String queryForString(String sql, Object arg) throws SQLException {
+		String str = (String)query(sql, new Object[]{arg}, null, new TypeResultSetExtractor( Types.VARCHAR, false) ); 
+		return str;
+	}
+	
+	/**
+	 * @version 3.2
+	 * @param sql
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected String queryForString(String sql, Object[] args ) throws SQLException {
+		String str = (String)query(sql, args, null, new TypeResultSetExtractor( Types.VARCHAR, false) ); 
+		return str;
+	}
+	
 	/**
 	 * <pre>
 	 *  根据sql statement，获取符合条件的数据的字符串。
@@ -562,6 +597,32 @@ public class DaoJdbcPlainImpl
 
 	}
 
+	/**
+	 * @version 3.2
+	 * @param sql
+	 * @param arg
+	 * @return
+	 * @throws SQLException
+	 */
+	protected long queryForLong(String sql, Object arg) throws SQLException {
+	
+		Long lobj = (Long)query(sql, new Object[]{arg}, null, new TypeResultSetExtractor( Types.BIGINT, false) ); 
+		return lobj.longValue();
+	}
+	
+	/**
+	 * @version 3.2
+	 * @param sql
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected long queryForLong(String sql, Object[] args ) throws SQLException {
+	
+		Long lobj = (Long)query(sql, args, null, new TypeResultSetExtractor( Types.BIGINT, false) ); 
+		return lobj.longValue();
+	}
+	
 	protected long queryForLong(String sql, Object[] args, int[] argTypes ) throws SQLException {
 	
 		Long lobj = (Long)query(sql, args, argTypes, new TypeResultSetExtractor( Types.BIGINT, false) ); 
@@ -587,7 +648,29 @@ public class DaoJdbcPlainImpl
 		
 	}
 	
+	/**
+	 * 
+	 * @param sql_datas
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<Map<String,Object>> queryForList(String sql_datas, Object arg) throws SQLException {
 
+		return (List<Map<String,Object>>)query(sql_datas, new Object[]{arg}, null, new MapResultSetExtractor(true) );		
+	}
+	/**
+	 * @version 3.2
+	 * @param sql_datas
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<Map<String,Object>> queryForList(String sql_datas, Object[] args ) throws SQLException {
+
+		return (List<Map<String,Object>>)query(sql_datas, args, null, new MapResultSetExtractor(true) );		
+	}
+	
 	/**
 	 * <pre>采用PrepareStatement方式执行指定的sql语句，将结果集包装为List<Map>对象返回。
 	 * </pre>
@@ -614,16 +697,42 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException 
 	 */
-	protected List<?> queryForList(String sql_datas, Class<?> beanClass) throws SQLException {
+	protected List<?> queryForList(Class<?> dataBean, String sql_datas) throws SQLException {
 
-		return queryForList(sql_datas, null, null, beanClass );
+		return queryForList(dataBean, sql_datas, null, null );
 		
 //		RowSet rs = this.doQuery( sql_datas );
 //		return ResultSetConverter.toBeanList(rs, modelObject);
 		
 	}
 
+	/**
+	 * add in  2013
+	 * @param dataBean
+	 * @param sql_datas
+	 * @param args
+	 * @param argTypes
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<?> queryForList(Class<?> dataBean, String sql_datas, Object arg) throws SQLException {
 
+		return (List<?>)queryBean(dataBean, sql_datas, new Object[]{arg}, null, true );	
+	}
+	
+	/**
+	 * @version 3.2
+	 * @param dataBean
+	 * @param sql_datas
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<?> queryForList(Class<?> dataBean, String sql_datas, Object[] args ) throws SQLException {
+
+		return (List<?>)queryBean(dataBean, sql_datas, args, null, true );	
+	}
+	
 	/**
 	 * 	采用PrepareStatement方式执行指定的sql语句，将结果集包装为List<Bean>对象返回。
 	 * @param sql_datas 需要执行查询的sql语句
@@ -633,9 +742,9 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForList(String sql_datas, Object[] args, int[] argTypes, Class<?> beanClass) throws SQLException {
+	protected List<?> queryForList(Class<?> dataBean, String sql_datas, Object[] args, int[] argTypes ) throws SQLException {
 
-		return (List<?>)queryBean(sql_datas, args, argTypes, beanClass, true );	
+		return (List<?>)queryBean(dataBean, sql_datas, args, argTypes, true );	
 	}
 
 
@@ -647,9 +756,9 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException 
 	 */
-	protected List<?> queryForList(String sql_datas, int type) throws SQLException {
+	protected List<?> queryForList(int type, String sql_datas) throws SQLException {
 
-		return queryForList(sql_datas, null, null, type );
+		return queryForList(type, sql_datas, null, null );
 		
 //		RowSet rs = this.doQuery( sql_datas );
 //		return ResultSetConverter.toBeanList(rs, modelObject);
@@ -657,6 +766,32 @@ public class DaoJdbcPlainImpl
 	}
 
 
+	/**
+	 * @version 3.2
+	 * @param type
+	 * @param sql_datas
+	 * @param arg
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<?> queryForList(int type, String sql_datas, Object arg) throws SQLException {
+
+		return (List<?>)query(sql_datas, new Object[]{arg}, null, new TypeResultSetExtractor(type, true) );	
+	}
+	
+	/**
+	 * @version 3.2
+	 * @param type
+	 * @param sql_datas
+	 * @param args
+	 * @return
+	 * @throws SQLException
+	 */
+	protected List<?> queryForList(int type, String sql_datas, Object[] args ) throws SQLException {
+
+		return (List<?>)query(sql_datas, args, null, new TypeResultSetExtractor(type, true) );	
+	}
+	
 	/**
 	 * 	采用PrepareStatement方式执行指定的sql语句，将结果集包装为List<Type>对象返回。
 	 * @param sql_datas 需要执行查询的sql语句
@@ -666,7 +801,7 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForList(String sql_datas, Object[] args, int[] argTypes, int type) throws SQLException {
+	protected List<?> queryForList(int type, String sql_datas, Object[] args, int[] argTypes) throws SQLException {
 
 		return (List<?>)query(sql_datas, args, argTypes, new TypeResultSetExtractor(type, true) );	
 	}
@@ -754,7 +889,7 @@ public class DaoJdbcPlainImpl
 	}
 
 	/**
-	 * add in 2013
+	 * @version 3.2
 	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
@@ -795,14 +930,14 @@ public class DaoJdbcPlainImpl
 	 * @param clazz List里面的对象，对应一行数据，可以为null
 	 * @return
 	 */
-	protected List<?> queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Class<?> clazz) throws SQLException {
+	protected List<?> queryForPagedList(Navigator navigator, Class<?> dataBean, String sql_count, String sql_datas ) throws SQLException {
 
 		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
-		return this.queryForList(sql, clazz);
+		return this.queryForList(dataBean, sql);
 	}
 	
 	/**
-	 * add in 2013
+	 * @version 3.2
 	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
@@ -812,11 +947,11 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForPagedList(Navigator navigator, String sql_count, String sql_datas, 
-				Object[] args, Class<?> clazz) throws SQLException {
+	protected List<?> queryForPagedList(Navigator navigator, Class<?> dataBean, 
+			String sql_count, String sql_datas,Object[] args ) throws SQLException {
 
 		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
-		return this.queryForList(sql, args, null, clazz);
+		return this.queryForList(dataBean, sql, args, null);
 	}
 	
 	/**
@@ -829,11 +964,11 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForPagedList(Navigator navigator, String sql_count, String sql_datas, 
-				Object[] args, int[] argTypes, Class<?> clazz) throws SQLException {
+	protected List<?> queryForPagedList(Navigator navigator, Class<?> dataBean, String sql_count, String sql_datas, 
+				Object[] args, int[] argTypes) throws SQLException {
 
 		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
-		return this.queryForList(sql, args, argTypes, clazz);
+		return this.queryForList(dataBean, sql, args, argTypes );
 	}
 	
 	
@@ -1687,7 +1822,7 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	private Object queryBean(String sql, Object[] args, int[] argTypes, Class<?> beanClass,boolean isList) throws SQLException {  //ResultSetExtractor rse
+	private Object queryBean(Class<?> dataBean, String sql, Object[] args, int[] argTypes, boolean isList) throws SQLException {  //ResultSetExtractor rse
 		
 		boolean isConnCreated = false;
 		PreparedStatement ps = null;
@@ -1728,7 +1863,7 @@ public class DaoJdbcPlainImpl
 
 	        //crs.populate( rs ) ;
 	        //RowSet crs = resultSet2RowSet( rs ) ;
-	        objReturn =  ApplicationContext.getInstance().getResultSetBeanExtractor().extractData(rs, beanClass, isList );
+	        objReturn =  ApplicationContext.getInstance().getResultSetBeanExtractor().extractData(rs, dataBean, isList );
 
 		}finally{
 
@@ -1774,10 +1909,36 @@ public class DaoJdbcPlainImpl
 	 * @return 符合条件的行数
 	 * @throws SQLException 数据库操作异常
 	 */
-	protected Object queryForType(String sql, int type ) throws SQLException {
-		return queryForType(sql, null, null, type);
+	protected Object queryForType(int type ,String sql) throws SQLException {
+		return queryForType(type, sql, null, null);
 	}
 
+	/**
+	 * @version 3.2
+	 * @param type
+	 * @param sql
+	 * @param arg
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Object queryForType(int type ,String sql, Object arg) throws SQLException {
+
+		return query(sql, new Object[]{arg}, null, new TypeResultSetExtractor(type, false) ); 
+	}
+	/**
+	 * @version 3.2
+	 * @param type
+	 * @param sql
+	 * @param args
+	 * @param argTypes
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Object queryForType(int type ,String sql, Object[] args ) throws SQLException {
+
+		return query(sql, args, null, new TypeResultSetExtractor(type, false) ); 
+	}
+	
 	/**
 	 * <pre>
 	 * 执行指定的sql statement，并返回指定的类型，
@@ -1792,7 +1953,7 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForType(String sql, Object[] args, int[] argTypes, int type ) throws SQLException {
+	protected Object queryForType(int type ,String sql, Object[] args, int[] argTypes) throws SQLException {
 
 		return query(sql, args, argTypes, new TypeResultSetExtractor(type, false) ); 
 	}
@@ -1810,35 +1971,34 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(String sql, Class<?> beanClass ) throws SQLException {
-		return queryForBean(sql, null, null, beanClass);
+	protected Object queryForBean(Class<?> dataBean, String sql) throws SQLException {
+		return queryForBean(dataBean, sql, null, null);
 	}
 	
 	/**
 	 * a
 	 * @param sql
 	 * @param args
-	 * @param beanClass
+	 * @param dataBean
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(String sql, Object arg, Class<?> beanClass ) throws SQLException {
-		return queryForBean(sql, new Object[]{arg}, null, beanClass);
+	protected Object queryForBean(Class<?> dataBean, String sql, Object arg) throws SQLException {
+		return queryForBean(dataBean, sql, new Object[]{arg}, null );
 	}
 	
 	/**
 	 * add on 2013
 	 * @param sql
 	 * @param args
-	 * @param beanClass
+	 * @param dataBean
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(String sql, Object[] args, Class<?> beanClass ) throws SQLException {
-		return queryForBean(sql, args, null, beanClass);
+	protected Object queryForBean(Class<?> dataBean, String sql, Object[] args ) throws SQLException {
+		return queryForBean(dataBean, sql, args, null );
 	}
 	
-
 	/**
 	 * <pre>
 	 * 	执行指定的sql statement，并返回指定的类型的JavaBean对象。
@@ -1852,8 +2012,8 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(String sql, Object[] args, int[] argTypes, Class<?> beanClass ) throws SQLException {
-		return queryBean(sql, args, argTypes, beanClass, false );  
+	protected Object queryForBean(Class<?> dataBean, String sql, Object[] args, int[] argTypes ) throws SQLException {
+		return queryBean(dataBean, sql, args, argTypes, false );  
 	}	
 
 

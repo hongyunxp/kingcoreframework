@@ -61,24 +61,70 @@ public class SqlUtils {
     public static void setStatementArg(PreparedStatement ps,
     		int paramIndex, int sqlType, Object inValue) throws SQLException {	//, String typeName
     
+    	if(log.isDebugEnabled()){
+		    	log.debug("paramIndex="+paramIndex 
+		    				+ ",sqlType="+sqlType 
+		    				+ ",inValue="+inValue );
+    	}
     	if (inValue==null) {
         	ps.setNull(paramIndex, sqlType);
         	
-		}else if (sqlType == Types.VARCHAR) {
+		} else if (sqlType == SqlTypeValue.TYPE_UNKNOWN) {	// 不带有argType 的情况，需要判断参数类型
+			if (inValue instanceof String || inValue instanceof StringBuffer || inValue instanceof StringWriter) {
+				ps.setString(paramIndex, inValue.toString());
+			}
+			else if (inValue instanceof Integer) {
+				ps.setInt(paramIndex, (Integer) inValue);
+			}
+			else if (inValue instanceof Long) {
+				ps.setLong(paramIndex, (Long) inValue);
+			}
+			else if (inValue instanceof Float) {
+				ps.setFloat(paramIndex, (Float) inValue);
+			}
+			else if (inValue instanceof Double) {
+				ps.setDouble(paramIndex, (Double) inValue);
+			}
+			else if (inValue instanceof BigDecimal) {
+				ps.setBigDecimal(paramIndex, (BigDecimal) inValue);
+			}
+			else if (inValue instanceof java.util.Date && !(inValue instanceof java.sql.Date ||
+					inValue instanceof java.sql.Time || inValue instanceof java.sql.Timestamp)) {
+				ps.setTimestamp(paramIndex, new java.sql.Timestamp(((java.util.Date) inValue).getTime()));
+			}
+			else if (inValue instanceof Calendar) {
+				Calendar cal = (Calendar) inValue;
+				ps.setTimestamp(paramIndex, new java.sql.Timestamp(cal.getTime().getTime()));
+			}
+			else {
+				// Fall back to generic setObject call without SQL type specified.
+				ps.setObject(paramIndex, inValue);
+			}
+			
+		} else if (sqlType == Types.VARCHAR) {
 			ps.setString(paramIndex, inValue.toString());
 			
-		}else if (sqlType == Types.INTEGER) {
+		} else if (sqlType == Types.INTEGER) {
 			ps.setInt(paramIndex, Integer.parseInt(inValue.toString()));
-		}
-		else if (sqlType == Types.DECIMAL || sqlType == Types.NUMERIC) {
+			
+		} else if (sqlType == Types.BIGINT) {
+			ps.setLong(paramIndex, Long.parseLong(inValue.toString()));
+			
+		} else if (sqlType == Types.FLOAT) {
+			ps.setFloat(paramIndex, Float.parseFloat(inValue.toString()));
+			
+		}else if (sqlType == Types.DOUBLE) {
+			ps.setDouble(paramIndex, Double.parseDouble(inValue.toString()));
+			
+		} else if (sqlType == Types.DECIMAL || sqlType == Types.NUMERIC) {
 			if (inValue instanceof BigDecimal) {
 				ps.setBigDecimal(paramIndex, (BigDecimal) inValue);
 			}
 			else {
 				ps.setObject(paramIndex, inValue, sqlType);
 			}
-		}
-		else if (sqlType == Types.DATE) {
+			
+		} else if (sqlType == Types.DATE) {
 			if (inValue instanceof java.util.Date) {
 				if (inValue instanceof java.sql.Date) {
 					ps.setDate(paramIndex, (java.sql.Date) inValue);
@@ -94,8 +140,8 @@ public class SqlUtils {
 			else {
 				ps.setObject(paramIndex, inValue, Types.DATE);
 			}
-		}
-		else if (sqlType == Types.TIME) {
+			
+		} else if (sqlType == Types.TIME) {
 			if (inValue instanceof java.util.Date) {
 				if (inValue instanceof java.sql.Time) {
 					ps.setTime(paramIndex, (java.sql.Time) inValue);
@@ -103,16 +149,14 @@ public class SqlUtils {
 				else {
 					ps.setTime(paramIndex, new java.sql.Time(((java.util.Date) inValue).getTime()));
 				}
-			}
-			else if (inValue instanceof Calendar) {
+			} else if (inValue instanceof Calendar) {
 				Calendar cal = (Calendar) inValue;
 				ps.setTime(paramIndex, new java.sql.Time(cal.getTime().getTime()), cal);
-			}
-			else {
+			} else {
 				ps.setObject(paramIndex, inValue, Types.TIME);
 			}
-		}
-		else if (sqlType == Types.TIMESTAMP) {
+			
+		} else if (sqlType == Types.TIMESTAMP) {
 			if (inValue instanceof java.util.Date) {
 				if (inValue instanceof java.sql.Timestamp) {
 					ps.setTimestamp(paramIndex, (java.sql.Timestamp) inValue);
@@ -128,41 +172,8 @@ public class SqlUtils {
 			else {
 				ps.setObject(paramIndex, inValue, Types.TIMESTAMP);
 			}
-		}
-		else if (sqlType == SqlTypeValue.TYPE_UNKNOWN) {	// 不带有argType 的情况，需要判断参数类型
-			if (inValue instanceof String || inValue instanceof StringBuffer || inValue instanceof StringWriter) {
-				ps.setString(paramIndex, inValue.toString());
-			}
-			else if (inValue instanceof Integer) {
-				Integer value = (Integer) inValue;
-				ps.setInt(paramIndex, value);
-			}
-			else if (inValue instanceof Long) {
-				Long value = (Long) inValue;
-				ps.setLong(paramIndex, value);
-			}
-			else if (inValue instanceof Float) {
-				Float value = (Float) inValue;
-				ps.setFloat(paramIndex, value);
-			}
-			else if (inValue instanceof Double) {
-				Double value = (Double) inValue;
-				ps.setDouble(paramIndex, value);
-			}
-			else if (inValue instanceof java.util.Date && !(inValue instanceof java.sql.Date ||
-					inValue instanceof java.sql.Time || inValue instanceof java.sql.Timestamp)) {
-				ps.setTimestamp(paramIndex, new java.sql.Timestamp(((java.util.Date) inValue).getTime()));
-			}
-			else if (inValue instanceof Calendar) {
-				Calendar cal = (Calendar) inValue;
-				ps.setTimestamp(paramIndex, new java.sql.Timestamp(cal.getTime().getTime()));
-			}
-			else {
-				// Fall back to generic setObject call without SQL type specified.
-				ps.setObject(paramIndex, inValue);
-			}
-		}
-		else {
+			
+		} else {
 			// Fall back to generic setObject call with SQL type specified.
 			ps.setObject(paramIndex, inValue, sqlType);
 		}
