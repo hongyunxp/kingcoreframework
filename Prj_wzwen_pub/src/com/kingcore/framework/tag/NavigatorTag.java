@@ -26,9 +26,9 @@ import com.kingcore.framework.bean.Navigator;
 
 
 /** 
- * <p>½«request or session or pageContext ÓòÖĞµÄNavigableDataSet¶ÔÏó£¨ÊµÏÖÁËNavigable½Ó¿ÚµÄ¶ÔÏó£©µÄµ¼º½ĞÅÏ¢£¬
- *		Êä³öµ½µ±Ç°µÄÒ³Ãæ¡£
- *		 ±êÇ©µÄ type ²ÎÊıÖµÄ¿Ç°ÓĞÁ½¸ö£ºpnfl, pnfl_2£¬·Ö±ğÊä³ö²»Í¬·ç¸ñµÄµ¼º½Ìõ£»
+ * <p>å°†request or session or pageContext åŸŸä¸­çš„NavigableDataSetå¯¹è±¡ï¼ˆå®ç°äº†Navigableæ¥å£çš„å¯¹è±¡ï¼‰çš„å¯¼èˆªä¿¡æ¯ï¼Œ
+ *		è¾“å‡ºåˆ°å½“å‰çš„é¡µé¢ã€‚
+ *		 æ ‡ç­¾çš„ type å‚æ•°å€¼ç›®å‰æœ‰ä¸¤ä¸ªï¼špnfl, pnfl_2ï¼Œåˆ†åˆ«è¾“å‡ºä¸åŒé£æ ¼çš„å¯¼èˆªæ¡ï¼›
  *	</p>
  * @author	WUZEWEN on 2006.11.01
  * @version	1.0
@@ -48,19 +48,19 @@ public class NavigatorTag extends TagSupport {
 	protected static Logger log = Logger.getLogger( com.kingcore.framework.tag.NavigatorTag.class);
 	
 	/**
-	 * ÊµÏÖÁËNavigable½Ó¿ÚµÄ¶ÔÏóµÄÃû³Æ
+	 * å®ç°äº†Navigableæ¥å£çš„å¯¹è±¡çš„åç§°
 	 */
 	protected String name = null;	
 	/**
-	 * Òªµ÷ÓÃµÄNavigable¶ÔÏóµÄµ¼º½ÀàĞÍ
+	 * è¦è°ƒç”¨çš„Navigableå¯¹è±¡çš„å¯¼èˆªç±»å‹
 	 */
 	protected String type = "pnfl";
 	/**
-	 * Navigable½Ó¿ÚµÄ¶ÔÏó´æÔÚµÄÓò£¬Ä¬ÈÏ"request"
+	 * Navigableæ¥å£çš„å¯¹è±¡å­˜åœ¨çš„åŸŸï¼Œé»˜è®¤"request"
 	 */
     protected String scope = null;
     /**
-     * Navigableµ¼º½Â·¾¶
+     * Navigableå¯¼èˆªè·¯å¾„
      */
     protected String path = null;
 
@@ -74,7 +74,7 @@ public class NavigatorTag extends TagSupport {
 	}
 	
 	/**
-	 * ÊµÏÖÁËNavigable½Ó¿ÚµÄ¶ÔÏóµÄÃû³Æ
+	 * å®ç°äº†Navigableæ¥å£çš„å¯¹è±¡çš„åç§°
 	 */
 	public String getName() {
 		return name;
@@ -84,7 +84,7 @@ public class NavigatorTag extends TagSupport {
 	}
 
 	/**
-	 * Navigable½Ó¿ÚµÄ¶ÔÏó´æÔÚµÄÓò
+	 * Navigableæ¥å£çš„å¯¹è±¡å­˜åœ¨çš„åŸŸ
 	 */
     public String getScope() {
 		return scope;
@@ -94,7 +94,7 @@ public class NavigatorTag extends TagSupport {
 	}
 	
 	/**
-	 * Òªµ÷ÓÃµÄNavigable¶ÔÏóµÄµ¼º½ÀàĞÍ
+	 * è¦è°ƒç”¨çš„Navigableå¯¹è±¡çš„å¯¼èˆªç±»å‹
 	 */
 	public String getType() {
 		return type;
@@ -111,15 +111,15 @@ public class NavigatorTag extends TagSupport {
 		this.onClick = onClick;
 	}
     /**
-     * Navigableµ¼º½Â·¾¶
+     * Navigableå¯¼èˆªè·¯å¾„
      */
 	public String getPath() {
 		return path;
 	}
 	
 	/**
-	 * »ñÈ¡jspÒ³Ãæ±êÇ©µÄpathÊôĞÔ£¬Èç¹ûÊÇjava±äÁ¿£¬·ÅÔÚpageContextÖĞ£¬´«Èë¸ÃÃû³Æ£¬Ê¹ÓÃ${paraname}´«Èë¡£
-	 * 		ÈçjspÒ³ÃæÊ¹ÓÃ pageContext.setAttribute("path", pathValue);
+	 * è·å–jspé¡µé¢æ ‡ç­¾çš„pathå±æ€§ï¼Œå¦‚æœæ˜¯javaå˜é‡ï¼Œæ”¾åœ¨pageContextä¸­ï¼Œä¼ å…¥è¯¥åç§°ï¼Œä½¿ç”¨${paraname}ä¼ å…¥ã€‚
+	 * 		å¦‚jspé¡µé¢ä½¿ç”¨ pageContext.setAttribute("path", pathValue);
 	 * 				<woo:navegator name="goodsDataSet" path="${path}" type="pnfl"/>
 	 */
 	public void setPath(String path) {
@@ -142,26 +142,26 @@ public class NavigatorTag extends TagSupport {
 	public int doStartTag() throws JspException {  
     	Object obj=null;
     	
-    	//1¡£¸ù¾İNameÊôĞÔ£¬»ñÈ¡¶ÔÏó¡£
+    	//1ã€‚æ ¹æ®Nameå±æ€§ï¼Œè·å–å¯¹è±¡ã€‚
     	if(this.scope == null){
-    		// Èç¹ûÃ»ÓĞÉÏ²ã±êÇ©£¬´ÓÉèÖÃµÄ²ÎÊıÖĞÈ¡¡£
+    		// å¦‚æœæ²¡æœ‰ä¸Šå±‚æ ‡ç­¾ï¼Œä»è®¾ç½®çš„å‚æ•°ä¸­å–ã€‚
     		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
     		obj=request.getAttribute( this.getName() );
     	} else if (this.scope.equals("session")){
-    		// µ½sessionÈ¡¡£
+    		// åˆ°sessionå–ã€‚
     		obj=pageContext.getSession().getAttribute(this.getName());
     	} else if (this.scope.equals("page")){
-    		// Èç¹ûÓĞÉÏ²ã±êÇ©£¬´ÓÉÏ²ã±êÇ©È¡¡£
+    		// å¦‚æœæœ‰ä¸Šå±‚æ ‡ç­¾ï¼Œä»ä¸Šå±‚æ ‡ç­¾å–ã€‚
     		obj=pageContext.getAttribute(this.getName());
     	} else {
-    		// Èç¹ûÃ»ÓĞÉÏ²ã±êÇ©£¬´ÓÉèÖÃµÄ²ÎÊıÖĞÈ¡¡£
+    		// å¦‚æœæ²¡æœ‰ä¸Šå±‚æ ‡ç­¾ï¼Œä»è®¾ç½®çš„å‚æ•°ä¸­å–ã€‚
     		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
     		obj=request.getAttribute( this.getName() );
     	}
     	
         String val="";
-        // ¸ù¾İµ¼º½ÀàĞÍ£¬µ÷ÓÃ¶ÔÏóÏàÓ¦µÄµ¼º½·½·¨¡£  path/commandName ²ÎÊı¶¼·ÅÈëµ¼º½Æ÷ÁË£¬
-        // ²»·ÅÔÚjsp£¬¶øÊÇ·ÅÔÚactionÖĞÉèÖÃ¡£
+        // æ ¹æ®å¯¼èˆªç±»å‹ï¼Œè°ƒç”¨å¯¹è±¡ç›¸åº”çš„å¯¼èˆªæ–¹æ³•ã€‚  path/commandName å‚æ•°éƒ½æ”¾å…¥å¯¼èˆªå™¨äº†ï¼Œ
+        // ä¸æ”¾åœ¨jspï¼Œè€Œæ˜¯æ”¾åœ¨actionä¸­è®¾ç½®ã€‚
         if(obj!=null && obj instanceof Navigator ){
         	if(this.getType().equals("pnfl")){
         		val = ((Navigator)obj).getPagesPnfl( );

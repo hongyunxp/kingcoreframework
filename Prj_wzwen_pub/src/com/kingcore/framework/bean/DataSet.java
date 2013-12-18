@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 
 /**
- * <p>Êı¾İ¼¯ºÏ£¬ÊÇRowSet½Ó¿ÚµÄ¼ò»¯½Ó¿Ú¡£·½·¨ÍêÈ«°´ÕÕResutSetÉè¼Æ£¬·½±ãÊ¹ÓÃ¡£</p>
+ * <p>æ•°æ®é›†åˆï¼Œæ˜¯RowSetæ¥å£çš„ç®€åŒ–æ¥å£ã€‚æ–¹æ³•å®Œå…¨æŒ‰ç…§ResutSetè®¾è®¡ï¼Œæ–¹ä¾¿ä½¿ç”¨ã€‚</p>
  * @author Zeven on 2006-6-29
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -47,32 +47,32 @@ public interface DataSet {
 	public boolean next() throws SQLException;
 
 	/**
-	 * »ñµÃµ±Ç°ĞĞºÅ
+	 * è·å¾—å½“å‰è¡Œå·
 	 * @return int
 	 */
 	public int getRow()  throws SQLException;
 	/**
-	 *	·µ»Ø×ÜµÄĞĞÊı
+	 *	è¿”å›æ€»çš„è¡Œæ•°
 	 */
 	public int size();
 	
 	
 	/**
-	 *	BigDecimal µÄgeter ·½·¨¡£
+	 *	BigDecimal çš„geter æ–¹æ³•ã€‚
 	 */
 	public BigDecimal getBigDecimal( int colNum ) throws SQLException;
 	
 	public BigDecimal getBigDecimal( String colName ) throws SQLException;
 	
 	/**
-	 *	Blob µÄgeter ·½·¨¡£
+	 *	Blob çš„geter æ–¹æ³•ã€‚
 	 */
 	public Blob getBlob( int colNum) throws SQLException;
 	
 	public Blob getBlob( String colName ) throws SQLException;
 	
 	/**
-	 *	Boolean µÄgeter ·½·¨¡£
+	 *	Boolean çš„geter æ–¹æ³•ã€‚
 	 */
 	public boolean getBoolean( int colNum) throws SQLException;
 	
@@ -80,20 +80,20 @@ public interface DataSet {
 	
 	
 	/**
-	 *	Byte µÄgeter ·½·¨¡£
+	 *	Byte çš„geter æ–¹æ³•ã€‚
 	 */
 	public byte getByte( int colNum ) throws SQLException;
 	public byte getByte ( String colName ) throws SQLException;
 	
 	
 	/**
-	 *	Byte[] µÄgeter ·½·¨¡£
+	 *	Byte[] çš„geter æ–¹æ³•ã€‚
 	 */
 	public byte[] getBytes( int colNum ) throws SQLException;
 	public byte[] getBytes( String colName )  throws SQLException;
 	
 	/**
-	 *	CharacterStream µÄgeter ·½·¨¡£
+	 *	CharacterStream çš„geter æ–¹æ³•ã€‚
 	 
 	 public CharacterStream getCharacterStream( int colNum)
 	 {
@@ -108,80 +108,80 @@ public interface DataSet {
 	
 	
 	/**
-	 *	Clob µÄgeter ·½·¨¡£
+	 *	Clob çš„geter æ–¹æ³•ã€‚
 	 */
 	public Clob getClob( int colNum) throws SQLException;
 	public Clob getClob ( String colName)  throws SQLException;
 	
 	/**
-	 *	Date µÄgeter ·½·¨¡£
+	 *	Date çš„geter æ–¹æ³•ã€‚
 	 */
 	public Date getDate( int colNum) throws SQLException;
 	
 	public Date getDate( String colName) throws SQLException;
 	
 	/**
-	 *	Double µÄgeter ·½·¨¡£
+	 *	Double çš„geter æ–¹æ³•ã€‚
 	 */
 	public double getDouble( int colNum ) throws SQLException;
 	public double getDouble( String colName ) throws SQLException;
 	
 	/**
-	 *	Double µÄgeter ·½·¨¡£
+	 *	Double çš„geter æ–¹æ³•ã€‚
 	 */
 	public float getFloat( int colNum) throws SQLException;
 	public float getFloat( String colName) throws SQLException;
 	
 	/**
-	 *	Integer µÄgeter ·½·¨¡£
+	 *	Integer çš„geter æ–¹æ³•ã€‚
 	 */
 	public int getInt( int colNum) throws SQLException;
 	public int getInt( String colName) throws SQLException;
 	
 	/**
-	 *	Long µÄgeter ·½·¨¡£
+	 *	Long çš„geter æ–¹æ³•ã€‚
 	 */
 	public long getLong( int colNum ) throws SQLException;
 	public long getLong( String colName ) throws SQLException;
 	
 	/**
-	 *	Object µÄgeter ·½·¨¡£
+	 *	Object çš„geter æ–¹æ³•ã€‚
 	 */
 	public Object getObject( int colNum) throws SQLException;
 	public Object getObject( String colName)  throws SQLException;
 	
 	/**
-	 *	³éÏóµÄ µÄgeter ·½·¨¡£
+	 *	æŠ½è±¡çš„ çš„geter æ–¹æ³•ã€‚
 	 */
 //	public Object get( int colNum) throws SQLException;
 //	public Object get( String colName)  throws SQLException;
 	
 	
 	/**
-	 *	Short µÄgeter ·½·¨¡£
+	 *	Short çš„geter æ–¹æ³•ã€‚
 	 */
 	public short getShort( int colNum ) throws SQLException;
 	public short getShort( String colName )  throws SQLException;
 	
 	/**
-	 *	String µÄgeter ·½·¨¡£
+	 *	String çš„geter æ–¹æ³•ã€‚
 	 */
 	public String getString( int colNum) throws SQLException;
 	public String getString( String colName ) throws SQLException;
 	
 	/**
-	 *	Time µÄgeter ·½·¨¡£
+	 *	Time çš„geter æ–¹æ³•ã€‚
 	 */
 	public Time getTime( int colNum ) throws SQLException;
 	public Time getTime( String colName ) throws SQLException;
 	
 	/**
-	 *	Timestamp µÄgeter ·½·¨¡£
+	 *	Timestamp çš„geter æ–¹æ³•ã€‚
 	 */
 	public Timestamp getTimestamp( int colNum ) throws SQLException;	
 	public Timestamp getTimestamp( String colName ) throws SQLException;
 	
-	//ËµÃ÷£ºÆäËûµÄget·½·¨ĞèÒªÔÙÌí¼Ó¡£
+	//è¯´æ˜ï¼šå…¶ä»–çš„getæ–¹æ³•éœ€è¦å†æ·»åŠ ã€‚
 	
 	// ---------------------------------------------------- 2007-07-25
 	

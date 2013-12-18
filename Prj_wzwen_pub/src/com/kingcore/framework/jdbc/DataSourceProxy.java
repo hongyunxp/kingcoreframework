@@ -19,7 +19,7 @@ import com.kingcore.framework.context.DatabaseManager;
 
 
 /**
- * <p>java类文件的说明...</p>
+ * <p>java绫绘枃浠剁殑璇存槑...</p>
  * @author Zeven on Jul 30, 2011
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -30,7 +30,7 @@ import com.kingcore.framework.context.DatabaseManager;
 
 public class DataSourceProxy {
 
-	private DataSource dataSource = null; //第三方提供的dataSource，这里进一步封装以对应databaseManager
+	private DataSource dataSource = null; //绗笁鏂规彁渚涚殑dataSource锛岃繖閲岃繘涓�姝ュ皝瑁呬互瀵瑰簲databaseManager
 	private DatabaseManager databaseManager = null;
 	
 	/**

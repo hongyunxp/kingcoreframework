@@ -21,8 +21,8 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import wzw.sql.ResultSetConverter;
 
 /**
- * <p>½«ResuletSet×ªÎªÏàÓ¦µÄjava bean¶ÔÏó£¬Õë¶ÔÒ»ĞĞNÁĞ£¬ÄÚ²¿»áÔËĞĞrs.next()·½·¨¡£
- *    ÊµÏÖResultSetExtractorÊÇÎªÁËDaoJdbcSpringImplµÄĞèÒª¡£
+ * <p>å°†ResuletSetè½¬ä¸ºç›¸åº”çš„java beanå¯¹è±¡ï¼Œé’ˆå¯¹ä¸€è¡ŒNåˆ—ï¼Œå†…éƒ¨ä¼šè¿è¡Œrs.next()æ–¹æ³•ã€‚
+ *    å®ç°ResultSetExtractoræ˜¯ä¸ºäº†DaoJdbcSpringImplçš„éœ€è¦ã€‚
  * </p>
  * @author Zeven on 2008-11-6
  * @version	1.0
@@ -46,8 +46,8 @@ public class PlainResultSetBeanExtractor implements ResultSetBeanExtractor, Resu
 		}
 	}
 	
-	private Class<?> beanObject = null;		// BeanµÄÀàÀàĞÍ
-	private boolean isList = false;		// ÊÇ·µ»ØBean,»¹ÊÇ·µ»ØList<Bean>
+	private Class<?> beanObject = null;		// Beançš„ç±»ç±»å‹
+	private boolean isList = false;		// æ˜¯è¿”å›Bean,è¿˜æ˜¯è¿”å›List<Bean>
 
 	public PlainResultSetBeanExtractor() {
 	}

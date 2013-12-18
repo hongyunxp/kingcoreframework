@@ -23,14 +23,14 @@ import com.kingcore.framework.jdbc.PlainConnection;
 
 
 /**
- * <p>¶ÔÓÚ¶à¸öÊı¾İ¿âÁª½ÓDataSourceµÄ¹ÜÀí¶ÔÏó£¬¹ÜÀíËùÓĞµÄDataSource£¬²¢ÇÒÓĞÄ¬ÈÏµÄDataSourceÃû×Ö¡£
- * 			²ÉÓÃ×¢Èë·½Ê½(½áºÏÊ¹ÓÃPlainDataSourceProvider ÓëÆäËû¶ÀÁ¢µÄDataSource bean. ÕâÑùµÄºÃ´¦ÊÇ²»ÓÃÅäÖÃ·şÎñÆ÷µÄjndi)£º
+ * <p>å¯¹äºå¤šä¸ªæ•°æ®åº“è”æ¥DataSourceçš„ç®¡ç†å¯¹è±¡ï¼Œç®¡ç†æ‰€æœ‰çš„DataSourceï¼Œå¹¶ä¸”æœ‰é»˜è®¤çš„DataSourceåå­—ã€‚
+ * 			é‡‡ç”¨æ³¨å…¥æ–¹å¼(ç»“åˆä½¿ç”¨PlainDataSourceProvider ä¸å…¶ä»–ç‹¬ç«‹çš„DataSource bean. è¿™æ ·çš„å¥½å¤„æ˜¯ä¸ç”¨é…ç½®æœåŠ¡å™¨çš„jndi)ï¼š
  * 
- *    Ìá¹©DataSourceµÄ¶ÔÏóĞèÒªÊµÏÖµÄ½Ó¿Ú¡£
- *    ÌØµã£º> *Ìá¹©¶àÊı¾İÔ´(DataSouce)£»
- *    	   > *Ìá¹©Ä¬ÈÏµÄDataSource£¬²»ĞèÒªÃ¿¸öDao¶ÔÏó¶¼×¢Èë/ÉèÖÃDataSource£¬ÉèÖÃDataSourceProvider¼´¿É£»
- *    	   > ¶àÊı¾İÔ´¿ÉÒÔÊÇ²»Í¬ÀàĞÍµÄ£¬
- *    		±ÈÈç¶àÊı¾İÔ´ÓĞµÄ²ÉÓÃ·şÎñÆ÷µÄjndiÌá¹©¡¢ÓĞµÄ²ÉÓÃSpring¹ÜÀíµÄbeanÌá¹©£»»òÕß¶¼²ÉÓÃConnectionManagerÌá¹©¡£</p>
+ *    æä¾›DataSourceçš„å¯¹è±¡éœ€è¦å®ç°çš„æ¥å£ã€‚
+ *    ç‰¹ç‚¹ï¼š> *æä¾›å¤šæ•°æ®æº(DataSouce)ï¼›
+ *    	   > *æä¾›é»˜è®¤çš„DataSourceï¼Œä¸éœ€è¦æ¯ä¸ªDaoå¯¹è±¡éƒ½æ³¨å…¥/è®¾ç½®DataSourceï¼Œè®¾ç½®DataSourceProviderå³å¯ï¼›
+ *    	   > å¤šæ•°æ®æºå¯ä»¥æ˜¯ä¸åŒç±»å‹çš„ï¼Œ
+ *    		æ¯”å¦‚å¤šæ•°æ®æºæœ‰çš„é‡‡ç”¨æœåŠ¡å™¨çš„jndiæä¾›ã€æœ‰çš„é‡‡ç”¨Springç®¡ç†çš„beanæä¾›ï¼›æˆ–è€…éƒ½é‡‡ç”¨ConnectionManageræä¾›ã€‚</p>
  *    
  * 		<!-- Construct DataSourceProvider -->
  * 		<bean id="dataSourceProvider" class="com.kingcore.framework.context.PlainDataSourceProvider">
@@ -67,15 +67,15 @@ import com.kingcore.framework.jdbc.PlainConnection;
  *			<property name="password" value="root"></property> 
  *		</bean> 
  * 
- * 	×Ü½áÈıÖÖÅäÖÃ·½Ê½£º
- * 		1¡£Ö±½ÓÊ¹ÓÃwebÈİÆ÷µÄjndi·½Ê½£¬ÔÚspringÖĞÖ»ĞèÒªÅäÖÃÒ»¸ö dataSourceProvider ¼´¿É£¬ÆäËüÃ¿¸ödataSource¶ÔÏóÔÚ server.xml, web.xml ÖĞÅäÖÃ£¬
- * 						--- Ö÷ÒªÓÃÓÚÊ¹ÓÃjndi»ñÈ¡dataSourceµÄÇé¿ö£»
- * 		2¡£Ê¹ÓÃ DataSourceManager ·½Ê½£¬ÔÚspringÖĞÖ»ĞèÒªÅäÖÃÒ»¸ö dataSourceProvider ¼´¿É£¬ÆäËüÃ¿¸ödataSource¶ÔÏóÔÚ db.property ÖĞÅäÖÃ£¬
- * 						--- Ö÷ÒªÓÃÓÚÊ¹ÓÃ com.kingcore.framework.jdbc.DataSourceManager À´µ÷ÊÔ£¬²¢ÇÒÅäÖÃ¼òµ¥£»
- * 		3¡£Ê¹ÓÃ PlainDataSourceProvider ·½Ê½£¬ÔÚspringÖĞÖ»ĞèÒªÅäÖÃÒ»¸ö dataSourceProvider¡¢Ò»¸ödataSourceMap£¬
- * 						--- ÆäËü¾ßÌåÃ¿¸ödataSourceÒ²ÊÇÔÚspringÖĞÅäÖÃ£¬ÓÃÓÚÕûºÏ¸÷ÖÖÏÖÓĞµÄdataSource bean¶ÔÏó 
- * 							//Zeven:ËÆºõÓĞµã¶à´ËÒ»¾Ù£¬ÎªÊ²Ã´²»Ö±½ÓÊ¹ÓÃspringµÄgetBean£¿ÎªÊ²Ã´¶àÒ»²ãbeanÖ®ÉÏµÄdataSource bean¸ÅÄî£¿ÓĞÒâÒåÃ´£»
- * 							//Ç¿ÁÒ½¨ÒéÊ¹ÓÃ PlainDataSourceProvider ·½Ê½ÅäÖÃ¡£
+ * 	æ€»ç»“ä¸‰ç§é…ç½®æ–¹å¼ï¼š
+ * 		1ã€‚ç›´æ¥ä½¿ç”¨webå®¹å™¨çš„jndiæ–¹å¼ï¼Œåœ¨springä¸­åªéœ€è¦é…ç½®ä¸€ä¸ª dataSourceProvider å³å¯ï¼Œå…¶å®ƒæ¯ä¸ªdataSourceå¯¹è±¡åœ¨ server.xml, web.xml ä¸­é…ç½®ï¼Œ
+ * 						--- ä¸»è¦ç”¨äºä½¿ç”¨jndiè·å–dataSourceçš„æƒ…å†µï¼›
+ * 		2ã€‚ä½¿ç”¨ DataSourceManager æ–¹å¼ï¼Œåœ¨springä¸­åªéœ€è¦é…ç½®ä¸€ä¸ª dataSourceProvider å³å¯ï¼Œå…¶å®ƒæ¯ä¸ªdataSourceå¯¹è±¡åœ¨ db.property ä¸­é…ç½®ï¼Œ
+ * 						--- ä¸»è¦ç”¨äºä½¿ç”¨ com.kingcore.framework.jdbc.DataSourceManager æ¥è°ƒè¯•ï¼Œå¹¶ä¸”é…ç½®ç®€å•ï¼›
+ * 		3ã€‚ä½¿ç”¨ PlainDataSourceProvider æ–¹å¼ï¼Œåœ¨springä¸­åªéœ€è¦é…ç½®ä¸€ä¸ª dataSourceProviderã€ä¸€ä¸ªdataSourceMapï¼Œ
+ * 						--- å…¶å®ƒå…·ä½“æ¯ä¸ªdataSourceä¹Ÿæ˜¯åœ¨springä¸­é…ç½®ï¼Œç”¨äºæ•´åˆå„ç§ç°æœ‰çš„dataSource beanå¯¹è±¡ 
+ * 							//Zeven:ä¼¼ä¹æœ‰ç‚¹å¤šæ­¤ä¸€ä¸¾ï¼Œä¸ºä»€ä¹ˆä¸ç›´æ¥ä½¿ç”¨springçš„getBeanï¼Ÿä¸ºä»€ä¹ˆå¤šä¸€å±‚beanä¹‹ä¸Šçš„dataSource beanæ¦‚å¿µï¼Ÿæœ‰æ„ä¹‰ä¹ˆï¼›
+ * 							//å¼ºçƒˆå»ºè®®ä½¿ç”¨ PlainDataSourceProvider æ–¹å¼é…ç½®ã€‚
  * 
  * </p>
  * 
@@ -95,8 +95,8 @@ public class PlainDataSourceManager implements DataSourceManager {
 
 	
 	/* (non-Javadoc)
-	 *   ÕâÀïÊµ¼Ê·µ»ØµÄÊÇÒ»¸ö´øÓĞdataSourceÒıÓÃµÄConnection
-	 *   Ã¿¸öDataSource¶ÔÓ¦Ò»¸öDatabaseManager¡£
+	 *   è¿™é‡Œå®é™…è¿”å›çš„æ˜¯ä¸€ä¸ªå¸¦æœ‰dataSourceå¼•ç”¨çš„Connection
+	 *   æ¯ä¸ªDataSourceå¯¹åº”ä¸€ä¸ªDatabaseManagerã€‚
 	 * @see com.kingcore.framework.context.DataSourceProvider#getConnection(java.lang.String)
 	 */
 	public Connection getConnection(String dataSourceName) throws SQLException {

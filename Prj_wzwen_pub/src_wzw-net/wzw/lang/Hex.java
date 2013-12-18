@@ -8,16 +8,16 @@ import java.io.UnsupportedEncodingException;
 import org.apache.commons.codec.DecoderException;
 
 /**
- * <p>Hex ±àÂë¡¢½âÂëÊµÏÖ¡£ 
- *    ³£ÓÃµÄ·½Ê½ÊÇ£º
- *    		ÔÚ¿Í»§¶Ë²ÉÓÃ js/Java ¶ÔÌá½»url²ÎÊı½øĞĞ Hex ±àÂë£»
- *    		ÔÚ·şÎñÆ÷¶Ë²ÉÓÃ Java ¶Ô»ñÈ¡µÄ²ÎÊı½øĞĞ Hex ½âÂë£»
+ * <p>Hex ç¼–ç ã€è§£ç å®ç°ã€‚ 
+ *    å¸¸ç”¨çš„æ–¹å¼æ˜¯ï¼š
+ *    		åœ¨å®¢æˆ·ç«¯é‡‡ç”¨ js/Java å¯¹æäº¤urlå‚æ•°è¿›è¡Œ Hex ç¼–ç ï¼›
+ *    		åœ¨æœåŠ¡å™¨ç«¯é‡‡ç”¨ Java å¯¹è·å–çš„å‚æ•°è¿›è¡Œ Hex è§£ç ï¼›
  *    
- * 	²Î¿¼ÁĞ±í£º
+ * 	å‚è€ƒåˆ—è¡¨ï¼š
  * 		org.apache.commons.codec.* 
  * 
- *     ¶ÔÓ¦ÓĞ js µÄÊµÏÖ£¬
- * 		²Î¿¼¡°E:\Work_Java\apps_src\prj_vangv\vcmarket\manager\note_dhtml\js_util_Hex.html¡±¡£</p>
+ *     å¯¹åº”æœ‰ js çš„å®ç°ï¼Œ
+ * 		å‚è€ƒâ€œE:\Work_Java\apps_src\prj_vangv\vcmarket\manager\note_dhtml\js_util_Hex.htmlâ€ã€‚</p>
  *
  * @author Zeven
  * 
@@ -25,22 +25,22 @@ import org.apache.commons.codec.DecoderException;
  * <pre>
  * 
  * 
-		String stest = "ÖĞÎÄ1234 abcd[]()<+>,.~\\";
+		String stest = "ä¸­æ–‡1234 abcd[]()<+>,.~\\";
 		System.out.println(stest); 
-		System.out.println("------------------------ ÏµÍ³Ä¬ÈÏµÄ±àÂë");
+		System.out.println("------------------------ ç³»ç»Ÿé»˜è®¤çš„ç¼–ç ");
 		System.out.println(encode( stest.getBytes() ));
 		System.out.println( new String( decode( "d6d0cec43132333420616263645b5d28293c2b3e2c2e7e5c" ) ) );
 
-		System.out.println("------------------------ ÏµÍ³ gbk ±àÂë");
+		System.out.println("------------------------ ç³»ç»Ÿ gbk ç¼–ç ");
 		System.out.println(encode( stest.getBytes("gbk") ));
 		System.out.println( new String( decode( "d6d0cec43132333420616263645b5d28293c2b3e2c2e7e5c" ), "gbk" ) );
 		
-		System.out.println("------------------------ ÏµÍ³ utf-8 ±àÂë");
+		System.out.println("------------------------ ç³»ç»Ÿ utf-8 ç¼–ç ");
 		System.out.println(encode( stest.getBytes("utf-8") ));
 		System.out.println( new String( decode( "e4b8ade696873132333420616263645b5d28293c2b3e2c2e7e5c" ), "utf-8" ) );
 		
-		System.out.println("------------------------ ²ÉÓÃ Apache µÄ codec");
-		stest = "ÖĞÎÄ1234 abcd[]()<+>,.~\\";
+		System.out.println("------------------------ é‡‡ç”¨ Apache çš„ codec");
+		stest = "ä¸­æ–‡1234 abcd[]()<+>,.~\\";
 		System.out.println( 
 			org.apache.commons.codec.binary.Hex.encodeHex( stest.getBytes() ) );
 		System.out.println(
@@ -55,7 +55,7 @@ import org.apache.commons.codec.DecoderException;
 public class Hex {
 
 	/*
-	 * wzw: ²ÉÓÃapache-commons£¬²»Ê¹ÓÃÏÂÃæµÄ
+	 * wzw: é‡‡ç”¨apache-commonsï¼Œä¸ä½¿ç”¨ä¸‹é¢çš„
 	 private final static String[] hex = { "00", "01", "02", "03", "04", "05",
 		"06", "07", "08", "09", "0A", "0B", "0C", "0D", "0E", "0F", "10",
 		"11", "12", "13", "14", "15", "16", "17", "18", "19", "1A", "1B",
@@ -108,7 +108,7 @@ public class Hex {
 	 	*/
 	
 	/**
-	 * ±àÂë
+	 * ç¼–ç 
 	 * 
 	 * @param s
 	 * @return
@@ -147,7 +147,7 @@ public class Hex {
 	}
 
 	/**
-	 * ½âÂë ËµÃ÷£º±¾·½·¨±£Ö¤ ²»ÂÛ²ÎÊısÊÇ·ñ¾­¹ıescape()±àÂë£¬¾ùÄÜµÃµ½ÕıÈ·µÄ¡°½âÂë¡±½á¹û
+	 * è§£ç  è¯´æ˜ï¼šæœ¬æ–¹æ³•ä¿è¯ ä¸è®ºå‚æ•°sæ˜¯å¦ç»è¿‡escape()ç¼–ç ï¼Œå‡èƒ½å¾—åˆ°æ­£ç¡®çš„â€œè§£ç â€ç»“æœ
 	 * 
 	 * @param s
 	 * @return
@@ -186,7 +186,7 @@ public class Hex {
 //					i += 5;
 //				}
 //				sbuf.append((char) cint);
-//			} else { // ¶ÔÓ¦µÄ×Ö·ûÎ´¾­¹ı±àÂë
+//			} else { // å¯¹åº”çš„å­—ç¬¦æœªç»è¿‡ç¼–ç 
 //				sbuf.append((char) ch);
 //			}
 //			i++;
@@ -196,30 +196,30 @@ public class Hex {
 
 	
 	/**
-	 * Text¡£
-	 *   By Zeven¡£
+	 * Textã€‚
+	 *   By Zevenã€‚
 	 * @param args
 	 * @throws DecoderException
 	 * @throws UnsupportedEncodingException
 	 */
 	public static void main(String[] args) throws DecoderException, UnsupportedEncodingException {
 		
-		String stest = "ÖĞÎÄ";
+		String stest = "ä¸­æ–‡";
 		System.out.println(stest); 
-		System.out.println("------------------------ ÏµÍ³Ä¬ÈÏµÄ±àÂë");
+		System.out.println("------------------------ ç³»ç»Ÿé»˜è®¤çš„ç¼–ç ");
 		System.out.println(encode( stest.getBytes() ));
 		System.out.println( new String( decode( "d6d0cec43132333420616263645b5d28293c2b3e2c2e7e5c" ) ) );
 
-		System.out.println("------------------------ ÏµÍ³ gbk ±àÂë");
+		System.out.println("------------------------ ç³»ç»Ÿ gbk ç¼–ç ");
 		System.out.println(encode( stest.getBytes("gbk") ));
 		System.out.println( new String( decode( "d6d0cec43132333420616263645b5d28293c2b3e2c2e7e5c" ), "gbk" ) );
 		
-		System.out.println("------------------------ ÏµÍ³ utf-8 ±àÂë");
+		System.out.println("------------------------ ç³»ç»Ÿ utf-8 ç¼–ç ");
 		System.out.println(encode( stest.getBytes("utf-8") ));
 		System.out.println( new String( decode( "e4b8ade696873132333420616263645b5d28293c2b3e2c2e7e5c" ), "utf-8" ) );
 		
-		System.out.println("------------------------ ²ÉÓÃ Apache µÄ codec");
-		stest = "ÖĞÎÄ1234 abcd[]()<+>,.~\\";
+		System.out.println("------------------------ é‡‡ç”¨ Apache çš„ codec");
+		stest = "ä¸­æ–‡1234 abcd[]()<+>,.~\\";
 		System.out.println( 
 			org.apache.commons.codec.binary.Hex.encodeHex( stest.getBytes() ) );
 		System.out.println(

@@ -21,7 +21,7 @@ import com.kingcore.framework.base.dao.DaoOrm;
 
 /**
  * <p>java data access object  iBATIS implements.
- * 		Ê¹ÓÃ apache iBATIS À´ÊµÏÖ dao ²ã¡£
+ * 		ä½¿ç”¨ apache iBATIS æ¥å®ç° dao å±‚ã€‚
  * </p>
  * @author Zeven on 2008-11-13
  * @version	1.0

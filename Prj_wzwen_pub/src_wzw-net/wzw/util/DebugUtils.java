@@ -21,7 +21,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 /**
- * <p>¿ØÖÆÌ¨Êä³öÀà£¬ÓÃÓÚµ÷ÊÔ¸÷ÖÖÊä³öĞÅÏ¢¡£</p>
+ * <p>æ§åˆ¶å°è¾“å‡ºç±»ï¼Œç”¨äºè°ƒè¯•å„ç§è¾“å‡ºä¿¡æ¯ã€‚</p>
  * @author Zeven on 2008-1-29
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -134,11 +134,11 @@ public class DebugUtils {
 		return getCallTrace(99);
 	}
 	/**
-	 * Õ¹Ê¾µ÷ÓÃÂ·¾¶
+	 * å±•ç¤ºè°ƒç”¨è·¯å¾„
 	 */
 	public static String getCallTrace(int maxdepth)
     {
-      String stack="µ÷ÓÃÂ·¾¶£º\n";
+      String stack="è°ƒç”¨è·¯å¾„ï¼š\n";
       StackTraceElement[] trace = new Exception().getStackTrace();
       for (int i = 1; i < Math.min(maxdepth + 1, trace.length); i++)
       {

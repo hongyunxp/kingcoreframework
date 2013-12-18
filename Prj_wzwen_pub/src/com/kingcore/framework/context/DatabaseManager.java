@@ -19,7 +19,7 @@ import java.util.HashMap;
 import javax.sql.RowSet;
 
 /**
- * <p> Êı¾İ¿â¹ÜÀíÏµÍ³Ìá¹©ÕßÌØÊâµÄ²Ù×÷ĞèÒªÊµÏÖµÄ½Ó¿Ú¡£</p>
+ * <p> æ•°æ®åº“ç®¡ç†ç³»ç»Ÿæä¾›è€…ç‰¹æ®Šçš„æ“ä½œéœ€è¦å®ç°çš„æ¥å£ã€‚</p>
  * @author Zeven on 2007-6-24
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -32,119 +32,119 @@ public interface DatabaseManager {
 	
 
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âµÄÌØÊâ¹æÔò¶ÔĞèÒª²åÈëµÄÄÚÈİ²ÉÓÃÕıÔò±í´ïÊ½×öÌØÊâ´¦Àí¡£
-	 * 		Õë¶Ô×Ö·û´®ÀàĞÍ(Varchar)£¬Êı×Ö(Number)¡¢ÈÕÆÚ(Date)ºÍ¶ş½øÖÆ(LOB)ÀàĞÍ²»ÓÃÕâ¸ö´¦Àí¡£
-	 * 		-- µ±Ç°ÊÇÕë¶Ô Oracle Êı¾İ¿â£¬½« ' ·ûºÅ Ìæ»»Îª '' £¬²ÅÄÜ²åÈëµ½Êı¾İ¿âÖĞ¡£
-	 * 		-- Õë¶Ô MySQLÊı¾İ¿â£¬"'","\"Á½¸ö¶¼ÊÇ×ªÒå×Ö·û£¬¶¼Òª±äÎª"\'","\\"
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“çš„ç‰¹æ®Šè§„åˆ™å¯¹éœ€è¦æ’å…¥çš„å†…å®¹é‡‡ç”¨æ­£åˆ™è¡¨è¾¾å¼åšç‰¹æ®Šå¤„ç†ã€‚
+	 * 		é’ˆå¯¹å­—ç¬¦ä¸²ç±»å‹(Varchar)ï¼Œæ•°å­—(Number)ã€æ—¥æœŸ(Date)å’ŒäºŒè¿›åˆ¶(LOB)ç±»å‹ä¸ç”¨è¿™ä¸ªå¤„ç†ã€‚
+	 * 		-- å½“å‰æ˜¯é’ˆå¯¹ Oracle æ•°æ®åº“ï¼Œå°† ' ç¬¦å· æ›¿æ¢ä¸º '' ï¼Œæ‰èƒ½æ’å…¥åˆ°æ•°æ®åº“ä¸­ã€‚
+	 * 		-- é’ˆå¯¹ MySQLæ•°æ®åº“ï¼Œ"'","\"ä¸¤ä¸ªéƒ½æ˜¯è½¬ä¹‰å­—ç¬¦ï¼Œéƒ½è¦å˜ä¸º"\'","\\"
 	 * <pre>
 	 * escape2Sql("ab'cd")			="ab''cd"
 	 * escape2Sql("ab'c'd")			="ab''c''d"
 	 * escape2Sql("ab''cd")			="ab''''cd"
 	 * </pre>
-	 * @param src ĞèÒª±£´æµ½Êı¾İ¿âµÄÒ»¸ö×Ö¶Î¡£
+	 * @param src éœ€è¦ä¿å­˜åˆ°æ•°æ®åº“çš„ä¸€ä¸ªå­—æ®µã€‚
 	 * @return
 	 */
 	public String escape2Sql(String val);
 	
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âÓï·¨£¬×ª»»¿ÉÄÜÎªnullµÄ±í´ïÊ½(·µ»ØsqlÆ¬¶Î)¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“è¯­æ³•ï¼Œè½¬æ¢å¯èƒ½ä¸ºnullçš„è¡¨è¾¾å¼(è¿”å›sqlç‰‡æ®µ)ã€‚
 	 * 
 	 * <pre>
 	 * 	
-	 * 		Oracle Êı¾İ¿â·µ»Ø nvl(exp1, exp2);
-	 * 		MySQL  Êı¾İ¿â·µ»Ø coalesce( exp1, exp2);
-	 * 		SQLServer  Êı¾İ¿â·µ»Ø isNull(exp1, exp2);
+	 * 		Oracle æ•°æ®åº“è¿”å› nvl(exp1, exp2);
+	 * 		MySQL  æ•°æ®åº“è¿”å› coalesce( exp1, exp2);
+	 * 		SQLServer  æ•°æ®åº“è¿”å› isNull(exp1, exp2);
 	 * </pre>
-	 * @param str1 ×Ö·û´®»òÕßÁĞÃû
-	 * @param str2 ×Ö·û´®»òÕßÁĞÃû
+	 * @param str1 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
+	 * @param str2 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
 	 * @return
 	 */
 	public String switchNull( String exp1, String exp2 );
 	
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âÓï·¨£¬·µ»ØÁ¬½ÓÁ½¸ö×Ö·û´®µÄsqlÆ¬¶Î¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“è¯­æ³•ï¼Œè¿”å›è¿æ¥ä¸¤ä¸ªå­—ç¬¦ä¸²çš„sqlç‰‡æ®µã€‚
 	 * 
 	 * <pre>
 	 * 	
-	 * 		Oracle Êı¾İ¿â·µ»Ø str1 +"||"+ str2;
+	 * 		Oracle æ•°æ®åº“è¿”å› str1 +"||"+ str2;
 	 * 			concat( userid, username) = userid||username;
 	 * 			concat( '001',  'admin' ) = '001'||'admin';
-	 * 		MySQL  Êı¾İ¿â·µ»Ø concat(str1, str2);
+	 * 		MySQL  æ•°æ®åº“è¿”å› concat(str1, str2);
 	 * 			concat( userid, username) = concat(userid,username);
 	 * 			concat( '001',  'admin' ) = concat('001' ,'admin');
-	 * 		SQLServer  Êı¾İ¿â·µ»Ø str1 +"+"+ str2;
+	 * 		SQLServer  æ•°æ®åº“è¿”å› str1 +"+"+ str2;
 	 * 			concat( userid, username) = userid + "+" + username);
 	 * 			concat( '001',  'admin' ) = '001' + "+" + 'admin');
 	 * </pre>
-	 * @param str1 ×Ö·û´®»òÕßÁĞÃû
-	 * @param str2 ×Ö·û´®»òÕßÁĞÃû
+	 * @param str1 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
+	 * @param str2 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
 	 * @return
 	 */
 	public String concat(String str1, String str2) ;
 	
 	/**
-	 * »ñÈ¡Î¨Ò»±êÊ¶·ûµÄ±í´ïÊ½(·µ»ØsqlÆ¬¶Î)¡£
-	 * Zeven on 2009-01-17: ±¾sqlÆ¬¶Î×îºÃÊÇ²»Ö§³ÖÊÂÎñµÄ£¬
-	 * 		±ÈÈçÊ¹ÓÃOracleµÄseq£¬MySqlµÄMyISAMÀàĞÍµÄ±í¼ÇÂ¼ĞòÁĞÖµ¡£ --ALTER TABLE `tsys_sequence` ENGINE=MYISAM;
-	 * 		Èç¹ûÎ»ÓÚÊÂÎñÖĞ£¬Ôò»á·¢Éú²¢·¢ÏÂËø±íÎÊÌâ¡£
+	 * è·å–å”¯ä¸€æ ‡è¯†ç¬¦çš„è¡¨è¾¾å¼(è¿”å›sqlç‰‡æ®µ)ã€‚
+	 * Zeven on 2009-01-17: æœ¬sqlç‰‡æ®µæœ€å¥½æ˜¯ä¸æ”¯æŒäº‹åŠ¡çš„ï¼Œ
+	 * 		æ¯”å¦‚ä½¿ç”¨Oracleçš„seqï¼ŒMySqlçš„MyISAMç±»å‹çš„è¡¨è®°å½•åºåˆ—å€¼ã€‚ --ALTER TABLE `tsys_sequence` ENGINE=MYISAM;
+	 * 		å¦‚æœä½äºäº‹åŠ¡ä¸­ï¼Œåˆ™ä¼šå‘ç”Ÿå¹¶å‘ä¸‹é”è¡¨é—®é¢˜ã€‚
 	 * @param tblName
 	 * @return
 	 */
 	public String identity(String tblName) ;
 	
 	/**
-	 * »ñÈ¡ÏµÍ³Ê±¼äµÄº¯Êı±í´ïÊ½(·µ»ØsqlÆ¬¶Î)¡£
+	 * è·å–ç³»ç»Ÿæ—¶é—´çš„å‡½æ•°è¡¨è¾¾å¼(è¿”å›sqlç‰‡æ®µ)ã€‚
 	 * @return
 	 */	
 	public String sysDatetime() ;
 	
 	/**
-	 * Ìá¹©½«ÈÕÆÚÊ±¼äÀàĞÍµÄÁĞ×ªÎª×Ö·ûÀàĞÍ·µ»ØµÄ·½·¨(·µ»ØsqlÆ¬¶Î)
+	 * æä¾›å°†æ—¥æœŸæ—¶é—´ç±»å‹çš„åˆ—è½¬ä¸ºå­—ç¬¦ç±»å‹è¿”å›çš„æ–¹æ³•(è¿”å›sqlç‰‡æ®µ)
 	 * @return
 	 */
 	
 	public String datetime2Char( String colName ) ;
 	
 	/**
-	 * Ìá¹©½²×Ö·ûÀàĞÍµÄÁĞ×ªÎªÈÕÆÚÊ±¼äÀàĞÍ·µ»ØµÄ·½·¨(·µ»ØsqlÆ¬¶Î)
+	 * æä¾›è®²å­—ç¬¦ç±»å‹çš„åˆ—è½¬ä¸ºæ—¥æœŸæ—¶é—´ç±»å‹è¿”å›çš„æ–¹æ³•(è¿”å›sqlç‰‡æ®µ)
 	 * @return
 	 */
 	public String char2Datetime( String colValue) ;
 	
 	/**
-	 * Ìá¹©½«ÈÕÆÚ(²»º¬Ê±¼ä)ÀàĞÍµÄÁĞ×ªÎª×Ö·ûÀàĞÍ·µ»ØµÄ·½·¨(·µ»ØsqlÆ¬¶Î)
+	 * æä¾›å°†æ—¥æœŸ(ä¸å«æ—¶é—´)ç±»å‹çš„åˆ—è½¬ä¸ºå­—ç¬¦ç±»å‹è¿”å›çš„æ–¹æ³•(è¿”å›sqlç‰‡æ®µ)
 	 * @return
 	 */
 	public String date2Char( String colName ) ;
 	
 	/**
-	 * Ìá¹©½²×Ö·ûÀàĞÍµÄÁĞ×ªÎªÈÕÆÚ(²»º¬Ê±¼ä)ÀàĞÍ·µ»ØµÄ·½·¨(·µ»ØsqlÆ¬¶Î)
+	 * æä¾›è®²å­—ç¬¦ç±»å‹çš„åˆ—è½¬ä¸ºæ—¥æœŸ(ä¸å«æ—¶é—´)ç±»å‹è¿”å›çš„æ–¹æ³•(è¿”å›sqlç‰‡æ®µ)
 	 * @return
 	 */
 	public String char2Date( String colValue) ;
 
 	/**
-	 *  ¸ù¾İĞèÒª²éÑ¯µÄÄ³¶ÎÊı¾İĞĞ£¬°ü×°µ±Ç°µÄsql statement and return.
-	 * @param sql Ô­sql statement
-	 * @param offset ÆğÊ¼Î»ÖÃ
-	 * @param row_count ĞèÒª»ñÈ¡µÄĞĞÊı
-	 * @return °ü×°Ö®ºóµÄ sql statement
+	 *  æ ¹æ®éœ€è¦æŸ¥è¯¢çš„æŸæ®µæ•°æ®è¡Œï¼ŒåŒ…è£…å½“å‰çš„sql statement and return.
+	 * @param sql åŸsql statement
+	 * @param offset èµ·å§‹ä½ç½®
+	 * @param row_count éœ€è¦è·å–çš„è¡Œæ•°
+	 * @return åŒ…è£…ä¹‹åçš„ sql statement
 	 */
 	public String getSubResultSetSql(String sql, int offset, int row_count);
 
 	/**
-	 * <p>½« jdbc ÖĞµÄ ResultSet ¶ÔÏó×ª»¯Îª RowSet ¶ÔÏó¡£</p>
-	 * @param rs ĞèÒª×ªÎªRowSetµÄResultSet¶ÔÏó
-	 * @return RowSet¶ÔÏó
+	 * <p>å°† jdbc ä¸­çš„ ResultSet å¯¹è±¡è½¬åŒ–ä¸º RowSet å¯¹è±¡ã€‚</p>
+	 * @param rs éœ€è¦è½¬ä¸ºRowSetçš„ResultSetå¯¹è±¡
+	 * @return RowSetå¯¹è±¡
 	 * @throws SQLException
 	 */
 	public RowSet resultSet2RowSet(ResultSet rs) throws SQLException  ;
 
 	
 	/**
-	 * <p>Ã¿¸öÒ»°ã»áÓĞÒ»¸öÖ÷¼üPK£¬¸ù¾İ´«ÈëµÄÃû³Æ(Èç¸Ã±íµÄÃû³Æ)·µ»Øµ±Ç°¿ÉÓÃµÄĞòÁĞÖµ¡£
-	 * 		¶ÔÓÚOracle ¿ÉÒÔÊ¹ÓÃ½¨Á¢ĞòÁĞ¶ÔÏó£¬Ê¹ÓÃ seq_tblName.nextVal »ñÈ¡¡£
-	 * 		¶ÔÓÚÆäËûµÄÀàĞÍµÄÊı¾İ¿â£¬²ÉÓÃÏàÓ¦µÄÊÊºÏµÄ·½·¨¡£</p>
+	 * <p>æ¯ä¸ªä¸€èˆ¬ä¼šæœ‰ä¸€ä¸ªä¸»é”®PKï¼Œæ ¹æ®ä¼ å…¥çš„åç§°(å¦‚è¯¥è¡¨çš„åç§°)è¿”å›å½“å‰å¯ç”¨çš„åºåˆ—å€¼ã€‚
+	 * 		å¯¹äºOracle å¯ä»¥ä½¿ç”¨å»ºç«‹åºåˆ—å¯¹è±¡ï¼Œä½¿ç”¨ seq_tblName.nextVal è·å–ã€‚
+	 * 		å¯¹äºå…¶ä»–çš„ç±»å‹çš„æ•°æ®åº“ï¼Œé‡‡ç”¨ç›¸åº”çš„é€‚åˆçš„æ–¹æ³•ã€‚</p>
 	 * 
 	 * @param tblName
 	 * @return
@@ -154,21 +154,21 @@ public interface DatabaseManager {
 
 	
 	/** 
-	 * Ê¹ÓÃ×Ô¶¯Ôö³¤ÁĞ²åÈëÖ®ºó£¬»ñÈ¡¸Õ²Å²åÈëµÄidÖµ¡£
-	 *  ÊÇÕë¶Ô MSS, MySQL µÄÁíÍâÒ»ÖÖĞòÁĞ½â¾ö·½·¨¡£
+	 * ä½¿ç”¨è‡ªåŠ¨å¢é•¿åˆ—æ’å…¥ä¹‹åï¼Œè·å–åˆšæ‰æ’å…¥çš„idå€¼ã€‚
+	 *  æ˜¯é’ˆå¯¹ MSS, MySQL çš„å¦å¤–ä¸€ç§åºåˆ—è§£å†³æ–¹æ³•ã€‚
 	 *
 	 */
 	public int getLastInsertIdentity( Connection conn ) throws SQLException  ;
 
 
 	/**
-	 * ½«¶ş½øÖÆ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†äºŒè¿›åˆ¶å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   BLOB(Binary   Large   Object)   
-	 *     ¿ÉÓÃÀ´´æ´¢ÎŞ½á¹¹µÄ¶ş½øÖÆÊı¾İ¡££¨ÀàËÆÓÚrowºÍlong   row£©
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param strPath Òª·ÅÈëÊı¾İ¿âµÄÎÄ¼şµÄÈ«Â·¾¶£¬Èç "D:/upload/a.txt","D:\\upload\\a.txt"
+	 *     å¯ç”¨æ¥å­˜å‚¨æ— ç»“æ„çš„äºŒè¿›åˆ¶æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºrowå’Œlong   rowï¼‰
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param strPath è¦æ”¾å…¥æ•°æ®åº“çš„æ–‡ä»¶çš„å…¨è·¯å¾„ï¼Œå¦‚ "D:/upload/a.txt","D:\\upload\\a.txt"
 	 * @param conn
 	 * @return
 	 */	
@@ -180,13 +180,13 @@ public interface DatabaseManager {
 	
 
 	/**
-	 * ½«¶ş½øÖÆ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†äºŒè¿›åˆ¶å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   BLOB(Binary   Large   Object)   
-	 *     ¿ÉÓÃÀ´´æ´¢ÎŞ½á¹¹µÄ¶ş½øÖÆÊı¾İ¡££¨ÀàËÆÓÚrowºÍlong   row£©
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param strPath Òª·ÅÈëÊı¾İ¿âµÄÎÄ¼şµÄÈ«Â·¾¶£¬Èç "D:/upload/a.txt","D:\\upload\\a.txt"
+	 *     å¯ç”¨æ¥å­˜å‚¨æ— ç»“æ„çš„äºŒè¿›åˆ¶æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºrowå’Œlong   rowï¼‰
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param strPath è¦æ”¾å…¥æ•°æ®åº“çš„æ–‡ä»¶çš„å…¨è·¯å¾„ï¼Œå¦‚ "D:/upload/a.txt","D:\\upload\\a.txt"
 	 * @return
 	 */	
 	public  boolean  updateBlobColumn(String tablename,
@@ -196,14 +196,14 @@ public interface DatabaseManager {
 	
 
 	/**
-	 * ½«×Ö·ûĞÍ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†å­—ç¬¦å‹å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£©   
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰   
 	 *      
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param Content Òª·ÅÈëÊı¾İ¿âµÄÄÚÈİ
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param Content è¦æ”¾å…¥æ•°æ®åº“çš„å†…å®¹
 	 * @return
 	 */	
 	public boolean updateClobColumn(String tablename, 
@@ -212,15 +212,15 @@ public interface DatabaseManager {
 			   					String content) throws Exception;
 
 	/**
-	 * ½«×Ö·ûĞÍ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†å­—ç¬¦å‹å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£©   
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰   
 	 *      
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param Content Òª·ÅÈëÊı¾İ¿âµÄÄÚÈİ
-	 * @param conn ´¦ÀíÊı¾İÌá½»/»Ø¹öÊÂÎñ¿ØÖÆµÄ Connection¶ÔÏó£»
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param Content è¦æ”¾å…¥æ•°æ®åº“çš„å†…å®¹
+	 * @param conn å¤„ç†æ•°æ®æäº¤/å›æ»šäº‹åŠ¡æ§åˆ¶çš„ Connectionå¯¹è±¡ï¼›
 	 * @return
 	 */
 	public boolean updateClobColumn(String tablename, 
@@ -230,7 +230,7 @@ public interface DatabaseManager {
 				Connection conn) throws Exception;
 
 	/**
-	 * »ñÈ¡×Ö·ûĞÍ´ó¶ÔÏóµÄÄÚÈİ¡£
+	 * è·å–å­—ç¬¦å‹å¤§å¯¹è±¡çš„å†…å®¹ã€‚
 	 * @param sql
 	 * @return
 	 * @throws Exception

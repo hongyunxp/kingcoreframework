@@ -17,45 +17,45 @@ import java.util.HashMap;
 import org.apache.commons.codec.DecoderException;
 
 /**
- * <p>Base64 ±àÂë¡¢½âÂëÊµÏÖ¡£ 
- *    ³£ÓÃµÄ·½Ê½ÊÇ£º
- *    		ÔÚ¿Í»§¶Ë²ÉÓÃ js/Java ¶ÔÌá½»url²ÎÊı½øĞĞ Base64 ±àÂë£»
- *    		ÔÚ·şÎñÆ÷¶Ë²ÉÓÃ Java ¶Ô»ñÈ¡µÄ²ÎÊı½øĞĞ Base64 ½âÂë£»
+ * <p>Base64 ç¼–ç ã€è§£ç å®ç°ã€‚ 
+ *    å¸¸ç”¨çš„æ–¹å¼æ˜¯ï¼š
+ *    		åœ¨å®¢æˆ·ç«¯é‡‡ç”¨ js/Java å¯¹æäº¤urlå‚æ•°è¿›è¡Œ Base64 ç¼–ç ï¼›
+ *    		åœ¨æœåŠ¡å™¨ç«¯é‡‡ç”¨ Java å¯¹è·å–çš„å‚æ•°è¿›è¡Œ Base64 è§£ç ï¼›
  *    
- *     ¶ÔÓ¦ÓĞ js µÄÊµÏÖ£¬
- * 		²Î¿¼¡°E:\Work_Java\apps_src\prj_vangv\vcmarket\manager\note_dhtml\js_util_Base64.html¡±¡£</p>
+ *     å¯¹åº”æœ‰ js çš„å®ç°ï¼Œ
+ * 		å‚è€ƒâ€œE:\Work_Java\apps_src\prj_vangv\vcmarket\manager\note_dhtml\js_util_Base64.htmlâ€ã€‚</p>
  *
- * 	²Î¿¼ÁĞ±í£º
+ * 	å‚è€ƒåˆ—è¡¨ï¼š
  * 		org.apache.commons.codec.* 
  *
  * 
  * <pre>
-//		// ¸ù¾İ²Ù×÷ÏµÍ³µÄÄ¬ÈÏ±àÂë
-		System.out.println( "----------------------------------²Ù×÷ÏµÍ³µÄÄ¬ÈÏ±àÂë");
-		System.out.println( Base64.encode( "abcÖĞÎÄ-=\\/<>".getBytes()) );
-		System.out.println( new String(Base64.decode( "YWJj1tDOxC09XC88Pg==")) );  // ±ØĞëÒª new String£¬·ñÔòÊä³ö£º[B@480457
+//		// æ ¹æ®æ“ä½œç³»ç»Ÿçš„é»˜è®¤ç¼–ç 
+		System.out.println( "----------------------------------æ“ä½œç³»ç»Ÿçš„é»˜è®¤ç¼–ç ");
+		System.out.println( Base64.encode( "abcä¸­æ–‡-=\\/<>".getBytes()) );
+		System.out.println( new String(Base64.decode( "YWJj1tDOxC09XC88Pg==")) );  // å¿…é¡»è¦ new Stringï¼Œå¦åˆ™è¾“å‡ºï¼š[B@480457
 		
-//		// ¸ù¾İutf-8 ±àÂë
-		System.out.println( "----------------------------------²ÉÓÃutf-8 ±àÂë");
-		System.out.println( Base64.encode( "abcÖĞÎÄ-=\\/<>".getBytes("utf-8")) );
+//		// æ ¹æ®utf-8 ç¼–ç 
+		System.out.println( "----------------------------------é‡‡ç”¨utf-8 ç¼–ç ");
+		System.out.println( Base64.encode( "abcä¸­æ–‡-=\\/<>".getBytes("utf-8")) );
 		System.out.println( new String(Base64.decode( "YWJj5Lit5paHLT1cLzw+"), "utf-8") );
 
-//		// ¸ù¾İ gbk ±àÂë
-		System.out.println( "----------------------------------²ÉÓÃgbk ±àÂë");
-		System.out.println( Base64.encode( "abcÖĞÎÄ-=\\/<>".getBytes("gbk")) );
+//		// æ ¹æ® gbk ç¼–ç 
+		System.out.println( "----------------------------------é‡‡ç”¨gbk ç¼–ç ");
+		System.out.println( Base64.encode( "abcä¸­æ–‡-=\\/<>".getBytes("gbk")) );
 		System.out.println( new String(Base64.decode( "YWJj1tDOxC09XC88Pg=="), "gbk") );
 
-//		// ¸ù¾İµÚÈı·½Ìá¹©µÄ codec
-		System.out.println( "----------------------------------²ÉÓÃ apache.commons.codec");
+//		// æ ¹æ®ç¬¬ä¸‰æ–¹æä¾›çš„ codec
+		System.out.println( "----------------------------------é‡‡ç”¨ apache.commons.codec");
 		org.apache.commons.codec.binary.Base64 cb64 = 
 				new org.apache.commons.codec.binary.Base64();
 		
 		System.out.println( new String( 
-				org.apache.commons.codec.binary.Base64.encodeBase64( "abcÖĞÎÄ-=\\/<>".getBytes("gbk")) ) );
+				org.apache.commons.codec.binary.Base64.encodeBase64( "abcä¸­æ–‡-=\\/<>".getBytes("gbk")) ) );
 		System.out.println( new String( 
 				org.apache.commons.codec.binary.Base64.decodeBase64( "YWJj1tDOxC09XC88Pg==".getBytes()), "gbk") );
 		System.out.println( new String( 
-				org.apache.commons.codec.binary.Base64.encodeBase64( "abcÖĞÎÄ-=\\/<>".getBytes("utf-8")) ) );
+				org.apache.commons.codec.binary.Base64.encodeBase64( "abcä¸­æ–‡-=\\/<>".getBytes("utf-8")) ) );
 		System.out.println( new String( 
 				org.apache.commons.codec.binary.Base64.decodeBase64( "YWJj5Lit5paHLT1cLzw+".getBytes()), "utf-8") );
 		 
@@ -105,9 +105,9 @@ public class Base64 {
     	return org.apache.commons.codec.binary.Base64.encodeBase64( data );
     }
     /**
-     * ±àÂë¡£
-     * 	   ×¢Òâ£ºÊäÈëÖ®Ç°ÒÑ¾­È·¶¨ÁË±àÂë¸ñÊ½£¬ÊäÈë²ÎÊı data Óë±àÂëÎŞ¹Ø¡£
-     * @deprecated ²»¾ßÌåÖ¸¶¨×Ö·û¼¯¶øÒÀÀµÓÚ²Ù×÷ÏµÍ³£¬ÔÚ¶àÏµÍ³Ğ­×÷Çé¿öÏÂ»áÓĞÂÒÂëÎÊÌâ¡£ ÇëÊ¹ÓÃ public static byte[] encode2(byte[] data)
+     * ç¼–ç ã€‚
+     * 	   æ³¨æ„ï¼šè¾“å…¥ä¹‹å‰å·²ç»ç¡®å®šäº†ç¼–ç æ ¼å¼ï¼Œè¾“å…¥å‚æ•° data ä¸ç¼–ç æ— å…³ã€‚
+     * @deprecated ä¸å…·ä½“æŒ‡å®šå­—ç¬¦é›†è€Œä¾èµ–äºæ“ä½œç³»ç»Ÿï¼Œåœ¨å¤šç³»ç»Ÿåä½œæƒ…å†µä¸‹ä¼šæœ‰ä¹±ç é—®é¢˜ã€‚ è¯·ä½¿ç”¨ public static byte[] encode2(byte[] data)
      * @param data
      * @return
      */
@@ -164,10 +164,10 @@ public class Base64 {
 //  }
     
     /**
-     * ½âÂë¡£ 
-     *    ×¢Òâ£ºÊäÊä³öÄÚÈİÓë±àÂëÎŞ¹Ø,Êä³öÖ®Ö®ºóÔÙ±àÂë³ÉString ¶ÔÏó¡£
+     * è§£ç ã€‚ 
+     *    æ³¨æ„ï¼šè¾“è¾“å‡ºå†…å®¹ä¸ç¼–ç æ— å…³,è¾“å‡ºä¹‹ä¹‹åå†ç¼–ç æˆString å¯¹è±¡ã€‚
      *    // org.apache.commons.codec.binary.Base64.decodeBase64(passStr.getBytes("gbk") );
-     * @deprecated ²»¾ßÌåÖ¸¶¨×Ö·û¼¯¶øÒÀÀµÓÚ²Ù×÷ÏµÍ³£¬ÔÚ¶àÏµÍ³Ğ­×÷Çé¿öÏÂ»áÓĞÂÒÂëÎÊÌâ¡£ÇëÊ¹ÓÃ public static byte[] decode(byte[] inputBytes)
+     * @deprecated ä¸å…·ä½“æŒ‡å®šå­—ç¬¦é›†è€Œä¾èµ–äºæ“ä½œç³»ç»Ÿï¼Œåœ¨å¤šç³»ç»Ÿåä½œæƒ…å†µä¸‹ä¼šæœ‰ä¹±ç é—®é¢˜ã€‚è¯·ä½¿ç”¨ public static byte[] decode(byte[] inputBytes)
      * @param str
      * @return
      * @throws UnsupportedEncodingException
@@ -212,8 +212,8 @@ public class Base64 {
 
     
 	/**
-	 * Test¡£
-	 *  Zeven: ÊäÈëÄÚÈİÊäÈëÇ°µÄ±àÂëÓëÊä³öÄÚÈİÊä³öÖ®ºóµÄ±àÂëÒªÒ»ÖÂ£¬²ÅÄÜÕıÈ·µÄ±àÂëºÍ½âÂë¡£
+	 * Testã€‚
+	 *  Zeven: è¾“å…¥å†…å®¹è¾“å…¥å‰çš„ç¼–ç ä¸è¾“å‡ºå†…å®¹è¾“å‡ºä¹‹åçš„ç¼–ç è¦ä¸€è‡´ï¼Œæ‰èƒ½æ­£ç¡®çš„ç¼–ç å’Œè§£ç ã€‚
 	 * @param args
 	 * @throws UnsupportedEncodingException 
 	 * @throws DecoderException 
@@ -223,58 +223,58 @@ public class Base64 {
 		
 		if(true){
 			
-			// ÏÂÃæµÄÊ¹ÓÃ utf-8£¬±àÂëÖ®ºó´øÓĞ + ºÅ£¬Èç¹ûÊ¹ÓÃgbk£¬Ôò´øÓĞ /¡£ ¼Ç×¡£ºurl±àÂë×îºÃÊ¹ÓÃencodeComponentURI ·½·¨¡£
-			// Base64²»ÂùÊÊºÏ url²ÎÊıµÄ±àÂë£»
-			// urlµÄ±àÂë£¬×îºÃÊ¹ÓÃencodeComponentURI ·½·¨£¬ÊÇ×¨ÓÃµÄ£¬²»ÒªÊ¹ÓÃbase64£¬Base64Ö»ÊÇÓÃÓÚÄÇĞ©·´¸´ĞèÒªurl±àÂëµÄµØ·½»òÕßÆäËûµØ·½¡£
-			System.out.println( Base64.encode( "³Ç¿ÁµØ  ÒªÔÚ ÔÚ".getBytes("utf-8") ) );
+			// ä¸‹é¢çš„ä½¿ç”¨ utf-8ï¼Œç¼–ç ä¹‹åå¸¦æœ‰ + å·ï¼Œå¦‚æœä½¿ç”¨gbkï¼Œåˆ™å¸¦æœ‰ /ã€‚ è®°ä½ï¼šurlç¼–ç æœ€å¥½ä½¿ç”¨encodeComponentURI æ–¹æ³•ã€‚
+			// Base64ä¸è›®é€‚åˆ urlå‚æ•°çš„ç¼–ç ï¼›
+			// urlçš„ç¼–ç ï¼Œæœ€å¥½ä½¿ç”¨encodeComponentURI æ–¹æ³•ï¼Œæ˜¯ä¸“ç”¨çš„ï¼Œä¸è¦ä½¿ç”¨base64ï¼ŒBase64åªæ˜¯ç”¨äºé‚£äº›åå¤éœ€è¦urlç¼–ç çš„åœ°æ–¹æˆ–è€…å…¶ä»–åœ°æ–¹ã€‚
+			System.out.println( Base64.encode( "åŸè‹›åœ°  è¦åœ¨ åœ¨".getBytes("utf-8") ) );
 			
 			System.out.println( new String( org.apache.commons.codec.binary.Base64.encodeBase64("abc".getBytes("utf-8"), true ) ,"utf-8") );
 				System.out.println(  (Base64.decode( "L3Nob3AvZ29vZHNEZWFsLmpodG1sP3NwZWNBbmROdW09MSTlsI8k6JOdQCZzcGVja2ZsYWc9MiZzYWxlbW9kZWlkPTImQWN0aW9uPXRvSm9pblRlYW1idXkmZ29vZHNpZD0xOTYyJnNhbGVpZD0yOTAxJnNob3BpZD0xMTAxJg==", "utf-8")) );
 				return;
 		}
 		
-//		// ¸ù¾İ²Ù×÷ÏµÍ³µÄÄ¬ÈÏ±àÂë
-		System.out.println( "----------------------------------²Ù×÷ÏµÍ³µÄÄ¬ÈÏ±àÂë");
-		System.out.println( Base64.encode( "abcÖĞÎÄ-=\\/<>".getBytes()) );
-		System.out.println( new String(Base64.decode( "YWJj1tDOxC09XC88Pg==")) );  // ±ØĞëÒª new String£¬·ñÔòÊä³ö£º[B@480457
+//		// æ ¹æ®æ“ä½œç³»ç»Ÿçš„é»˜è®¤ç¼–ç 
+		System.out.println( "----------------------------------æ“ä½œç³»ç»Ÿçš„é»˜è®¤ç¼–ç ");
+		System.out.println( Base64.encode( "abcä¸­æ–‡-=\\/<>".getBytes()) );
+		System.out.println( new String(Base64.decode( "YWJj1tDOxC09XC88Pg==")) );  // å¿…é¡»è¦ new Stringï¼Œå¦åˆ™è¾“å‡ºï¼š[B@480457
 		
-//		// ¸ù¾İutf-8 ±àÂë
-		System.out.println( "----------------------------------²ÉÓÃutf-8 ±àÂë");
-		System.out.println( Base64.encode( "abcÖĞÎÄ-=\\/<>".getBytes("utf-8")) );
+//		// æ ¹æ®utf-8 ç¼–ç 
+		System.out.println( "----------------------------------é‡‡ç”¨utf-8 ç¼–ç ");
+		System.out.println( Base64.encode( "abcä¸­æ–‡-=\\/<>".getBytes("utf-8")) );
 		System.out.println( (Base64.decode( "YWJj5Lit5paHLT1cLzw+", "utf-8")) );
 
-//		// ¸ù¾İ gbk ±àÂë
-		System.out.println( "----------------------------------²ÉÓÃgbk ±àÂë");
-		System.out.println( Base64.encode( "abcÖĞÎÄ-=\\/<>".getBytes("gbk")) );
+//		// æ ¹æ® gbk ç¼–ç 
+		System.out.println( "----------------------------------é‡‡ç”¨gbk ç¼–ç ");
+		System.out.println( Base64.encode( "abcä¸­æ–‡-=\\/<>".getBytes("gbk")) );
 		System.out.println( (Base64.decode( "YWJj1tDOxC09XC88Pg==", "gbk")) );
 
-//		// ¸ù¾İµÚÈı·½Ìá¹©µÄ codec
-		System.out.println( "----------------------------------²ÉÓÃ apache.commons.codec");
+//		// æ ¹æ®ç¬¬ä¸‰æ–¹æä¾›çš„ codec
+		System.out.println( "----------------------------------é‡‡ç”¨ apache.commons.codec");
 		org.apache.commons.codec.binary.Base64 cb64 = 
 				new org.apache.commons.codec.binary.Base64();
 		
 		System.out.println( new String( 
-				org.apache.commons.codec.binary.Base64.encodeBase64( "abcÖĞÎÄ-=\\/<>".getBytes("gbk")) ) );
+				org.apache.commons.codec.binary.Base64.encodeBase64( "abcä¸­æ–‡-=\\/<>".getBytes("gbk")) ) );
 		System.out.println( new String( 
 				org.apache.commons.codec.binary.Base64.decodeBase64( "YWJj1tDOxC09XC88Pg==".getBytes()), "gbk") );
 		System.out.println( new String( 
-				org.apache.commons.codec.binary.Base64.encodeBase64( "abcÖĞÎÄ-=\\/<>".getBytes("utf-8")) ) );
+				org.apache.commons.codec.binary.Base64.encodeBase64( "abcä¸­æ–‡-=\\/<>".getBytes("utf-8")) ) );
 		System.out.println( new String( 
 				org.apache.commons.codec.binary.Base64.decodeBase64( "YWJj5Lit5paHLT1cLzw+".getBytes()), "utf-8") );
 		
 
-		if (true) {	// ------------------------- ±È½Ï Base64ÓëHex ĞÔÄÜ¡£
+		if (true) {	// ------------------------- æ¯”è¾ƒ Base64ä¸Hex æ€§èƒ½ã€‚
 			 
 //			DecimalFormat mbFormat = new DecimalFormat("#0.00");
 //			mbFormat.format("5.6666");
 			/**
-			 * ²âÊÔ½áÂÛ£º
-			 * 	1¡£²ÉÓÃ100000´Î²âÊÔUTF-8µÄ¸ñÊ½£¬Hex½âÂë±ÈBase64¿ìÒ»±¶£»
-			 *  2¡£Base64µÄ³¤¶ÈÒª±ÈHex¶Ì30%×óÓÒ£»
-			 *  3¡£HexĞÔÄÜºÃ£¬ÊÊºÏ½Ï¶à¼ÆËã£»Base64Êı¾İ¶Ì£¬ÊÊºÏ´«Êä£»
+			 * æµ‹è¯•ç»“è®ºï¼š
+			 * 	1ã€‚é‡‡ç”¨100000æ¬¡æµ‹è¯•UTF-8çš„æ ¼å¼ï¼ŒHexè§£ç æ¯”Base64å¿«ä¸€å€ï¼›
+			 *  2ã€‚Base64çš„é•¿åº¦è¦æ¯”HexçŸ­30%å·¦å³ï¼›
+			 *  3ã€‚Hexæ€§èƒ½å¥½ï¼Œé€‚åˆè¾ƒå¤šè®¡ç®—ï¼›Base64æ•°æ®çŸ­ï¼Œé€‚åˆä¼ è¾“ï¼›
 			 */
-			//²âÊÔBase64ºÍHexµÄ±àÂëĞÔÄÜ
-			String str = "abcdefghijklmnopkrstÖĞ»ªÈËÃñ¹²ºÍ¹ú~!@#$%^&*()_+";
+			//æµ‹è¯•Base64å’ŒHexçš„ç¼–ç æ€§èƒ½
+			String str = "abcdefghijklmnopkrstä¸­åäººæ°‘å…±å’Œå›½~!@#$%^&*()_+";
 			String strBase64 = new String(Base64.encode( str.getBytes("UTF-8") ) );
 			String strHex = Hex.encode( str.getBytes("UTF-8") );
 			if(true){

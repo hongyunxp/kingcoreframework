@@ -37,7 +37,7 @@ import com.sun.image.codec.jpeg.JPEGEncodeParam;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
  * @author Zeven on Oct 28, 2009
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -51,12 +51,12 @@ public class ImageUtil {
 	private final static Logger log = Logger.getLogger(ImageUtil.class);
 	
 	/**
-	 * ¸øÍ¼Æ¬¼ÓË®Ó¡£¬²»¸Ä±ä´óĞ¡	 
-	 * @param imageUrl String(Ô­Ê¼ÎÄ¼ş)
-	 * @param newImageUrl String(Ë®Ó¡ºóÊäÎÄ¼ş)
-	 * @param markContent Ë®Ó¡ÄÚÈİ
-	 * @param markContentColor Color Ë®Ó¡ÑÕÉ«
-	 * @param qualNum ´óĞ¡
+	 * ç»™å›¾ç‰‡åŠ æ°´å°ï¼Œä¸æ”¹å˜å¤§å°	 
+	 * @param imageUrl String(åŸå§‹æ–‡ä»¶)
+	 * @param newImageUrl String(æ°´å°åè¾“æ–‡ä»¶)
+	 * @param markContent æ°´å°å†…å®¹
+	 * @param markContentColor Color æ°´å°é¢œè‰²
+	 * @param qualNum å¤§å°
 	 * @throws Exception 
 	 * 
 	 */
@@ -67,7 +67,7 @@ public class ImageUtil {
 		try 
 		{
 			java.io.File file = new java.io.File(imageUrl);			
-			Image imageOriginal = javax.imageio.ImageIO.read(file); //¹¹ÔìImage¶ÔÏó 
+			Image imageOriginal = javax.imageio.ImageIO.read(file); //æ„é€ Imageå¯¹è±¡ 
 	        ImageIcon waterIcon = new ImageIcon(markContent); 
 	        
 			int width = imageOriginal.getWidth(null);
@@ -75,7 +75,7 @@ public class ImageUtil {
 	        
 			BufferedImage bufImage = new BufferedImage(width,height, BufferedImage.TYPE_INT_RGB);
 			
-			//Ë®Ó¡ÎÄ¼şÔÚÔ´ÎÄ¼şµÄÓÒÏÂ½Ç  
+			//æ°´å°æ–‡ä»¶åœ¨æºæ–‡ä»¶çš„å³ä¸‹è§’  
 			Graphics2D g = bufImage.createGraphics();
 			g.setColor(markContentColor);
 			 if(newImageUrl.length()>0){   
@@ -83,53 +83,53 @@ public class ImageUtil {
 		            width = width-waterIcon.getIconWidth();   
 		            height = height-waterIcon.getIconHeight();   
 		            g.drawImage(imageOriginal, 0, 0, null);   
-		            //Ë®Ó¡Í¼Æ¬µÄÎ»ÖÃ ÓëË®Ó¡ÎÄ×ÖÒ»Æğ¶¨Î»   
+		            //æ°´å°å›¾ç‰‡çš„ä½ç½® ä¸æ°´å°æ–‡å­—ä¸€èµ·å®šä½   
 		            switch(position){   
-		                case 0 ://¾ÓÖĞ   
+		                case 0 ://å±…ä¸­   
 		                    g.drawImage(waterImg, width / 2, height / 2, null);                    
 		                    break;   
-		                case 1 ://×óÉÏ   
+		                case 1 ://å·¦ä¸Š   
 		                    g.drawImage(waterImg, 0, 0 , null);   
 		                    break;   
-		                case 2 ://ÓÒÉÏ   
+		                case 2 ://å³ä¸Š   
 		                    g.drawImage(waterImg, width , 0 , null);   
 		                    break;   
-		                case 3 ://×óÏÂ   
+		                case 3 ://å·¦ä¸‹   
 		                    g.drawImage(waterImg, 0, height , null);   
 		                    break;   
-		                case 4 ://ÓÒÏÂ   
+		                case 4 ://å³ä¸‹   
 		                    g.drawImage(waterImg, width , height , null);   
 		                    break;   
-		                default ://¾ÓÖĞ   
+		                default ://å±…ä¸­   
 		                    g.drawImage(waterImg, width / 2, height / 2, null);            
 		                    break;   
 		            }   
 		        }   
 		           
-		        //Ìí¼ÓÎÄ×Ö   
+		        //æ·»åŠ æ–‡å­—   
 		        if(markContent.length()>0){   
 		            AttributedString ats = new AttributedString(markContent);   
 		            Font f = new Font(fontType,Font.BOLD, fontSize);       
 		            ats.addAttribute(TextAttribute.FONT, f, 0,markContent.length() );   
 		            AttributedCharacterIterator iter = ats.getIterator();   
 		            switch(position){   
-		            case 0 ://¾ÓÖĞ   
+		            case 0 ://å±…ä¸­   
 		                g.drawString(iter,width / 2, height / 2);   
 		                break;   
-		            case 1 ://×óÉÏ   
+		            case 1 ://å·¦ä¸Š   
 		                g.drawString(iter,0, 0);   
 		                break;   
-		            case 2 ://ÓÒÉÏ   
+		            case 2 ://å³ä¸Š   
 		                g.drawString(iter,width , 0);   
 		                break;   
-		            case 3 ://×óÏÂ   
+		            case 3 ://å·¦ä¸‹   
 		                g.drawString(iter,0, height );   
 		                break;   
-		            case 4 ://ÓÒÏÂ   
+		            case 4 ://å³ä¸‹   
 		            	g.drawString(iter, Math.round(width / 1.8), Math.round(height));
 		                //g.drawString(iter,width , height);   
 		                break;   
-		            default ://¾ÓÖĞ   
+		            default ://å±…ä¸­   
 		                g.drawString(iter,width / 2, height / 2);                      
 		                break;   
 		        }   
@@ -148,7 +148,7 @@ public class ImageUtil {
 			fos.flush();
 		} catch (Exception e) {
 			//e.printStackTrace();
-			log.error("Í¼Æ¬¼ÓË®Ó¡Ê§°Ü£¡",e);
+			log.error("å›¾ç‰‡åŠ æ°´å°å¤±è´¥ï¼",e);
 			throw e;
 			
 		}finally{
@@ -164,7 +164,7 @@ public class ImageUtil {
 
 
 	/**
-	 *  ¶ÔÍ¼Æ¬ËõÂÔ¡£
+	 *  å¯¹å›¾ç‰‡ç¼©ç•¥ã€‚
 	 * @param srcImg
 	 * @param destImg
 	 * @param width
@@ -180,9 +180,9 @@ public class ImageUtil {
         	File fDest = new File(destImg);
         	
         	Image src = javax.imageio.ImageIO.read(fSrc);
-			int old_w = src.getWidth(null); //µÃµ½Ô´Í¼¿í
-			int old_h = src.getHeight(null);//µÃµ½Ô´Í¼³¤
-			double ratio = 1.0; //ËõĞ¡±ÈÂÊ
+			int old_w = src.getWidth(null); //å¾—åˆ°æºå›¾å®½
+			int old_h = src.getHeight(null);//å¾—åˆ°æºå›¾é•¿
+			double ratio = 1.0; //ç¼©å°æ¯”ç‡
 			if (old_w > 0 && old_h > 0) {
 				double tw = (double)old_w / (double)width;
 				double th = (double)old_h / (double)height;
@@ -196,7 +196,7 @@ public class ImageUtil {
             GifEncoder.encode(resizedGifImage2, fDest);   
         } catch (IOException e) {   
             //e.printStackTrace(); 
-			log.error("Í¼Æ¬ËõÂÔÊ§°Ü£¡",e);  
+			log.error("å›¾ç‰‡ç¼©ç•¥å¤±è´¥ï¼",e);  
             throw e;
         }   
   
@@ -220,7 +220,7 @@ public class ImageUtil {
 //			e.printStackTrace();
 //		}
 		
-//		 ×ª»»²¢Ğ´ÎÄ¼ş,ÈôÎªGIFÔòĞèÒªÌØÊâ×ª»»   
+//		 è½¬æ¢å¹¶å†™æ–‡ä»¶,è‹¥ä¸ºGIFåˆ™éœ€è¦ç‰¹æ®Šè½¬æ¢   
          getGifImage("f:\\1.gif", "f:\\a.gif", 130, 100, true);   
 	}
 

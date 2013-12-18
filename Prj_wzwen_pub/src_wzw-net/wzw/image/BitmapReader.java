@@ -6,7 +6,7 @@
 package wzw.image;
 
 /**
- * <p>MicroSoft Î»Í¼ÎÄ¼ş¶ÁÈ¡Àà¡£ 
+ * <p>MicroSoft ä½å›¾æ–‡ä»¶è¯»å–ç±»ã€‚ 
  * 		BitmapHandler/BitmapReader/p>
  * @version 1.0
  */
@@ -29,8 +29,8 @@ public class BitmapReader {
 	
 	/**
 	 * <p>*.bmp convert to *.jpg.</p>
-	 * @param inputFile ÊäÈëÎÄ¼şÃû³Æº¬È«Â·¾¶
-	 * @param outputFile Êä³öÎÄ¼şÃû³Æº¬È«Â·¾¶
+	 * @param inputFile è¾“å…¥æ–‡ä»¶åç§°å«å…¨è·¯å¾„
+	 * @param outputFile è¾“å‡ºæ–‡ä»¶åç§°å«å…¨è·¯å¾„
 	 */
 	//public static void reader(String file) {
 	public static void toJPEGImage(String inputFile, String outputFile) {
@@ -97,7 +97,7 @@ public class BitmapReader {
 	static class BitmapHeader {
 		public int iSize, ibiSize, iWidth, iHeight, iPlanes, iBitcount,
 		iCompression, iSizeimage, iXpm, iYpm, iClrused, iClrimp;
-		// ¶ÁÈ¡bmpÎÄ¼şÍ·ĞÅÏ¢
+		// è¯»å–bmpæ–‡ä»¶å¤´ä¿¡æ¯
 		public void read(FileInputStream fs) throws IOException {
 			final int bflen = 14;
 			byte bf[] = new byte[bflen];
@@ -138,7 +138,7 @@ public class BitmapReader {
 		return (null);
 	}
 	
-	//24Î»
+	//24ä½
 	protected static Image readImage24(FileInputStream fs, BitmapHeader bh) throws
 	IOException {
 		Image image;
@@ -166,7 +166,7 @@ public class BitmapReader {
 		return (image);
 	}
 	
-//	32Î»
+//	32ä½
 	protected static Image readImage32(FileInputStream fs, BitmapHeader bh) throws
 	IOException {
 		Image image;
@@ -204,7 +204,7 @@ public class BitmapReader {
 	
 //	public ImageDialog getBmpImage(String filePath) throws IOException {
 //	if (filePath.equals("")) {
-//	System.out.println("ÊäÈëbmpÎÄ¼şÃû");
+//	System.out.println("è¾“å…¥bmpæ–‡ä»¶å");
 //	return null;
 //	}
 //	else {
@@ -217,7 +217,7 @@ public class BitmapReader {
 	
 	public ImageIcon getBmpImageIcon(String filePath) throws IOException {
 		if (filePath.equals("")) {
-			System.err.println("ÊäÈëbmpÎÄ¼şÃû");
+			System.err.println("è¾“å…¥bmpæ–‡ä»¶å");
 			return null;
 		}
 		else {

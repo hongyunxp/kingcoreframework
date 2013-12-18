@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * »º´æ¶ÔÏó¡£
+ * ç¼“å­˜å¯¹è±¡ã€‚
  * 
  * @author	WUZEWEN on 2006.09.21
  *

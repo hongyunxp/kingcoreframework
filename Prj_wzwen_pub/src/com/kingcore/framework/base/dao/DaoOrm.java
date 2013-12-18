@@ -14,7 +14,7 @@ package com.kingcore.framework.base.dao;
 import java.util.HashMap;
 
 /**
- * <p>»ùÀà£ºDao Object/Rational Mapping first interface.</p>
+ * <p>åŸºç±»ï¼šDao Object/Rational Mapping first interface.</p>
  * @author Zeven on 2008-6-4
  * @version	2.0
  * @see		Object#equals(java.lang.Object)

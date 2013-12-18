@@ -330,7 +330,7 @@ public class SmartUpload
     /**
      * 
      * @param s
-     * @return ÖØĞÂ±àÂëºóµÄÎÄ¼şÃû
+     * @return é‡æ–°ç¼–ç åçš„æ–‡ä»¶å
      */
     public static String toUtf8String(String s) {
 		StringBuffer sb = new StringBuffer();

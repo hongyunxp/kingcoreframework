@@ -17,7 +17,7 @@ import wzw.util.DbUtils;
 import com.sun.rowset.CachedRowSetImpl;
 
 /**
- * <p>È±Ê¡µÄ DatabaseManager ÊµÏÖ£¬¿ÉÒÔ±»¼Ì³Ğ¡£</p>
+ * <p>ç¼ºçœçš„ DatabaseManager å®ç°ï¼Œå¯ä»¥è¢«ç»§æ‰¿ã€‚</p>
  * @author Zeven on 2007-6-25
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -29,17 +29,17 @@ import com.sun.rowset.CachedRowSetImpl;
 public class PlainDatabase implements DatabaseManager {
 
 	/**
-	 * ±¾ÀàµÄÈÕÖ¾¶ÔÏó¡£
+	 * æœ¬ç±»çš„æ—¥å¿—å¯¹è±¡ã€‚
 	 */
 	protected final static Logger log = Logger.getLogger( PlainDatabase.class);
 
 
 	
 	/**
-	 *  <p>Ìá¹©Êı¾İ¿âÍ¨ÓÃµÄ»ñÈ¡ĞòÁĞÖµ·½·¨.
-	 *  	ÒªÇóÊı¾İ¿âÌá¹©ÁË getSequenceValue( tblName )µÄº¯Êı¡£
-	 *  	¶ÔÓÚ²ÉÓÃ±í¼ÇÂ¼ĞòÁĞµÄ·½Ê½£¬ÒªÇóµ¥¶ÀÌá½»£¬ËùÒÔ¶ÀÁ¢»ñÈ¡conn,¼´Ê¹´«ÈëÁËÒ²²»Ê¹ÓÃconn£¬×öµ½ÍòÎŞÒ»Ê§¡£
-	 *  	¸ù¾İ±íÃû»ñÈ¡Õâ¸ö±íµ±Ç°ĞòÁĞºÅ£¬Õâ¾ÍÒªÇó½¨Á¢Ò»¸ö±í£¬Í¬Ê±Ê¹ÓÃgetSequenceValue º¯Êı»ñÈ¡Öµ£¬±í½á¹¹ÈçÏÂ£º
+	 *  <p>æä¾›æ•°æ®åº“é€šç”¨çš„è·å–åºåˆ—å€¼æ–¹æ³•.
+	 *  	è¦æ±‚æ•°æ®åº“æä¾›äº† getSequenceValue( tblName )çš„å‡½æ•°ã€‚
+	 *  	å¯¹äºé‡‡ç”¨è¡¨è®°å½•åºåˆ—çš„æ–¹å¼ï¼Œè¦æ±‚å•ç‹¬æäº¤ï¼Œæ‰€ä»¥ç‹¬ç«‹è·å–conn,å³ä½¿ä¼ å…¥äº†ä¹Ÿä¸ä½¿ç”¨connï¼Œåšåˆ°ä¸‡æ— ä¸€å¤±ã€‚
+	 *  	æ ¹æ®è¡¨åè·å–è¿™ä¸ªè¡¨å½“å‰åºåˆ—å·ï¼Œè¿™å°±è¦æ±‚å»ºç«‹ä¸€ä¸ªè¡¨ï¼ŒåŒæ—¶ä½¿ç”¨getSequenceValue å‡½æ•°è·å–å€¼ï¼Œè¡¨ç»“æ„å¦‚ä¸‹ï¼š
 	 *  <pre>
 	 *  -- create table, use MySQL as example.
 	 *  use mysql ;
@@ -61,9 +61,9 @@ public class PlainDatabase implements DatabaseManager {
 	 *  </pre>
 	 *  	You can override this method in subclass.</p>
 	 *  
-	 * @param tblName ĞèÒªÊ¹ÓÃĞòÁĞµÄ±í£¬Î¨Ò»£¬²»ÄÜÎªnull
-	 * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó£¬¿ÉÒÔÎªnull£¬Êµ¼ÊÉÏÕâÀïÃ»ÓĞÊ¹ÓÃÕâ¸ö²ÎÊı£¬¶øÊÇµ¥¶À´´½¨Connection¶ÔÏó
-	 * @return µ±Ç°¿ÉÓÃĞòÁĞÖµ
+	 * @param tblName éœ€è¦ä½¿ç”¨åºåˆ—çš„è¡¨ï¼Œå”¯ä¸€ï¼Œä¸èƒ½ä¸ºnull
+	 * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ï¼Œå¯ä»¥ä¸ºnullï¼Œå®é™…ä¸Šè¿™é‡Œæ²¡æœ‰ä½¿ç”¨è¿™ä¸ªå‚æ•°ï¼Œè€Œæ˜¯å•ç‹¬åˆ›å»ºConnectionå¯¹è±¡
+	 * @return å½“å‰å¯ç”¨åºåˆ—å€¼
 	 */
 	
 	public long getIdentityValue(String tblName, Connection p_conn ) throws SQLException {
@@ -74,7 +74,7 @@ public class PlainDatabase implements DatabaseManager {
     	String sql = null;
     	
         try {
-        	// ×Ô¼º»ñÈ¡Ò»¸öÁ¬½Ó£¬¶ø²»¹ÜÁ¬½Ó²ÎÊıÊÇ·ñ´æÔÚ
+        	// è‡ªå·±è·å–ä¸€ä¸ªè¿æ¥ï¼Œè€Œä¸ç®¡è¿æ¥å‚æ•°æ˜¯å¦å­˜åœ¨
         	conn = ApplicationContext.getInstance().getDataSourceManager().getConnection();
         	
         	sql = "Select getSequenceValue('"+tblName.trim()+"')";
@@ -82,7 +82,7 @@ public class PlainDatabase implements DatabaseManager {
         	
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			conn.commit() ;				// Ìá½»±ÜÃâËø¶¨±í¡£
+			conn.commit() ;				// æäº¤é¿å…é”å®šè¡¨ã€‚
 
 			if( rs.next() ) {
 	        	int ti = rs.getInt(1);
@@ -110,19 +110,19 @@ public class PlainDatabase implements DatabaseManager {
 
 	
 	/**
-	 * @deprecated  ½¨ÒéÊ¹ÓÃ getIdentityValue Ìæ»»±¾·½·¨¡£
+	 * @deprecated  å»ºè®®ä½¿ç”¨ getIdentityValue æ›¿æ¢æœ¬æ–¹æ³•ã€‚
 	public int getSequenceValue(String tblName, Connection conn) throws SQLException {
-		return new Long( getIdentityValue( tblName, conn )).intValue(); // ÔİÊ±´¦Àí
+		return new Long( getIdentityValue( tblName, conn )).intValue(); // æš‚æ—¶å¤„ç†
 		
 	}
 	 */
 	
 	/**
-	 * <p>¸ù¾İµ±Ç°²éÑ¯µÄSQL Óï¾ä£¬Éú³ÉÒ»¸ö»ñÈ¡ÆäÖĞ²¿·ÖÊı¾İĞĞµÄSQLÓï¾ä£¬Ò»°ãÔÚ·ÖÒ³²éÑ¯ÖĞÊ¹ÓÃ¡£</p>
+	 * <p>æ ¹æ®å½“å‰æŸ¥è¯¢çš„SQL è¯­å¥ï¼Œç”Ÿæˆä¸€ä¸ªè·å–å…¶ä¸­éƒ¨åˆ†æ•°æ®è¡Œçš„SQLè¯­å¥ï¼Œä¸€èˆ¬åœ¨åˆ†é¡µæŸ¥è¯¢ä¸­ä½¿ç”¨ã€‚</p>
 	 * 
-	 * @param sql Ô´SQLÓï¾ä
-	 * @param offset »ñÈ¡ĞĞ¶ÎµÄÆğÊ¼Î»ÖÃ£¬´Ó0¿ªÊ¼
-	 * @param row_count ĞèÒª»ñÈ¡µÄĞĞÊı
+	 * @param sql æºSQLè¯­å¥
+	 * @param offset è·å–è¡Œæ®µçš„èµ·å§‹ä½ç½®ï¼Œä»0å¼€å§‹
+	 * @param row_count éœ€è¦è·å–çš„è¡Œæ•°
 	 */
 	public String getSubResultSetSql(String sql, int offset, int row_count) {
 		// TODO Auto-generated method stub
@@ -132,12 +132,12 @@ public class PlainDatabase implements DatabaseManager {
 	
 	/**
 	 *
-	 * <p>²ÉÓÃSunµÄÊµÏÖ×öÎªÈ±Ê¡µÄ´¦Àí¡£ </p>
+	 * <p>é‡‡ç”¨Sunçš„å®ç°åšä¸ºç¼ºçœçš„å¤„ç†ã€‚ </p>
 	 * @see com.kingcore.framework.context.DatabaseManager#resultSet2RowSet(java.sql.ResultSet)
 	 */
 	public RowSet resultSet2RowSet(ResultSet rs) throws SQLException {
 
-		// ²ÉÓÃSunµÄÊµÏÖÕë¶Ô Access2000¡¢MySQL5 µÈ Êı¾İ¿â
+		// é‡‡ç”¨Sunçš„å®ç°é’ˆå¯¹ Access2000ã€MySQL5 ç­‰ æ•°æ®åº“
 		CachedRowSetImpl crs= new CachedRowSetImpl();
 		crs.populate( rs );	
 		
@@ -179,9 +179,9 @@ public class PlainDatabase implements DatabaseManager {
 		//oracle.sql.CLOB clob=null;
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			conn = DbUtils.getConnection();
-			//conn.setAutoCommit(false);  //connÎªConnection¶ÔÏó
+			//conn.setAutoCommit(false);  //connä¸ºConnectionå¯¹è±¡
 
 			//set clob column to empty first.
 			str_sql="UPDATE " + tableName + " SET " +   picField +"=? "+ sqlWhere;
@@ -227,9 +227,9 @@ public class PlainDatabase implements DatabaseManager {
         ///StringBuffer sb = new StringBuffer();
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			conn = DbUtils.getConnection();
-			conn.setAutoCommit(false);  //connÎªConnection¶ÔÏó
+			conn.setAutoCommit(false);  //connä¸ºConnectionå¯¹è±¡
 
 			pstmt = conn.prepareStatement( sql );
 			rs = pstmt.executeQuery(sql);
@@ -330,7 +330,7 @@ public class PlainDatabase implements DatabaseManager {
 	}
 
 	/**
-	 * Èç¹ûĞèÒªÊ¹ÓÃ£¬±¾·½·¨ĞèÒªÔÚ×ÓÀàÖĞµ¥¶ÀÊµÏÖ¡£
+	 * å¦‚æœéœ€è¦ä½¿ç”¨ï¼Œæœ¬æ–¹æ³•éœ€è¦åœ¨å­ç±»ä¸­å•ç‹¬å®ç°ã€‚
 	 */
 	public int getLastInsertIdentity( Connection conn  ) throws SQLException {
 		return 0;
@@ -338,16 +338,16 @@ public class PlainDatabase implements DatabaseManager {
 
 
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âµÄÌØÊâ¹æÔò¶ÔĞèÒª²åÈëµÄÄÚÈİ²ÉÓÃÕıÔò±í´ïÊ½×öÌØÊâ´¦Àí¡£
-	 * 		Õë¶Ô×Ö·û´®ÀàĞÍ(Varchar)£¬Êı×Ö(Number)¡¢ÈÕÆÚ(Date)ºÍ¶ş½øÖÆ(LOB)ÀàĞÍ²»ÓÃÕâ¸ö´¦Àí¡£
-	 * 		-- µ±Ç°ÊÇÕë¶Ô Oracle Êı¾İ¿â£¬½« ' ·ûºÅ Ìæ»»Îª '' £¬²ÅÄÜ²åÈëµ½Êı¾İ¿âÖĞ¡£
-	 * 		-- Õë¶Ô MySQLÊı¾İ¿â£¬"'","\"Á½¸ö¶¼ÊÇ×ªÒå×Ö·û£¬¶¼Òª±äÎª"\'","\\"
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“çš„ç‰¹æ®Šè§„åˆ™å¯¹éœ€è¦æ’å…¥çš„å†…å®¹é‡‡ç”¨æ­£åˆ™è¡¨è¾¾å¼åšç‰¹æ®Šå¤„ç†ã€‚
+	 * 		é’ˆå¯¹å­—ç¬¦ä¸²ç±»å‹(Varchar)ï¼Œæ•°å­—(Number)ã€æ—¥æœŸ(Date)å’ŒäºŒè¿›åˆ¶(LOB)ç±»å‹ä¸ç”¨è¿™ä¸ªå¤„ç†ã€‚
+	 * 		-- å½“å‰æ˜¯é’ˆå¯¹ Oracle æ•°æ®åº“ï¼Œå°† ' ç¬¦å· æ›¿æ¢ä¸º '' ï¼Œæ‰èƒ½æ’å…¥åˆ°æ•°æ®åº“ä¸­ã€‚
+	 * 		-- é’ˆå¯¹ MySQLæ•°æ®åº“ï¼Œ"'","\"ä¸¤ä¸ªéƒ½æ˜¯è½¬ä¹‰å­—ç¬¦ï¼Œéƒ½è¦å˜ä¸º"\'","\\"
 	 * <pre>
 	 * escape2Sql("ab'cd")			="ab''cd"
 	 * escape2Sql("ab'c'd")			="ab''c''d"
 	 * escape2Sql("ab''c\\d")			="ab''''c\\\\d"
 	 * </pre>
-	 * @param src ĞèÒª±£´æµ½Êı¾İ¿âµÄÒ»¸ö×Ö¶Î¡£
+	 * @param src éœ€è¦ä¿å­˜åˆ°æ•°æ®åº“çš„ä¸€ä¸ªå­—æ®µã€‚
 	 * @return
 	 */
 	public String escape2Sql(String src) {
@@ -355,7 +355,7 @@ public class PlainDatabase implements DatabaseManager {
 			return null;
 		}
 		
-		// ¿ÉÒÔ²Î¿¼ return wzw.lang.Escaper.escape2Sql( src );		
+		// å¯ä»¥å‚è€ƒ return wzw.lang.Escaper.escape2Sql( src );		
 		return StringUtils.replace(src, "'", "''");
 	}
 

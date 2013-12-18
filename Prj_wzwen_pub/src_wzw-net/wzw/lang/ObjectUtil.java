@@ -14,7 +14,7 @@ package wzw.lang;
 import java.util.HashMap;
 
 /**
- * <p>java类文件的说明...</p>
+ * <p>java绫绘枃浠剁殑璇存槑...</p>
  * @author Zeven on Aug 6, 2011
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -32,7 +32,7 @@ public class ObjectUtil {
 		Class<?> clazz;
 		try {
 			clazz = Class.forName(className);
-			//建立被载入类类的实例并强制类型转换， 
+			//寤虹珛琚浇鍏ョ被绫荤殑瀹炰緥骞跺己鍒剁被鍨嬭浆鎹紝 
 			obj=  clazz.newInstance();
 			
 		} catch (ClassNotFoundException e) {

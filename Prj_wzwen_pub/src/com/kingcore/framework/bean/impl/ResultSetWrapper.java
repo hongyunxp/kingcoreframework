@@ -46,7 +46,7 @@ import com.kingcore.framework.bean.DataSet;
 
 
 /**
- * <p>ÕâÊÇÒ»¸öÍ¬Ê±ÊµÏÖÁËRowSet,DataSet,List½Ó¿ÚµÄ¶ÔÓÚResultSetÊı¾İ¶ÔÏóµÄ°ü×°Àà¡£</p>
+ * <p>è¿™æ˜¯ä¸€ä¸ªåŒæ—¶å®ç°äº†RowSet,DataSet,Listæ¥å£çš„å¯¹äºResultSetæ•°æ®å¯¹è±¡çš„åŒ…è£…ç±»ã€‚</p>
  * @author Zeven on 2006-9-16
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -61,33 +61,33 @@ public class ResultSetWrapper implements RowSet,DataSet,List {
     protected static Logger log=Logger.getLogger( ResultSetWrapper.class );
 	
     /**
-	 * Êı¾İ¶ÔÏó
+	 * æ•°æ®å¯¹è±¡
 	 */
 	private List list=null;
 	private int rowNumber=-1;
 	/**
-	 * ±£´æµ±Ç°ĞĞ¶ÔÏó
+	 * ä¿å­˜å½“å‰è¡Œå¯¹è±¡
 	 */
 	private Map currentRow=null;	//Hashtable
 	private Map tableHeader= new Hashtable();	//Hashtable
 	/**
-	 * Ä£Äâ RowSetµÄ Iterator¶ÔÏó¡£
+	 * æ¨¡æ‹Ÿ RowSetçš„ Iteratorå¯¹è±¡ã€‚
 	 */
 	private Iterator iterator = null;
 
 	private ResultSetMetaData metaData;
 	
 	/**
-	 * ²ÉÓÃ¡¡List(Vector,ArrayList,Stack etc) ¹¹½¨ ResultSetWrap¶ÔÏó
+	 * é‡‡ç”¨ã€€List(Vector,ArrayList,Stack etc) æ„å»º ResultSetWrapå¯¹è±¡
 	 */
 	public ResultSetWrapper(List list) {
 		populate(list);
 	}
 	
 	/**
-	 * ²ÉÓÃ ResultSet/RowSet ¹¹½¨ ResultSetWrap¶ÔÏó
+	 * é‡‡ç”¨ ResultSet/RowSet æ„å»º ResultSetWrapå¯¹è±¡
 	 * 
-	 * Ê¹ÓÃ rsmd.getColumnLabel(j) Ìæ»» rsmd.getColumnName(j)¡£
+	 * ä½¿ç”¨ rsmd.getColumnLabel(j) æ›¿æ¢ rsmd.getColumnName(j)ã€‚
 	 */
 	public ResultSetWrapper(ResultSet rs) {
 		this.list = new Vector();
@@ -109,7 +109,7 @@ public class ResultSetWrapper implements RowSet,DataSet,List {
 				while(rs.next()){
 					Hashtable     temph=new   Hashtable();   
 					for(int   j=1;j<=rsmd.getColumnCount();j++){ 
-						if( rs.getObject(j)!=null ) { // Èç¹ûÎªNull£¬ÎŞĞë·ÅÈë
+						if( rs.getObject(j)!=null ) { // å¦‚æœä¸ºNullï¼Œæ— é¡»æ”¾å…¥
 							temph.put( rsmd.getColumnLabel(j).toLowerCase() , rs.getObject(j) ) ;
 						}
 					}   

@@ -6,9 +6,9 @@
 package com.kingcore.framework.jdbc;
 
 /**
- * <p>Êı¾İÁ¬½Ó³Ø¹ÜÀíÀà¡£
- * 		Zeven£¬Õâ¸öÄÚ²¿ÀàÒªÊµÏÖDataSource½Ó¿Ú£¬µ«ÊÇ±¾Àà¿ÉÒÔ²»ÊµÏÖ DataSource ½Ó¿Ú£¬
- * 		Èç¹ûÊµÏÖ£¬ºÃ´¦ÊÇÖ»ĞèÒª²Ù×÷±¾Àà£¬ÍêÈ«·â×° DBConnectionPool Àà¡£</p>
+ * <p>æ•°æ®è¿æ¥æ± ç®¡ç†ç±»ã€‚
+ * 		Zevenï¼Œè¿™ä¸ªå†…éƒ¨ç±»è¦å®ç°DataSourceæ¥å£ï¼Œä½†æ˜¯æœ¬ç±»å¯ä»¥ä¸å®ç° DataSource æ¥å£ï¼Œ
+ * 		å¦‚æœå®ç°ï¼Œå¥½å¤„æ˜¯åªéœ€è¦æ“ä½œæœ¬ç±»ï¼Œå®Œå…¨å°è£… DBConnectionPool ç±»ã€‚</p>
  * @author	WUZEWEN on 2006-3-7
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -40,7 +40,7 @@ import wzw.util.XmlUtils;
 import com.kingcore.framework.context.DataSourceManager;
 
 
-public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³ØÀà
+public class ConnectionManager implements DataSource, DataSourceManager{ //è¿æ¥æ± ç±»
 	 
 	private static final String Database_ConfigFile_ = "system-datasource-conf.xml";
 	
@@ -65,7 +65,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 	}
 	
 	/**
-	 * *** Zeven ,¿ÉÄÜ»á²»±» spring ¹¹½¨¶øµ÷ÓÃ±¾·½·¨¡£
+	 * *** Zeven ,å¯èƒ½ä¼šä¸è¢« spring æ„å»ºè€Œè°ƒç”¨æœ¬æ–¹æ³•ã€‚
 	 *
 	 */
 	private ConnectionManager() {
@@ -90,7 +90,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 //			dbProps.load(is);
 //		}
 //		catch (Exception e) {
-//			log.error( "²»ÄÜ¶ÁÈ¡ÊôĞÔÎÄ¼ş. ÇëÈ·±£db.propertiesÔÚÖ¸¶¨µÄÂ·¾¶ÖĞ" );
+//			log.error( "ä¸èƒ½è¯»å–å±æ€§æ–‡ä»¶. è¯·ç¡®ä¿db.propertiesåœ¨æŒ‡å®šçš„è·¯å¾„ä¸­" );
 //			
 //			return;
 //		}
@@ -100,7 +100,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 ////			log = new PrintWriter(new FileWriter(logFile, true), true);
 ////		}
 ////		catch (IOException e) {
-////			System.err.println("ÎŞ·¨´ò¿ªÈÕÖ¾ÎÄ¼ş: ".concat(String.valueOf(String.valueOf(
+////			System.err.println("æ— æ³•æ‰“å¼€æ—¥å¿—æ–‡ä»¶: ".concat(String.valueOf(String.valueOf(
 ////					logFile))));
 ////			log = new PrintWriter(System.err);
 ////		}
@@ -125,15 +125,15 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 				Driver driver = (Driver) Class.forName(driverClassName).newInstance();
 				DriverManager.registerDriver(driver);
 				///drivers.addElement(driver);
-				//log("³É¹¦×¢²áJDBCÇı¶¯³ÌĞò".concat(String.valueOf(String.valueOf(driverClassName))));
-				//log.debug("³É¹¦×¢²áJDBCÇı¶¯³ÌĞò".concat(String.valueOf(String.valueOf(
+				//log("æˆåŠŸæ³¨å†ŒJDBCé©±åŠ¨ç¨‹åº".concat(String.valueOf(String.valueOf(driverClassName))));
+				//log.debug("æˆåŠŸæ³¨å†ŒJDBCé©±åŠ¨ç¨‹åº".concat(String.valueOf(String.valueOf(
 				//    driverClassName))));
 			}
 			catch (Exception e) {
-				// log(String.valueOf(String.valueOf((new StringBuffer("ÎŞ·¨×¢²áJDBCÇı¶¯³ÌĞò: ")).append(driverClassName).append(", ´íÎó: ").append(e))));
-				log.error( (new StringBuffer("ÎŞ·¨×¢²áJDBCÇı¶¯³ÌĞò: "))
+				// log(String.valueOf(String.valueOf((new StringBuffer("æ— æ³•æ³¨å†ŒJDBCé©±åŠ¨ç¨‹åº: ")).append(driverClassName).append(", é”™è¯¯: ").append(e))));
+				log.error( (new StringBuffer("æ— æ³•æ³¨å†ŒJDBCé©±åŠ¨ç¨‹åº: "))
 								.append(driverClassName)
-								.append(", ´íÎó: ")
+								.append(", é”™è¯¯: ")
 								.append(e) );
 			}
 		}		
@@ -155,9 +155,9 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 //				String url = props.getProperty(String.valueOf(String.valueOf(poolName)).
 //						concat(".url"));
 //				if (url == null) {
-//					log.info( (new StringBuffer("Ã»ÓĞÎªÁ¬½Ó³Ø"))
+//					log.info( (new StringBuffer("æ²¡æœ‰ä¸ºè¿æ¥æ± "))
 //									.append(poolName)
-//									.append("Ö¸¶¨URL") );
+//									.append("æŒ‡å®šURL") );
 //				}
 //				else {
 //					String driver = props.getProperty(String.valueOf(String.valueOf(
@@ -174,9 +174,9 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 //					}
 //					catch (NumberFormatException e) {
 //
-//						log.info( (new StringBuffer("´íÎóµÄ×î´óÁ¬½ÓÊıÏŞÖÆ: "))
+//						log.info( (new StringBuffer("é”™è¯¯çš„æœ€å¤§è¿æ¥æ•°é™åˆ¶: "))
 //										.append(maxconn)
-//										.append(" .Á¬½Ó³Ø: ")
+//										.append(" .è¿æ¥æ± : ")
 //										.append(poolName) );
 //						max = 0;
 //						
@@ -184,8 +184,8 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 //					DBConnectionPool pool = new DBConnectionPool(poolName, driver, url,
 //							user, password, max, max);
 //					pools.put(poolName, pool);
-//					//log("³É¹¦´´½¨Á¬½Ó³Ø".concat(String.valueOf(String.valueOf(poolName))));
-//					//log.debug("³É¹¦´´½¨Á¬½Ó³Ø".concat(String.valueOf(String.valueOf(
+//					//log("æˆåŠŸåˆ›å»ºè¿æ¥æ± ".concat(String.valueOf(String.valueOf(poolName))));
+//					//log.debug("æˆåŠŸåˆ›å»ºè¿æ¥æ± ".concat(String.valueOf(String.valueOf(
 //					//    poolName))));
 //				}
 //			}
@@ -257,8 +257,8 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 	
 
 	/**
-	 * <p>ÏµÍ³Í£Ö¹Ê¹ÓÃºó£¬ÊÍ·ÅËùÓĞÁ¬½Ó³ØµÄÁ¬½Ó¶ÔÏó¡£</p>
-     * WZW on 2005-10-29 Ôö¼Ó¶Ô¶à¸öÁ¬½Ó³Ø¹ÜÀíµÄÏû³ı¹¦ÄÜ
+	 * <p>ç³»ç»Ÿåœæ­¢ä½¿ç”¨åï¼Œé‡Šæ”¾æ‰€æœ‰è¿æ¥æ± çš„è¿æ¥å¯¹è±¡ã€‚</p>
+     * WZW on 2005-10-29 å¢åŠ å¯¹å¤šä¸ªè¿æ¥æ± ç®¡ç†çš„æ¶ˆé™¤åŠŸèƒ½
      */
 	public void release()
 	{
@@ -282,7 +282,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 	}
 	
 //	/**
-//	 * £¿£¿£¿ Zeven on 2007-08-20
+//	 * ï¼Ÿï¼Ÿï¼Ÿ Zeven on 2007-08-20
 //	 *
 //	 */
 //	public synchronized void release() {
@@ -300,12 +300,12 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 //			Driver driver = (Driver) allDrivers.nextElement();
 //			try {
 //				DriverManager.deregisterDriver(driver);
-//				log.info( (new StringBuffer("³·ÏúJDBCÇı¶¯³ÌĞò ")).
+//				log.info( (new StringBuffer("æ’¤é”€JDBCé©±åŠ¨ç¨‹åº ")).
 //						append(driver.getClass().getName()).
-//						append("µÄ×¢²á") );
+//						append("çš„æ³¨å†Œ") );
 //			}
 //			catch (SQLException e) {
-//				log.info( (new StringBuffer("ÎŞ·¨³·ÏúÏÂÁĞJDBCÇı¶¯³ÌĞòµÄ×¢²á: "))
+//				log.info( (new StringBuffer("æ— æ³•æ’¤é”€ä¸‹åˆ—JDBCé©±åŠ¨ç¨‹åºçš„æ³¨å†Œ: "))
 //									.append( driver.getClass().getName()) );
 //			}
 //		}
@@ -329,10 +329,10 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
         
 		ConnectionPool pool = pools.get(dataSourceName);
     	///log.debug( "--0--4");
-		if (pool == null) {  //ÑÓÊ±¼ÓÔØ£¬¶ø²»ÊÇÒ»¿ªÊ¼¾Í¼ÓÔØËùÓĞ£¬ÓĞÀûÓĞ±×
-            //»ñÈ¡ÅäÖÃĞÅÏ¢
-            //¶ÁÈ¡ÏµÍ³Êı¾İ¿âÅäÖÃxmlÎÄ¼ş
-            //È¡¶à¸öÖµ
+		if (pool == null) {  //å»¶æ—¶åŠ è½½ï¼Œè€Œä¸æ˜¯ä¸€å¼€å§‹å°±åŠ è½½æ‰€æœ‰ï¼Œæœ‰åˆ©æœ‰å¼Š
+            //è·å–é…ç½®ä¿¡æ¯
+            //è¯»å–ç³»ç»Ÿæ•°æ®åº“é…ç½®xmlæ–‡ä»¶
+            //å–å¤šä¸ªå€¼
             Vector<String> vec = new Vector<String>();
             vec.add("data-sources@data-source[key=" + dataSourceName +
                     "]@driverClassName");
@@ -357,16 +357,16 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
             vec.add("data-sources@data-source[key=" + dataSourceName +
                     "]@defaultReadOnly");
 
-            //Ò»¶¨Òª±£Ö¤Êı¾İ¿âÅäÖÃÎÄ¼ş´æÔÚ
+            //ä¸€å®šè¦ä¿è¯æ•°æ®åº“é…ç½®æ–‡ä»¶å­˜åœ¨
             String confUrl = getConfigFile();
             try {
 				vec = XmlUtils.getElementValues( new FileInputStream(confUrl), vec);
 				if (vec == null)
-	                throw new SQLException("¶ÔÓ¦µÄÊı¾İ¿âÅäÖÃÎÄ¼ş["+confUrl+"]²»´æÔÚ£¡");
+	                throw new SQLException("å¯¹åº”çš„æ•°æ®åº“é…ç½®æ–‡ä»¶["+confUrl+"]ä¸å­˜åœ¨ï¼");
 
 	        } catch (FileNotFoundException e) {
 				e.printStackTrace();
-				throw new SQLException("¶ÔÓ¦µÄÊı¾İ¿âÅäÖÃÎÄ¼ş["+confUrl+"]²»´æÔÚ£¡");
+				throw new SQLException("å¯¹åº”çš„æ•°æ®åº“é…ç½®æ–‡ä»¶["+confUrl+"]ä¸å­˜åœ¨ï¼");
 			}
             String driver = vec.elementAt(0).toString();
             String databaseManagerName = vec.elementAt(1).toString();
@@ -433,7 +433,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 	
 
     /**
-     * È±Ê¡µÄDataSource µÄÃû³Æ¡£
+     * ç¼ºçœçš„DataSource çš„åç§°ã€‚
      */
     protected String defaultDataSourceName = "jndi/jdbc";
 
@@ -461,7 +461,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 	 * for jdk update to 1.6
 	 */
 	public <T> T unwrap(Class<T> iface) throws SQLException {
-		System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞ»¹Ã»ÓĞÊµÏÖ");
+		System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­è¿˜æ²¡æœ‰å®ç°");
 		return null;
 	}
 
@@ -469,7 +469,7 @@ public class ConnectionManager implements DataSource, DataSourceManager{ //Á¬½Ó³
 	 * for jdk update to 1.6
 	 */
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞ»¹Ã»ÓĞÊµÏÖ");
+		System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­è¿˜æ²¡æœ‰å®ç°");
 		return false;
 	}
 

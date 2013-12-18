@@ -17,7 +17,7 @@ import com.kingcore.framework.bean.impl.ResultSetWrapper;
 
 
 /**
- * <p> MySQL Êı¾İ¿âjdbc ¸öĞÔ²Ù×÷µÄÊµÏÖÀà¡£</p>
+ * <p> MySQL æ•°æ®åº“jdbc ä¸ªæ€§æ“ä½œçš„å®ç°ç±»ã€‚</p>
  * @author Zeven on 2007-6-24
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -33,7 +33,7 @@ public class MySqlDatabase2 extends MySqlDatabase {
 
 	/**
 	 *
-	 * <p>²ÉÓÃSunµÄÊµÏÖ×öÎªÈ±Ê¡µÄ´¦Àí¡£ </p>
+	 * <p>é‡‡ç”¨Sunçš„å®ç°åšä¸ºç¼ºçœçš„å¤„ç†ã€‚ </p>
 	 * @see com.kingcore.framework.context.DatabaseManager#resultSet2RowSet(java.sql.ResultSet)
 	 */
 	public RowSet resultSet2RowSet(ResultSet rs) throws SQLException {
@@ -45,11 +45,11 @@ public class MySqlDatabase2 extends MySqlDatabase {
 
 	
 	/**
-	 *  <p>Ìá¹©Êı¾İ¿âÍ¨ÓÃµÄ»ñÈ¡ĞòÁĞÖµ·½·¨.
-	 *  	ÒªÇóÊı¾İ¿âÌá¹©ÁË getSequenceValue( tblName )µÄº¯Êı¡£
-	 *  	¶ÔÓÚ²ÉÓÃ±í¼ÇÂ¼ĞòÁĞµÄ·½Ê½£¬ÒªÇóµ¥¶ÀÌá½»£¬ËùÒÔ¶ÀÁ¢»ñÈ¡conn,¼´Ê¹´«ÈëÁËÒ²²»Ê¹ÓÃconn£¬×öµ½ÍòÎŞÒ»Ê§¡£
-	 *		2009-02-18:Ïß³Ì°²È«£¬±ÜÃâ¶à¸öÁ¬½ÓconnectionÍ¬Ê±È¡ĞòÁĞµ¼ÖÂ²¢·¢ÎÊÌâ¡£
-	 *  	¸ù¾İ±íÃû»ñÈ¡Õâ¸ö±íµ±Ç°ĞòÁĞºÅ£¬Õâ¾ÍÒªÇó½¨Á¢Ò»¸ö±í£¬Í¬Ê±Ê¹ÓÃgetSequenceValue º¯Êı»ñÈ¡Öµ£¬±í½á¹¹ÈçÏÂ£º
+	 *  <p>æä¾›æ•°æ®åº“é€šç”¨çš„è·å–åºåˆ—å€¼æ–¹æ³•.
+	 *  	è¦æ±‚æ•°æ®åº“æä¾›äº† getSequenceValue( tblName )çš„å‡½æ•°ã€‚
+	 *  	å¯¹äºé‡‡ç”¨è¡¨è®°å½•åºåˆ—çš„æ–¹å¼ï¼Œè¦æ±‚å•ç‹¬æäº¤ï¼Œæ‰€ä»¥ç‹¬ç«‹è·å–conn,å³ä½¿ä¼ å…¥äº†ä¹Ÿä¸ä½¿ç”¨connï¼Œåšåˆ°ä¸‡æ— ä¸€å¤±ã€‚
+	 *		2009-02-18:çº¿ç¨‹å®‰å…¨ï¼Œé¿å…å¤šä¸ªè¿æ¥connectionåŒæ—¶å–åºåˆ—å¯¼è‡´å¹¶å‘é—®é¢˜ã€‚
+	 *  	æ ¹æ®è¡¨åè·å–è¿™ä¸ªè¡¨å½“å‰åºåˆ—å·ï¼Œè¿™å°±è¦æ±‚å»ºç«‹ä¸€ä¸ªè¡¨ï¼ŒåŒæ—¶ä½¿ç”¨getSequenceValue å‡½æ•°è·å–å€¼ï¼Œè¡¨ç»“æ„å¦‚ä¸‹ï¼š
 	 *  <pre>
 	 *  -- create table, use MySQL as example.
 	 *  use mysql ;
@@ -71,7 +71,7 @@ public class MySqlDatabase2 extends MySqlDatabase {
 	 *  </pre>
 	 *  	You can override this method in subclass.</p>
 	 *  
-	 *  ********************************************* ²ÉÓÃ×Ô¶¯Ôö³¤ÁĞ
+	 *  ********************************************* é‡‡ç”¨è‡ªåŠ¨å¢é•¿åˆ—
 	 *  drop table t3;
 	 *  create   table   t3(Id   int   auto_increment   primary   key   not   null) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 	 *  
@@ -79,11 +79,11 @@ public class MySqlDatabase2 extends MySqlDatabase {
 
 	 *  insert into t3 values();
 	 *  select last_insert_id();
-	 *  ********************************************* ²ÉÓÃ×Ô¶¯Ôö³¤ÁĞ end
+	 *  ********************************************* é‡‡ç”¨è‡ªåŠ¨å¢é•¿åˆ— end
 	 *  
-	 * @param tblName ĞèÒªÊ¹ÓÃĞòÁĞµÄ±í£¬Î¨Ò»£¬²»ÄÜÎªnull
-	 * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó£¬¿ÉÒÔÎªnull£¬Êµ¼ÊÉÏÕâÀïÃ»ÓĞÊ¹ÓÃÕâ¸ö²ÎÊı£¬¶øÊÇµ¥¶À´´½¨Connection¶ÔÏó
-	 * @return µ±Ç°¿ÉÓÃĞòÁĞÖµ
+	 * @param tblName éœ€è¦ä½¿ç”¨åºåˆ—çš„è¡¨ï¼Œå”¯ä¸€ï¼Œä¸èƒ½ä¸ºnull
+	 * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ï¼Œå¯ä»¥ä¸ºnullï¼Œå®é™…ä¸Šè¿™é‡Œæ²¡æœ‰ä½¿ç”¨è¿™ä¸ªå‚æ•°ï¼Œè€Œæ˜¯å•ç‹¬åˆ›å»ºConnectionå¯¹è±¡
+	 * @return å½“å‰å¯ç”¨åºåˆ—å€¼
 	 */
 	
 	public synchronized long getIdentityValue(String tblName, Connection pm_conn ) throws SQLException {
@@ -96,7 +96,7 @@ public class MySqlDatabase2 extends MySqlDatabase {
     	StringBuffer sb = new StringBuffer();
         try {
         	sb.append("1:conn is null.");
-        	// ×Ô¼º»ñÈ¡Ò»¸öÁ¬½Ó£¬¶ø²»¹ÜÁ¬½Ó²ÎÊıÊÇ·ñ´æÔÚ
+        	// è‡ªå·±è·å–ä¸€ä¸ªè¿æ¥ï¼Œè€Œä¸ç®¡è¿æ¥å‚æ•°æ˜¯å¦å­˜åœ¨
         	conn = ApplicationContext.getInstance().getDataSourceManager().getConnection();
 
         	sb.append("2:get conn.");
@@ -131,14 +131,14 @@ public class MySqlDatabase2 extends MySqlDatabase {
 			        	sb.append("6_1:get conn." );
 			        	sb.append(conn.isClosed());
 			        	
-			        	conn.commit();			// ÕâÀïÌá½»
+			        	conn.commit();			// è¿™é‡Œæäº¤
 			        	return ti;
 		        	
 		        	}else{
 			        	sb.append("7:get conn." );
 			        	sb.append(conn.isClosed());
 			        	
-			        	conn.rollback();		// ÕâÀï»Ø¹ö
+			        	conn.rollback();		// è¿™é‡Œå›æ»š
 
 			        	sb.append("8:get conn." );
 			        	sb.append(conn.isClosed());
@@ -147,9 +147,9 @@ public class MySqlDatabase2 extends MySqlDatabase {
 		        	}
 		        	
 		        	
-//		        	else{// ·ñÔò¼ÌĞøÑ­»·
+//		        	else{// å¦åˆ™ç»§ç»­å¾ªç¯
 //		        		try {
-//							Thread.sleep(50);    //-- µ¼ÖÂÁ¬½Ó¹Ø±Õ£¿£¿
+//							Thread.sleep(50);    //-- å¯¼è‡´è¿æ¥å…³é—­ï¼Ÿï¼Ÿ
 //						} catch (InterruptedException e) {
 //							//e.printStackTrace();
 //							log.error( e.getMessage(), e);
@@ -179,7 +179,7 @@ public class MySqlDatabase2 extends MySqlDatabase {
 	}
 
 	/**
-	 * Ïß³Ì°²È«£¬±ÜÃâ¶à¸öÁ¬½ÓconnectionÍ¬Ê±È¡ĞòÁĞµ¼ÖÂ²¢·¢ÎÊÌâ¡£
+	 * çº¿ç¨‹å®‰å…¨ï¼Œé¿å…å¤šä¸ªè¿æ¥connectionåŒæ—¶å–åºåˆ—å¯¼è‡´å¹¶å‘é—®é¢˜ã€‚
 	 */
 	public synchronized String identity(String tblName) {
 		try {

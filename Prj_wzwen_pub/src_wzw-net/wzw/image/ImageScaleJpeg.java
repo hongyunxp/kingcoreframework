@@ -19,9 +19,9 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 
 /**
- * <p>ËõÂÔÍ¼Àà£¬
- *	±¾javaÀàÄÜ½«jpgÍ¼Æ¬ÎÄ¼ş£¬½øĞĞµÈ±È»ò·ÇµÈ±ÈµÄ´óĞ¡×ª»»¡£
- * 	¾ßÌåÊ¹ÓÃ·½·¨£ºÏÈ¹¹½¨ÊµÀı£¬ÔÙµ÷ÓÃcreateImage·½·¨¡£</p>
+ * <p>ç¼©ç•¥å›¾ç±»ï¼Œ
+ *	æœ¬javaç±»èƒ½å°†jpgå›¾ç‰‡æ–‡ä»¶ï¼Œè¿›è¡Œç­‰æ¯”æˆ–éç­‰æ¯”çš„å¤§å°è½¬æ¢ã€‚
+ * 	å…·ä½“ä½¿ç”¨æ–¹æ³•ï¼šå…ˆæ„å»ºå®ä¾‹ï¼Œå†è°ƒç”¨createImageæ–¹æ³•ã€‚</p>
  * @author	WUZEWEN on 2005-09-15 
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -43,10 +43,10 @@ public class ImageScaleJpeg{
 	int startContrib, stopContrib;
 	int nDots;
 	int nHalfDots;
-	boolean proportion=true; //ÊÇ·ñµÈ±ÈËõ·Å±ê¼Ç(Ä¬ÈÏÎªµÈ±ÈËõ·Å)
+	boolean proportion=true; //æ˜¯å¦ç­‰æ¯”ç¼©æ”¾æ ‡è®°(é»˜è®¤ä¸ºç­‰æ¯”ç¼©æ”¾)
 	
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	private static Logger log = Logger.getLogger( ImageScaleJpeg.class );
 	
@@ -58,7 +58,7 @@ public class ImageScaleJpeg{
 	public BufferedImage imageZoomOut(BufferedImage srcBufferImage,int w, int h) {
 
 
-		//StopWatch sw = new StopWatch();		// ĞÔÄÜ¹Û²âÆ÷
+		//StopWatch sw = new StopWatch();		// æ€§èƒ½è§‚æµ‹å™¨
 		//sw.start();
 		
 		width = srcBufferImage.getWidth();
@@ -99,13 +99,13 @@ public class ImageScaleJpeg{
 	}
 	
 	/**
-	 * ¾ö¶¨Í¼Ïñ³ß´ç
+	 * å†³å®šå›¾åƒå°ºå¯¸
 	 * */
 	private int determineResultSize(int w, int h) {
 		double scaleH, scaleV;
 		scaleH = (double) w / (double) width;
 		scaleV = (double) h / (double) height;
-		//ĞèÒªÅĞ¶ÏÒ»ÏÂscaleH£¬scaleV£¬²»×ö·Å´ó²Ù×÷
+		//éœ€è¦åˆ¤æ–­ä¸€ä¸‹scaleHï¼ŒscaleVï¼Œä¸åšæ”¾å¤§æ“ä½œ
 		if (scaleH >= 1.0 && scaleV >= 1.0) {
 			return 1;
 		}
@@ -162,7 +162,7 @@ public class ImageScaleJpeg{
 		}
 	} // end of calContrib()
 	
-	//´¦Àí±ßÔµ
+	//å¤„ç†è¾¹ç¼˜
 	private void calTempContrib(int start, int stop) {
 		double weight = 0;
 		
@@ -196,7 +196,7 @@ public class ImageScaleJpeg{
 		return (redValue << 16) + (greenValue << 8) + blueValue;
 	}
 	
-	//ĞĞË®Æ½ÂË²¨
+	//è¡Œæ°´å¹³æ»¤æ³¢
 	private int horizontalFilter(BufferedImage bufImg, int startX, int stopX,
 			int start, int stop, int y, double[] pContrib) {
 		double valueRed = 0.0;
@@ -219,7 +219,7 @@ public class ImageScaleJpeg{
 		
 	} // end of horizontalFilter()
 	
-	//Í¼Æ¬Ë®Æ½ÂË²¨
+	//å›¾ç‰‡æ°´å¹³æ»¤æ³¢
 	private BufferedImage horizontalFiltering(BufferedImage bufImage, int iOutW) {
 		int dwInW = bufImage.getWidth();
 		int dwInH = bufImage.getHeight();
@@ -358,14 +358,14 @@ public class ImageScaleJpeg{
 	}
 	
 	/**
-	 * <p>°´ÕÕÖ¸¶¨Í¼Æ¬Éú³ÉÖ¸¶¨´óĞ¡¹æ¸ñµÄĞÂÍ¼Æ¬¡£ÔÚjdk1.4ÏÂÃæ£¬Ö§³ÖgifÍ¼Æ¬£»ÔÚjdk5ÏÂÃæ£¬Ö§³Ögif,bmp,pngµÈÍ¼Æ¬¸ñÊ½¡£</p>
-	 * @param inputDir ²Î¿¼Í¼Æ¬Â·¾¶£¬eg: "D:/temp/", "/usr/temp/"
-	 * @param outputDir Êä³öÍ¼Æ¬Â·¾¶£¬eg: "D:/temp/", "/usr/temp/"
-	 * @param inputFileName ²Î¿¼Í¼Æ¬Ãû³Æ
-	 * @param outputFileName Êä³öÍ¼Æ¬Ãû³Æ
-	 * @param w ĞÂÍ¼Æ¬¿í¶ÈÏñËØÖµ
-	 * @param h ĞÂÍ¼Æ¬¸ß¶ÈÏñËØÖµ
-	 * @param gp ÊÇ·ñĞèÒªµÈ±ÈËõ·Å£¬Ä¬ÈÏtrue
+	 * <p>æŒ‰ç…§æŒ‡å®šå›¾ç‰‡ç”ŸæˆæŒ‡å®šå¤§å°è§„æ ¼çš„æ–°å›¾ç‰‡ã€‚åœ¨jdk1.4ä¸‹é¢ï¼Œæ”¯æŒgifå›¾ç‰‡ï¼›åœ¨jdk5ä¸‹é¢ï¼Œæ”¯æŒgif,bmp,pngç­‰å›¾ç‰‡æ ¼å¼ã€‚</p>
+	 * @param inputDir å‚è€ƒå›¾ç‰‡è·¯å¾„ï¼Œeg: "D:/temp/", "/usr/temp/"
+	 * @param outputDir è¾“å‡ºå›¾ç‰‡è·¯å¾„ï¼Œeg: "D:/temp/", "/usr/temp/"
+	 * @param inputFileName å‚è€ƒå›¾ç‰‡åç§°
+	 * @param outputFileName è¾“å‡ºå›¾ç‰‡åç§°
+	 * @param w æ–°å›¾ç‰‡å®½åº¦åƒç´ å€¼
+	 * @param h æ–°å›¾ç‰‡é«˜åº¦åƒç´ å€¼
+	 * @param gp æ˜¯å¦éœ€è¦ç­‰æ¯”ç¼©æ”¾ï¼Œé»˜è®¤true
 	 * @return
 	 * @throws Exception
 	 */
@@ -378,13 +378,13 @@ public class ImageScaleJpeg{
 
 	/**
 	 * 
-	 * <p>°´ÕÕÖ¸¶¨Í¼Æ¬Éú³ÉÖ¸¶¨´óĞ¡¹æ¸ñµÄĞÂÍ¼Æ¬¡£ÔÚjdk1.4ÏÂÃæ£¬Ö§³ÖgifÍ¼Æ¬£»ÔÚjdk5ÏÂÃæ£¬Ö§³Ögif,bmp,pngµÈÍ¼Æ¬¸ñÊ½¡£</p>
-	 * @param inputFile ²Î¿¼Í¼Æ¬Â·¾¶¼ÓÃû³Æ£¬eg: "D:/temp/abc.jpg", "/usr/temp/abc.gif"
-	 * @param outputFile Êä³öÍ¼Æ¬Â·¾¶¼ÓÃû³Æ£¬eg: "D:/temp/efg.jpg", "/usr/temp/efg.gif"
-	 * @param w ĞÂÍ¼Æ¬¿í¶ÈÏñËØÖµ
-	 * @param h ĞÂÍ¼Æ¬¸ß¶ÈÏñËØÖµ
-	 * @param gp ÊÇ·ñĞèÒªµÈ±ÈËõ·Å£¬Ä¬ÈÏtrue
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°Ü·µ»Øfalse¡£
+	 * <p>æŒ‰ç…§æŒ‡å®šå›¾ç‰‡ç”ŸæˆæŒ‡å®šå¤§å°è§„æ ¼çš„æ–°å›¾ç‰‡ã€‚åœ¨jdk1.4ä¸‹é¢ï¼Œæ”¯æŒgifå›¾ç‰‡ï¼›åœ¨jdk5ä¸‹é¢ï¼Œæ”¯æŒgif,bmp,pngç­‰å›¾ç‰‡æ ¼å¼ã€‚</p>
+	 * @param inputFile å‚è€ƒå›¾ç‰‡è·¯å¾„åŠ åç§°ï¼Œeg: "D:/temp/abc.jpg", "/usr/temp/abc.gif"
+	 * @param outputFile è¾“å‡ºå›¾ç‰‡è·¯å¾„åŠ åç§°ï¼Œeg: "D:/temp/efg.jpg", "/usr/temp/efg.gif"
+	 * @param w æ–°å›¾ç‰‡å®½åº¦åƒç´ å€¼
+	 * @param h æ–°å›¾ç‰‡é«˜åº¦åƒç´ å€¼
+	 * @param gp æ˜¯å¦éœ€è¦ç­‰æ¯”ç¼©æ”¾ï¼Œé»˜è®¤true
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥è¿”å›falseã€‚
 	 * @throws IOException
 	 */
 	public boolean createImage(String inputFile,String outputFile,int new_w,int new_h,boolean gp) throws IOException{
@@ -397,14 +397,14 @@ public class ImageScaleJpeg{
 //		new_h = 100 ;
 //		gp = true;
 		
-		log.debug("------------------------ ¿ªÊ¼´´½¨Í¼Æ¬"+ outputFile);
+		log.debug("------------------------ å¼€å§‹åˆ›å»ºå›¾ç‰‡"+ outputFile);
 		
 		//StopWatch sw = new StopWatch();
 		//sw.start();
 		
 		File _file = new File( inputFile ); 
 		if( !_file.exists() ) {
-			throw new IOException("ĞèÒªËõÂÔ²Ù×÷µÄÔ´ÎÄ¼ş["+ _file.getAbsolutePath()+"]²»´æÔÚ£¡");
+			throw new IOException("éœ€è¦ç¼©ç•¥æ“ä½œçš„æºæ–‡ä»¶["+ _file.getAbsolutePath()+"]ä¸å­˜åœ¨ï¼");
 		}
 
 		//sw.stop();
@@ -412,9 +412,9 @@ public class ImageScaleJpeg{
 		//sw.reset();
 		//sw.start();
 		
-		//System.out.println(  _file==null);                      //¶ÁÈëÎÄ¼ş
-		Image src = javax.imageio.ImageIO.read(_file);		//¹¹ÔìImage¶ÔÏó
-		// ±¾À´ÊÇÔÚjdk1.4ÏÂ¶ÔbmpÍ¼Æ¬½øÒ»²½´¦Àí£¬ÕâÀïÈ¡Ïû£¬½¨ÒéÏÈÉú³ÉjpgµÄ´óÍ¼£¬ÔÚÉú³ÉjpgµÄËõÂÔÍ¼£¬¶ø²»ÊÇ²úÉú bmp´óÍ¼¼ÓÉÏjpgµÄËõÂÔÍ¼¡£
+		//System.out.println(  _file==null);                      //è¯»å…¥æ–‡ä»¶
+		Image src = javax.imageio.ImageIO.read(_file);		//æ„é€ Imageå¯¹è±¡
+		// æœ¬æ¥æ˜¯åœ¨jdk1.4ä¸‹å¯¹bmpå›¾ç‰‡è¿›ä¸€æ­¥å¤„ç†ï¼Œè¿™é‡Œå–æ¶ˆï¼Œå»ºè®®å…ˆç”Ÿæˆjpgçš„å¤§å›¾ï¼Œåœ¨ç”Ÿæˆjpgçš„ç¼©ç•¥å›¾ï¼Œè€Œä¸æ˜¯äº§ç”Ÿ bmpå¤§å›¾åŠ ä¸Šjpgçš„ç¼©ç•¥å›¾ã€‚
 //		if(src==null) {
 //			src=BitmapReader.load( inputDir, inputFileName );
 //		}
@@ -423,7 +423,7 @@ public class ImageScaleJpeg{
 		//sw.reset();
 		//sw.start();
 		if(src==null) {
-			throw new IOException("´´½¨Í¼Æ¬¶ÔÏóÊ§°Ü£¬Çë¼ì²éÍ¼Æ¬ÎÄ¼şÊÇ·ñ·ûºÏ¹æ¸ñ£¡");
+			throw new IOException("åˆ›å»ºå›¾ç‰‡å¯¹è±¡å¤±è´¥ï¼Œè¯·æ£€æŸ¥å›¾ç‰‡æ–‡ä»¶æ˜¯å¦ç¬¦åˆè§„æ ¼ï¼");
 		}
 		
 		int width =src.getWidth(null);
@@ -434,9 +434,9 @@ public class ImageScaleJpeg{
 		//System.out.println( "----------- 3:"+ sw.getTime() );
 		//sw.reset();
 		//sw.start();
-		if (this.proportion==true) //ÅĞ¶ÏÊÇ·ñÊÇµÈ±ÈËõ·Å.
+		if (this.proportion==true) //åˆ¤æ–­æ˜¯å¦æ˜¯ç­‰æ¯”ç¼©æ”¾.
 		{
-//			ÎªµÈ±ÈËõ·Å¼ÆËãÊä³öµÄÍ¼Æ¬¿í¶È¼°¸ß¶È
+//			ä¸ºç­‰æ¯”ç¼©æ”¾è®¡ç®—è¾“å‡ºçš„å›¾ç‰‡å®½åº¦åŠé«˜åº¦
 			double rate1=((double)width)/(double)new_w ;
 			double rate2=((double)height)/(double)new_h ;
 			double rate=rate1>rate2?rate1:rate2;
@@ -450,7 +450,7 @@ public class ImageScaleJpeg{
 		//sw.reset();
 		//sw.start();
 		BufferedImage tag = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
-		//tag.getGraphics().drawImage(src,0,0,80,57,null);       //»æÖÆËõĞ¡ºóµÄÍ¼
+		//tag.getGraphics().drawImage(src,0,0,80,57,null);       //ç»˜åˆ¶ç¼©å°åçš„å›¾
 		//sw.stop();
 		//System.out.println( "----------- 5:"+ sw.getTime() );
 		
@@ -470,26 +470,26 @@ public class ImageScaleJpeg{
 //		sw.reset();
 //		sw.start();
 		System.out.println( outputFile==null );
-		FileOutputStream out=new FileOutputStream( outputFile );	//Êä³öµ½ÎÄ¼şÁ÷
+		FileOutputStream out=new FileOutputStream( outputFile );	//è¾“å‡ºåˆ°æ–‡ä»¶æµ
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);       
 //		sw.stop();
 //		System.out.println( "----------- 8:"+ sw.getTime() );
 
 //		sw.reset();
 //		sw.start();
-		encoder.encode(tag);                                               //½üJPEG±àÂë
+		encoder.encode(tag);                                               //è¿‘JPEGç¼–ç 
 		//System.out.print(width+"*"+height);                              
 		out.close();
 //		sw.stop();
 //		System.out.println( "----------- 9:"+ sw.getTime() );
 
-		log.debug("------------------------ ´´½¨Í¼Æ¬Íê³É");
+		log.debug("------------------------ åˆ›å»ºå›¾ç‰‡å®Œæˆ");
 		_file = null;
 		src = null;
 		tag = null;
 		out = null;
 		encoder = null;
-		log.debug("------------------------ ÇåÀíÀ¬»øÍê³É");
+		log.debug("------------------------ æ¸…ç†åƒåœ¾å®Œæˆ");
 		
 		return true;
 		
@@ -505,7 +505,7 @@ public class ImageScaleJpeg{
 	public static void main(String [] args) throws IOException, InterruptedException
 	{
 
-		if( true ){		// Ê¹ÓÃ¿Í»§¶Ë²âÊÔ
+		if( true ){		// ä½¿ç”¨å®¢æˆ·ç«¯æµ‹è¯•
 //			String arg0 = args[0];
 //			String arg1 = args[1];
 			String arg0 = "E:/My Documents_200608/Tmp_work/e182b2a2b79fa5f7336ddbc41c9c5484.jpg";

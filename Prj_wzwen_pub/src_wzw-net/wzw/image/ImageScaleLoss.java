@@ -21,10 +21,10 @@ import com.gif4j.GifEncoder;
 
 /**
  * <p>
- * 	ËõÂÔÍ¼Àà£¬ ±¾javaÀàÄÜ½«jpgÍ¼Æ¬ÎÄ¼ş£¬½øĞĞµÈ±È»ò·ÇµÈ±ÈµÄ´óĞ¡×ª»»¡£ 
- *  ¾ßÌåÊ¹ÓÃ·½·¨£ºÏÈ¹¹½¨ÊµÀı£¬ÔÙµ÷ÓÃcreateImage·½·¨¡£
- * 		ÄÜ´¦ÀíÓĞÍ¸Ã÷²ã±³¾°µÄgifÍ¼Æ¬£¬µ«ÊÇËùÓĞÍ¼Æ¬ÖÊÁ¿²»¸ß£¬ÓĞĞ©Ä£ºı¡£
- * 		2009-07-22 wzw : Ôö¼ÓÍ¼Æ¬Ëõ·ÅÊ±ÊÇ·ñĞèÒª²¹°×µÄ¹¦ÄÜ
+ * 	ç¼©ç•¥å›¾ç±»ï¼Œ æœ¬javaç±»èƒ½å°†jpgå›¾ç‰‡æ–‡ä»¶ï¼Œè¿›è¡Œç­‰æ¯”æˆ–éç­‰æ¯”çš„å¤§å°è½¬æ¢ã€‚ 
+ *  å…·ä½“ä½¿ç”¨æ–¹æ³•ï¼šå…ˆæ„å»ºå®ä¾‹ï¼Œå†è°ƒç”¨createImageæ–¹æ³•ã€‚
+ * 		èƒ½å¤„ç†æœ‰é€æ˜å±‚èƒŒæ™¯çš„gifå›¾ç‰‡ï¼Œä½†æ˜¯æ‰€æœ‰å›¾ç‰‡è´¨é‡ä¸é«˜ï¼Œæœ‰äº›æ¨¡ç³Šã€‚
+ * 		2009-07-22 wzw : å¢åŠ å›¾ç‰‡ç¼©æ”¾æ—¶æ˜¯å¦éœ€è¦è¡¥ç™½çš„åŠŸèƒ½
  * 
  * </p>
  * 
@@ -41,29 +41,29 @@ public class ImageScaleLoss {
 
 
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	private final static Logger log = Logger.getLogger(ImageScaleLoss.class);
  
 	/**
 	 * <p>
-	 * °´ÕÕÖ¸¶¨Í¼Æ¬Éú³ÉÖ¸¶¨´óĞ¡¹æ¸ñµÄĞÂÍ¼Æ¬¡£ÔÚjdk1.4ÏÂÃæ£¬Ö§³ÖgifÍ¼Æ¬£»ÔÚjdk5ÏÂÃæ£¬Ö§³Ögif,bmp,pngµÈÍ¼Æ¬¸ñÊ½¡£
+	 * æŒ‰ç…§æŒ‡å®šå›¾ç‰‡ç”ŸæˆæŒ‡å®šå¤§å°è§„æ ¼çš„æ–°å›¾ç‰‡ã€‚åœ¨jdk1.4ä¸‹é¢ï¼Œæ”¯æŒgifå›¾ç‰‡ï¼›åœ¨jdk5ä¸‹é¢ï¼Œæ”¯æŒgif,bmp,pngç­‰å›¾ç‰‡æ ¼å¼ã€‚
 	 * </p>
 	 * 
 	 * @param inputDir
-	 *            ²Î¿¼Í¼Æ¬Â·¾¶£¬eg: "D:/temp/", "/usr/temp/"
+	 *            å‚è€ƒå›¾ç‰‡è·¯å¾„ï¼Œeg: "D:/temp/", "/usr/temp/"
 	 * @param outputDir
-	 *            Êä³öÍ¼Æ¬Â·¾¶£¬eg: "D:/temp/", "/usr/temp/"
+	 *            è¾“å‡ºå›¾ç‰‡è·¯å¾„ï¼Œeg: "D:/temp/", "/usr/temp/"
 	 * @param inputFileName
-	 *            ²Î¿¼Í¼Æ¬Ãû³Æ
+	 *            å‚è€ƒå›¾ç‰‡åç§°
 	 * @param outputFileName
-	 *            Êä³öÍ¼Æ¬Ãû³Æ
+	 *            è¾“å‡ºå›¾ç‰‡åç§°
 	 * @param w
-	 *            ĞÂÍ¼Æ¬¿í¶ÈÏñËØÖµ
+	 *            æ–°å›¾ç‰‡å®½åº¦åƒç´ å€¼
 	 * @param h
-	 *            ĞÂÍ¼Æ¬¸ß¶ÈÏñËØÖµ
+	 *            æ–°å›¾ç‰‡é«˜åº¦åƒç´ å€¼
 	 * @param gp
-	 *            ÊÇ·ñĞèÒªµÈ±ÈËõ·Å£¬Ä¬ÈÏtrue
+	 *            æ˜¯å¦éœ€è¦ç­‰æ¯”ç¼©æ”¾ï¼Œé»˜è®¤true
 	 * @return
 	 * @throws Exception
 	 */
@@ -88,22 +88,22 @@ public class ImageScaleLoss {
 	/**
 	 * 
 	 * <p>
-	 * °´ÕÕÖ¸¶¨Í¼Æ¬Éú³ÉÖ¸¶¨´óĞ¡¹æ¸ñµÄĞÂÍ¼Æ¬¡£ÔÚjdk1.4ÏÂÃæ£¬Ö§³ÖgifÍ¼Æ¬£»ÔÚjdk5ÏÂÃæ£¬Ö§³Ögif,bmp,pngµÈÍ¼Æ¬¸ñÊ½¡£
+	 * æŒ‰ç…§æŒ‡å®šå›¾ç‰‡ç”ŸæˆæŒ‡å®šå¤§å°è§„æ ¼çš„æ–°å›¾ç‰‡ã€‚åœ¨jdk1.4ä¸‹é¢ï¼Œæ”¯æŒgifå›¾ç‰‡ï¼›åœ¨jdk5ä¸‹é¢ï¼Œæ”¯æŒgif,bmp,pngç­‰å›¾ç‰‡æ ¼å¼ã€‚
 	 * </p>
 	 * 
 	 * @param inputFile
-	 *            ²Î¿¼Í¼Æ¬Â·¾¶¼ÓÃû³Æ£¬eg: "D:/temp/abc.jpg", "/usr/temp/abc.gif"
+	 *            å‚è€ƒå›¾ç‰‡è·¯å¾„åŠ åç§°ï¼Œeg: "D:/temp/abc.jpg", "/usr/temp/abc.gif"
 	 * @param outputFile
-	 *            Êä³öÍ¼Æ¬Â·¾¶¼ÓÃû³Æ£¬eg: "D:/temp/efg.jpg", "/usr/temp/efg.gif"
+	 *            è¾“å‡ºå›¾ç‰‡è·¯å¾„åŠ åç§°ï¼Œeg: "D:/temp/efg.jpg", "/usr/temp/efg.gif"
 	 * @param w
-	 *            ĞÂÍ¼Æ¬¿í¶ÈÏñËØÖµ
+	 *            æ–°å›¾ç‰‡å®½åº¦åƒç´ å€¼
 	 * @param h
-	 *            ĞÂÍ¼Æ¬¸ß¶ÈÏñËØÖµ
+	 *            æ–°å›¾ç‰‡é«˜åº¦åƒç´ å€¼
 	 * @param gp
-	 *            ÊÇ·ñĞèÒªµÈ±ÈËõ·Å£¬Ä¬ÈÏtrue
+	 *            æ˜¯å¦éœ€è¦ç­‰æ¯”ç¼©æ”¾ï¼Œé»˜è®¤true
 	 * @param needFilled
-	 *            ÊÇ·ñĞèÒª²¹°×
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°Ü·µ»Øfalse¡£ 
+	 *            æ˜¯å¦éœ€è¦è¡¥ç™½
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥è¿”å›falseã€‚ 
 	 * @throws IOException
 	 */
 	public boolean createImage(String inputFile, String outputFile, int new_w,
@@ -116,17 +116,17 @@ public class ImageScaleLoss {
 		// new_h = 100 ;
 		// gp = true;
 
-		log.debug("------------------------ ¿ªÊ¼´´½¨Í¼Æ¬" + outputFile);
+		log.debug("------------------------ å¼€å§‹åˆ›å»ºå›¾ç‰‡" + outputFile);
 
 		// StopWatch sw = new StopWatch();
 		// sw.start();
 
 		int req_w = new_w;
-		int req_h = new_h; // ÒªÇóÉú³ÉµÄ¸ß¶È¡¢¿í¶È
+		int req_h = new_h; // è¦æ±‚ç”Ÿæˆçš„é«˜åº¦ã€å®½åº¦
 		File _file = new File(inputFile);
 		if (!_file.exists()) {
-			throw new IOException("ĞèÒªËõÂÔ²Ù×÷µÄÔ´ÎÄ¼ş[" + _file.getAbsolutePath()
-					+ "]²»´æÔÚ£¡");
+			throw new IOException("éœ€è¦ç¼©ç•¥æ“ä½œçš„æºæ–‡ä»¶[" + _file.getAbsolutePath()
+					+ "]ä¸å­˜åœ¨ï¼");
 		}
 
 		// sw.stop();
@@ -134,10 +134,10 @@ public class ImageScaleLoss {
 		// sw.reset();
 		// sw.start();
 
-		// System.out.println( _file==null); //¶ÁÈëÎÄ¼ş
-		BufferedImage src = ImageIO.read(_file); // ¹¹ÔìImage¶ÔÏó
-		// ±¾À´ÊÇÔÚjdk1.4ÏÂ¶ÔbmpÍ¼Æ¬½øÒ»²½´¦Àí£¬ÕâÀïÈ¡Ïû£¬½¨ÒéÏÈÉú³ÉjpgµÄ´óÍ¼£¬ÔÚÉú³ÉjpgµÄËõÂÔÍ¼£¬¶ø²»ÊÇ²úÉú
-		// bmp´óÍ¼¼ÓÉÏjpgµÄËõÂÔÍ¼¡£
+		// System.out.println( _file==null); //è¯»å…¥æ–‡ä»¶
+		BufferedImage src = ImageIO.read(_file); // æ„é€ Imageå¯¹è±¡
+		// æœ¬æ¥æ˜¯åœ¨jdk1.4ä¸‹å¯¹bmpå›¾ç‰‡è¿›ä¸€æ­¥å¤„ç†ï¼Œè¿™é‡Œå–æ¶ˆï¼Œå»ºè®®å…ˆç”Ÿæˆjpgçš„å¤§å›¾ï¼Œåœ¨ç”Ÿæˆjpgçš„ç¼©ç•¥å›¾ï¼Œè€Œä¸æ˜¯äº§ç”Ÿ
+		// bmpå¤§å›¾åŠ ä¸Šjpgçš„ç¼©ç•¥å›¾ã€‚
 		// if(src==null) {
 		// src=BitmapReader.load( inputDir, inputFileName );
 		// }
@@ -146,15 +146,15 @@ public class ImageScaleLoss {
 		// sw.reset();
 		// sw.start();
 		if (src == null) {
-			throw new IOException("´´½¨Í¼Æ¬¶ÔÏóÊ§°Ü£¬Çë¼ì²éÍ¼Æ¬ÎÄ¼şÊÇ·ñ·ûºÏ¹æ¸ñ£¡");
+			throw new IOException("åˆ›å»ºå›¾ç‰‡å¯¹è±¡å¤±è´¥ï¼Œè¯·æ£€æŸ¥å›¾ç‰‡æ–‡ä»¶æ˜¯å¦ç¬¦åˆè§„æ ¼ï¼");
 		}
 
 		int width = src.getWidth(null);
 		int height = src.getHeight(null);
 
 		boolean proportion = gp;
-		//Ê×ÏÈÅĞ¶ÏÔ­Í¼¸ß¿íÊÇ·ñ±ÈËõ·ÅºóµÄ¸ß¿íĞ¡,Èç¹ûĞ¡ÓÚ
-		//¾ÍÖ±½ÓÊä³öÔ­Í¼
+		//é¦–å…ˆåˆ¤æ–­åŸå›¾é«˜å®½æ˜¯å¦æ¯”ç¼©æ”¾åçš„é«˜å®½å°,å¦‚æœå°äº
+		//å°±ç›´æ¥è¾“å‡ºåŸå›¾
 		if (new_w >= width && new_h >= height) {
 			proportion = false;
 			new_w = width;
@@ -164,9 +164,9 @@ public class ImageScaleLoss {
 		// System.out.println( "----------- 3:"+ sw.getTime() );
 		// sw.reset();
 		// sw.start();
-		if (proportion == true) // ÅĞ¶ÏÊÇ·ñÊÇµÈ±ÈËõ·Å.
+		if (proportion == true) // åˆ¤æ–­æ˜¯å¦æ˜¯ç­‰æ¯”ç¼©æ”¾.
 		{
-			// ÎªµÈ±ÈËõ·Å¼ÆËãÊä³öµÄÍ¼Æ¬¿í¶È¼°¸ß¶È
+			// ä¸ºç­‰æ¯”ç¼©æ”¾è®¡ç®—è¾“å‡ºçš„å›¾ç‰‡å®½åº¦åŠé«˜åº¦
 			double rate1 = ((double) width) / (double) new_w;
 			double rate2 = ((double) height) / (double) new_h;
 			double rate = rate1 > rate2 ? rate1 : rate2;
@@ -180,15 +180,15 @@ public class ImageScaleLoss {
 		// sw.reset();
 		// sw.start();
 
-		FileOutputStream out = new FileOutputStream(outputFile); // Êä³öµ½ÎÄ¼şÁ÷
+		FileOutputStream out = new FileOutputStream(outputFile); // è¾“å‡ºåˆ°æ–‡ä»¶æµ
 		
 		BufferedImage tag = null;
-		if(needFilled){  // ÊÇ·ñĞèÒª²¹¿Õ°×
+		if(needFilled){  // æ˜¯å¦éœ€è¦è¡¥ç©ºç™½
 			//BufferedImage tag = new BufferedImage(new_w, new_h, BufferedImage.TYPE_4BYTE_ABGR);
 			tag = new BufferedImage(req_w, req_h, BufferedImage.TYPE_4BYTE_ABGR);
 			// BufferedImage tag = new
 			// BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
-			// tag.getGraphics().drawImage(src,0,0,80,57,null); //»æÖÆËõĞ¡ºóµÄÍ¼
+			// tag.getGraphics().drawImage(src,0,0,80,57,null); //ç»˜åˆ¶ç¼©å°åçš„å›¾
 			// sw.stop();
 			// System.out.println( "----------- 5:"+ sw.getTime() );
 
@@ -196,10 +196,10 @@ public class ImageScaleLoss {
 			// sw.start();
 
 			//tag.getGraphics().drawImage(
-			//		src.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0, 0, null); // »æÖÆËõĞ¡ºóµÄÍ¼
+			//		src.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0, 0, null); // ç»˜åˆ¶ç¼©å°åçš„å›¾
 			tag.getGraphics().drawImage(
 					src.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 
-							(req_w-new_w)/2, (req_h-new_h)/2, null); // »æÖÆËõĞ¡ºóµÄÍ¼
+							(req_w-new_w)/2, (req_h-new_h)/2, null); // ç»˜åˆ¶ç¼©å°åçš„å›¾
 			
 			tag.getGraphics().setColor(Color.white);
 			if(req_w > new_w){
@@ -212,11 +212,11 @@ public class ImageScaleLoss {
 				
 			}
 			
-		}else{	// ²»ĞèÒª²¹°×
+		}else{	// ä¸éœ€è¦è¡¥ç™½
 			tag = new BufferedImage(new_w, new_h, BufferedImage.TYPE_4BYTE_ABGR);
 
 			tag.getGraphics().drawImage(
-						src.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0, 0, null); // »æÖÆËõĞ¡ºóµÄÍ¼
+						src.getScaledInstance(new_w, new_h, Image.SCALE_SMOOTH), 0, 0, null); // ç»˜åˆ¶ç¼©å°åçš„å›¾
 			
 		}
 		
@@ -240,19 +240,19 @@ public class ImageScaleLoss {
 
 		// sw.reset();
 		// sw.start();
-		// encoder.encode(tag); //½üJPEG±àÂë
+		// encoder.encode(tag); //è¿‘JPEGç¼–ç 
 		// System.out.print(width+"*"+height);
 		out.close();
 		// sw.stop();
 		// System.out.println( "----------- 9:"+ sw.getTime() );
 
-		log.debug("------------------------ ´´½¨Í¼Æ¬Íê³É");
+		log.debug("------------------------ åˆ›å»ºå›¾ç‰‡å®Œæˆ");
 		_file = null;
 		src = null;
 		tag = null;
 		out = null;
 		// encoder = null;
-		log.debug("------------------------ ÇåÀíÀ¬»øÍê³É");
+		log.debug("------------------------ æ¸…ç†åƒåœ¾å®Œæˆ");
 
 		return true;
 
@@ -274,11 +274,11 @@ public class ImageScaleLoss {
 			return;
 		}
 		
-		if (false) { // Ê¹ÓÃ¶àÏß³Ì²âÊÔ
+		if (false) { // ä½¿ç”¨å¤šçº¿ç¨‹æµ‹è¯•
 
 			ImageScaleThread t1 = new ImageScaleThread(
-					  "E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--Ğ¡Í¼Ëõ·Å²âÊÔ2.gif",
-	  		          "E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--Ğ¡Í¼Ëõ·Å²âÊÔ2_200_bad2.jpg",
+					  "E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--å°å›¾ç¼©æ”¾æµ‹è¯•2.gif",
+	  		          "E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--å°å›¾ç¼©æ”¾æµ‹è¯•2_200_bad2.jpg",
 					200, 200, true);
 
 			if (true) {
@@ -286,8 +286,8 @@ public class ImageScaleLoss {
 			}
 
 			ImageScaleThread t2 = new ImageScaleThread(
-					"E:/My Documents_200608/tmp/42699ecd616adcee2c9cb5e5cb4a440d--Ğ¡Í¼Ëõ·Å²âÊÔ2.jpg",
-					"E:/My Documents_200608/tmp/42699ecd616adcee2c9cb5e5cb4a440d--Ğ¡Í¼Ëõ·Å²âÊÔ_200.jpg",
+					"E:/My Documents_200608/tmp/42699ecd616adcee2c9cb5e5cb4a440d--å°å›¾ç¼©æ”¾æµ‹è¯•2.jpg",
+					"E:/My Documents_200608/tmp/42699ecd616adcee2c9cb5e5cb4a440d--å°å›¾ç¼©æ”¾æµ‹è¯•_200.jpg",
 					200, 200, true);
 			// System.out.println("-------------------- end ...0 ");
 			t1.thread.join();
@@ -303,50 +303,50 @@ public class ImageScaleLoss {
 
 		}
 
-		if (false) { // Ê¹ÓÃ¿Í»§¶Ë²âÊÔ
+		if (false) { // ä½¿ç”¨å®¢æˆ·ç«¯æµ‹è¯•
 			long bt = System.currentTimeMillis();
 			ImageScaleLoss is = new ImageScaleLoss();
 			
 			for (int i = 0; i < 10; i++) {
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-							"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_250.jpg",
+							"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_250.jpg",
 						250, 250, true);
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-						"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_200.jpg",
+						"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_200.jpg",
 					200, 200, true);
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-						"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_150.jpg",
+						"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_150.jpg",
 					150, 150, true);
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-						"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_100.jpg",
+						"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_100.jpg",
 					100, 100, true);
 				
 			}
 			long end = System.currentTimeMillis();
-			System.out.println((end-bt)/1000.0+"Ãë");
+			System.out.println((end-bt)/1000.0+"ç§’");
 
 		}
-		if (true) { // Ê¹ÓÃ¿Í»§¶Ë²âÊÔ			long bt = System.currentTimeMillis();
+		if (true) { // ä½¿ç”¨å®¢æˆ·ç«¯æµ‹è¯•			long bt = System.currentTimeMillis();
 			ImageScaleLoss is = new ImageScaleLoss();
 			
 			for (int i = 0; i < 1; i++) {
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-							"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_250.jpg",
+							"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_250.jpg",
 						250, 250, true);
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-						"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_250.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_200.jpg",
+						"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_250.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_200.jpg",
 					200, 200, true);
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-						"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_200.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_150.jpg",
+						"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_200.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_150.jpg",
 					150, 150, true);
 				is.createImage("E:/My Documents_200608/Tmp_Work_Doc/", "E:/My Documents_200608/Tmp_Work_Doc/", 
-						"ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_150.jpg", "ÉÌ³ÇÉÌ¼Ò¿ìËÙ×¢²á½çÃæ2_100.jpg",
+						"å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_150.jpg", "å•†åŸå•†å®¶å¿«é€Ÿæ³¨å†Œç•Œé¢2_100.jpg",
 					100, 100, true);
 				
 				
 			}
 			long end = System.currentTimeMillis();
-			System.out.println((end-bt)/1000.0+"Ãë");
+			System.out.println((end-bt)/1000.0+"ç§’");
 			//return ;
 		}
 

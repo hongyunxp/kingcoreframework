@@ -39,11 +39,11 @@ import com.kingcore.framework.jdbc.RowSetResultSetExtractor;
 
 /**
  * <pre>
- * 	»ùÀà£ºDao Jdbc Base Object.
- * 		> »ùÓÚ Spring JdbcDaoSupport£¬ĞèÒªÅäÖÃ;  
- * 		> ¿ÉÒÔÊ¹ÓÃSpring¿ØÖÆÊÂÎï»òÕßÊÖ¶¯¿ØÖÆÊÂÎï;
- * 	   	> ÊÊºÏµÄ¿ª·¢½á¹¹ÎªÈı²ã£º Struts + Spring + JdbcDao;
- *		> ¸ü¶àÊı¾İ¿â²Ù×÷·½·¨Ö§³Ö£º wzw.util.DbUtils.class
+ * 	åŸºç±»ï¼šDao Jdbc Base Object.
+ * 		> åŸºäº Spring JdbcDaoSupportï¼Œéœ€è¦é…ç½®;  
+ * 		> å¯ä»¥ä½¿ç”¨Springæ§åˆ¶äº‹ç‰©æˆ–è€…æ‰‹åŠ¨æ§åˆ¶äº‹ç‰©;
+ * 	   	> é€‚åˆçš„å¼€å‘ç»“æ„ä¸ºä¸‰å±‚ï¼š Struts + Spring + JdbcDao;
+ *		> æ›´å¤šæ•°æ®åº“æ“ä½œæ–¹æ³•æ”¯æŒï¼š wzw.util.DbUtils.class
  * 	
  * 	DaoJdbcSpringImpl.java
  * </pre>
@@ -63,14 +63,14 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * ÈÕÖ¾¶ÔÏó
+	 * æ—¥å¿—å¯¹è±¡
 	 */
 	protected static Logger log = Logger.getLogger( DaoJdbcSpringImpl.class );
 
 	
 	/**
 	 * 
-	 * <pre>»ñÈ¡ÏµÍ³ĞòÁĞ´íÎó¡£</pre>
+	 * <pre>è·å–ç³»ç»Ÿåºåˆ—é”™è¯¯ã€‚</pre>
 	 * @author Zeven on 2008-6-4
 	 * @param tblName
 	 * @return
@@ -83,24 +83,24 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 			
 			log.debug("debug", e);
 			/// e.pri ntStackTrace();
-			throw new InvalidDataAccessResourceUsageException("»ñÈ¡Ãû³ÆÎª["+tblName+"]µÄ±êµÄÏµÍ³ĞòÁĞ²úÉú´íÎó!", e);
+			throw new InvalidDataAccessResourceUsageException("è·å–åç§°ä¸º["+tblName+"]çš„æ ‡çš„ç³»ç»Ÿåºåˆ—äº§ç”Ÿé”™è¯¯!", e);
 		}
 		
 	}
 
 	/**
 	 * <pre>
-	 * 		ÎªÁË¼æÈİ³ÌĞò£¬ÔÙ¸ÄÎª public ÀàĞÍ£¬×îºÃÊÇ protected ÀàĞÍ¡£
+	 * 		ä¸ºäº†å…¼å®¹ç¨‹åºï¼Œå†æ”¹ä¸º public ç±»å‹ï¼Œæœ€å¥½æ˜¯ protected ç±»å‹ã€‚
 	 * 
-	 * ½«×Ö·ûĞÍ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†å­—ç¬¦å‹å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£© 
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰ 
 	 * </pre>  
 	 *      
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param Content Òª·ÅÈëÊı¾İ¿âµÄÄÚÈİ
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param Content è¦æ”¾å…¥æ•°æ®åº“çš„å†…å®¹
 	 * @return
 	 */	
 	protected boolean updateClobColumn(String tablename, 
@@ -121,15 +121,15 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 		} catch (Exception e) {
 			log.debug("debug", e);
 			/// e.pri ntStackTrace();
-			throw new InvalidDataAccessResourceUsageException("¸üĞÂ±í["+tablename+"]µÄClob×Ö¶Î["+picField+"]²úÉú´íÎó!", e); 
+			throw new InvalidDataAccessResourceUsageException("æ›´æ–°è¡¨["+tablename+"]çš„Clobå­—æ®µ["+picField+"]äº§ç”Ÿé”™è¯¯!", e); 
 		}
 		
 	} 
 
 	/**
 	 * 
-	 * <pre>Ïàµ±ÓÚÒÔÇ°µÄ doQuery ·½·¨¡£
-	 * 	Ê¹ÓÃStatement£¬¶ø²»ÊÇPreparedStatement£¬ĞèÒªÊ¹ÓÃPreparedStatementÔòÊ¹ÓÃÖØÔØµÄ·½·¨¡£</pre>
+	 * <pre>ç›¸å½“äºä»¥å‰çš„ doQuery æ–¹æ³•ã€‚
+	 * 	ä½¿ç”¨Statementï¼Œè€Œä¸æ˜¯PreparedStatementï¼Œéœ€è¦ä½¿ç”¨PreparedStatementåˆ™ä½¿ç”¨é‡è½½çš„æ–¹æ³•ã€‚</pre>
 	 * @author Zeven on 2008-5-26
 	 * @param sql
 	 * @return
@@ -141,13 +141,13 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>
-	 * ²ÉÓÃPrepareStatement·½Ê½Ö´ĞĞÖ¸¶¨µÄsqlÓï¾ä£¬½«½á¹û¼¯°ü×°ÎªRowSet¶ÔÏó·µ»Ø¡£
+	 * é‡‡ç”¨PrepareStatementæ–¹å¼æ‰§è¡ŒæŒ‡å®šçš„sqlè¯­å¥ï¼Œå°†ç»“æœé›†åŒ…è£…ä¸ºRowSetå¯¹è±¡è¿”å›ã€‚
 	 * 
 	 * </pre>
 	 * 
-	 * @param sql ĞèÒªÖ´ĞĞ²éÑ¯µÄsqlÓï¾ä
-	 * @param args PrepareStatement·½Ê½ÉèÖÃµÄ²ÎÊıÖµÊı×é
-	 * @param argTypes PrepareStatement·½Ê½ÉèÖÃµÄ²ÎÊıÖµÊı×é¶ÔÓ¦µÄÀàĞÍÊı×é
+	 * @param sql éœ€è¦æ‰§è¡ŒæŸ¥è¯¢çš„sqlè¯­å¥
+	 * @param args PrepareStatementæ–¹å¼è®¾ç½®çš„å‚æ•°å€¼æ•°ç»„
+	 * @param argTypes PrepareStatementæ–¹å¼è®¾ç½®çš„å‚æ•°å€¼æ•°ç»„å¯¹åº”çš„ç±»å‹æ•°ç»„
 	 * @return
 	 * @throws SQLException
 	 */
@@ -159,12 +159,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * 
-	 * <pre>»ñÈ¡Ö¸¶¨·­Ò³µÄRowSet¡£
-	 * 	Ê¹ÓÃStatement£¬¶ø²»ÊÇPreparedStatement£¬ĞèÒªÊ¹ÓÃPreparedStatementÔòÊ¹ÓÃÖØÔØµÄ·½·¨¡£</pre>
+	 * <pre>è·å–æŒ‡å®šç¿»é¡µçš„RowSetã€‚
+	 * 	ä½¿ç”¨Statementï¼Œè€Œä¸æ˜¯PreparedStatementï¼Œéœ€è¦ä½¿ç”¨PreparedStatementåˆ™ä½¿ç”¨é‡è½½çš„æ–¹æ³•ã€‚</pre>
 	 * @author Zeven on 2008-5-26
-	 * @param navigator ·­Ò³ĞÅÏ¢Êı×é[Paginated]
-	 * @param sql_count »ñÈ¡×ÜÊıÁ¿µÄsqlÓï¾ä
-	 * @param sql_datas »ñÈ¡Êı¾İµÄsqlÓï¾ä
+	 * @param navigator ç¿»é¡µä¿¡æ¯æ•°ç»„[Paginated]
+	 * @param sql_count è·å–æ€»æ•°é‡çš„sqlè¯­å¥
+	 * @param sql_datas è·å–æ•°æ®çš„sqlè¯­å¥
 	 * @return
 	 */
 	protected RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas) {
@@ -178,13 +178,13 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * 
-	 * <pre>»ñÈ¡Ö¸¶¨·­Ò³µÄRowSet¡£</pre>
+	 * <pre>è·å–æŒ‡å®šç¿»é¡µçš„RowSetã€‚</pre>
 	 * @author Zeven on 2008-5-26
-	 * @param navigator ·­Ò³ĞÅÏ¢Êı×é[Paginated]
-	 * @param sql_count »ñÈ¡×ÜÊıÁ¿µÄsqlÓï¾ä
-	 * @param sql_datas »ñÈ¡Êı¾İµÄsqlÓï¾ä
-	 * @param args ²ÎÊıÊı×é
-	 * @param argTypes ²ÎÊıÀàĞÍÊı×é
+	 * @param navigator ç¿»é¡µä¿¡æ¯æ•°ç»„[Paginated]
+	 * @param sql_count è·å–æ€»æ•°é‡çš„sqlè¯­å¥
+	 * @param sql_datas è·å–æ•°æ®çš„sqlè¯­å¥
+	 * @param args å‚æ•°æ•°ç»„
+	 * @param argTypes å‚æ•°ç±»å‹æ•°ç»„
 	 * @return
 	 */
 	protected RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
@@ -198,11 +198,11 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 *  Ö´ĞĞÖ¸¶¨µÄsqlÓï¾ä£¬½«½á¹û¼¯°ü×°ÎªList<Map>¶ÔÏó·µ»Ø¡£
-	 *    ĞèÒªÊ¹ÓÃPrepareStatement·½Ê½ÇëÊ¹ÓÃÖØÔØµÄ·½·¨¡£ 
+	 *  æ‰§è¡ŒæŒ‡å®šçš„sqlè¯­å¥ï¼Œå°†ç»“æœé›†åŒ…è£…ä¸ºList<Map>å¯¹è±¡è¿”å›ã€‚
+	 *    éœ€è¦ä½¿ç”¨PrepareStatementæ–¹å¼è¯·ä½¿ç”¨é‡è½½çš„æ–¹æ³•ã€‚ 
 	 * </pre>
 	 *  
-	 * @param sql ĞèÒªÖ´ĞĞ²éÑ¯µÄsqlÓï¾ä
+	 * @param sql éœ€è¦æ‰§è¡ŒæŸ¥è¯¢çš„sqlè¯­å¥
 	 * @return
 	 * @throws SQLException
 	 */
@@ -213,12 +213,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>
-	 * ²ÉÓÃPrepareStatement·½Ê½Ö´ĞĞÖ¸¶¨µÄsqlÓï¾ä£¬½«½á¹û¼¯°ü×°ÎªList<Map>¶ÔÏó·µ»Ø¡£
+	 * é‡‡ç”¨PrepareStatementæ–¹å¼æ‰§è¡ŒæŒ‡å®šçš„sqlè¯­å¥ï¼Œå°†ç»“æœé›†åŒ…è£…ä¸ºList<Map>å¯¹è±¡è¿”å›ã€‚
 	 * </pre>
 	 * 
-	 * @param sql ĞèÒªÖ´ĞĞ²éÑ¯µÄsqlÓï¾ä
-	 * @param args PrepareStatement·½Ê½ÉèÖÃµÄ²ÎÊıÖµÊı×é
-	 * @param argTypes PrepareStatement·½Ê½ÉèÖÃµÄ²ÎÊıÖµÊı×é¶ÔÓ¦µÄÀàĞÍÊı×é
+	 * @param sql éœ€è¦æ‰§è¡ŒæŸ¥è¯¢çš„sqlè¯­å¥
+	 * @param args PrepareStatementæ–¹å¼è®¾ç½®çš„å‚æ•°å€¼æ•°ç»„
+	 * @param argTypes PrepareStatementæ–¹å¼è®¾ç½®çš„å‚æ•°å€¼æ•°ç»„å¯¹åº”çš„ç±»å‹æ•°ç»„
 	 * @return
 	 * @throws SQLException
 	 */
@@ -228,12 +228,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	
 	/**
-	 * <pre>»ñÈ¡Ö¸¶¨·­Ò³µÄList<ModelObject>¡£
-	 * 	    Ê¹ÓÃStatement£¬¶ø²»ÊÇPreparedStatement£¬ĞèÒªÊ¹ÓÃPreparedStatementÔòÊ¹ÓÃÖØÔØµÄ·½·¨¡£</pre>
-	 * @param navigator ·­Ò³ĞÅÏ¢Êı×é[Paginated]
-	 * @param sql_count »ñÈ¡×ÜÊıÁ¿µÄsqlÓï¾ä
-	 * @param sql_datas »ñÈ¡Êı¾İµÄsqlÓï¾ä
-	 * @param clazz ListÀïÃæµÄ¶ÔÏó£¬¶ÔÓ¦Ò»ĞĞÊı¾İ£¬¿ÉÒÔÎªnull
+	 * <pre>è·å–æŒ‡å®šç¿»é¡µçš„List<ModelObject>ã€‚
+	 * 	    ä½¿ç”¨Statementï¼Œè€Œä¸æ˜¯PreparedStatementï¼Œéœ€è¦ä½¿ç”¨PreparedStatementåˆ™ä½¿ç”¨é‡è½½çš„æ–¹æ³•ã€‚</pre>
+	 * @param navigator ç¿»é¡µä¿¡æ¯æ•°ç»„[Paginated]
+	 * @param sql_count è·å–æ€»æ•°é‡çš„sqlè¯­å¥
+	 * @param sql_datas è·å–æ•°æ®çš„sqlè¯­å¥
+	 * @param clazz Listé‡Œé¢çš„å¯¹è±¡ï¼Œå¯¹åº”ä¸€è¡Œæ•°æ®ï¼Œå¯ä»¥ä¸ºnull
 	 * @return
 	 */
 	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Class clazz) {
@@ -247,13 +247,13 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	
 	/**
-	 * <pre>»ñÈ¡Ö¸¶¨·­Ò³µÄList<ModelObject>¡£ ÊÇPreparedStatement·½Ê½¡£</pre>
-	 * @param navigator ·­Ò³ĞÅÏ¢Êı×é[Paginated]
-	 * @param sql_count »ñÈ¡×ÜÊıÁ¿µÄsqlÓï¾ä
-	 * @param sql_datas »ñÈ¡Êı¾İµÄsqlÓï¾ä
-	 * @param args ²ÎÊıÊı×é 
-	 * @param argTypes ²ÎÊıÀàĞÍÊı×é
-	 * @param clazz ListÖĞÃ¿ĞĞ¶ÔÏóµÄÄ£ĞÍ¶ÔÏójavaBean
+	 * <pre>è·å–æŒ‡å®šç¿»é¡µçš„List<ModelObject>ã€‚ æ˜¯PreparedStatementæ–¹å¼ã€‚</pre>
+	 * @param navigator ç¿»é¡µä¿¡æ¯æ•°ç»„[Paginated]
+	 * @param sql_count è·å–æ€»æ•°é‡çš„sqlè¯­å¥
+	 * @param sql_datas è·å–æ•°æ®çš„sqlè¯­å¥
+	 * @param args å‚æ•°æ•°ç»„ 
+	 * @param argTypes å‚æ•°ç±»å‹æ•°ç»„
+	 * @param clazz Listä¸­æ¯è¡Œå¯¹è±¡çš„æ¨¡å‹å¯¹è±¡javaBean
 	 * @return
 	 */
 	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Object[] args, int[] argTypes, Class clazz) {
@@ -267,11 +267,11 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>
-	 * Ö´ĞĞÖ¸¶¨µÄsqlÓï¾ä£¬²¢·µ»ØList×÷Îª½á¹û£¬Ã¿Ò»ĞĞÓ³ÉäÒ»¸öbeanClass¶ÔÏó¡£ 
-	 * 	Ê¹ÓÃStatement£¬¶ø²»ÊÇPreparedStatement£¬ĞèÒªÊ¹ÓÃPreparedStatementÔòÊ¹ÓÃÖØÔØµÄ·½·¨¡£
+	 * æ‰§è¡ŒæŒ‡å®šçš„sqlè¯­å¥ï¼Œå¹¶è¿”å›Listä½œä¸ºç»“æœï¼Œæ¯ä¸€è¡Œæ˜ å°„ä¸€ä¸ªbeanClasså¯¹è±¡ã€‚ 
+	 * 	ä½¿ç”¨Statementï¼Œè€Œä¸æ˜¯PreparedStatementï¼Œéœ€è¦ä½¿ç”¨PreparedStatementåˆ™ä½¿ç”¨é‡è½½çš„æ–¹æ³•ã€‚
 	 * </pre>
 	 * 
-	 * @param sql_datas ĞèÒªÖ´ĞĞµÄsql statement
+	 * @param sql_datas éœ€è¦æ‰§è¡Œçš„sql statement
 	 * @param beanClass map one row to beanClass
 	 * @return
 	 */
@@ -282,12 +282,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 
 	/**
 	 * <pre>
-	 * Ö´ĞĞÖ¸¶¨µÄsqlÓï¾ä£¬²¢·µ»ØList×÷Îª½á¹û£¬Ã¿Ò»ĞĞ¶ÔÓ¦Ò»¸öbeanClass¶ÔÏó¡£
+	 * æ‰§è¡ŒæŒ‡å®šçš„sqlè¯­å¥ï¼Œå¹¶è¿”å›Listä½œä¸ºç»“æœï¼Œæ¯ä¸€è¡Œå¯¹åº”ä¸€ä¸ªbeanClasså¯¹è±¡ã€‚
 	 * </pre>
 	 * 
-	 * @param sql_datas ĞèÒªÖ´ĞĞµÄsql statement
-	 * @param args ²ÎÊıÊı×é
-	 * @param argTypes ²ÎÊıÀàĞÍÊı×é
+	 * @param sql_datas éœ€è¦æ‰§è¡Œçš„sql statement
+	 * @param args å‚æ•°æ•°ç»„
+	 * @param argTypes å‚æ•°ç±»å‹æ•°ç»„
 	 * @param beanClass map one row to beanClass
 	 * @return
 	 */
@@ -297,11 +297,11 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	
 	/**
-	 * <pre>»ñÈ¡Ö¸¶¨·­Ò³µÄList£¬Ã¿ĞĞÊ¹ÓÃÒ»¸öMap·â×°Êı¾İ¡£
-	 * 	Ê¹ÓÃStatement£¬¶ø²»ÊÇPreparedStatement£¬ĞèÒªÊ¹ÓÃPreparedStatementÔòÊ¹ÓÃÖØÔØµÄ·½·¨¡£</pre>
-	 * @param navigator ·­Ò³ĞÅÏ¢Êı×é[Paginated]
-	 * @param sql_count »ñÈ¡×ÜÊıÁ¿µÄsqlÓï¾ä
-	 * @param sql_datas »ñÈ¡Êı¾İµÄsqlÓï¾ä
+	 * <pre>è·å–æŒ‡å®šç¿»é¡µçš„Listï¼Œæ¯è¡Œä½¿ç”¨ä¸€ä¸ªMapå°è£…æ•°æ®ã€‚
+	 * 	ä½¿ç”¨Statementï¼Œè€Œä¸æ˜¯PreparedStatementï¼Œéœ€è¦ä½¿ç”¨PreparedStatementåˆ™ä½¿ç”¨é‡è½½çš„æ–¹æ³•ã€‚</pre>
+	 * @param navigator ç¿»é¡µä¿¡æ¯æ•°ç»„[Paginated]
+	 * @param sql_count è·å–æ€»æ•°é‡çš„sqlè¯­å¥
+	 * @param sql_datas è·å–æ•°æ®çš„sqlè¯­å¥
 	 * @return
 	 */
 	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas) {
@@ -313,13 +313,13 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	}
 
 	/**
-	 * <pre>»ñÈ¡Ö¸¶¨·­Ò³µÄList£¬Ã¿ĞĞÊ¹ÓÃÒ»¸öMap·â×°Êı¾İ£¬¼´List<Map>¡£
-	 * 		PreparedStatement·½Ê½¡£</pre>
-	 * @param navigator ·­Ò³ĞÅÏ¢Êı×é[Paginated]
-	 * @param sql_count »ñÈ¡×ÜÊıÁ¿µÄsqlÓï¾ä
-	 * @param sql_datas »ñÈ¡Êı¾İµÄsqlÓï¾ä
-	 * @param args ²ÎÊıÊı×é
-	 * @param argTypes ²ÎÊıÀàĞÍÊı×é
+	 * <pre>è·å–æŒ‡å®šç¿»é¡µçš„Listï¼Œæ¯è¡Œä½¿ç”¨ä¸€ä¸ªMapå°è£…æ•°æ®ï¼Œå³List<Map>ã€‚
+	 * 		PreparedStatementæ–¹å¼ã€‚</pre>
+	 * @param navigator ç¿»é¡µä¿¡æ¯æ•°ç»„[Paginated]
+	 * @param sql_count è·å–æ€»æ•°é‡çš„sqlè¯­å¥
+	 * @param sql_datas è·å–æ•°æ®çš„sqlè¯­å¥
+	 * @param args å‚æ•°æ•°ç»„
+	 * @param argTypes å‚æ•°ç±»å‹æ•°ç»„
 	 * @return
 	 */
 	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
@@ -332,14 +332,14 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>
-	 * ¸ù¾İ±íÃû³ÆºÍ²éÑ¯Ìõ¼ş£¬»ñÈ¡·ûºÏÌõ¼şµÄÊı¾İµÄĞĞÊı¡£
+	 * æ ¹æ®è¡¨åç§°å’ŒæŸ¥è¯¢æ¡ä»¶ï¼Œè·å–ç¬¦åˆæ¡ä»¶çš„æ•°æ®çš„è¡Œæ•°ã€‚
 	 *
 	 * </pre>
 	 * 
-	 * @param tableName Òª²éÑ¯µÄ±íÃû³Æ
-	 * @param condition ¹ıÂËÌõ¼ş£¬Èç¡°WHERE numCol>100¡±
-	 * @return ·ûºÏÌõ¼şµÄĞĞÊı
-	 * @throws SQLException Êı¾İ¿â²Ù×÷Òì³£
+	 * @param tableName è¦æŸ¥è¯¢çš„è¡¨åç§°
+	 * @param condition è¿‡æ»¤æ¡ä»¶ï¼Œå¦‚â€œWHERE numCol>100â€
+	 * @return ç¬¦åˆæ¡ä»¶çš„è¡Œæ•°
+	 * @throws SQLException æ•°æ®åº“æ“ä½œå¼‚å¸¸
 	 */
 	protected int getSize(String tableName, String condition) {
 		//return DBUtils.getSize(tableName, condition, this.getConnection() );
@@ -350,7 +350,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 
 	/**
-	 * <pre>»ñÈ¡×î½ü²åÈëµÄÖ÷¼üÖµ¡£</pre>
+	 * <pre>è·å–æœ€è¿‘æ’å…¥çš„ä¸»é”®å€¼ã€‚</pre>
 	 * just for MySQL,get id that insert last.
 	 * 
 	 * @return
@@ -366,7 +366,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 			log.debug("debug", e);
 			/// e.pri ntStackTrace();
-			throw new InvalidDataAccessResourceUsageException("Ö´ĞĞ getLastInsertIdentity Ê±²úÉú´íÎó!", e);
+			throw new InvalidDataAccessResourceUsageException("æ‰§è¡Œ getLastInsertIdentity æ—¶äº§ç”Ÿé”™è¯¯!", e);
 		
 		}
 	}
@@ -375,7 +375,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	/**
 	 * <pre>
 	 * populate ResulteSet Object to RowSet Object.  DateBase is Oracle 10i.
-	 *    ¶ÔÓÚÖ±½ÓÀ´ÖÁÊı¾İ¿âµÄ·â×°£¬Í³Ò»²ÉÓÃ RowSet£¬CachedRowSet(wzw)Ö»×öÎªÌØÊâµØ·½µÄ´¦Àí¡£
+	 *    å¯¹äºç›´æ¥æ¥è‡³æ•°æ®åº“çš„å°è£…ï¼Œç»Ÿä¸€é‡‡ç”¨ RowSetï¼ŒCachedRowSet(wzw)åªåšä¸ºç‰¹æ®Šåœ°æ–¹çš„å¤„ç†ã€‚
 	 * </pre>
 	 * 
 	 * @param rs
@@ -390,7 +390,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 			
 			log.debug("debug", e);
 			/// e.pri ntStackTrace();
-			throw new InvalidDataAccessResourceUsageException("ResultSet ×ª»¯Îª RowSet Ê±²úÉúÒì³£!!", e);
+			throw new InvalidDataAccessResourceUsageException("ResultSet è½¬åŒ–ä¸º RowSet æ—¶äº§ç”Ÿå¼‚å¸¸!!", e);
 		}
 		
 	}
@@ -398,11 +398,11 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	/**
 	 * <pre>
 	 * populate ResulteSet Object to RowSet Object.  DateBase is Oracle 10i.
-	 *    ¶ÔÓÚÖ±½ÓÀ´ÖÁÊı¾İ¿âµÄ·â×°£¬Í³Ò»²ÉÓÃ RowSet£¬CachedRowSet(wzw)Ö»×öÎªÌØÊâµØ·½µÄ´¦Àí¡£
+	 *    å¯¹äºç›´æ¥æ¥è‡³æ•°æ®åº“çš„å°è£…ï¼Œç»Ÿä¸€é‡‡ç”¨ RowSetï¼ŒCachedRowSet(wzw)åªåšä¸ºç‰¹æ®Šåœ°æ–¹çš„å¤„ç†ã€‚
 	 * </pre>
 	 * 
 	 * @param rs
-	 * @param dbm ÌØ¶¨µÄÊı¾İ¿â¹ÜÀíÕß
+	 * @param dbm ç‰¹å®šçš„æ•°æ®åº“ç®¡ç†è€…
 	 * @return
 	 * @throws SQLException 
 	 */
@@ -413,7 +413,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 		} catch (SQLException e) {
 			log.debug("debug", e);
 			/// e.pri ntStackTrace();
-			throw new InvalidResultSetAccessException("ResultSet ×ª»¯Îª RowSet Ê±²úÉúÒì³£!!", e);
+			throw new InvalidResultSetAccessException("ResultSet è½¬åŒ–ä¸º RowSet æ—¶äº§ç”Ÿå¼‚å¸¸!!", e);
 		
 		}
 	}
@@ -445,16 +445,16 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âµÄÌØÊâ¹æÔò¶ÔĞèÒª²åÈëµÄÄÚÈİ×öÌØÊâ´¦Àí¡£
-	 * 		Õë¶Ô×Ö·û´®ÀàĞÍ(Varchar)£¬Êı×Ö(Number)¡¢ÈÕÆÚ(Date)ºÍ¶ş½øÖÆ(LOB)ÀàĞÍ²»ÓÃÕâ¸ö´¦Àí¡£
-	 * 		escape2Sql Ìæ»» convertString ·½·¨¡£
-	 * 		-- µ±Ç°ÊÇÕë¶Ô Oracle Êı¾İ¿â£¬½« ' ·ûºÅ Ìæ»»Îª '' £¬²ÅÄÜ²åÈëµ½Êı¾İ¿âÖĞ¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“çš„ç‰¹æ®Šè§„åˆ™å¯¹éœ€è¦æ’å…¥çš„å†…å®¹åšç‰¹æ®Šå¤„ç†ã€‚
+	 * 		é’ˆå¯¹å­—ç¬¦ä¸²ç±»å‹(Varchar)ï¼Œæ•°å­—(Number)ã€æ—¥æœŸ(Date)å’ŒäºŒè¿›åˆ¶(LOB)ç±»å‹ä¸ç”¨è¿™ä¸ªå¤„ç†ã€‚
+	 * 		escape2Sql æ›¿æ¢ convertString æ–¹æ³•ã€‚
+	 * 		-- å½“å‰æ˜¯é’ˆå¯¹ Oracle æ•°æ®åº“ï¼Œå°† ' ç¬¦å· æ›¿æ¢ä¸º '' ï¼Œæ‰èƒ½æ’å…¥åˆ°æ•°æ®åº“ä¸­ã€‚
 	 * DBUtils.convertString("ab'cd")			="ab''cd"
 	 * DBUtils.convertString("ab'c'd")			="ab''c''d"
 	 * DBUtils.convertString("ab''cd")			="ab''''cd"
 	 * </pre>
 	 * 
-	 * @param src ĞèÒª±£´æµ½Êı¾İ¿âµÄÒ»¸ö×Ö¶Î¡£
+	 * @param src éœ€è¦ä¿å­˜åˆ°æ•°æ®åº“çš„ä¸€ä¸ªå­—æ®µã€‚
 	 * @return
 	 */
 	protected String escape2Sql(String src) {
@@ -475,20 +475,20 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âÓï·¨£¬·µ»ØÁ¬½ÓÁ½¸ö×Ö·û´®µÄSQL Æ¬¶Ï¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“è¯­æ³•ï¼Œè¿”å›è¿æ¥ä¸¤ä¸ªå­—ç¬¦ä¸²çš„SQL ç‰‡æ–­ã€‚
 	 * 	
-	 * 		Oracle Êı¾İ¿â·µ»Ø str1 +"||"+ str2;
+	 * 		Oracle æ•°æ®åº“è¿”å› str1 +"||"+ str2;
 	 * 			concat( userid, username) = userid||username;
 	 * 			concat( '001',  'admin' ) = '001'||'admin';
-	 * 		MySQL  Êı¾İ¿â·µ»Ø concat(str1, str2);
+	 * 		MySQL  æ•°æ®åº“è¿”å› concat(str1, str2);
 	 * 			concat( userid, username) = concat(userid,username);
 	 * 			concat( '001',  'admin' ) = concat('001' ,'admin');
-	 * 		SQLServer  Êı¾İ¿â·µ»Ø str1 +"+"+ str2;
+	 * 		SQLServer  æ•°æ®åº“è¿”å› str1 +"+"+ str2;
 	 * 			concat( userid, username) = userid + "+" + username);
 	 * 			concat( '001',  'admin' ) = '001' + "+" + 'admin');
 	 * </pre>
-	 * @param str1 ×Ö·û´®»òÕßÁĞÃû
-	 * @param str2 ×Ö·û´®»òÕßÁĞÃû
+	 * @param str1 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
+	 * @param str2 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
 	 * @return
 	 */
 	protected String concat(String str1, String str2) {
@@ -498,14 +498,14 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âÓï·¨£¬×ª»»¿ÉÄÜÎªnullµÄ±í´ïÊ½¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“è¯­æ³•ï¼Œè½¬æ¢å¯èƒ½ä¸ºnullçš„è¡¨è¾¾å¼ã€‚
 	 * 
-	 * 		Oracle Êı¾İ¿â·µ»Ø nvl(exp1, exp2);
-	 * 		MySQL  Êı¾İ¿â·µ»Ø coalesce( exp1, exp2);
-	 * 		SQLServer  Êı¾İ¿â·µ»Ø isNull(exp1, exp2);
+	 * 		Oracle æ•°æ®åº“è¿”å› nvl(exp1, exp2);
+	 * 		MySQL  æ•°æ®åº“è¿”å› coalesce( exp1, exp2);
+	 * 		SQLServer  æ•°æ®åº“è¿”å› isNull(exp1, exp2);
 	 * </pre>
-	 * @param str1 ×Ö·û´®»òÕßÁĞÃû
-	 * @param str2 ×Ö·û´®»òÕßÁĞÃû
+	 * @param str1 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
+	 * @param str2 å­—ç¬¦ä¸²æˆ–è€…åˆ—å
 	 * @return
 	 */
 	protected String switchNull(String exp1, String exp2) {
@@ -514,10 +514,10 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	
 //	/**
-//	 * »ñÈ¡Î¨Ò»±êÊ¶·ûµÄ±í´ïÊ½¡£
+//	 * è·å–å”¯ä¸€æ ‡è¯†ç¬¦çš„è¡¨è¾¾å¼ã€‚
 //	 * 
 //   * @deprecated replaced by nextUniqueID(String tblName)
-//	 * @param tblName ĞèÒªÊ¹ÓÃ±êÊ¶·ûµÄ±í£¬Èç"tsys_flow","employee","demo_table"
+//	 * @param tblName éœ€è¦ä½¿ç”¨æ ‡è¯†ç¬¦çš„è¡¨ï¼Œå¦‚"tsys_flow","employee","demo_table"
 //	 * @return
 //	 */
 //	protected String nextUniqueID(String tblName) {
@@ -527,10 +527,10 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * »ñÈ¡Î¨Ò»±êÊ¶·ûµÄ±í´ïÊ½¡£
+	 * è·å–å”¯ä¸€æ ‡è¯†ç¬¦çš„è¡¨è¾¾å¼ã€‚
 	 * </pre>
 	 * 
-	 * @param tblName ĞèÒªÊ¹ÓÃ±êÊ¶·ûµÄ±í£¬Èç"tsys_flow","employee","demo_table"
+	 * @param tblName éœ€è¦ä½¿ç”¨æ ‡è¯†ç¬¦çš„è¡¨ï¼Œå¦‚"tsys_flow","employee","demo_table"
 	 * @return
 	 */
 	protected String identity(String tblName) {
@@ -540,7 +540,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * »ñÈ¡ÏµÍ³Ê±¼äµÄº¯Êı±í´ïÊ½¡£
+	 * è·å–ç³»ç»Ÿæ—¶é—´çš„å‡½æ•°è¡¨è¾¾å¼ã€‚
 	 * </pre>
 	 * @return
 	 */	
@@ -551,12 +551,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>
-	 *  ·µ»Ø½«Êı¾İ¿âÈÕÆÚÀàĞÍ×ªÎª×Ö·ûÀàĞÍµÄ·½·¨¡£Ö÷ÒªÔÚ select Óï¾äÖĞÊ¹ÓÃ¡£
+	 *  è¿”å›å°†æ•°æ®åº“æ—¥æœŸç±»å‹è½¬ä¸ºå­—ç¬¦ç±»å‹çš„æ–¹æ³•ã€‚ä¸»è¦åœ¨ select è¯­å¥ä¸­ä½¿ç”¨ã€‚
 	 * 
-	 * 	Èç Oracle ·µ»Ø  to_char(birthday,'yyyy-mm-dd')
+	 * 	å¦‚ Oracle è¿”å›  to_char(birthday,'yyyy-mm-dd')
 	 * </pre>
 	 * 
-	 * @param colName ÁĞÃû³Æ
+	 * @param colName åˆ—åç§°
 	 * @return
 	 */
 	protected String date2Char(String colName) {
@@ -565,12 +565,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 *  ·µ»Ø½«java StringÖµ×ªÎªÊı¾İ¿âÈÕÆÚÀàĞÍµÄ·½·¨¡£Ö÷ÒªÔÚ insert,update ÖĞÊ¹ÓÃ¡£
+	 *  è¿”å›å°†java Stringå€¼è½¬ä¸ºæ•°æ®åº“æ—¥æœŸç±»å‹çš„æ–¹æ³•ã€‚ä¸»è¦åœ¨ insert,update ä¸­ä½¿ç”¨ã€‚
 	 * 
-	 * 	Èç Oracle ·µ»Ø  to_date('2007-01-01','yyyy-mm-dd')
+	 * 	å¦‚ Oracle è¿”å›  to_date('2007-01-01','yyyy-mm-dd')
 	 * </pre>
 	 * 
-	 * @param colValue Òª²åÈëÁĞµÄÖµ
+	 * @param colValue è¦æ’å…¥åˆ—çš„å€¼
 	 * @return
 	 */
 	protected String char2Date(String colValue) {
@@ -580,12 +580,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * ·µ»Ø½«Êı¾İ¿âÈÕÆÚÊ±¼äÀàĞÍ×ªÎª×Ö·ûÀàĞÍµÄ·½·¨¡£Ö÷ÒªÔÚ select Óï¾äÖĞÊ¹ÓÃ¡£
+	 * è¿”å›å°†æ•°æ®åº“æ—¥æœŸæ—¶é—´ç±»å‹è½¬ä¸ºå­—ç¬¦ç±»å‹çš„æ–¹æ³•ã€‚ä¸»è¦åœ¨ select è¯­å¥ä¸­ä½¿ç”¨ã€‚
 	 * 
-	 * 	Èç Oracle ·µ»Ø  to_char( beginTime,'yyyy-mm-dd hh24:mi:ss')
+	 * 	å¦‚ Oracle è¿”å›  to_char( beginTime,'yyyy-mm-dd hh24:mi:ss')
 	 * </pre>
 	 * 
-	 * @param colName ÁĞÃû³Æ
+	 * @param colName åˆ—åç§°
 	 * @return
 	 */
 	protected String datetime2Char(String colName) {
@@ -594,13 +594,13 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * ·µ»Ø½«java StringÖµ×ªÎªÊı¾İ¿âÈÕÆÚÊ±¼äÀàĞÍµÄ·½·¨¡£Ö÷ÒªÔÚ insert,update ÖĞÊ¹ÓÃ¡£
+	 * è¿”å›å°†java Stringå€¼è½¬ä¸ºæ•°æ®åº“æ—¥æœŸæ—¶é—´ç±»å‹çš„æ–¹æ³•ã€‚ä¸»è¦åœ¨ insert,update ä¸­ä½¿ç”¨ã€‚
 	 * 
 	 * <pre>
-	 * 	Èç Oracle ·µ»Ø  to_date('2007-01-01','yyyy-mm-dd hh24:mi:ss')
+	 * 	å¦‚ Oracle è¿”å›  to_date('2007-01-01','yyyy-mm-dd hh24:mi:ss')
 	 * </pre>
 	 * 
-	 * @param colValue Òª²åÈëÁĞµÄÖµ
+	 * @param colValue è¦æ’å…¥åˆ—çš„å€¼
 	 * @return
 	 */
 	protected String char2Datetime(String colValue) {
@@ -609,7 +609,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * »ñÈ¡×Ö·ûĞÍ´ó¶ÔÏóµÄÄÚÈİ¡£
+	 * è·å–å­—ç¬¦å‹å¤§å¯¹è±¡çš„å†…å®¹ã€‚
 	 * </pre>
 	 * 
 	 * @param sql
@@ -623,38 +623,38 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 		} catch (Exception e) {
 			log.debug("debug", e);
 			/// e.pri ntStackTrace();
-			throw new InvalidDataAccessResourceUsageException("»ñÈ¡±íµÄClob×Ö¶Î²úÉú´íÎó£¬sqlÓï¾äÎª:["+sql+"]!", e);
+			throw new InvalidDataAccessResourceUsageException("è·å–è¡¨çš„Clobå­—æ®µäº§ç”Ÿé”™è¯¯ï¼Œsqlè¯­å¥ä¸º:["+sql+"]!", e);
 		}	
 	}
 
 	
 	/**
-	 *  <pre>¸ù¾İ·­Ò³ĞÅÏ¢£¬ĞŞ¸Ä²éÑ¯Êı¾İµÄ sql statement.
-	 *  	¶ÔËùÓĞÖ§³ÖµÄÊı¾İ¿â×÷Í³Ò»µÄ´¦Àí¡£ ²»Í¬µÄÊı¾İ¿âÀàĞÍ´¦Àí²»ÏàÍ¬¡£
-	 *     --- ÉèÖÃÎªprotected¶ø²»ÊÇÊ¹ÓÃprivate£¬ÊÇÎªÁË±ãÓÚºóÃæÁé»îµÄºóÃæµÄ·­Ò³¿ØÖÆ·ÅÔÚÊ²Ã´Î»ÖÃ¡£</pre>
-	 * @param sql °ü×°Ö®Ç°µÄÊı¾İ²éÑ¯ statement
-	 * @param dataSet Êı¾İÔØÌå£¬°üº¬ÁËÈ¡ÊıµÄĞÅÏ¢
-	 * @return ¸ù¾İÈ¡ÊıĞÅÏ¢½øĞĞ°ü×°Ö®ºóµÄ sql statement.
+	 *  <pre>æ ¹æ®ç¿»é¡µä¿¡æ¯ï¼Œä¿®æ”¹æŸ¥è¯¢æ•°æ®çš„ sql statement.
+	 *  	å¯¹æ‰€æœ‰æ”¯æŒçš„æ•°æ®åº“ä½œç»Ÿä¸€çš„å¤„ç†ã€‚ ä¸åŒçš„æ•°æ®åº“ç±»å‹å¤„ç†ä¸ç›¸åŒã€‚
+	 *     --- è®¾ç½®ä¸ºprotectedè€Œä¸æ˜¯ä½¿ç”¨privateï¼Œæ˜¯ä¸ºäº†ä¾¿äºåé¢çµæ´»çš„åé¢çš„ç¿»é¡µæ§åˆ¶æ”¾åœ¨ä»€ä¹ˆä½ç½®ã€‚</pre>
+	 * @param sql åŒ…è£…ä¹‹å‰çš„æ•°æ®æŸ¥è¯¢ statement
+	 * @param dataSet æ•°æ®è½½ä½“ï¼ŒåŒ…å«äº†å–æ•°çš„ä¿¡æ¯
+	 * @return æ ¹æ®å–æ•°ä¿¡æ¯è¿›è¡ŒåŒ…è£…ä¹‹åçš„ sql statement.
 	 */
 	protected String createSqlForPage(Navigator navigator, String sql_count, String sql_datas ) {
 
-		// ÊÇ·ñ¸üĞÂ×ÜĞĞÊıĞÅÏ¢
+		// æ˜¯å¦æ›´æ–°æ€»è¡Œæ•°ä¿¡æ¯
 		int rowCount = navigator.getRowCount();
 		int pageSize = navigator.getPageSize();
 		int pageNumber = navigator.getPageNumber();		
 		//String action = "query";
 		
-		//´¦Àí·­Ò³²Ù×÷
+		//å¤„ç†ç¿»é¡µæ“ä½œ
 		if ( rowCount<0 )
 		{
-			// ÏÈ²é³öĞĞÊı
+			// å…ˆæŸ¥å‡ºè¡Œæ•°
 			log.debug("get rowCount and"
 					+"\n\tpageSize="  +pageSize
 					+"\n\tpageNumber="+pageNumber
 					+"\n\tsql="+sql_count);
 
 			rowCount = this.getJdbcTemplate().queryForInt( sql_count );	
-			navigator.setRowCount(rowCount);	// ¸ü¸Ä×ÜĞĞÊı
+			navigator.setRowCount(rowCount);	// æ›´æ”¹æ€»è¡Œæ•°
 		}
 		
 		String sql = ApplicationContext.getInstance().getDatabaseManager().getSubResultSetSql( sql_datas, 
@@ -664,9 +664,9 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	}
 
 	/**
-	 *  <p>wzw:´´½¨»ñÈ¡×ÜĞĞÊıµÄsql£¬ÕâÀïÌá¹©Ò»¸öÖ±½Ó¸ù¾İ²éÑ¯Êı¾İµÄsqlÉú³É²éÑ¯×ÜĞĞÊıµÄ¼òµ¥·½·¨£¬
-	 *  	ÊÊºÏ¿ìËÙÊµÏÖ¹¦ÄÜ£¬µ«ÊÇÔËĞĞĞ§ÂÊµÍ£¬ĞèÒªÓÅ»¯¡£
-	 *     ÔÚ´«Èë·­Ò³²éÑ¯µÄ²ÎÊıÉú³ÉÊ±Ê¹ÓÃ¡£
+	 *  <p>wzw:åˆ›å»ºè·å–æ€»è¡Œæ•°çš„sqlï¼Œè¿™é‡Œæä¾›ä¸€ä¸ªç›´æ¥æ ¹æ®æŸ¥è¯¢æ•°æ®çš„sqlç”ŸæˆæŸ¥è¯¢æ€»è¡Œæ•°çš„ç®€å•æ–¹æ³•ï¼Œ
+	 *  	é€‚åˆå¿«é€Ÿå®ç°åŠŸèƒ½ï¼Œä½†æ˜¯è¿è¡Œæ•ˆç‡ä½ï¼Œéœ€è¦ä¼˜åŒ–ã€‚
+	 *     åœ¨ä¼ å…¥ç¿»é¡µæŸ¥è¯¢çš„å‚æ•°ç”Ÿæˆæ—¶ä½¿ç”¨ã€‚
 	 *  </p>  
 	 * @param sql_datas
 	 * @return
@@ -677,9 +677,9 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 
 	/**
 	 * <pre>
-	 * Zeven: Ê¹ÓÃAopÎªÖ÷¿ØÖÆÊı¾İ¿âÊÂÎñ£¬²»ÒªÊ¹ÓÃÕâ¸ö·½·¨£¬±ÜÃâ»ìÏı£¬Èç¹û¹²ÓÃConnection£¬²ÉÓÃ²ÎÊı´«µİconnµÄ·½Ê½¡£
+	 * Zeven: ä½¿ç”¨Aopä¸ºä¸»æ§åˆ¶æ•°æ®åº“äº‹åŠ¡ï¼Œä¸è¦ä½¿ç”¨è¿™ä¸ªæ–¹æ³•ï¼Œé¿å…æ··æ·†ï¼Œå¦‚æœå…±ç”¨Connectionï¼Œé‡‡ç”¨å‚æ•°ä¼ é€’connçš„æ–¹å¼ã€‚
 	 * </pre>
-	 * @deprecated ²»ÒªÊ¹ÓÃÕâ¸ö·½·¨¡£
+	 * @deprecated ä¸è¦ä½¿ç”¨è¿™ä¸ªæ–¹æ³•ã€‚
 	 */
 	public void setConnection(Connection conn) {
 		System.out.println("*** Use Aop for Jdbc translate, not use this setConnection method!!!!!");

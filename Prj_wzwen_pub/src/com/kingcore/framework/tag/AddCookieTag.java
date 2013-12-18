@@ -66,7 +66,7 @@ public class AddCookieTag extends TagSupport {
     }
 
     /**
-     * Releases all instance variables.  ÊÍ·ÅËùÓĞ¶ÔÏóµÄÒıÓÃ¡£
+     * Releases all instance variables.  é‡Šæ”¾æ‰€æœ‰å¯¹è±¡çš„å¼•ç”¨ã€‚
      */
     public void release() {
         super.release();

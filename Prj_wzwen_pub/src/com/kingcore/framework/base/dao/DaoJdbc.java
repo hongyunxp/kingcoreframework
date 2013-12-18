@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.util.HashMap;
 
 /**
- * <p>»ùÀà£ºDao Jdbc first interface.</p>
+ * <p>åŸºç±»ï¼šDao Jdbc first interface.</p>
  * @author Zeven on 2008-6-4
  * @version	2.0
  * @see		Object#equals(java.lang.Object)
@@ -29,9 +29,9 @@ public interface DaoJdbc {
 	//Connection getConnection() throws SQLException;
 	
 	/**
-	 * Dao¶ÔÏóÖ®¼ä¹²ÓÃConnection¶ÔÏó£¬ÊÊºÏ DaoJdbcPlainImpl£¬²»ÊÊºÏDaoJdbcSpringImpl¡£
+	 * Daoå¯¹è±¡ä¹‹é—´å…±ç”¨Connectionå¯¹è±¡ï¼Œé€‚åˆ DaoJdbcPlainImplï¼Œä¸é€‚åˆDaoJdbcSpringImplã€‚
 	 */
 	void setConnection(Connection conn);
 
-	String getDataSourceName();  //»ñÈ¡µ±Ç°DataSourceName
+	String getDataSourceName();  //è·å–å½“å‰DataSourceName
 }

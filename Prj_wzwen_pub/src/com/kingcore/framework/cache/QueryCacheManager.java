@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import com.opensymphony.oscache.base.NeedsRefreshException;
 
 /**
- * ²éÑ¯»º´æ¹ÜÀíÆ÷¡£
+ * æŸ¥è¯¢ç¼“å­˜ç®¡ç†å™¨ã€‚
  * 
  * @author	WUZEWEN on 2006-9-13
  *

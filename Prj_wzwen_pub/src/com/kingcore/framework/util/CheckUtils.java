@@ -7,7 +7,7 @@ package com.kingcore.framework.util;
 
 
 /**
- * <p>ÅĞ¶ÏÒ»¸öString¶ÔÏóÊÇ·ñ·ûºÏ¸÷ÖÖÊı¾İÀàĞÍ</p>
+ * <p>åˆ¤æ–­ä¸€ä¸ªStringå¯¹è±¡æ˜¯å¦ç¬¦åˆå„ç§æ•°æ®ç±»å‹</p>
  * @author	zewen.wu on 2004.03.18
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -69,7 +69,7 @@ public class CheckUtils {
 	
 	
 	/**
-	 *   wzwen   ÊÇ·ñÊÇÓĞĞ§µÄÕûÊı
+	 *   wzwen   æ˜¯å¦æ˜¯æœ‰æ•ˆçš„æ•´æ•°
 	 *
 	 */
 	public static boolean isValidInteger(String numberString ) {
@@ -86,7 +86,7 @@ public class CheckUtils {
 	}
 	
 	/**
-	 *   wzwen   ÊÇ·ñÊÇÓĞĞ§µÄDoubleÀàĞÍ
+	 *   wzwen   æ˜¯å¦æ˜¯æœ‰æ•ˆçš„Doubleç±»å‹
 	 *
 	 */
 	public static boolean isValidDouble( String str )
@@ -152,7 +152,7 @@ public class CheckUtils {
 	    return isValid;
 	}
 
-	//ÊÇ·ñÊÇºÏÀíµÄEmail µØÖ·¡£
+	//æ˜¯å¦æ˜¯åˆç†çš„Email åœ°å€ã€‚
 	public static boolean isEmail( String str ) {
 		
 		if (str.indexOf("@")<0 || str.indexOf(".")<0 )
@@ -161,7 +161,7 @@ public class CheckUtils {
 			return true ; 
 	}
 	
-	//ÊÇ·ñÊÇºÏÀíµÄÖ÷Ò³¡£
+	//æ˜¯å¦æ˜¯åˆç†çš„ä¸»é¡µã€‚
 	public static boolean isHomePage( String str ){
 	
 	if (str.indexOf("www.")<0 )
@@ -171,7 +171,7 @@ public class CheckUtils {
 	}
 	
 	
-	//ÊÇ·ñÊÇºÏÀíµÄEmail µØÖ·¡£
+	//æ˜¯å¦æ˜¯åˆç†çš„Email åœ°å€ã€‚
 	public static boolean IsEmail( String str ) {
 		
 		if (str.indexOf("@")<0 || str.indexOf(".")<0 )
@@ -180,7 +180,7 @@ public class CheckUtils {
 			return true ; 
 	}
 	
-	//ÊÇ·ñÊÇºÏÀíµÄÖ÷Ò³¡£
+	//æ˜¯å¦æ˜¯åˆç†çš„ä¸»é¡µã€‚
 	public static boolean IsHomePage( String str ){
 	
 	if (str.indexOf("www.")<0 )

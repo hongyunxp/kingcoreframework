@@ -20,7 +20,7 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
 /**
- * <p>¸ù¾İ²»Í¬µÄServletÈİÆ÷·µ»ØÏàÓ¦µÄServletPathÖµ¡£</p>
+ * <p>æ ¹æ®ä¸åŒçš„Servletå®¹å™¨è¿”å›ç›¸åº”çš„ServletPathå€¼ã€‚</p>
  * @author Zeven on 2007-10-12
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

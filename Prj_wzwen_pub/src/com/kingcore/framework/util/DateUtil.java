@@ -7,21 +7,21 @@ import java.util.Date;
 
 public class DateUtil {
 
-	//·µ»ØÒª´æµ½Êı¾İ¿âÀïµÄÈÕÆÚ×Ö·û´®
-	//¼´£º½«yyyy-mm-dd¸ñÊ½±äÎªyyyymmdd¸ñÊ½
+	//è¿”å›è¦å­˜åˆ°æ•°æ®åº“é‡Œçš„æ—¥æœŸå­—ç¬¦ä¸²
+	//å³ï¼šå°†yyyy-mm-ddæ ¼å¼å˜ä¸ºyyyymmddæ ¼å¼
 	public static String formatDateForDB(String str){
 	    if(!isLegalDate(str)) return null;
 	    return str.substring(0,4)+str.substring(4,6)+str.substring(6,8);
 	}
 
-	//·µ»ØÏÔÊ¾¸øÓÃ»§µÄ¸ñÊ½µÄÈÕÆÚ
-	//¼´£º½«yyyymmdd¸ñÊ½±äÎªyyyy/mm/dd¸ñÊ½
+	//è¿”å›æ˜¾ç¤ºç»™ç”¨æˆ·çš„æ ¼å¼çš„æ—¥æœŸ
+	//å³ï¼šå°†yyyymmddæ ¼å¼å˜ä¸ºyyyy/mm/ddæ ¼å¼
 	public static String formatDateForUser(String date){
 	  return formatDateForUser( date, "-");
 	}
 
-	//·µ»ØÏÔÊ¾¸øÓÃ»§µÄ¸ñÊ½µÄÈÕÆÚ
-	//¼´£º½«yyyymmdd¸ñÊ½±äÎªÓÃ»§Ö¸¶¨µÄ¸ñÊ½¸ñÊ½
+	//è¿”å›æ˜¾ç¤ºç»™ç”¨æˆ·çš„æ ¼å¼çš„æ—¥æœŸ
+	//å³ï¼šå°†yyyymmddæ ¼å¼å˜ä¸ºç”¨æˆ·æŒ‡å®šçš„æ ¼å¼æ ¼å¼
 	public static String formatDateForUser(String date,String del){
 	    if (null == date)
 	       return "&nbsp;";
@@ -48,13 +48,13 @@ public class DateUtil {
 	 return ss;
 	}
 
-	//·µ»ØÒª´æµ½Êı¾İ¿âÀïµÄÊ±¼ä×Ö·û´®
-	//¼´£º½«hh:mm:ss¸ñÊ½±äÎªhhmmss¸ñÊ½
+	//è¿”å›è¦å­˜åˆ°æ•°æ®åº“é‡Œçš„æ—¶é—´å­—ç¬¦ä¸²
+	//å³ï¼šå°†hh:mm:ssæ ¼å¼å˜ä¸ºhhmmssæ ¼å¼
 	public static String formatTimeForDB(String time){
 	    return time.substring(0,2)+time.substring(2,4)+time.substring(4,6);
 	}
-	//·µ»ØÏÔÊ¾¸øÓÃ»§µÄ¸ñÊ½µÄÊ±¼ä
-	//¼´£º½«hhmmss¸ñÊ½±äÎªhh:mm:ss¸ñÊ½
+	//è¿”å›æ˜¾ç¤ºç»™ç”¨æˆ·çš„æ ¼å¼çš„æ—¶é—´
+	//å³ï¼šå°†hhmmssæ ¼å¼å˜ä¸ºhh:mm:ssæ ¼å¼
 	public static String formatTimeForUser(String time){
 	  if (time ==null)
 	     return "&nbsp;";
@@ -67,8 +67,8 @@ public class DateUtil {
 	     return time.substring(0,2)+":"+time.substring(2,4)+":"+time.substring(4,6);
 	  return time;
 	}
-	//·µ»ØÏÔÊ¾¸øÓÃ»§µÄ¸ñÊ½µÄÈÕÆÚ
-	//¼´£º½«yyyymm¸ñÊ½±äÎªyyyy/mm¸ñÊ½
+	//è¿”å›æ˜¾ç¤ºç»™ç”¨æˆ·çš„æ ¼å¼çš„æ—¥æœŸ
+	//å³ï¼šå°†yyyymmæ ¼å¼å˜ä¸ºyyyy/mmæ ¼å¼
 	public static String formatYMDateForUser(String date){
 	    return date.substring(0,4)+"/"+date.substring(4,6);
 	}
@@ -81,7 +81,7 @@ public class DateUtil {
      * @exception Exception
      */
     public String formatDate(java.util.Date date,String pattern) throws Exception{
-        //Ìæ»»getCurdate(int type)
+        //æ›¿æ¢getCurdate(int type)
         return new java.text.SimpleDateFormat(pattern).format(date) ;
     }
 
@@ -91,8 +91,8 @@ public class DateUtil {
 	}
 
 	/**
-	* ´Ë´¦²åÈë·½·¨ËµÃ÷¡£
-	* ´´½¨ÈÕÆÚ£º(2001-8-24 15:26:09)
+	* æ­¤å¤„æ’å…¥æ–¹æ³•è¯´æ˜ã€‚
+	* åˆ›å»ºæ—¥æœŸï¼š(2001-8-24 15:26:09)
 	*/
 	public static String getCurrentDate() {
 	    return getXXXDate(0,"-");
@@ -102,31 +102,31 @@ public class DateUtil {
 	    return getXXXDate(0,del);
 	}
 
-	//·µ»Øµ±Ç°ÈÕÆÚ
+	//è¿”å›å½“å‰æ—¥æœŸ
 	public static Date getCurrentDateFormatData(){
 	    Date date=new Date();
 	    //
 	    return date;
 	}
-	//·µ»Øµ±Ç°Ê±¼ä £¬¸ñÊ½Îªhhmmss¸ñÊ½
+	//è¿”å›å½“å‰æ—¶é—´ ï¼Œæ ¼å¼ä¸ºhhmmssæ ¼å¼
 	public static String getCurrentTime(){
 	     return getXXXTime(":");
 	}
 	/**
-	* ´Ë´¦²åÈë·½·¨ËµÃ÷¡£
-	* ´´½¨ÈÕÆÚ£º(2001-8-24 15:26:09)
+	* æ­¤å¤„æ’å…¥æ–¹æ³•è¯´æ˜ã€‚
+	* åˆ›å»ºæ—¥æœŸï¼š(2001-8-24 15:26:09)
 	*/
 	public static String getCurrentTime(String del){
 	     return getXXXTime(del);
 
 	}
 
-	//·µ»Ø²ÎÊınÌìÒÔÇ°µÄÏà¶ÔÄ³¸öÈÕÆÚµÄÈÕÆÚ £¬¸ñÊ½Îªyyyymmdd¸ñÊ½
+	//è¿”å›å‚æ•°nå¤©ä»¥å‰çš„ç›¸å¯¹æŸä¸ªæ—¥æœŸçš„æ—¥æœŸ ï¼Œæ ¼å¼ä¸ºyyyymmddæ ¼å¼
 	//  public static String getDateBeforeSomeDate(String dateStr,int offsetDay,String x){
 	//	Calendar calendar = Calendar.getInstance();
 	//	Date someDate = new Date(2002,06,03);
 	//        someDate.set
-	//        calendar.add(5, -offsetDay); //ÉèÖÃÌáÇ°Ê±¼ä»¹ÊÇÍí¼¸Ììi=0 is today
+	//        calendar.add(5, -offsetDay); //è®¾ç½®æå‰æ—¶é—´è¿˜æ˜¯æ™šå‡ å¤©i=0 is today
 	//	int j = calendar.get(1);
 	//	int k = calendar.get(2) + 1;
 	//	int l = calendar.get(5);
@@ -135,7 +135,7 @@ public class DateUtil {
 
 
 
-	//·µ»Ø²ÎÊınumberÌìÒÔÇ°µÄÈÕÆÚ £¬¸ñÊ½Îªyyyymmdd¸ñÊ½ day ´óÓÚÁã±íÊ¾ÌáÇ°ÌìÊı
+	//è¿”å›å‚æ•°numberå¤©ä»¥å‰çš„æ—¥æœŸ ï¼Œæ ¼å¼ä¸ºyyyymmddæ ¼å¼ day å¤§äºé›¶è¡¨ç¤ºæå‰å¤©æ•°
 	public static String getDateBeforeDay(int day){
 	      String  dateStr = getXXXDate(day,"-");
 	      return dateStr;
@@ -144,7 +144,7 @@ public class DateUtil {
 	      String  dateStr = getXXXDate(day,del);
 	      return dateStr;
 	}
-	//·µ»Ø²ÎÊınumberÔÂÒÔÇ°µÄÈÕÆÚ £¬¸ñÊ½Îªyyyymmdd¸ñÊ½
+	//è¿”å›å‚æ•°numberæœˆä»¥å‰çš„æ—¥æœŸ ï¼Œæ ¼å¼ä¸ºyyyymmddæ ¼å¼
 	public static String getDateBeforeMonth(int month){
 	      String  dateStr = getYYYDate(month,"-");
 	      return dateStr;
@@ -156,7 +156,7 @@ public class DateUtil {
 	    //if (x.equals("") || x == null)
 	    //	x = "-";
 	    Calendar calendar = Calendar.getInstance();
-	    calendar.add(5, -i); //ÉèÖÃÌáÇ°Ê±¼ä»¹ÊÇÍí¼¸Ììi=0 is today
+	    calendar.add(5, -i); //è®¾ç½®æå‰æ—¶é—´è¿˜æ˜¯æ™šå‡ å¤©i=0 is today
 	    int j = calendar.get(1);
 	    int k = calendar.get(2) + 1;
 	    int l = calendar.get(5);
@@ -173,25 +173,25 @@ public class DateUtil {
 	    return formatString(h, 2) + x + formatString(m, 2) + x + formatString(s, 2);
 	}
 	/**
-	* ´Ë´¦²åÈë·½·¨ËµÃ÷¡£
-	* ´´½¨ÈÕÆÚ£º(2001-8-24 15:26:09)
+	* æ­¤å¤„æ’å…¥æ–¹æ³•è¯´æ˜ã€‚
+	* åˆ›å»ºæ—¥æœŸï¼š(2001-8-24 15:26:09)
 	*/
-	//ÌáÇ°¼¸¸öÔÂ£¬Íí¼¸¸öÔÂ
+	//æå‰å‡ ä¸ªæœˆï¼Œæ™šå‡ ä¸ªæœˆ
 	private static String getYYYDate(int i, String x)
 	{
 	    //if (x.equals("") || x == null)
 	    //	x = "-";
 	    Calendar calendar = Calendar.getInstance();
-	    calendar.add(2, -i); //ÉèÖÃÌáÇ°¼¸¸öÔÂ»¹ÊÇÍí¼¸¸öÔÂi=0 ÊÇ±¾ÔÂ
+	    calendar.add(2, -i); //è®¾ç½®æå‰å‡ ä¸ªæœˆè¿˜æ˜¯æ™šå‡ ä¸ªæœˆi=0 æ˜¯æœ¬æœˆ
 	    int j = calendar.get(1);
 	    int k = calendar.get(2) + 1;
 	    int l = calendar.get(5);
 	    return j + x + formatString(k, 2) + x + formatString(l, 2);
 	}
 
-	//ÅĞ¶Ï¸ø¶¨µÄ×Ö·û´®ÊÇ·ñÊÇÒ»¸öºÏ·¨µÄÈÕÆÚ±íÊ¾
-	//±¾ÏµÍ³ÖĞµÄÈÕÆÚ±íÊ¾¾ùÎª£ºYYYYMMDD¡£ ?±íÊ¾ÈÎÒ»×Ö·û
-	//×¢£ºÕâ¸ö¸ñÊ½ÊÇÓÃ»§ÊäÈëºÍÏÔÊ¾¸øÓÃ»§µÄ£¬Êµ¼Ê´æµ½Êı¾İ¿âÀïÊ±ÒªÈ¥µô?
+	//åˆ¤æ–­ç»™å®šçš„å­—ç¬¦ä¸²æ˜¯å¦æ˜¯ä¸€ä¸ªåˆæ³•çš„æ—¥æœŸè¡¨ç¤º
+	//æœ¬ç³»ç»Ÿä¸­çš„æ—¥æœŸè¡¨ç¤ºå‡ä¸ºï¼šYYYYMMDDã€‚ ?è¡¨ç¤ºä»»ä¸€å­—ç¬¦
+	//æ³¨ï¼šè¿™ä¸ªæ ¼å¼æ˜¯ç”¨æˆ·è¾“å…¥å’Œæ˜¾ç¤ºç»™ç”¨æˆ·çš„ï¼Œå®é™…å­˜åˆ°æ•°æ®åº“é‡Œæ—¶è¦å»æ‰?
 	public static boolean isLegalDate(String str){
 	    String tmp=str.trim();
 	    //if(tmp.length()!=8) return false;

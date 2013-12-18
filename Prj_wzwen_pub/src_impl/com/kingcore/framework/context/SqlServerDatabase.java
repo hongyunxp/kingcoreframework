@@ -10,7 +10,7 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 
 /**
- * <p>SQL Server Êı¾İ¿âµÄ¸öĞÔ²Ù×÷·½·¨¡£</p>
+ * <p>SQL Server æ•°æ®åº“çš„ä¸ªæ€§æ“ä½œæ–¹æ³•ã€‚</p>
  * @author Zeven on 2007-6-25
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -40,7 +40,7 @@ public class SqlServerDatabase extends PlainDatabase {
 
 	
 	/**
-	 * ÈÕÖ¾¼ÇÂ¼¶ÔÏó¡£
+	 * æ—¥å¿—è®°å½•å¯¹è±¡ã€‚
 	 */
 	protected final static Logger log = Logger.getLogger( SqlServerDatabase.class);
 
@@ -84,8 +84,8 @@ public class SqlServerDatabase extends PlainDatabase {
 	 * just for MSS,get id that insert last.
 	 * 		select   @@identity
 	 * 		select   SCOPE_IDENTITY(   )  
-	 *   Zeven : ÒÔºó¿¼ÂÇ±äÎªlongÀàĞÍ¡£
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
+	 *   Zeven : ä»¥åè€ƒè™‘å˜ä¸ºlongç±»å‹ã€‚
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
 	 * @return last insert id
 	 */
 	public int getLastInsertIdentity(Connection conn) throws SQLException {
@@ -114,7 +114,7 @@ public class SqlServerDatabase extends PlainDatabase {
 
             }catch(SQLException e)
             {
-                log.fatal("ÔÚÖ´ĞĞgetLastInsertIdentity ³ö´í£¨Exception£©£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒgetLastInsertIdentity å‡ºé”™ï¼ˆExceptionï¼‰ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
                 //this.addErrors(new ActionError("error.database.deal"));

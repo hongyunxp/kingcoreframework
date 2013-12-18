@@ -22,11 +22,11 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
 /**
- * <p>±¾ÀàµÄÄ¿µÄÊÇ·ÅÔÚjspÒ³Ãæ£¬Éú³Éµ±Ç°Ò³ÃæµÄ¾ø¶ÔurlÖµ¡£
- * 		ÀıÈç£º<img src='<woo:absolutePath/>/../images/logo.gif />   
- * 	 Ò²¿ÉÒÔ²»ÓÃĞ´µ½Ã¿¸öÒıÓÃµÄÔªËØÉÏ£¬¶øÊÇÕû¸öÖ¸¶¨µ±Ç°Ò³ÃæµÄbase href£¬Èç£º
+ * <p>æœ¬ç±»çš„ç›®çš„æ˜¯æ”¾åœ¨jspé¡µé¢ï¼Œç”Ÿæˆå½“å‰é¡µé¢çš„ç»å¯¹urlå€¼ã€‚
+ * 		ä¾‹å¦‚ï¼š<img src='<woo:absolutePath/>/../images/logo.gif />   
+ * 	 ä¹Ÿå¯ä»¥ä¸ç”¨å†™åˆ°æ¯ä¸ªå¼•ç”¨çš„å…ƒç´ ä¸Šï¼Œè€Œæ˜¯æ•´ä¸ªæŒ‡å®šå½“å‰é¡µé¢çš„base hrefï¼Œå¦‚ï¼š
  * 			<base href="<woo:applicationRootUrl/>" tager="_self">
- * 				·µ»ØÈç£ºhttp://192.168.0.2:8080/pda/
+ * 				è¿”å›å¦‚ï¼šhttp://192.168.0.2:8080/pda/
  * 
  * @version		1.00 2004.04.16
  * @author		zewen.wu
@@ -47,7 +47,7 @@ public class ApplicationRootUrlTag extends TagSupport
         StringBuffer sb_uri = new StringBuffer();
 
 
-    	String path = request.getContextPath();  //Èç:"","/pda","/cms",...
+    	String path = request.getContextPath();  //å¦‚:"","/pda","/cms",...
     	String basePath = request.getScheme()+"://"+request.getServerName()+":"
     			+request.getServerPort()+path ; //+"/";
 

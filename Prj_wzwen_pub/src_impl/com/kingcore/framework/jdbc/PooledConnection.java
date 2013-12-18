@@ -19,12 +19,12 @@ import com.kingcore.framework.context.DatabaseManager;
 
 
 /**
- * <p>°ü×°Ò»¸öConnectionÀà,Ö÷ÒªÊÇÊ¹ÓÃconn.close·½·¨ÊÇ·Å»ØÁ¬½Ó³Ø¶ø²»ÊÇ<br>
- *			ÒòÎª±¾Á¬½Ó³Ø°üÊ¹ÓÃµÄÊÇ 
+ * <p>åŒ…è£…ä¸€ä¸ªConnectionç±»,ä¸»è¦æ˜¯ä½¿ç”¨conn.closeæ–¹æ³•æ˜¯æ”¾å›è¿æ¥æ± è€Œä¸æ˜¯<br>
+ *			å› ä¸ºæœ¬è¿æ¥æ± åŒ…ä½¿ç”¨çš„æ˜¯ 
  *				1.ConnectionPool.getConnection()-->
  *				2.dbconManager.getConnection() -->
  *				3.DBBean.getConnection() 
- *			ÒÔÇ°Ã»ÓĞ·â×°£¬ÎªÁË±£³ÖÒÔÇ°µÄ´úÂë¼æÈİ£¬ÏÖÔÚÔÚµÚ3´¦·â×°¡£</p>
+ *			ä»¥å‰æ²¡æœ‰å°è£…ï¼Œä¸ºäº†ä¿æŒä»¥å‰çš„ä»£ç å…¼å®¹ï¼Œç°åœ¨åœ¨ç¬¬3å¤„å°è£…ã€‚</p>
  * <p>Copyright: Copyright (c) 2005</p>
  * <p>Company: Kingnor Soft</p>
  * @author	WUZEWEN 2005-1-18
@@ -52,7 +52,7 @@ public class PooledConnection extends PlainConnection{ //implements Connection /
 //	}
 
 	public PooledConnection(Connection con, String poolName, DatabaseManager databaseManager) {
-		super(con, databaseManager); //¹¹½¨¸¸Àà¶ÔÏó
+		super(con, databaseManager); //æ„å»ºçˆ¶ç±»å¯¹è±¡
 		this.con = con;
 		this.poolName = poolName;
 	}
@@ -247,7 +247,7 @@ public class PooledConnection extends PlainConnection{ //implements Connection /
    }
 
 	/**
-	 * WZW 2005.03.20 Ìí¼ÓÈçÏÂ·½·¨
+	 * WZW 2005.03.20 æ·»åŠ å¦‚ä¸‹æ–¹æ³•
 	 */
 	public void setHoldability(int holdability)
                     throws SQLException
@@ -255,7 +255,7 @@ public class PooledConnection extends PlainConnection{ //implements Connection /
 		con.setHoldability(holdability) ;
 	}
 	/**
-	 * WZW 2005.03.20 Ìí¼ÓÈçÏÂ·½·¨
+	 * WZW 2005.03.20 æ·»åŠ å¦‚ä¸‹æ–¹æ³•
 	 */
 	public int getHoldability()
                    throws SQLException{

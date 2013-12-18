@@ -28,11 +28,11 @@ import org.apache.log4j.Logger;
 
 /**
  * <p>use simple mail translate protocal.
- * 		ÔÚjava°æ¾­³£¿´µ½ÓĞÈËÎÊÈçºÎÓÃjavamail·¢ËÍÓÊ¼ş£¿ÈçºÎ½ÓÊÕÓÊ¼ş£¿ÈçºÎ·ÃÎÊ¶à¸öÎÄ¼ş¼ĞµÈ¡£ÎÊÌâÁãÉ¢£¬¶øÀúÊ·µÄ»Ø¸´ÔçÒÑ¾­ÑÍÃ»ÔÚÎÊÌâµÄº£ÑóÖ®ÖĞ¡£
- * ±¾ÈËÖ®Ç°Ëù×ö¹ıÒ»¸öjavaÏîÄ¿£¬ÆäÖĞ°üº¬ÓĞWebMail¹¦ÄÜ£¬µ±³õÎªÓÃjavaÊµÏÖ¶ø¶ÔjavamailÃşË÷ÁËÒ»¶ÎÊ±¼ä£¬×ÜËãÓĞµãÊÕ»ñ¡£¿´µ½ÂÛÌ³ÖĞµÄ¾­³£ÓĞ´Ë·½ÃæµÄÎÊÌâ£¬Òò´Ë°ÑÎÒµÄÒ»Ğ©¾­ÑéÌû³öÀ´£¬Ï£Íû¶Ô´ó¼ÒÓĞĞ©°ïÖú¡£
- * ´ËÆª½ö½éÉÜÓÃjavamailÊµÏÖ·¢ËÍÓÊ¼ş¹¦ÄÜ£¬ÆäÖĞÉæ¼°smtpÈÏÖ¤£¬ÓÊ¼ş¸½¼ş·¢ËÍ£¬¼°HTMLÄÚÈİÓÊ¼şµÈ¡£
- * ÆäËüÓĞ¹Ø¶àÓÊÏäµÄÊµÏÖ£¬½ÓÊÕPOP3ÓÊ¼ş¼°IMAPµÈÄÚÈİ£¬½«ÔÚºóĞøÎÄÕÂÖĞ½éÉÜ¡£
- * ÈçÏÂ³ÌĞòĞèÒª£ºjavamail£¬JAF°ü£¬j2ee.jar°üº¬ÁËÉÏÊöÁ½¸ö°ü£¬½¨Òé´ó¼Ò°²×°J2SDKEE»òÖ±½Ó¿½±´j2ee.jar£¬½«ÆäÌí¼Óµ½jbuilderµÄlibraryÖĞ£¬»òÏµÍ³ClassPathÖĞ</p>
+ * 		åœ¨javaç‰ˆç»å¸¸çœ‹åˆ°æœ‰äººé—®å¦‚ä½•ç”¨javamailå‘é€é‚®ä»¶ï¼Ÿå¦‚ä½•æ¥æ”¶é‚®ä»¶ï¼Ÿå¦‚ä½•è®¿é—®å¤šä¸ªæ–‡ä»¶å¤¹ç­‰ã€‚é—®é¢˜é›¶æ•£ï¼Œè€Œå†å²çš„å›å¤æ—©å·²ç»æ·¹æ²¡åœ¨é—®é¢˜çš„æµ·æ´‹ä¹‹ä¸­ã€‚
+ * æœ¬äººä¹‹å‰æ‰€åšè¿‡ä¸€ä¸ªjavaé¡¹ç›®ï¼Œå…¶ä¸­åŒ…å«æœ‰WebMailåŠŸèƒ½ï¼Œå½“åˆä¸ºç”¨javaå®ç°è€Œå¯¹javamailæ‘¸ç´¢äº†ä¸€æ®µæ—¶é—´ï¼Œæ€»ç®—æœ‰ç‚¹æ”¶è·ã€‚çœ‹åˆ°è®ºå›ä¸­çš„ç»å¸¸æœ‰æ­¤æ–¹é¢çš„é—®é¢˜ï¼Œå› æ­¤æŠŠæˆ‘çš„ä¸€äº›ç»éªŒå¸–å‡ºæ¥ï¼Œå¸Œæœ›å¯¹å¤§å®¶æœ‰äº›å¸®åŠ©ã€‚
+ * æ­¤ç¯‡ä»…ä»‹ç»ç”¨javamailå®ç°å‘é€é‚®ä»¶åŠŸèƒ½ï¼Œå…¶ä¸­æ¶‰åŠsmtpè®¤è¯ï¼Œé‚®ä»¶é™„ä»¶å‘é€ï¼ŒåŠHTMLå†…å®¹é‚®ä»¶ç­‰ã€‚
+ * å…¶å®ƒæœ‰å…³å¤šé‚®ç®±çš„å®ç°ï¼Œæ¥æ”¶POP3é‚®ä»¶åŠIMAPç­‰å†…å®¹ï¼Œå°†åœ¨åç»­æ–‡ç« ä¸­ä»‹ç»ã€‚
+ * å¦‚ä¸‹ç¨‹åºéœ€è¦ï¼šjavamailï¼ŒJAFåŒ…ï¼Œj2ee.jaråŒ…å«äº†ä¸Šè¿°ä¸¤ä¸ªåŒ…ï¼Œå»ºè®®å¤§å®¶å®‰è£…J2SDKEEæˆ–ç›´æ¥æ‹·è´j2ee.jarï¼Œå°†å…¶æ·»åŠ åˆ°jbuilderçš„libraryä¸­ï¼Œæˆ–ç³»ç»ŸClassPathä¸­</p>
  * @author	WUZEWEN on 2005-05-25
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -44,31 +44,31 @@ import org.apache.log4j.Logger;
 public class MailSendBean {
 
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	protected static Logger log = Logger.getLogger( wzw.mail.MailSendBean.class);
 
-	private MimeMessage mimeMsg; //MIMEÓÊ¼ş¶ÔÏó
-	private Session session; //ÓÊ¼ş»á»°¶ÔÏó
-	private Properties props; //ÏµÍ³ÊôĞÔ
-	//private boolean needAuth = false; //smtpÊÇ·ñĞèÒªÈÏÖ¤	
-	private String username = ""; //smtpÈÏÖ¤ÓÃ»§ÃûºÍÃÜÂë
+	private MimeMessage mimeMsg; //MIMEé‚®ä»¶å¯¹è±¡
+	private Session session; //é‚®ä»¶ä¼šè¯å¯¹è±¡
+	private Properties props; //ç³»ç»Ÿå±æ€§
+	//private boolean needAuth = false; //smtpæ˜¯å¦éœ€è¦è®¤è¯	
+	private String username = ""; //smtpè®¤è¯ç”¨æˆ·åå’Œå¯†ç 
 	private String password = "";
 	
-	private Multipart mp; //Multipart¶ÔÏó,ÓÊ¼şÄÚÈİ,±êÌâ,¸½¼şµÈÄÚÈİ¾ùÌí¼Óµ½ÆäÖĞºóÔÙÉú³ÉMimeMessage¶ÔÏó
+	private Multipart mp; //Multipartå¯¹è±¡,é‚®ä»¶å†…å®¹,æ ‡é¢˜,é™„ä»¶ç­‰å†…å®¹å‡æ·»åŠ åˆ°å…¶ä¸­åå†ç”ŸæˆMimeMessageå¯¹è±¡
 	
 	
 	/**
 	 *	Constructor function
 	 */
 	public MailSendBean() {
-		this("smtp.163.com");//getConfig.mailHost);//Èç¹ûÃ»ÓĞÖ¸¶¨ÓÊ¼ş·şÎñÆ÷,¾Í´ÓgetConfigÀàÖĞ»ñÈ¡
+		this("smtp.163.com");//getConfig.mailHost);//å¦‚æœæ²¡æœ‰æŒ‡å®šé‚®ä»¶æœåŠ¡å™¨,å°±ä»getConfigç±»ä¸­è·å–
 	}
 	
 	/**
      * <p>Constructor with one param</p>
      * @author WUZEWEN
-     * @param smtp ÓÊ¼ş·şÎñÆ÷µÄsimple mail transplate protocal
+     * @param smtp é‚®ä»¶æœåŠ¡å™¨çš„simple mail transplate protocal
      * @return none
      * @exception no exception
      */
@@ -86,17 +86,17 @@ public class MailSendBean {
      * @exception no exception
      */
 	public void setSmtpHost(String hostName) {
-		System.out.println("ÉèÖÃÏµÍ³ÊôĞÔ£ºmail.smtp.host = "+hostName);
+		System.out.println("è®¾ç½®ç³»ç»Ÿå±æ€§ï¼šmail.smtp.host = "+hostName);
 		
-		if(props == null)props = System.getProperties(); //»ñµÃÏµÍ³ÊôĞÔ¶ÔÏó		
-		props.put("mail.smtp.host",hostName); //ÉèÖÃSMTPÖ÷»ú
+		if(props == null)props = System.getProperties(); //è·å¾—ç³»ç»Ÿå±æ€§å¯¹è±¡		
+		props.put("mail.smtp.host",hostName); //è®¾ç½®SMTPä¸»æœº
 		
 		// props.put("mail.smtp.starttls.enable","true");
 	}
 
 	
 	/**
-     * <p>1.»ñµÃÓÊ¼ş»á»°¶ÔÏó; 2.´´½¨MIMEÓÊ¼ş¶ÔÏó</p>
+     * <p>1.è·å¾—é‚®ä»¶ä¼šè¯å¯¹è±¡; 2.åˆ›å»ºMIMEé‚®ä»¶å¯¹è±¡</p>
      * @author WUZEWEN
      * @param String a
      * @param String b
@@ -105,22 +105,22 @@ public class MailSendBean {
      */
 	public boolean createMimeMessage(){
 		try{
-			System.out.println("×¼±¸»ñÈ¡ÓÊ¼ş»á»°¶ÔÏó£¡");
-			session = Session.getDefaultInstance(props,null); //»ñµÃÓÊ¼ş»á»°¶ÔÏó
+			System.out.println("å‡†å¤‡è·å–é‚®ä»¶ä¼šè¯å¯¹è±¡ï¼");
+			session = Session.getDefaultInstance(props,null); //è·å¾—é‚®ä»¶ä¼šè¯å¯¹è±¡
 		}
 		catch(Exception e){
-			System.err.println("»ñÈ¡ÓÊ¼ş»á»°¶ÔÏóÊ±·¢Éú´íÎó£¡"+e);
+			System.err.println("è·å–é‚®ä»¶ä¼šè¯å¯¹è±¡æ—¶å‘ç”Ÿé”™è¯¯ï¼"+e);
 			return false;
 		}
 	
-		System.out.println("×¼±¸´´½¨MIMEÓÊ¼ş¶ÔÏó£¡");
+		System.out.println("å‡†å¤‡åˆ›å»ºMIMEé‚®ä»¶å¯¹è±¡ï¼");
 		try{
-			mimeMsg = new MimeMessage(session); //´´½¨MIMEÓÊ¼ş¶ÔÏó
+			mimeMsg = new MimeMessage(session); //åˆ›å»ºMIMEé‚®ä»¶å¯¹è±¡
 			mp = new MimeMultipart();
 			return true;
 		}
 		catch(Exception e){
-			System.err.println("´´½¨MIMEÓÊ¼ş¶ÔÏóÊ§°Ü£¡"+e);
+			System.err.println("åˆ›å»ºMIMEé‚®ä»¶å¯¹è±¡å¤±è´¥ï¼"+e);
 			return false;
 		}
 	}
@@ -134,7 +134,7 @@ public class MailSendBean {
      * @exception no exception
      */
 	public void setNeedAuth(boolean need) {
-		System.out.println("ÉèÖÃsmtpÉí·İÈÏÖ¤£ºmail.smtp.auth = "+need);
+		System.out.println("è®¾ç½®smtpèº«ä»½è®¤è¯ï¼šmail.smtp.auth = "+need);
 		if(props == null)props = System.getProperties();
 		
 		if(need){
@@ -146,10 +146,10 @@ public class MailSendBean {
 
 
 	/**
-     * <p>ÉèÖÃÓÃ»§ºÍ¿ÚÁî</p>
+     * <p>è®¾ç½®ç”¨æˆ·å’Œå£ä»¤</p>
      * @author WUZEWEN
-     * @param name ·¢ËÍÈËµÇÂ¼ÓÊÏäÓÃ»§
-     * @param pass ·¢ËÍÈËµÇÂ¼ÓÊÏä¿ÚÁî
+     * @param name å‘é€äººç™»å½•é‚®ç®±ç”¨æˆ·
+     * @param pass å‘é€äººç™»å½•é‚®ç®±å£ä»¤
      * @return void
      * @exception no exception
      */
@@ -160,27 +160,27 @@ public class MailSendBean {
 
 
 	/**
-     * <p>ÉèÖÃMIMEÓÊ¼ş¶ÔÏóµÄÖ÷Ìâ</p>
+     * <p>è®¾ç½®MIMEé‚®ä»¶å¯¹è±¡çš„ä¸»é¢˜</p>
      * @author WUZEWEN
      * @param String mailSubject
      * @return boolean
      * @exception no exception
      */
 	public boolean setSubject(String mailSubject) {
-		System.out.println("ÉèÖÃÓÊ¼şÖ÷Ìâ£¡");
+		System.out.println("è®¾ç½®é‚®ä»¶ä¸»é¢˜ï¼");
 		try{
 			mimeMsg.setSubject(mailSubject);
 			return true;
 		}
 		catch(Exception e) {
-			System.err.println("ÉèÖÃÓÊ¼şÖ÷Ìâ·¢Éú´íÎó£¡");
+			System.err.println("è®¾ç½®é‚®ä»¶ä¸»é¢˜å‘ç”Ÿé”™è¯¯ï¼");
 			return false;		
 		}
 	}
 
 
 	/**
-     * <p>ÉèÖÃMIMEÓÊ¼ş¶ÔÏóµÄÕıÎÄ</p>
+     * <p>è®¾ç½®MIMEé‚®ä»¶å¯¹è±¡çš„æ­£æ–‡</p>
      * @author WUZEWEN
      * @param String mailBody
      * @return String c
@@ -196,14 +196,14 @@ public class MailSendBean {
 			return true;
 		}
 			catch(Exception e){
-			System.err.println("ÉèÖÃÓÊ¼şÕıÎÄÊ±·¢Éú´íÎó£¡"+e);
+			System.err.println("è®¾ç½®é‚®ä»¶æ­£æ–‡æ—¶å‘ç”Ÿé”™è¯¯ï¼"+e);
 			return false;
 		}
 	}
 
 	
 	/**
-     * <p>Ìí¼ÓÓÊ¼şµÄ¸½¼ş</p>
+     * <p>æ·»åŠ é‚®ä»¶çš„é™„ä»¶</p>
      * @author WUZEWEN
      * @param String filename
      * @return boolean c
@@ -211,7 +211,7 @@ public class MailSendBean {
      */
 	public boolean addFileAffix(String filename) {
 	
-		System.out.println("Ôö¼ÓÓÊ¼ş¸½¼ş£º"+filename);
+		System.out.println("å¢åŠ é‚®ä»¶é™„ä»¶ï¼š"+filename);
 		
 		try{
 			BodyPart bp = new MimeBodyPart();
@@ -222,23 +222,23 @@ public class MailSendBean {
 			mp.addBodyPart(bp);
 			return true;
 		}catch(Exception e){
-			System.err.println("Ôö¼ÓÓÊ¼ş¸½¼ş£º"+filename+"·¢Éú´íÎó£¡"+e);
+			System.err.println("å¢åŠ é‚®ä»¶é™„ä»¶ï¼š"+filename+"å‘ç”Ÿé”™è¯¯ï¼"+e);
 			return false;
 		}
 	}
 
 
 	/**
-     * <p>ÉèÖÃ·¢ĞÅÈË£¡</p>
+     * <p>è®¾ç½®å‘ä¿¡äººï¼</p>
      * @author WUZEWEN
      * @param String from
      * @return String c
      * @exception no exception
      */
 	public boolean setFrom(String from) {
-		System.out.println("ÉèÖÃ·¢ĞÅÈË£¡");
+		System.out.println("è®¾ç½®å‘ä¿¡äººï¼");
 		try{
-			mimeMsg.setFrom(new InternetAddress(from)); //ÉèÖÃ·¢ĞÅÈË
+			mimeMsg.setFrom(new InternetAddress(from)); //è®¾ç½®å‘ä¿¡äºº
 			return true;
 		}
 		catch(Exception e)
@@ -249,10 +249,10 @@ public class MailSendBean {
 
 
 	/**
-     * <p>ÉèÖÃÊÕĞÅÈËĞÅÏ¢</p>
+     * <p>è®¾ç½®æ”¶ä¿¡äººä¿¡æ¯</p>
      * @author WUZEWEN
-     * @param to ÊÕĞÅÈËÓÊÏä£¬¶à¸ö¿ÉÒÔÓÃ,ºÅ·Ö¸ô
-     * @return boolean ÉèÖÃ³É¹¦·µ»Øtrue£¬ÉèÖÃÊ§°Ü·µ»Øfalse¡£
+     * @param to æ”¶ä¿¡äººé‚®ç®±ï¼Œå¤šä¸ªå¯ä»¥ç”¨,å·åˆ†éš”
+     * @return boolean è®¾ç½®æˆåŠŸè¿”å›trueï¼Œè®¾ç½®å¤±è´¥è¿”å›falseã€‚
      * @exception no exception
      */
 	public boolean setTo(String to){
@@ -270,10 +270,10 @@ public class MailSendBean {
 	}
 
 	/**
-     * <p>ÉèÖÃ³­ËÍÈË</p>
+     * <p>è®¾ç½®æŠ„é€äºº</p>
      * @author WUZEWEN
-     * @param copyto ³­ËÍÈË£¬¶à¸ö¿ÉÒÔÊ¹ÓÃ,ºÅ·Ö¸ô
-     * @return boolean ÉèÖÃ³É¹¦·µ»Øtrue£¬ÉèÖÃÊ§°Ü·µ»Øfalse¡£
+     * @param copyto æŠ„é€äººï¼Œå¤šä¸ªå¯ä»¥ä½¿ç”¨,å·åˆ†éš”
+     * @return boolean è®¾ç½®æˆåŠŸè¿”å›trueï¼Œè®¾ç½®å¤±è´¥è¿”å›falseã€‚
      * @exception no exception
      */
 	public boolean setCopyTo(String copyto){
@@ -290,9 +290,9 @@ public class MailSendBean {
 
 	
 	/**
-     * <p>ÓÊ¼şµÄ·¢ËÍ</p>
+     * <p>é‚®ä»¶çš„å‘é€</p>
      * @author WUZEWEN
-     * @return boolean ·¢ËÍ³É¹¦·µ»Øtrue£¬·¢ËÍÊ§°Ü·µ»Øfalse¡£
+     * @return boolean å‘é€æˆåŠŸè¿”å›trueï¼Œå‘é€å¤±è´¥è¿”å›falseã€‚
 	 * @throws Exception 
      * @exception exception
      */
@@ -300,7 +300,7 @@ public class MailSendBean {
 		try {
 			mimeMsg.setContent(mp);
 			mimeMsg.saveChanges();
-			log.info("ÕıÔÚ·¢ËÍÓÊ¼ş....");
+			log.info("æ­£åœ¨å‘é€é‚®ä»¶....");
 
 			Session mailSession = Session.getInstance(props, null);
 			Transport transport = mailSession.getTransport("smtp");
@@ -311,12 +311,12 @@ public class MailSendBean {
 			// transport.send(mimeMsg);
 			// transport.
 
-			log.info("·¢ËÍÓÊ¼ş³É¹¦£¡");
+			log.info("å‘é€é‚®ä»¶æˆåŠŸï¼");
 			transport.close();
 
 			return true;
 		} catch (Exception e) {
-			log.error("ÓÊ¼ş·¢ËÍÊ§°Ü£¡" + e.getMessage(), e );
+			log.error("é‚®ä»¶å‘é€å¤±è´¥ï¼" + e.getMessage(), e );
 			//log.info("debug", e );
 			/// e.pri ntStackTrace() ;
 			throw e;
@@ -325,13 +325,13 @@ public class MailSendBean {
 
 	
 	/**  
-	* <p>ÉèÖÃ´úÀí·şÎñÆ÷</p>
+	* <p>è®¾ç½®ä»£ç†æœåŠ¡å™¨</p>
 	* @author wuzewen on 2005-07-29
-	* @param proxy Ê¹ÓÃµÄÓÊ¼ş·¢ËÍ´úÀíµÄip
-	* @param proxyPort Ê¹ÓÃµÄÓÊ¼ş·¢ËÍ´úÀíµÄ¶Ë¿Ú
+	* @param proxy ä½¿ç”¨çš„é‚®ä»¶å‘é€ä»£ç†çš„ip
+	* @param proxyPort ä½¿ç”¨çš„é‚®ä»¶å‘é€ä»£ç†çš„ç«¯å£
 	*/  
 	public void setProxyServer(String type, String proxy, String proxyPort) {  
-		//ÉèÖÃ´úÀí·şÎñÆ÷  
+		//è®¾ç½®ä»£ç†æœåŠ¡å™¨  
 		//    System.getProperties().put("proxySet", "true");  
 		//    System.getProperties().put("proxyHost", proxy);  
 		//    System.getProperties().put("proxyPort", proxyPort);  
@@ -357,9 +357,9 @@ public class MailSendBean {
 	}  
 
 	/**
-	 * <p>·¢ËÍÓÊ¼şµÄMainº¯Êı¡£</p>
+	 * <p>å‘é€é‚®ä»¶çš„Mainå‡½æ•°ã€‚</p>
 	 * @author WUZEWEN on 2005-05-25
-	 * @param args µ÷ÓÃ²ÎÊı
+	 * @param args è°ƒç”¨å‚æ•°
 	 * @return void
 	 * @throws Exception 
 	 * @throws no exception
@@ -369,32 +369,32 @@ public class MailSendBean {
 //		String mailbody = "<meta http-equiv=Content-Type content=text/html; charset=gb2312>"+
 //		"<div align=center><a href=http://www.csdn.net> csdn </a></div>";
 		
-		//»ñÈ¡ÅäÖÃĞÅÏ¢
+		//è·å–é…ç½®ä¿¡æ¯
 		Properties props=new Properties();
 		try{
 			props.load(new java.io.FileInputStream("properties_2005_javamail.properties")) ;
 		}catch(FileNotFoundException ex){
-			System.out.println ("Ã»ÓĞÕÒµ½ÊôĞÔÎÄ¼ş£¡");
+			System.out.println ("æ²¡æœ‰æ‰¾åˆ°å±æ€§æ–‡ä»¶ï¼");
 			System.exit(0);
 		}catch(IOException ex){
-			System.out.println ("Ã»ÓĞÕÒµ½ÊôĞÔÎÄ¼ş£¡");
+			System.out.println ("æ²¡æœ‰æ‰¾åˆ°å±æ€§æ–‡ä»¶ï¼");
 			return;
 		}
-		//ÓÊ¼şĞÅÏ¢ÅäÖÃ
-		String prefix=props.getProperty("jmail.rootCategory");	//Ö÷Àà±ğ
+		//é‚®ä»¶ä¿¡æ¯é…ç½®
+		String prefix=props.getProperty("jmail.rootCategory");	//ä¸»ç±»åˆ«
 		if(prefix==null||prefix.trim().equals("")){
 			prefix="A1";
 		}
 		prefix="jmail.conf."+prefix+".";
 		System.out.println ("category:"+prefix);
-		String subject = props.getProperty(prefix+"subject");	//Ö÷Ìâ
-		String body    = props.getProperty(prefix+"body");		//ÎÄ±¾ÄÚÈİ
-		String from    = props.getProperty(prefix+"from");		//·¢ËÍÓÊÏä
-		String user    = props.getProperty(prefix+"user");		//·¢ËÍÓÊÏäÓÃ»§
-		String pass    = props.getProperty(prefix+"pass");		//·¢ËÍÓÊÏä¿ÚÁî
-		String to      = props.getProperty(prefix+"to");		//½ÓÊÕÓÊÏä¼¯ºÏ£¬ÓÃ,ºÅ·Ö¸ô
-		String copyTo  = props.getProperty(prefix+"copyTo");	//³­ËÍÓÊÏä¼¯ºÏ£¬ÓÃ,ºÅ·Ö¸ô
-		String fileAffix=props.getProperty(prefix+"fileAffix");//¸½¼ş£¬¶à¸öÊ¹ÓÃ,ºÅ·Ö¸ô
+		String subject = props.getProperty(prefix+"subject");	//ä¸»é¢˜
+		String body    = props.getProperty(prefix+"body");		//æ–‡æœ¬å†…å®¹
+		String from    = props.getProperty(prefix+"from");		//å‘é€é‚®ç®±
+		String user    = props.getProperty(prefix+"user");		//å‘é€é‚®ç®±ç”¨æˆ·
+		String pass    = props.getProperty(prefix+"pass");		//å‘é€é‚®ç®±å£ä»¤
+		String to      = props.getProperty(prefix+"to");		//æ¥æ”¶é‚®ç®±é›†åˆï¼Œç”¨,å·åˆ†éš”
+		String copyTo  = props.getProperty(prefix+"copyTo");	//æŠ„é€é‚®ç®±é›†åˆï¼Œç”¨,å·åˆ†éš”
+		String fileAffix=props.getProperty(prefix+"fileAffix");//é™„ä»¶ï¼Œå¤šä¸ªä½¿ç”¨,å·åˆ†éš”
 		
 		if(subject==null) subject="";
 		if(body==null) body="";
@@ -411,13 +411,13 @@ public class MailSendBean {
 		if(fileAffix==null) fileAffix="";
 		java.util.StringTokenizer st = new StringTokenizer(fileAffix,",");
 		
-		//ÍøÂçÅäÖÃĞÅÏ¢
-		String smtp     = props.getProperty(prefix+"smtp");		//ÓÊ¼ş·şÎñÆ÷µÄsmtp
-		String proxyType= props.getProperty(prefix+"proxyType");		//¾ÖÓòÍøµÄproxyType
-		String proxyIP  = props.getProperty(prefix+"proxyIP");		//¾ÖÓòÍøµÄproxyIP
-		String proxyPort= props.getProperty(prefix+"proxyPort");		//¾ÖÓòÍøµÄproxyPort
+		//ç½‘ç»œé…ç½®ä¿¡æ¯
+		String smtp     = props.getProperty(prefix+"smtp");		//é‚®ä»¶æœåŠ¡å™¨çš„smtp
+		String proxyType= props.getProperty(prefix+"proxyType");		//å±€åŸŸç½‘çš„proxyType
+		String proxyIP  = props.getProperty(prefix+"proxyIP");		//å±€åŸŸç½‘çš„proxyIP
+		String proxyPort= props.getProperty(prefix+"proxyPort");		//å±€åŸŸç½‘çš„proxyPort
 	    
-		//ÉèÖÃ´úÀí·şÎñÆ÷ 
+		//è®¾ç½®ä»£ç†æœåŠ¡å™¨ 
 		MailSendBean themail = new MailSendBean(smtp);
 		if(proxyType!=null&&!proxyType.trim().equals("")){
 			themail.setProxyServer(proxyType,proxyIP,proxyPort) ;			
@@ -439,7 +439,7 @@ public class MailSendBean {
 			String tmep = st.nextElement().toString() ;
 			System.out.println (tmep);
 			if(themail.addFileAffix(tmep) == false){
-				System.out.println("Ìí¼Ó¸½¼şÊ§°Ü£¡");
+				System.out.println("æ·»åŠ é™„ä»¶å¤±è´¥ï¼");
 				return;
 			}
 		}

@@ -19,7 +19,7 @@ import com.opensymphony.oscache.general.GeneralCacheAdministrator;
 
 
 /**
- * »º´æ¶ÔÏó¹ÜÀíÕß¡£
+ * ç¼“å­˜å¯¹è±¡ç®¡ç†è€…ã€‚
  * 
  * @author	WUZEWEN on 2006.09.21
  *
@@ -32,7 +32,7 @@ public class CacheManager {
 	
 	static {
 		instance = new CacheManager();
-		cacheAdministrator = new GeneralCacheAdministrator(); // ²ÉÓÃµÚÈı·½ opensymphony.oscache
+		cacheAdministrator = new GeneralCacheAdministrator(); // é‡‡ç”¨ç¬¬ä¸‰æ–¹ opensymphony.oscache
 	}
 	
 	

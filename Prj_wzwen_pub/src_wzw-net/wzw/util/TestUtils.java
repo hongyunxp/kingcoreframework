@@ -31,7 +31,7 @@ import java.util.TreeMap;
 import org.apache.commons.lang.ArrayUtils;
 
 /**
- * <p>Wu Zewen java±Ê¼ÇÏµÍ³×¨ÓÃÀà²âÊÔ¹¤¾ßÀà£¬ÀàËÆJunitÀïÃæµÄ²âÊÔ·½Ê½£¬²»¹ı¸ü¼òµ¥¡¢¿ì½İ¡¢Áé»î¡£</p>
+ * <p>Wu Zewen javaç¬”è®°ç³»ç»Ÿä¸“ç”¨ç±»æµ‹è¯•å·¥å…·ç±»ï¼Œç±»ä¼¼Junité‡Œé¢çš„æµ‹è¯•æ–¹å¼ï¼Œä¸è¿‡æ›´ç®€å•ã€å¿«æ·ã€çµæ´»ã€‚</p>
  * @author Zeven on 2008-1-31
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -45,8 +45,8 @@ public class TestUtils {
 	
 	/**
 	 * 
-	 * <p>ÁĞ³öÀàÖĞËùÓĞµÄpublicÀàĞÍµÄ·½·¨¡£¸ù¾İÓÃ»§µÄÑ¡ÔñÖ´ĞĞÆäÖĞÒ»¸ö¡£
-	 * 		·ÅÔÚÃ¿¸öÀàµÄmain·½·¨ÖĞ¼´¿É¡£</p>
+	 * <p>åˆ—å‡ºç±»ä¸­æ‰€æœ‰çš„publicç±»å‹çš„æ–¹æ³•ã€‚æ ¹æ®ç”¨æˆ·çš„é€‰æ‹©æ‰§è¡Œå…¶ä¸­ä¸€ä¸ªã€‚
+	 * 		æ”¾åœ¨æ¯ä¸ªç±»çš„mainæ–¹æ³•ä¸­å³å¯ã€‚</p>
 	 * @author Zeven on 2008-2-1
 	 * @param clazz
 	 */
@@ -157,7 +157,7 @@ public class TestUtils {
 	}
 
 	/**
-	 * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+	 * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
 	 * @author Zeven on 2008-1-31
 	 * @param args
 	 */

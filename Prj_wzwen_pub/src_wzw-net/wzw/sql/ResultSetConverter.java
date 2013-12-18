@@ -27,8 +27,8 @@ import org.apache.commons.dbutils.handlers.ArrayListHandler;
 
 
 /**
- * <p>¶ÔÓÚ¾­³£Ê¹ÓÃµ½µÄ½á¹û¼¯¶ÔÏóµÄ×ª»»Àà¡£ Ö÷Òª×ªÎªÎªMap,MapList,Bean,BeanList
- * 	²Î¿¼ÁĞ±í£º
+ * <p>å¯¹äºç»å¸¸ä½¿ç”¨åˆ°çš„ç»“æœé›†å¯¹è±¡çš„è½¬æ¢ç±»ã€‚ ä¸»è¦è½¬ä¸ºä¸ºMap,MapList,Bean,BeanList
+ * 	å‚è€ƒåˆ—è¡¨ï¼š
  * 		org.apache.commons.dbutils.* 
  * 
  *   ----------------------------------------------------------
@@ -80,9 +80,9 @@ public class ResultSetConverter {
 		if   (rsmd.getColumnCount()>=0){     
 			if(rs.next()){
 				for(int   j=1;j<=rsmd.getColumnCount();j++){ 
-					if( rs.getObject(j)!=null ) { // Èç¹ûÎªNull£¬ÎŞĞë·ÅÈë
-						// ËµÃ÷£¬Ê¹ÓÃ columnName = (String) rsmd.getColumnName(i); »ñÈ¡µÄÊÇ´óĞ´£¬
-						//  ¶øÇÒÓĞÊ±ºòÁĞ»ñÈ¡²»µ½,ºÃÏñÊÇMySqlÊı¾İ¿â£¬
+					if( rs.getObject(j)!=null ) { // å¦‚æœä¸ºNullï¼Œæ— é¡»æ”¾å…¥
+						// è¯´æ˜ï¼Œä½¿ç”¨ columnName = (String) rsmd.getColumnName(i); è·å–çš„æ˜¯å¤§å†™ï¼Œ
+						//  è€Œä¸”æœ‰æ—¶å€™åˆ—è·å–ä¸åˆ°,å¥½åƒæ˜¯MySqlæ•°æ®åº“ï¼Œ
 						map.put( rsmd.getColumnLabel(j).toLowerCase() , rs.getObject(j) ) ;
 					}
 				}
@@ -112,7 +112,7 @@ public class ResultSetConverter {
 			while(rs.next()){
 				Map<String, Object> temph=new   Hashtable<String, Object>();   
 				for(int   j=1;j<=rsmd.getColumnCount();j++){ 
-					if( rs.getObject(j)!=null ) { // Èç¹ûÎªNull£¬ÎŞĞë·ÅÈë
+					if( rs.getObject(j)!=null ) { // å¦‚æœä¸ºNullï¼Œæ— é¡»æ”¾å…¥
 						temph.put( rsmd.getColumnLabel(j).toLowerCase() , rs.getObject(j) ) ;
 					}
 				}   
@@ -126,9 +126,9 @@ public class ResultSetConverter {
 
 
 	/**
-	 * ½«½á¹û×ª»»ÎªÒ»¸ö»ù±¾¶ÔÏó·µ»Ø¡£
+	 * å°†ç»“æœè½¬æ¢ä¸ºä¸€ä¸ªåŸºæœ¬å¯¹è±¡è¿”å›ã€‚
 	 * @param rs
-	 * @param type ·µ»ØList¶ÔÏóÖĞµÄjava.sql.Types ÖĞµÄ»ù±¾¶ÔÏóÀàĞÍ
+	 * @param type è¿”å›Listå¯¹è±¡ä¸­çš„java.sql.Types ä¸­çš„åŸºæœ¬å¯¹è±¡ç±»å‹
 	 * @return
 	 * @throws SQLException
 	 */
@@ -172,9 +172,9 @@ public class ResultSetConverter {
 	}
 	
 	/**
-	 * ½«½á¹û×ª»»ÎªÒ»¸ö»ù±¾¶ÔÏóµÄÁĞ±í·µ»Ø¡£
+	 * å°†ç»“æœè½¬æ¢ä¸ºä¸€ä¸ªåŸºæœ¬å¯¹è±¡çš„åˆ—è¡¨è¿”å›ã€‚
 	 * @param rs
-	 * @param type ·µ»ØList¶ÔÏóÖĞµÄjava.sql.Types ÖĞµÄ»ù±¾¶ÔÏóÀàĞÍ
+	 * @param type è¿”å›Listå¯¹è±¡ä¸­çš„java.sql.Types ä¸­çš„åŸºæœ¬å¯¹è±¡ç±»å‹
 	 * @return
 	 * @throws SQLException
 	 */
@@ -247,7 +247,7 @@ public class ResultSetConverter {
 	/**
 	 * <p>
 	 * Convert a ResultSet Object to List. 
-	 * 	²»»á¸Ä±äResultSetµÄÖ¸ÕëÎ»ÖÃ£¬½¨Òéµ÷ÓÃÖ®Ç°Ê¹ÓÃ rs.beforeFirst()·½·¨¡£
+	 * 	ä¸ä¼šæ”¹å˜ResultSetçš„æŒ‡é’ˆä½ç½®ï¼Œå»ºè®®è°ƒç”¨ä¹‹å‰ä½¿ç”¨ rs.beforeFirst()æ–¹æ³•ã€‚
 	 * </p>.
 	 * @param rs
 	 * @param type
@@ -262,7 +262,7 @@ public class ResultSetConverter {
 	}
 	
 	/**
-	 * Z£ºconvert a ResultSet to Array.
+	 * Zï¼šconvert a ResultSet to Array.
 	 * @param rs
 	 * @return
 	 * @throws java.sql.SQLException
@@ -275,7 +275,7 @@ public class ResultSetConverter {
 	}
 
 	/**
-	 * Z£ºconvert a ResultSet to ArrayList.
+	 * Zï¼šconvert a ResultSet to ArrayList.
 	 * @param rs
 	 * @return
 	 * @throws java.sql.SQLException

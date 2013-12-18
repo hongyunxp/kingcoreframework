@@ -2,7 +2,7 @@ package com.kingcore.framework.base.view;
 
 /**
  *
- * @author£ºzewen.wu
+ * @authorï¼šzewen.wu
  */
 import java.util.List;
 

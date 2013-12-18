@@ -27,14 +27,14 @@ public class ConvertUtils {
     private static DecimalFormat numberFormat = new DecimalFormat();
 	
 	/**
-	 * Êı¾İ¿âÀàĞÍ
+	 * æ•°æ®åº“ç±»å‹
 	 */
-	public static String database="ORA";			//Ä¬ÈÏÎªoracleÊı¾İ¿â£¬Èç¹ûÉèÖÃoracleÎªgb2312£¬¾Í²»ĞèÒª×ª»»ÁË¡£
+	public static String database="ORA";			//é»˜è®¤ä¸ºoracleæ•°æ®åº“ï¼Œå¦‚æœè®¾ç½®oracleä¸ºgb2312ï¼Œå°±ä¸éœ€è¦è½¬æ¢äº†ã€‚
 	
 	/**
-	 * ÉèÖÃÊı¾İ¿âÀàĞÍ
+	 * è®¾ç½®æ•°æ®åº“ç±»å‹
 	 * 2003-6-5
-	 * @param String Êı¾İ¿âÀàĞÍ
+	 * @param String æ•°æ®åº“ç±»å‹
 	 * @return void
 	 * @throws Exception
 	 */
@@ -42,9 +42,9 @@ public class ConvertUtils {
 		database = db;
 	}
 	/**
-	 * ¸ù¾İÊı¾İ¿âÀàĞÍ×ª»¯×Ö·û´®
+	 * æ ¹æ®æ•°æ®åº“ç±»å‹è½¬åŒ–å­—ç¬¦ä¸²
 	 * Create on 2003-5-20
-	 * @param String Ğè×ª»»µÄ×Ö·û´®
+	 * @param String éœ€è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @return String
 	 * @throws Exception
 	 * Modify on 2003-6-5
@@ -64,10 +64,10 @@ public class ConvertUtils {
 		return convertString;
 	}
 	/**
-	 * ¸ñÊ½»¯Êı×ÖµÄ°ü×°·½·¨
+	 * æ ¼å¼åŒ–æ•°å­—çš„åŒ…è£…æ–¹æ³•
 	 * Create on 2003-6-18
-	 * @param Double Êı×Ö
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı 
+	 * @param Double æ•°å­—
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•° 
 	 * @return
 	 */
 	public static String formatNumber(Double d, int scalar) throws Exception {
@@ -75,10 +75,10 @@ public class ConvertUtils {
 		return formatNumber(temp, scalar);
 	}
 	/**
-	 * ¸ñÊ½»¯Êı×ÖµÄ°ü×°·½·¨
+	 * æ ¼å¼åŒ–æ•°å­—çš„åŒ…è£…æ–¹æ³•
 	 * Create on 2003-6-18
-	 * @param Float Êı×Ö
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı 
+	 * @param Float æ•°å­—
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•° 
 	 * @return
 	 */
 	public static String formatNumber(Float d, int scalar) throws Exception {
@@ -86,10 +86,10 @@ public class ConvertUtils {
 		return formatNumber(temp, scalar);
 	}
 	/**
-	 * ¸ñÊ½»¯Êı×Ö
+	 * æ ¼å¼åŒ–æ•°å­—
 	 * Create on 2003-6-18
-	 * @param double Êı×Ö
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
+	 * @param double æ•°å­—
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
 	 * @return
 	 * @throws Exception
 	 */
@@ -101,10 +101,10 @@ public class ConvertUtils {
 		return nf.format(number);
 	}
 	/**
-	 * ¸ñÊ½»¯Êı×Ö
+	 * æ ¼å¼åŒ–æ•°å­—
 	 * Create on 2003-6-18
-	 * @param float Êı×Ö
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
+	 * @param float æ•°å­—
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
 	 * @return
 	 * @throws Exception
 	 */
@@ -116,10 +116,10 @@ public class ConvertUtils {
 		return nf.format(number);
 	}
 	/**
-	 * ¸ñÊ½»¯½ğ¶î
-	 * @param double ½ğ¶î
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
-	 * @param int ÉáÈëÊ±ÒÔ¶àÉÙÎ»ÉáÈëµÄ±ê×¼
+	 * æ ¼å¼åŒ–é‡‘é¢
+	 * @param double é‡‘é¢
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
+	 * @param int èˆå…¥æ—¶ä»¥å¤šå°‘ä½èˆå…¥çš„æ ‡å‡†
 	 * @return String
 	 */
 	public static String formatMoney(double money, int scalar)
@@ -130,10 +130,10 @@ public class ConvertUtils {
 		return nf.format(money);
 	}
 	/**
-	 * ¸ñÊ½»¯½ğ¶î
-	 * @param String ½ğ¶î
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
-	 * @param int ÉáÈëÊ±ÒÔ¶àÉÙÎ»ÉáÈëµÄ±ê×¼
+	 * æ ¼å¼åŒ–é‡‘é¢
+	 * @param String é‡‘é¢
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
+	 * @param int èˆå…¥æ—¶ä»¥å¤šå°‘ä½èˆå…¥çš„æ ‡å‡†
 	 * @return String
 	 */
 	public static String formatMoney(float money, int scalar)
@@ -144,11 +144,11 @@ public class ConvertUtils {
 		return nf.format(money);
 	}
 	/**
-	 * ¸ñÊ½»¯½ğ¶î
-	 * @param String ½ğ¶î
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
-	 * @param boolean ÊÇ·ñÈë
-	 * @param int ÉáÈëÊ±ÒÔ¶àÉÙÎ»ÉáÈëµÄ±ê×¼
+	 * æ ¼å¼åŒ–é‡‘é¢
+	 * @param String é‡‘é¢
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
+	 * @param boolean æ˜¯å¦å…¥
+	 * @param int èˆå…¥æ—¶ä»¥å¤šå°‘ä½èˆå…¥çš„æ ‡å‡†
 	 * @return String
 	 */
 	public static String formatMoney(
@@ -167,11 +167,11 @@ public class ConvertUtils {
 	}
 	
 	/**
-	 * ¸ñÊ½»¯½ğ¶î
-	 * @param double ½ğ¶î
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
-	 * @param boolean ÊÇ·ñÈë
-	 * @param int ÉáÈëÊ±ÒÔ¶àÉÙÎ»ÉáÈëµÄ±ê×¼
+	 * æ ¼å¼åŒ–é‡‘é¢
+	 * @param double é‡‘é¢
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
+	 * @param boolean æ˜¯å¦å…¥
+	 * @param int èˆå…¥æ—¶ä»¥å¤šå°‘ä½èˆå…¥çš„æ ‡å‡†
 	 * @return String
 	 */
 	public static String formatMoney(
@@ -190,10 +190,10 @@ public class ConvertUtils {
 	}
 	
 	/**
-	 * ¸ñÊ½»¯½ğ¶î
-	 * @param String ½ğ¶î
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
-	 * @param boolean ÊÇ·ñËÄÉáÎåÈë
+	 * æ ¼å¼åŒ–é‡‘é¢
+	 * @param String é‡‘é¢
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
+	 * @param boolean æ˜¯å¦å››èˆäº”å…¥
 	 * @return String
 	 */
 	public static String formatMoney(String money, int scalar, boolean isround)
@@ -201,10 +201,10 @@ public class ConvertUtils {
 		return formatMoney(money, scalar, isround, 5);
 	}
 	/**
-	 * ¸ñÊ½»¯½ğ¶î
-	 * @param String ½ğ¶î
-	 * @param int ±£Áô¼¸Î»ÓĞĞ§Ğ¡Êı
-	 * @param boolean ÊÇ·ñËÄÉáÎåÈë
+	 * æ ¼å¼åŒ–é‡‘é¢
+	 * @param String é‡‘é¢
+	 * @param int ä¿ç•™å‡ ä½æœ‰æ•ˆå°æ•°
+	 * @param boolean æ˜¯å¦å››èˆäº”å…¥
 	 * @return String
 	 */
 	public static String formatMoney(double money, int scalar, boolean isround)
@@ -212,13 +212,13 @@ public class ConvertUtils {
 		return formatMoney(String.valueOf(money), scalar, isround, 5);
 	}
 	/**
-	 * ÉáÈë·½·¨
-	 * ¿ÉÒÔ¸ù¾İ×Ô¶¨ÒåµÄÊıÖµÀ´×öÉáºÍÈë£¬
-	 *  ÀıÈç£ºÒÔ6×÷ÎªÉáÈëµÄ±ê×¼£¬ÄÇÃ´Ğ¡ÓÚ6µÄ¶¼Éáµô£¬
-	 *  ´óÓÚ»òµÈÓÚ6µÄ¶¼½øÎ»¡£
-	 * @param double ´«ÈëÒª×öÉáÈë²Ù×÷µÄÊı×Ö×Ö·û´®
-	 * @param int ±£ÁôĞ¡Êıµãºó¼¸Î»
-	 * @param int ×÷Îª±ê×¼µÄÊı
+	 * èˆå…¥æ–¹æ³•
+	 * å¯ä»¥æ ¹æ®è‡ªå®šä¹‰çš„æ•°å€¼æ¥åšèˆå’Œå…¥ï¼Œ
+	 *  ä¾‹å¦‚ï¼šä»¥6ä½œä¸ºèˆå…¥çš„æ ‡å‡†ï¼Œé‚£ä¹ˆå°äº6çš„éƒ½èˆæ‰ï¼Œ
+	 *  å¤§äºæˆ–ç­‰äº6çš„éƒ½è¿›ä½ã€‚
+	 * @param double ä¼ å…¥è¦åšèˆå…¥æ“ä½œçš„æ•°å­—å­—ç¬¦ä¸²
+	 * @param int ä¿ç•™å°æ•°ç‚¹åå‡ ä½
+	 * @param int ä½œä¸ºæ ‡å‡†çš„æ•°
 	 * @return String
 	 */
 	public static double round(double value, int scalar, int standard)
@@ -250,16 +250,16 @@ public class ConvertUtils {
 		return back;
 	}
 	/**
-	 * ÖĞÎÄ½ğ¶îµÄ´óĞ´×ª»»µÄ°ü×°º¯Êı
-	 * @param String ½ğ¶î
+	 * ä¸­æ–‡é‡‘é¢çš„å¤§å†™è½¬æ¢çš„åŒ…è£…å‡½æ•°
+	 * @param String é‡‘é¢
 	 * @return String
 	 */
 	public static String makeUpperCaseSum(String je) {
 		return makeUpperCaseSum(Double.parseDouble(je));
 	}
 	/**
-	 * ÖĞÎÄ½ğ¶îµÄ´óĞ´×ª»»
-	 * @param double ½ğ¶î
+	 * ä¸­æ–‡é‡‘é¢çš„å¤§å†™è½¬æ¢
+	 * @param double é‡‘é¢
 	 * @return String
 	 */
 	public static String makeUpperCaseSum(double je) {
@@ -268,27 +268,27 @@ public class ConvertUtils {
 			je *= -1;
 
 		final String[] upper_number =
-			{ "Ò¼", "·¡", "Èş", "ËÁ", "Îé", "Â½", "Æâ", "°Æ", "¾Á", "Ê°" };
+			{ "å£¹", "è´°", "å", "è‚†", "ä¼", "é™†", "æŸ’", "æŒ", "ç–", "æ‹¾" };
 		final String[] number_dw =
 			{
 				"",
-				"Ô²",
-				"Ê°",
-				"°Û",
-				"Çª",
-				"Íò",
-				"Ê°",
-				"°Û",
-				"Çª",
-				"ÒÚ",
-				"Ê°",
-				"°Û",
-				"Çª",
-				"Íò" };
+				"åœ†",
+				"æ‹¾",
+				"ä½°",
+				"ä»Ÿ",
+				"ä¸‡",
+				"æ‹¾",
+				"ä½°",
+				"ä»Ÿ",
+				"äº¿",
+				"æ‹¾",
+				"ä½°",
+				"ä»Ÿ",
+				"ä¸‡" };
 		String operate, upper_str, vsDx;
 		int i, j, point_pos, int_len;
 		if (je < 0.01)
-			return "ÁãÔ²Õû";
+			return "é›¶åœ†æ•´";
 
 		upper_str = "";
 
@@ -305,7 +305,7 @@ public class ConvertUtils {
 			int_len = point_pos;
 		}
 		if (int_len > number_dw.length - 1)
-			return "too long £¡£¡£¡";
+			return "too long ï¼ï¼ï¼";
 
 		if (je > 0) {
 			for (i = 0; i < int_len; i++) {
@@ -313,28 +313,28 @@ public class ConvertUtils {
 				if (i > 0 && "0".equals(operate.substring(i, i + 1))) {
 					String sss = number_dw[j];
 					if (!"0".equals(operate.substring(i - 1, i))
-						&& !"Íò".equals(sss)
-						&& !"ÒÚ".equals(sss)
-						&& !"Ô²".equals(sss))
-						upper_str = upper_str + "Áã";
+						&& !"ä¸‡".equals(sss)
+						&& !"äº¿".equals(sss)
+						&& !"åœ†".equals(sss))
+						upper_str = upper_str + "é›¶";
 					else if (
-						"Íò".equals(number_dw[j])
-							|| "ÒÚ".equals(number_dw[j])
-							|| "Ô²".equals(number_dw[j])) {
+						"ä¸‡".equals(number_dw[j])
+							|| "äº¿".equals(number_dw[j])
+							|| "åœ†".equals(number_dw[j])) {
 						int ssss = upper_str.length() - 1;
 						String sssss = upper_str.substring(ssss);
-						if (!sssss.equals("Áã")) {
+						if (!sssss.equals("é›¶")) {
 							if (!upper_str
 								.substring(upper_str.length() - 1)
-								.equals("ÒÚ")
+								.equals("äº¿")
 								&& !upper_str.substring(
 									upper_str.length() - 1).equals(
-									"Íò")) {
+									"ä¸‡")) {
 								if (upper_str
 									.substring(upper_str.length() - 1)
-									.equals("Ê°")
-									&& !number_dw[j].equals("Ô²"))
-									upper_str = upper_str + number_dw[j] + "Áã";
+									.equals("æ‹¾")
+									&& !number_dw[j].equals("åœ†"))
+									upper_str = upper_str + number_dw[j] + "é›¶";
 								else
 									upper_str = upper_str + number_dw[j];
 							}
@@ -343,19 +343,19 @@ public class ConvertUtils {
 								.substring(
 									upper_str.length() - 2,
 									upper_str.length() - 1)
-								.equals("ÒÚ")
+								.equals("äº¿")
 								&& !upper_str.substring(
 									upper_str.length() - 2,
 									upper_str.length() - 1).equals(
-									"Íò")
-								|| number_dw[j].equals("Ô²")) {
+									"ä¸‡")
+								|| number_dw[j].equals("åœ†")) {
 								upper_str =
 									upper_str.substring(
 										0,
 										upper_str.length() - 1)
 										+ number_dw[j];
-								if (!number_dw[j].equals("Ô²")) {
-									upper_str = upper_str + "Áã";
+								if (!number_dw[j].equals("åœ†")) {
+									upper_str = upper_str + "é›¶";
 								}
 							}
 						}
@@ -374,14 +374,14 @@ public class ConvertUtils {
 				int k =
 					Integer.parseInt(
 						operate.substring(point_pos + 1, point_pos + 2));
-				upper_str = upper_str + upper_number[k - 1] + "½Ç";
+				upper_str = upper_str + upper_number[k - 1] + "è§’";
 				if (!operate
 					.substring(point_pos + 2, point_pos + 3)
 					.equals("0")) {
 					int m =
 						Integer.parseInt(
 							operate.substring(point_pos + 2, point_pos + 3));
-					upper_str = upper_str + upper_number[m - 1] + "·Ö";
+					upper_str = upper_str + upper_number[m - 1] + "åˆ†";
 				}
 			} else {
 				if (!operate
@@ -390,72 +390,72 @@ public class ConvertUtils {
 					int k =
 						Integer.parseInt(
 							operate.substring(point_pos + 2, point_pos + 3));
-					upper_str = upper_str + "Áã" + upper_number[k - 1] + "·Ö";
+					upper_str = upper_str + "é›¶" + upper_number[k - 1] + "åˆ†";
 				}
 			}
 		}
 
-		if (!upper_str.substring(upper_str.length() - 1).equals("·Ö")
+		if (!upper_str.substring(upper_str.length() - 1).equals("åˆ†")
 			&& !upper_str.equals(""))
-			upper_str = upper_str + "Õû";
+			upper_str = upper_str + "æ•´";
 
 		return upper_str;
 	}
 	
 	/**
-	 * ½«ÖĞÓ¢ÎÄ×Ö´®×ª»»³É´¿Ó¢ÎÄ×Ö´®¹²ÓÃ¾²Ì¬·½·¨
+	 * å°†ä¸­è‹±æ–‡å­—ä¸²è½¬æ¢æˆçº¯è‹±æ–‡å­—ä¸²å…±ç”¨é™æ€æ–¹æ³•
 	 * 
 	 * 
 	 */
 	public static String toTureAsciiStr(String str)
-	{  // ¶¨Òå½«ÖĞÓ¢ÎÄ×Ö´®×ª»»³É´¿Ó¢ÎÄ×Ö´®¹²ÓÃ¾²Ì¬·½·¨
+	{  // å®šä¹‰å°†ä¸­è‹±æ–‡å­—ä¸²è½¬æ¢æˆçº¯è‹±æ–‡å­—ä¸²å…±ç”¨é™æ€æ–¹æ³•
     	StringBuffer sb=new StringBuffer();
-    	byte[] bt=str.getBytes();                       // °ÑÒª×ª»»µÄ×Ö·û´®×ª»»Îª×Ö½ÚĞÎÊ½
+    	byte[] bt=str.getBytes();                       // æŠŠè¦è½¬æ¢çš„å­—ç¬¦ä¸²è½¬æ¢ä¸ºå­—èŠ‚å½¢å¼
     	for(int i=0;i<bt.length;i++){
-    	  if(bt[i]<0){                                  // ÅĞ¶ÏÊÇ·ñÎªºº×Ö£¬ÈçÊÇÔòÈ¥¸ßÎ»1
+    	  if(bt[i]<0){                                  // åˆ¤æ–­æ˜¯å¦ä¸ºæ±‰å­—ï¼Œå¦‚æ˜¯åˆ™å»é«˜ä½1
     	    sb.append((char)(bt[i]&(0x7f)));
     	  }
-      	  else{                                         // ÊÇÓ¢ÎÄ×Ö·û²¹0×÷¼ÇÂ¼
+      	  else{                                         // æ˜¯è‹±æ–‡å­—ç¬¦è¡¥0ä½œè®°å½•
         	sb.append((char)0);
         	sb.append((char)bt[i]);
       }
     }
-    return  sb.toString();                          // ·µ»Ø×ª»»ºóµÄÓ¢ÎÄ×Ö·û´®
+    return  sb.toString();                          // è¿”å›è½¬æ¢åçš„è‹±æ–‡å­—ç¬¦ä¸²
   }
 	
 	/**
 	 *
-	 * ½«¾­×ª»»µÄ×Ö´®»¹Ô­·½·¨
+	 * å°†ç»è½¬æ¢çš„å­—ä¸²è¿˜åŸæ–¹æ³•
 	 *
 	 */
 	public static String unToTrueAsciiStr(String str)
-	{// ¶¨Òå½«¾­×ª»»µÄ×Ö´®»¹Ô­·½·¨
+	{// å®šä¹‰å°†ç»è½¬æ¢çš„å­—ä¸²è¿˜åŸæ–¹æ³•
     	byte[] bt=str.getBytes() ;
     	int i;
     	int l=0;
     	int length=bt.length;
     	int j=0;
-    	for(i=0;i<length;i++){                          // ÅĞ¶ÏÓĞ¼¸¸öÓ¢ÎÄ×Ö·ûÒÔÈ¥³ıByte 0
+    	for(i=0;i<length;i++){                          // åˆ¤æ–­æœ‰å‡ ä¸ªè‹±æ–‡å­—ç¬¦ä»¥å»é™¤Byte 0
     	  if(bt[i]==0){
     	    l++;
     	    }
     	}
-    	byte[] bt2=new byte[length-l];                  // ¶¨Òå·µ»ØµÄ×Ö½ÚÊı×é
+    	byte[] bt2=new byte[length-l];                  // å®šä¹‰è¿”å›çš„å­—èŠ‚æ•°ç»„
     	for(i=0;i<length;i++){
-    	  if(bt[i]==0){                                 // ÊÇÓ¢ÎÄ×Ö·ûÈ¥µô0
+    	  if(bt[i]==0){                                 // æ˜¯è‹±æ–‡å­—ç¬¦å»æ‰0
     	    i++;
     	    bt2[j]=bt[i];
     	  }
-    	  else{                                         // ÊÇºº×Ö²¹ÉÏ¸ßÎ»1
+    	  else{                                         // æ˜¯æ±‰å­—è¡¥ä¸Šé«˜ä½1
     	    bt2[j]=(byte)(bt[i]|0x80);
       	}
       	j++;
     	}
     	String tt=new String(bt2);
-    	return tt;                                     // ·µ»Ø»¹Ô­ºóµÄ×Ö·û´®
+    	return tt;                                     // è¿”å›è¿˜åŸåçš„å­—ç¬¦ä¸²
   }
 
-	/**½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®
+	/**å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²
 	 *
 	 *
 	 *
@@ -539,7 +539,7 @@ public class ConvertUtils {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		// System.out.println( StringUtils.toUTF_8_2("user.jhtml?id=123&pw=aÖĞbÎÄc") );
+		// System.out.println( StringUtils.toUTF_8_2("user.jhtml?id=123&pw=aä¸­bæ–‡c") );
 		String str =null;
 		str = "ab'cd";
 		System.out.println( ConvertUtils.toHTMLString( str ) );

@@ -44,102 +44,102 @@ import com.sun.rowset.CachedRowSetImpl;
 public class CachedQueryDataSet implements Serializable
 {
 	/**
-	 * ÈÕÖ¾±äÁ¿
+	 * æ—¥å¿—å˜é‡
 	 */
 	public static Logger log = Logger.getLogger(com.kingcore.framework.bean.CachedQueryDataSet.class);
 
 	/**
-	* Í¼Æ¬Â·¾¶
+	* å›¾ç‰‡è·¯å¾„
 	*/
 
 	protected static String imgPath = "jsp/image/";
 
 	/**
-	* Ö÷¼ü
+	* ä¸»é”®
 	*/
 	protected String primaryKey = "";
 
 	/**
-	* ×ÜĞĞÊı
+	* æ€»è¡Œæ•°
 	*/
 	protected int rowCount;
 
 	/**
-	* Ã¿Ò³ÏÔÊ¾µÄĞĞÊı
+	* æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•°
 	*/
 	protected int pageSize = 10;
 
 	/**
-	* ×ÜÒ³Êı
+	* æ€»é¡µæ•°
 	*/
 	protected int pageCount;
 
 	/**
-	*µ±Ç°Ò³ºÅ
+	*å½“å‰é¡µå·
 	*/
 	protected int currentPageIndex = 1;
 
 	/**
-	* ¼ìË÷µÄµÚÒ»Ìõ¼ÍÂ¼ĞĞºÅ
+	* æ£€ç´¢çš„ç¬¬ä¸€æ¡çºªå½•è¡Œå·
 	*/
 	protected int beginIndex;
 
 	/**
-	* ¼ìË÷µÄ×îºóÒ»Ìõ¼ÍÂ¼ĞĞºÅ
+	* æ£€ç´¢çš„æœ€åä¸€æ¡çºªå½•è¡Œå·
 	*/
 	protected int endIndex;
 
 	/**
-	* Ò»ĞĞ¼ÇÂ¼
+	* ä¸€è¡Œè®°å½•
 	*/
 	//protected DataBean data;
 
 	/**
-	* ËùÓĞÊı¾İ¼¯ºÏ
+	* æ‰€æœ‰æ•°æ®é›†åˆ
 	*/
 	protected CachedRowSet crs ;
 
 	/**
-	* ×îºóÒ»´Î²éÑ¯µÄSQLÓï¾ä
+	* æœ€åä¸€æ¬¡æŸ¥è¯¢çš„SQLè¯­å¥
 	*/
 	protected String lastSql;
 	/**
-	* ×îºóÒ»´Î²éÑ¯µÄselect×Ó¾ä£¨³ı¡°select¡±)
+	* æœ€åä¸€æ¬¡æŸ¥è¯¢çš„selectå­å¥ï¼ˆé™¤â€œselectâ€)
 	*/
 	protected String selectString = "";
 	/**
-	* ×îºóÒ»´Î²éÑ¯µÄfrom×Ó¾ä£¨³ı¡°from¡±)
+	* æœ€åä¸€æ¬¡æŸ¥è¯¢çš„fromå­å¥ï¼ˆé™¤â€œfromâ€)
 	*/
 	protected String fromString = "";
 	/**
-	* ×îºóÒ»´Î²éÑ¯µÄwhere×Ó¾ä£¨³ı¡°where¡±)
+	* æœ€åä¸€æ¬¡æŸ¥è¯¢çš„whereå­å¥ï¼ˆé™¤â€œwhereâ€)
 	*/
 	protected String whereString = "";
 	/**
-	* ×îºóÒ»´Î²éÑ¯µÄgruop by×Ó¾ä£¨³ı¡°group by¡±)
+	* æœ€åä¸€æ¬¡æŸ¥è¯¢çš„gruop byå­å¥ï¼ˆé™¤â€œgroup byâ€)
 	*/
 	protected String groupByString = "";
 	/**
-	*  ×îºóÒ»´Î²éÑ¯µÄhaving×Ó¾ä£¨³ı¡°having¡±)
+	*  æœ€åä¸€æ¬¡æŸ¥è¯¢çš„havingå­å¥ï¼ˆé™¤â€œhavingâ€)
 	*/
 	protected String havingString = "";
 	/**
-	* ×îºóÒ»´Î²éÑ¯µÄorder by×Ó¾ä£¨³ı¡°order by¡±)
+	* æœ€åä¸€æ¬¡æŸ¥è¯¢çš„order byå­å¥ï¼ˆé™¤â€œorder byâ€)
 	*/
 	protected String orderByString = "";
 	/**
-	* ·ÖÒ³±ê¼Ç
+	* åˆ†é¡µæ ‡è®°
 	*/
 	protected boolean isPaged;
 	/**
-	* ÔİÊ±²»ĞèÒªµÄ±äÁ¿
-	*protected boolean isUpdate; //Êı¾İĞŞ¸Ä¡¢É¾³ı±ê¼Ç
-	*protected boolean isInsert; //Êı¾İÔö¼Ó±ê¼Ç
-	*protected boolean isDetail; //Êı¾İÃ÷Ï¸±ê¼Ç
+	* æš‚æ—¶ä¸éœ€è¦çš„å˜é‡
+	*protected boolean isUpdate; //æ•°æ®ä¿®æ”¹ã€åˆ é™¤æ ‡è®°
+	*protected boolean isInsert; //æ•°æ®å¢åŠ æ ‡è®°
+	*protected boolean isDetail; //æ•°æ®æ˜ç»†æ ‡è®°
 	*/
 
 	/**
-	* Éè¶¨Í¼Æ¬µÄ´æ·ÅÎ»ÖÃ
+	* è®¾å®šå›¾ç‰‡çš„å­˜æ”¾ä½ç½®
 	*/
 	public static void setImgPath(String path)
 	{
@@ -147,7 +147,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	* È¡µÃÍ¼Æ¬´æ·ÅÎ»ÖÃ
+	* å–å¾—å›¾ç‰‡å­˜æ”¾ä½ç½®
 	*/
 	public static String getImgPath()
 	{
@@ -155,7 +155,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	*ÉèÖÃprimaryKey
+	*è®¾ç½®primaryKey
 	*/
 	public void setPrimaryKey(String key)
 	{
@@ -163,7 +163,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	*»ñÈ¡primaryKey
+	*è·å–primaryKey
 	*/
 	public String getPrimaryKey()
 	{
@@ -171,7 +171,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 * ·µ»Ø¿ªÊ¼ĞĞ
+	 * è¿”å›å¼€å§‹è¡Œ
 	 * @return int
 	 */
 	public int getBeginIndex()
@@ -179,7 +179,7 @@ public class CachedQueryDataSet implements Serializable
 	    return beginIndex;
 	}
 	/**
-	* µ±Ç°Ò³
+	* å½“å‰é¡µ
 	* @return int
 	*/
 	public int getCurrentPageIndex()
@@ -187,7 +187,7 @@ public class CachedQueryDataSet implements Serializable
 	    return currentPageIndex;
 	}
 	/**
-	 *µÃµ½ËùÓĞµÄĞĞ¼¯
+	 *å¾—åˆ°æ‰€æœ‰çš„è¡Œé›†
 	 * @return List
 	 */
 	public CachedRowSet getDatas()
@@ -195,7 +195,7 @@ public class CachedQueryDataSet implements Serializable
 	    return this.crs ;
 	}
 	/**
-	 *µÃµ½¼ìË÷µÄ×îºóÒ»Ìõ¼ÇÂ¼ºÅ
+	 *å¾—åˆ°æ£€ç´¢çš„æœ€åä¸€æ¡è®°å½•å·
 	 * @return int
 	 */
 	public int getEndIndex()
@@ -203,7 +203,7 @@ public class CachedQueryDataSet implements Serializable
 	    return endIndex;
 	}
 	/**
-	 * ·µ»ØÊÇ·ñÊÇ·ÖÒ³
+	 * è¿”å›æ˜¯å¦æ˜¯åˆ†é¡µ
 	 * @return boolean
 	 */
 	public boolean getIsPaged()
@@ -211,7 +211,7 @@ public class CachedQueryDataSet implements Serializable
 	    return isPaged;
 	}
 	/**
-	 * ·µ»Ø×î½üÒ»´ÎÖ´ĞĞµÄsqlÓï¾ä
+	 * è¿”å›æœ€è¿‘ä¸€æ¬¡æ‰§è¡Œçš„sqlè¯­å¥
 	 * @return String
 	 */
 	public String getLastSql()
@@ -272,7 +272,7 @@ public class CachedQueryDataSet implements Serializable
 	    orderByString = orderBy;
 	}
 	/**
-	* ×ÜÒ³Êı
+	* æ€»é¡µæ•°
 	* @return int
 	*/
 	public int getPageCount()
@@ -281,7 +281,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	* Ã¿Ò³ÏÔÊ¾µÄĞĞÊı
+	* æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•°
 	* @return int
 	*/
 	public int getPageSize()
@@ -290,7 +290,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	*µ±Ç°Ò³ºÅ
+	*å½“å‰é¡µå·
 	*/
 	public void setCurrentPageIndex(int index)
 	{
@@ -298,7 +298,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	* »ñµÃ×ÜµÄĞĞÊı
+	* è·å¾—æ€»çš„è¡Œæ•°
 	* @return int
 	*/
 	public int getRowCount()
@@ -306,7 +306,7 @@ public class CachedQueryDataSet implements Serializable
 	    return rowCount;
 	}
 	/**
-	* »ñµÃµ±Ç°ĞĞºÅ
+	* è·å¾—å½“å‰è¡Œå·
 	* @return int
 	*/
 	public int getRow()
@@ -319,7 +319,7 @@ public class CachedQueryDataSet implements Serializable
 		return 0 ;
 	}
 	/**
-	* ·ÖÒ³Çé¿öÏÂÃ¿Ò³Êµ¼ÊÏÔÊ¾µÄĞĞÊı£¬¸Ã·½·¨Ö÷ÒªÊÇÔÚJSPÖĞµ÷ÓÃ
+	* åˆ†é¡µæƒ…å†µä¸‹æ¯é¡µå®é™…æ˜¾ç¤ºçš„è¡Œæ•°ï¼Œè¯¥æ–¹æ³•ä¸»è¦æ˜¯åœ¨JSPä¸­è°ƒç”¨
 	* @return int
 	*/
 	public int getShowRows()
@@ -331,7 +331,7 @@ public class CachedQueryDataSet implements Serializable
 	    return 0;
 	}
 	/**
-	* ÅĞ¶ÏÊÇµÚÒ»Ò³
+	* åˆ¤æ–­æ˜¯ç¬¬ä¸€é¡µ
 	* @return boolean
 	*/
 	protected boolean isFirstPage()
@@ -343,7 +343,7 @@ public class CachedQueryDataSet implements Serializable
 	    return false;
 	}
 	/**
-	* ÅĞ¶ÏÊÇ·ñÊÇ×îºóÒ»Ò³
+	* åˆ¤æ–­æ˜¯å¦æ˜¯æœ€åä¸€é¡µ
 	* @return boolean
 	*/
 	protected boolean isLastPage()
@@ -355,7 +355,7 @@ public class CachedQueryDataSet implements Serializable
 	    return false;
 	}
 	/**
-	* ÅĞ¶ÏÊÇ·ñÓĞÏÂÒ³
+	* åˆ¤æ–­æ˜¯å¦æœ‰ä¸‹é¡µ
 	* @return boolean
 	*/
 	protected boolean hasNextPage()
@@ -367,7 +367,7 @@ public class CachedQueryDataSet implements Serializable
 	    return false;
 	}
 	/**
-	* ÅĞ¶ÏÊÇ·ñÓĞÉÏÒ³
+	* åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šé¡µ
 	* @return boolean
 	*/
 	protected boolean hasPreviousPage()
@@ -379,7 +379,7 @@ public class CachedQueryDataSet implements Serializable
 	    return false;
 	}
 	/**
-	 * ÊÇ·ñĞèÒª·ÖÒ³ÏÔÊ¾
+	 * æ˜¯å¦éœ€è¦åˆ†é¡µæ˜¾ç¤º
 	 * @return boolean
 	 */
 	public boolean isNeedPaged(int forPageIndex)
@@ -395,7 +395,7 @@ public class CachedQueryDataSet implements Serializable
 	    return isPaged;
 	}
 	/**
-	* ×ªµ½ÏÂÒ³
+	* è½¬åˆ°ä¸‹é¡µ
 	* @return void
 	*/
 	public void nextPage()
@@ -405,7 +405,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 * ÖØÖÃÒ³Ãæ
+	 * é‡ç½®é¡µé¢
 	 */
 	public void reIndex()
 	{
@@ -414,7 +414,7 @@ public class CachedQueryDataSet implements Serializable
 			setCurrentPageIndex( getPageCount()) ;
 	    beginIndex = pageSize * (currentPageIndex - 1);
 	    endIndex = pageSize * currentPageIndex - 1;
-	    // crs µÄÖ¸ÕëÖØĞÂ¶¨Î» zewen.wu
+	    // crs çš„æŒ‡é’ˆé‡æ–°å®šä½ zewen.wu
 	    try
 	    {
 	    	if (beginIndex ==0)
@@ -434,7 +434,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	* ×ªµ½Ä³Ò³
+	* è½¬åˆ°æŸé¡µ
 	* @param int pageIndex
 	* @return void
 	*/
@@ -447,7 +447,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	* Ìí¼ÓÊı¾İ
+	* æ·»åŠ æ•°æ®
 	* @parma page:Page
 	* @return void
 	*/
@@ -481,7 +481,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	* Ìí¼ÓÊı¾İ
+	* æ·»åŠ æ•°æ®
 	* @parma page:Page
 	* @return void
 	*/
@@ -494,7 +494,7 @@ public class CachedQueryDataSet implements Serializable
 	    	pageCount = page.getPageCount();
 	    	currentPageIndex = 1 ;
 
-	        //	µ±Ç°µÄÊı¾İdataÔÚ´Ë ²»Ê¹ÓÃ¡£
+	        //	å½“å‰çš„æ•°æ®dataåœ¨æ­¤ ä¸ä½¿ç”¨ã€‚
 	        //if (data == null && page.getDatas().size() != 0)
 	        //{
 	        //    data = (DataBean) page.getDatas().get(0);
@@ -512,7 +512,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 */
 
 	public void setDataset( CachedRowSet crs)
@@ -527,7 +527,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	 *	ÆäËü·½·¨
+	 *	å…¶å®ƒæ–¹æ³•
 	 */
 	public boolean absolute( int row) throws SQLException
 	{
@@ -563,7 +563,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	 *	BigDecimal µÄgeter ·½·¨¡£
+	 *	BigDecimal çš„geter æ–¹æ³•ã€‚
 	 */
 	public BigDecimal getBigDecimal( int colNum ) throws SQLException
 	{
@@ -576,7 +576,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Blob µÄgeter ·½·¨¡£
+	 *	Blob çš„geter æ–¹æ³•ã€‚
 	 */
 	public Blob getBlob( int colNum) throws SQLException
 	{
@@ -589,7 +589,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Boolean µÄgeter ·½·¨¡£
+	 *	Boolean çš„geter æ–¹æ³•ã€‚
 	 */
 	public boolean getBoolean( int colNum) throws SQLException
 	{
@@ -603,7 +603,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	 *	Byte µÄgeter ·½·¨¡£
+	 *	Byte çš„geter æ–¹æ³•ã€‚
 	 */
 	public byte getByte( int colNum ) throws SQLException
 	{
@@ -616,7 +616,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	 *	Byte[] µÄgeter ·½·¨¡£
+	 *	Byte[] çš„geter æ–¹æ³•ã€‚
 	 */
 	public byte[] getBytes( int colNum ) throws SQLException
 	{
@@ -628,7 +628,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	CharacterStream µÄgeter ·½·¨¡£
+	 *	CharacterStream çš„geter æ–¹æ³•ã€‚
 
 	public CharacterStream getCharacterStream( int colNum)
 	{
@@ -643,7 +643,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	 *	Clob µÄgeter ·½·¨¡£
+	 *	Clob çš„geter æ–¹æ³•ã€‚
 	 */
 	public Clob getClob( int colNum) throws SQLException
 	{
@@ -655,7 +655,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Date µÄgeter ·½·¨¡£
+	 *	Date çš„geter æ–¹æ³•ã€‚
 	 */
 	public java.util.Date getDate( int colNum) throws SQLException
 	{
@@ -668,7 +668,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Double µÄgeter ·½·¨¡£
+	 *	Double çš„geter æ–¹æ³•ã€‚
 	 */
 	public double getDouble( int colNum ) throws SQLException
 	{
@@ -680,7 +680,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Double µÄgeter ·½·¨¡£
+	 *	Double çš„geter æ–¹æ³•ã€‚
 	 */
 	public float getFloat( int colNum) throws SQLException
 	{
@@ -692,7 +692,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Integer µÄgeter ·½·¨¡£
+	 *	Integer çš„geter æ–¹æ³•ã€‚
 	 */
 	public int getInt( int colNum) throws SQLException
 	{
@@ -704,7 +704,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Long µÄgeter ·½·¨¡£
+	 *	Long çš„geter æ–¹æ³•ã€‚
 	 */
 	public long getLong( int colNum ) throws SQLException
 	{
@@ -716,7 +716,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Object µÄgeter ·½·¨¡£
+	 *	Object çš„geter æ–¹æ³•ã€‚
 	 */
 	public Object getObject( int colNum) throws SQLException
 	{
@@ -728,7 +728,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	³éÏóµÄ µÄgeter ·½·¨¡£
+	 *	æŠ½è±¡çš„ çš„geter æ–¹æ³•ã€‚
 	 */
 	public Object get( int colNum) throws SQLException
 	{
@@ -741,7 +741,7 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	 *	Short µÄgeter ·½·¨¡£
+	 *	Short çš„geter æ–¹æ³•ã€‚
 	 */
 	public short getShort( int colNum ) throws SQLException
 	{
@@ -753,7 +753,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	String µÄgeter ·½·¨¡£
+	 *	String çš„geter æ–¹æ³•ã€‚
 	 */
 	public String getString( int colNum) throws SQLException
 	{
@@ -765,7 +765,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Time µÄgeter ·½·¨¡£
+	 *	Time çš„geter æ–¹æ³•ã€‚
 	 */
 	public Time getTime( int colNum ) throws SQLException
 	{
@@ -777,7 +777,7 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	 *	Timestamp µÄgeter ·½·¨¡£
+	 *	Timestamp çš„geter æ–¹æ³•ã€‚
 	 */
 	public Timestamp getTimestamp( int colNum ) throws SQLException
 	{
@@ -789,19 +789,19 @@ public class CachedQueryDataSet implements Serializable
 		return ( crs.getTimestamp( colName ) ) ;
 	}
 
-	//ËµÃ÷£ºÆäËûµÄget·½·¨ĞèÒªÔÙÌí¼Ó¡£
+	//è¯´æ˜ï¼šå…¶ä»–çš„getæ–¹æ³•éœ€è¦å†æ·»åŠ ã€‚
 
 
 	/**
-	 *	·µ»Ø×ÜµÄĞĞÊı
+	 *	è¿”å›æ€»çš„è¡Œæ•°
 	 */
 	public int size()
 	{
 		return ( crs.size() ) ;
 	}
 	/**
-	* ·ÖÒ³
-	* @param java.lang.String commandName CommandµÄURL
+	* åˆ†é¡µ
+	* @param java.lang.String commandName Commandçš„URL
 	* @return java.lang.String
 	*/
 	public String pages(String commandName)
@@ -810,9 +810,9 @@ public class CachedQueryDataSet implements Serializable
 	}
 
 	/**
-	* ·ÖÒ³
-	* @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	* @param java.lang.String commandName CommandµÄURL
+	* åˆ†é¡µ
+	* @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	* @param java.lang.String commandName Commandçš„URL
 	* @return java.lang.String
 	*/
 	public String pages(int rows, String commandName)
@@ -821,11 +821,11 @@ public class CachedQueryDataSet implements Serializable
 	    pageSize = rows;
 	    pageCount = (getRowCount() - 1) / rows + 1;
 	    String title =
-	        "(ĞĞ"
+	        "(è¡Œ"
 	            + ((currentPageIndex - 1) * pageSize + 1)
 	            + "/"
 	            + getRowCount()
-	            + ",Ò³"
+	            + ",é¡µ"
 	            + getCurrentPageIndex()
 	            + "/"
 	            + getPageCount()
@@ -852,7 +852,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagefirst.gif")
-	            .append("' title='Ê×Ò³")
+	            .append("' title='é¦–é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -862,7 +862,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagefirstno.gif")
-	            .append("' title='Ê×Ò³")
+	            .append("' title='é¦–é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -881,7 +881,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pageup.gif")
-	            .append("' title='ÉÏÒ»Ò³")
+	            .append("' title='ä¸Šä¸€é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -891,7 +891,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pageupno.gif")
-	            .append("' title='ÉÏÒ»Ò³")
+	            .append("' title='ä¸Šä¸€é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -909,7 +909,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='NextArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagedown.gif")
-	            .append("' title='ÏÂÒ»Ò³")
+	            .append("' title='ä¸‹ä¸€é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -936,7 +936,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagelast.gif")
-	            .append("' title='Ä©Ò³")
+	            .append("' title='æœ«é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -946,7 +946,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagelastno.gif")
-	            .append("' title='Ä©Ò³")
+	            .append("' title='æœ«é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -954,31 +954,31 @@ public class CachedQueryDataSet implements Serializable
 
 	    sb
 	        .append("<td valign=\"bottom\" nowrap>")
-	        .append("¹²<b>")
+	        .append("å…±<b>")
 	        .append(getPageCount())
-	        .append("</b>Ò³£¬µÚ<b>")
+	        .append("</b>é¡µï¼Œç¬¬<b>")
 	        .append(getCurrentPageIndex())
-	        .append("</B>Ò³")
+	        .append("</B>é¡µ")
 	        .append("</td>");
 	    sb
 	        .append("<td valign=bottom nowrap>")
-	        .append("&nbsp;¹²<b>")
+	        .append("&nbsp;å…±<b>")
 	        .append(getRowCount())
-	        .append("</b>Ìõ,´Ó<b>")
+	        .append("</b>æ¡,ä»<b>")
 	        .append((currentPageIndex - 1) * pageSize + 1)
-	        .append("</b>Ìõµ½<b>")
+	        .append("</b>æ¡åˆ°<b>")
 	        .append( (((currentPageIndex - 1) * pageSize + getPageSize())<crs.size())?((currentPageIndex - 1) * pageSize + getPageSize()):crs.size())
-	        .append("</b>Ìõ")
-	        .append("</td>");   //getShowRows()¸ÄÎª getPageSize()
+	        .append("</b>æ¡")
+	        .append("</td>");   //getShowRows()æ”¹ä¸º getPageSize()
 
 	    if (pageCount > 1)
 	    {
 	        String id = commandName + "pageNumber";
 	        sb
 	            .append("<td valign=\"bottom\" nowrap>")
-	            .append("&nbsp;×ªµ½µÚ<input id='")
+	            .append("&nbsp;è½¬åˆ°ç¬¬<input id='")
 	            .append(id)
-	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\" >Ò³")
+	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\" >é¡µ")
 	            .append("<img name='Image23' border='0' src='")
 	            .append(imgPath)
 	            .append("go.gif")
@@ -1004,9 +1004,9 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	* ·ÖÒ³
-	* @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	* @param java.lang.String commandName CommandµÄURL
+	* åˆ†é¡µ
+	* @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	* @param java.lang.String commandName Commandçš„URL
 	* @return java.lang.String
 	*/
 	public String pagesPN(int rows, String commandName)
@@ -1015,11 +1015,11 @@ public class CachedQueryDataSet implements Serializable
 	    pageSize = rows;
 	    pageCount = (getRowCount() - 1) / rows + 1;
 	    String title =
-	        "(ĞĞ"
+	        "(è¡Œ"
 	            + ((currentPageIndex - 1) * pageSize + 1)
 	            + "/"
 	            + getRowCount()
-	            + ",Ò³"
+	            + ",é¡µ"
 	            + getCurrentPageIndex()
 	            + "/"
 	            + getPageCount()
@@ -1041,7 +1041,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pageup.gif")
-	            .append("' title='ÉÏÒ»Ò³")
+	            .append("' title='ä¸Šä¸€é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -1051,7 +1051,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pageupno.gif")
-	            .append("' title='ÉÏÒ»Ò³")
+	            .append("' title='ä¸Šä¸€é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -1069,7 +1069,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='NextArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagedown.gif")
-	            .append("' title='ÏÂÒ»Ò³")
+	            .append("' title='ä¸‹ä¸€é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -1084,31 +1084,31 @@ public class CachedQueryDataSet implements Serializable
 	    //
 	    sb
 	        .append("<td valign=\"bottom\" nowrap>")
-	        .append("¹²<b>")
+	        .append("å…±<b>")
 	        .append(getPageCount())
-	        .append("</b>Ò³£¬µÚ<b>")
+	        .append("</b>é¡µï¼Œç¬¬<b>")
 	        .append(getCurrentPageIndex())
-	        .append("</B>Ò³")
+	        .append("</B>é¡µ")
 	        .append("</td>");
 	    sb
 	        .append("<td valign=bottom nowrap>")
-	        .append("&nbsp;¹²<b>")
+	        .append("&nbsp;å…±<b>")
 	        .append(getRowCount())
-	        .append("</b>Ìõ,´Ó<b>")
+	        .append("</b>æ¡,ä»<b>")
 	        .append((currentPageIndex - 1) * pageSize + 1)
-	        .append("</b>Ìõµ½<b>")
+	        .append("</b>æ¡åˆ°<b>")
 	        .append( (((currentPageIndex - 1) * pageSize + getPageSize())<crs.size())?((currentPageIndex - 1) * pageSize + getPageSize()):crs.size())
-	        .append("</b>Ìõ")
-	        .append("</td>");   //getShowRows()¸ÄÎª getPageSize()
+	        .append("</b>æ¡")
+	        .append("</td>");   //getShowRows()æ”¹ä¸º getPageSize()
 
 	    if (pageCount > 1)
 	    {
 	        String id = commandName + "pageNumber";
 	        sb
 	            .append("<td valign=\"bottom\" nowrap>")
-	            .append("&nbsp;×ªµ½µÚ<input id='")
+	            .append("&nbsp;è½¬åˆ°ç¬¬<input id='")
 	            .append(id)
-	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\" >Ò³")
+	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\" >é¡µ")
 	            .append("<img name='Image23' border='0' src='")
 	            .append(imgPath)
 	            .append("go.gif")
@@ -1134,9 +1134,9 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	* ·ÖÒ³
-	* @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	* @param java.lang.String commandName CommandµÄURL
+	* åˆ†é¡µ
+	* @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	* @param java.lang.String commandName Commandçš„URL
 	* @return java.lang.String
 	*/
 	public String pagesPNFL(int rows, String commandName)
@@ -1145,11 +1145,11 @@ public class CachedQueryDataSet implements Serializable
 	    pageSize = rows;
 	    pageCount = (getRowCount() - 1) / rows + 1;
 	    String title =
-	        "(ĞĞ"
+	        "(è¡Œ"
 	            + ((currentPageIndex - 1) * pageSize + 1)
 	            + "/"
 	            + getRowCount()
-	            + ",Ò³"
+	            + ",é¡µ"
 	            + getCurrentPageIndex()
 	            + "/"
 	            + getPageCount()
@@ -1170,7 +1170,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagefirst.gif")
-	            .append("' title='Ê×Ò³")
+	            .append("' title='é¦–é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -1180,7 +1180,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagefirstno.gif")
-	            .append("' title='Ê×Ò³")
+	            .append("' title='é¦–é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -1199,7 +1199,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pageup.gif")
-	            .append("' title='ÉÏÒ»Ò³")
+	            .append("' title='ä¸Šä¸€é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -1209,7 +1209,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pageupno.gif")
-	            .append("' title='ÉÏÒ»Ò³")
+	            .append("' title='ä¸Šä¸€é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -1227,7 +1227,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='NextArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagedown.gif")
-	            .append("' title='ÏÂÒ»Ò³")
+	            .append("' title='ä¸‹ä¸€é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -1254,7 +1254,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("\"><img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagelast.gif")
-	            .append("' title='Ä©Ò³")
+	            .append("' title='æœ«é¡µ")
 	            .append(title)
 	            .append("'></a>");
 	    }
@@ -1264,7 +1264,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append("<img name='PreviousArrow' border='0' src='")
 	            .append(imgPath)
 	            .append("pagelastno.gif")
-	            .append("' title='Ä©Ò³")
+	            .append("' title='æœ«é¡µ")
 	            .append(title)
 	            .append("'>");
 	    }
@@ -1272,31 +1272,31 @@ public class CachedQueryDataSet implements Serializable
 
 	    sb
 	        .append("<td valign=\"bottom\" nowrap>")
-	        .append("¹²<b>")
+	        .append("å…±<b>")
 	        .append(getPageCount())
-	        .append("</b>Ò³£¬µÚ<b>")
+	        .append("</b>é¡µï¼Œç¬¬<b>")
 	        .append(getCurrentPageIndex())
-	        .append("</B>Ò³")
+	        .append("</B>é¡µ")
 	        .append("</td>");
 	    sb
 	        .append("<td valign=bottom nowrap>")
-	        .append("&nbsp;¹²<b>")
+	        .append("&nbsp;å…±<b>")
 	        .append(getRowCount())
-	        .append("</b>Ìõ,´Ó<b>")
+	        .append("</b>æ¡,ä»<b>")
 	        .append((currentPageIndex - 1) * pageSize + 1)
-	        .append("</b>Ìõµ½<b>")
+	        .append("</b>æ¡åˆ°<b>")
 	        .append( (((currentPageIndex - 1) * pageSize + getPageSize())<crs.size())?((currentPageIndex - 1) * pageSize + getPageSize()):crs.size())
-	        .append("</b>Ìõ")
-	        .append("</td>");   //getShowRows()¸ÄÎª getPageSize()
+	        .append("</b>æ¡")
+	        .append("</td>");   //getShowRows()æ”¹ä¸º getPageSize()
 
 	    if (pageCount > 1)
 	    {
 	        String id = commandName + "pageNumber";
 	        sb
 	            .append("<td valign=\"bottom\" nowrap>")
-	            .append("&nbsp;×ªµ½µÚ<input id='")
+	            .append("&nbsp;è½¬åˆ°ç¬¬<input id='")
 	            .append(id)
-	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\" >Ò³")
+	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\" >é¡µ")
 	            .append("<img name='Image23' border='0' src='")
 	            .append(imgPath)
 	            .append("go.gif")
@@ -1325,9 +1325,9 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	* ·ÖÒ³
-	* @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	* @param java.lang.String commandName CommandµÄURL
+	* åˆ†é¡µ
+	* @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	* @param java.lang.String commandName Commandçš„URL
 	* @return java.lang.String
 	*/
 	public String pagesPn(int rows, String commandName)
@@ -1336,11 +1336,11 @@ public class CachedQueryDataSet implements Serializable
 	    pageSize = rows;
 	    pageCount = (getRowCount() - 1) / rows + 1;
 	    String title =
-	        "(ĞĞ"
+	        "(è¡Œ"
 	            + ((currentPageIndex - 1) * pageSize + 1)
 	            + "/"
 	            + getRowCount()
-	            + ",Ò³"
+	            + ",é¡µ"
 	            + getCurrentPageIndex()
 	            + "/"
 	            + getPageCount()
@@ -1359,12 +1359,12 @@ public class CachedQueryDataSet implements Serializable
 	            .append(action)
 	            .append("&pageNumber=")
 	            .append(String.valueOf(currentPageIndex - 1))
-	            .append("\">[ÉÏÒ»Ò³]</a>");
+	            .append("\">[ä¸Šä¸€é¡µ]</a>");
 	    }
 	    else
 	    {
 	        sb
-	            .append("[ÉÏÒ»Ò³]");
+	            .append("[ä¸Šä¸€é¡µ]");
 	    }
 	    sb.append("</td><td nowrap align=\"center\" width=\"5%\">") ;
 	    if (hasNextPage())
@@ -1377,42 +1377,42 @@ public class CachedQueryDataSet implements Serializable
 	            .append(action)
 	            .append("&pageNumber=")
 	            .append(String.valueOf(currentPageIndex + 1))
-	            .append("\">[ÏÂÒ»Ò³]</a>");
+	            .append("\">[ä¸‹ä¸€é¡µ]</a>");
 	    }
 	    else
 	    {
 	        sb
-	            .append("[ÏÂÒ»Ò³]");
+	            .append("[ä¸‹ä¸€é¡µ]");
 	    }
 	    //
 	    sb
 	        .append("</td><td nowrap>")
-	        .append("&nbsp;&nbsp;¹²<b>")
+	        .append("&nbsp;&nbsp;å…±<b>")
 	        .append(getPageCount())
-	        .append("</b>Ò³£¬µÚ<b>")
+	        .append("</b>é¡µï¼Œç¬¬<b>")
 	        .append(getCurrentPageIndex())
-	        .append("</B>Ò³")
+	        .append("</B>é¡µ")
 	        .append("</td>");
 	    sb
 	        .append("<td nowrap>")
-	        .append("&nbsp;¹²<b>")
+	        .append("&nbsp;å…±<b>")
 	        .append(getRowCount())
-	        .append("</b>Ìõ£¬´Ó<b>")
+	        .append("</b>æ¡ï¼Œä»<b>")
 	        .append((currentPageIndex - 1) * pageSize + 1)
-	        .append("</b>Ìõµ½<b>")
+	        .append("</b>æ¡åˆ°<b>")
 	        .append( (((currentPageIndex - 1) * pageSize + getPageSize())<crs.size())?((currentPageIndex - 1) * pageSize + getPageSize()):crs.size())
-	        .append("</b>Ìõ")
-	        .append("</td>");   //getShowRows()¸ÄÎª getPageSize()
+	        .append("</b>æ¡")
+	        .append("</td>");   //getShowRows()æ”¹ä¸º getPageSize()
 
 	    if (pageCount > 1)
 	    {
 	        String id = commandName + "pageNumber";
 	        sb
 	            .append("<td align=right valign=\"center\" nowrap>")
-	            .append("&nbsp;Ìøµ½µÚ</td><td><input id='")
+	            .append("&nbsp;è·³åˆ°ç¬¬</td><td><input id='")
 	            .append(id)
 	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\"></td>")
-	            .append("<td>Ò³</td>")
+	            .append("<td>é¡µ</td>")
 	            .append("<td><input type=button onclick=\"javascript:")
 	            .append("((document.getElementById('")
 	            .append(id)
@@ -1432,7 +1432,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append(":")
 	            .append("document.getElementById('")
 	            .append(id)
-	            .append("').value)))\" value=²é¿´ class=input></td>") ;
+	            .append("').value)))\" value=æŸ¥çœ‹ class=input></td>") ;
 	    }
 	    sb.append("</tr></table>");
 	    return sb.toString();
@@ -1441,9 +1441,9 @@ public class CachedQueryDataSet implements Serializable
 
 
 	/**
-	* ·ÖÒ³
-	* @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	* @param java.lang.String commandName CommandµÄURL
+	* åˆ†é¡µ
+	* @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	* @param java.lang.String commandName Commandçš„URL
 	* @return java.lang.String
 	*/
 	public String pagesPnfl(int rows, String commandName)
@@ -1452,11 +1452,11 @@ public class CachedQueryDataSet implements Serializable
 	    pageSize = rows;
 	    pageCount = (getRowCount() - 1) / rows + 1;
 	    String title =
-	        "(ĞĞ"
+	        "(è¡Œ"
 	            + ((currentPageIndex - 1) * pageSize + 1)
 	            + "/"
 	            + getRowCount()
-	            + ",Ò³"
+	            + ",é¡µ"
 	            + getCurrentPageIndex()
 	            + "/"
 	            + getPageCount()
@@ -1474,12 +1474,12 @@ public class CachedQueryDataSet implements Serializable
 	            .append("Action=")
 	            .append(action)
 	            .append("&pageNumber=1")
-	            .append("\">[Ê× Ò³]</a>");
+	            .append("\">[é¦– é¡µ]</a>");
 	    }
 	    else
 	    {
 	        sb
-	            .append("[Ê× Ò³]");
+	            .append("[é¦– é¡µ]");
 	    }
 	    //
 	    sb.append("</td><td nowrap align=\"center\" width=\"5%\">") ;
@@ -1493,12 +1493,12 @@ public class CachedQueryDataSet implements Serializable
 	            .append(action)
 	            .append("&pageNumber=")
 	            .append(String.valueOf(currentPageIndex - 1))
-	            .append("\">[ÉÏÒ»Ò³]</a>");
+	            .append("\">[ä¸Šä¸€é¡µ]</a>");
 	    }
 	    else
 	    {
 	        sb
-	            .append("[ÉÏÒ»Ò³]");
+	            .append("[ä¸Šä¸€é¡µ]");
 	    }
 	    sb.append("</td><td nowrap align=\"center\" width=\"5%\">") ;
 	    if (hasNextPage())
@@ -1511,12 +1511,12 @@ public class CachedQueryDataSet implements Serializable
 	            .append(action)
 	            .append("&pageNumber=")
 	            .append(String.valueOf(currentPageIndex + 1))
-	            .append("\">[ÏÂÒ»Ò³]</a>");
+	            .append("\">[ä¸‹ä¸€é¡µ]</a>");
 	    }
 		else
 		{
 		    sb
-		        .append("[ÏÂÒ»Ò³]");
+		        .append("[ä¸‹ä¸€é¡µ]");
 		}
 	    //
 	    sb.append("</td><td nowrap align=\"center\" width=\"5%\">") ;
@@ -1530,42 +1530,42 @@ public class CachedQueryDataSet implements Serializable
 	            .append(action)
 	            .append("&pageNumber=")
 	            .append( String.valueOf( getPageCount() ) )
-	            .append("\">[Ä© Ò³]</a>");
+	            .append("\">[æœ« é¡µ]</a>");
 	    }
 	    else
 	    {
 	        sb
-	            .append("[Ä© Ò³]");
+	            .append("[æœ« é¡µ]");
 	    }
 	    //
 	    sb
 	        .append("</td><td valign=\"center\" nowrap>")
-	        .append("&nbsp;&nbsp;¹²<b>")
+	        .append("&nbsp;&nbsp;å…±<b>")
 	        .append(getPageCount())
-	        .append("</b>Ò³£¬µÚ<b>")
+	        .append("</b>é¡µï¼Œç¬¬<b>")
 	        .append(getCurrentPageIndex())
-	        .append("</B>Ò³")
+	        .append("</B>é¡µ")
 	        .append("</td>");
 	    sb
 	        .append("<td valign=\"center\" nowrap>")
-	        .append("&nbsp;¹²<b>")
+	        .append("&nbsp;å…±<b>")
 	        .append(getRowCount())
-	        .append("</b>Ìõ£¬´Ó<b>")
+	        .append("</b>æ¡ï¼Œä»<b>")
 	        .append((currentPageIndex - 1) * pageSize + 1)
-	        .append("</b>Ìõµ½<b>")
+	        .append("</b>æ¡åˆ°<b>")
 	        .append( (((currentPageIndex - 1) * pageSize + getPageSize())<crs.size())?((currentPageIndex - 1) * pageSize + getPageSize()):crs.size())
-	        .append("</b>Ìõ")
-	        .append("</td>");   //getShowRows()¸ÄÎª getPageSize()
+	        .append("</b>æ¡")
+	        .append("</td>");   //getShowRows()æ”¹ä¸º getPageSize()
 
 	    if (pageCount > 1)
 	    {
 	        String id = commandName + "pageNumber";
 	        sb
 	            .append("<td align=right valign=\"center\" nowrap>")
-	            .append("&nbsp;Ìøµ½µÚ</td><td><input id='")
+	            .append("&nbsp;è·³åˆ°ç¬¬</td><td><input id='")
 	            .append(id)
 	            .append("' name=\"pageNumber\" id=\"toPage\" size=\"4\"></td>")
-	            .append("<td>Ò³</td>")
+	            .append("<td>é¡µ</td>")
 	            .append("<td><input type=button onclick=\"javascript:")
 	            .append("((document.getElementById('")
 	            .append(id)
@@ -1585,7 +1585,7 @@ public class CachedQueryDataSet implements Serializable
 	            .append(":")
 	            .append("document.getElementById('")
 	            .append(id)
-	            .append("').value)))\" value=²é¿´ class=input></td>") ;
+	            .append("').value)))\" value=æŸ¥çœ‹ class=input></td>") ;
 	    }
 	    sb.append("</tr></table>");
 	    return sb.toString();

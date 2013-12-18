@@ -68,16 +68,16 @@ public class DataBean {
 
 
 	/**
-	 * ´Ë´¦²åÈë·½·¨ÃèÊö¡£
-	 * ´´½¨ÈÕÆÚ£º(2002-7-16 13:34:29)
+	 * æ­¤å¤„æ’å…¥æ–¹æ³•æè¿°ã€‚
+	 * åˆ›å»ºæ—¥æœŸï¼š(2002-7-16 13:34:29)
 	 * @return java.lang.Object
 	 */
 	public Object get(Object key) {
 	    return map.get(key);
 	}
 	/**
-	 * ´Ë´¦²åÈë·½·¨ÃèÊö¡£
-	 * ´´½¨ÈÕÆÚ£º(2002-7-31 20:05:55)
+	 * æ­¤å¤„æ’å…¥æ–¹æ³•æè¿°ã€‚
+	 * åˆ›å»ºæ—¥æœŸï¼š(2002-7-31 20:05:55)
 	 * @return int
 	 */
 	public int getFlag() {
@@ -87,20 +87,20 @@ public class DataBean {
 		return (String)map.get(primaryKey);
 	}
 	/**
-	 * @param key:String ¶ÔÓ¦Êı¾İ¿â±íÖĞµÄ×Ö¶ÎÃû¡£
+	 * @param key:String å¯¹åº”æ•°æ®åº“è¡¨ä¸­çš„å­—æ®µåã€‚
 	 */
 	public void setPrimaryKey(String key){
 		primaryKey = key;
 	}
 	/**
-	 * ´Ë´¦²åÈë·½·¨ÃèÊö¡£
+	 * æ­¤å¤„æ’å…¥æ–¹æ³•æè¿°ã€‚
 	 * @return java.lang.Object
 	 */
 	public void put(Object key, Object value) {
 	    map.put(key, value);
 	}
 	/**
-	 * ´Ë´¦²åÈë·½·¨ÃèÊö¡£
+	 * æ­¤å¤„æ’å…¥æ–¹æ³•æè¿°ã€‚
 	 * @param newFlag int
 	 */
 	public void setFlag(int newFlag) {

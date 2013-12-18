@@ -17,7 +17,7 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 
 /**
- * <p>ĞÂµÄÕûÕÅÍ¼Æ¬Ëõ·ÅÏß³Ì¡£</p>
+ * <p>æ–°çš„æ•´å¼ å›¾ç‰‡ç¼©æ”¾çº¿ç¨‹ã€‚</p>
  * @author Zeven on 2008-5-15
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
 public class ImageScaleThread implements Runnable {
 
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	protected static Logger log = Logger.getLogger( wzw.image.ImageScaleThread.class);
 

@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 public class I18nUtils {
 
-	// ÓïÑÔ¶¨Òå
+	// è¯­è¨€å®šä¹‰
 	public static String LANGUAGE_CHINESE_CN="language.chinese.cn";
 	public static String LANGUAGE_CHINESE_TW="language.chinese.tw";
 	public static String LANGUAGE_ENGLISH   ="language.english";
@@ -32,7 +32,7 @@ public class I18nUtils {
 			  // (unchecked) MissingResourceException if no bundle is found.     com.davidflanagan.examples.i18n.Menus
 			  //System.out.println( "resource = resource."+bundleName );
 			  ResourceBundle bundle =   ResourceBundle.getBundle( "resource."+bundleName, locale); 
-			  //×¢Ò»
+			  //æ³¨ä¸€
 			  //System.out.println(bundle.getString( "mainMenu.jm_File.Text" ));
 			  return bundle;
 	}

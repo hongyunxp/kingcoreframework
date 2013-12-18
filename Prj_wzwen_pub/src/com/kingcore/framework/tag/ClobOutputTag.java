@@ -13,18 +13,18 @@ import javax.servlet.jsp.tagext.TagSupport;
  * To enable and disable the creation of type comments go to
  * Window>Preferences>Java>Code Generation.
  * 
- * @modify WUZEWEN 2005.04.02 增加 value.trim() ;
+ * @modify WUZEWEN 2005.04.02 澧炲姞 value.trim() ;
  *
  */
  
 public class ClobOutputTag extends TagSupport
 {
     /**
-    * 要查询的sql语句
+    * 瑕佹煡璇㈢殑sql璇彞
     */
     protected String sql = null;
     /**
-     * 取Clob字段的sql语句
+     * 鍙朇lob瀛楁鐨剆ql璇彞
      */
 
     public void setSql(String sql)

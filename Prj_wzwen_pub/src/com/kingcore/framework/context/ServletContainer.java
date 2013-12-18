@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * <p>Servlet ÈİÆ÷¶ÔÏóÍ³Ò»½Ó¿Ú¡£</p>
+ * <p>Servlet å®¹å™¨å¯¹è±¡ç»Ÿä¸€æ¥å£ã€‚</p>
  * @author Zeven on 2007-9-3
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -29,19 +29,19 @@ import javax.servlet.http.HttpServletResponse;
 public interface ServletContainer {
 	
 	/**
-	 * ¸ù¾İ²»Í¬µÄServletÈİÆ÷£¬·µ»Ø request.getContextPath() Í³Ò»±ê×¼µÄÖµ¡£
-	 * Zeven£¬Êµ¼ÊÉÏÕâ¸öÓëÅäÖÃÓ¦ÓÃ³ÌĞòÓĞ¹ØÏµ£¬±ÈÈçTomcatÏÂÃæ£¬ÅäÖÃ path="" ºÍ path="/" 
-	 * 		¶¼ÈÏÎªÊÇ¸ùÄ¿Â¼£¬µ«ÊÇÒ»¸ö·µ»Ø¿Õ£¬Ò»¸ö·µ»Ø¡°/¡±¡£
-	 *    WebLogicÏÂÃæµÄÅäÖÃ£º
+	 * æ ¹æ®ä¸åŒçš„Servletå®¹å™¨ï¼Œè¿”å› request.getContextPath() ç»Ÿä¸€æ ‡å‡†çš„å€¼ã€‚
+	 * Zevenï¼Œå®é™…ä¸Šè¿™ä¸ªä¸é…ç½®åº”ç”¨ç¨‹åºæœ‰å…³ç³»ï¼Œæ¯”å¦‚Tomcatä¸‹é¢ï¼Œé…ç½® path="" å’Œ path="/" 
+	 * 		éƒ½è®¤ä¸ºæ˜¯æ ¹ç›®å½•ï¼Œä½†æ˜¯ä¸€ä¸ªè¿”å›ç©ºï¼Œä¸€ä¸ªè¿”å›â€œ/â€ã€‚
+	 *    WebLogicä¸‹é¢çš„é…ç½®ï¼š
 	 *      ...
 	 *      <context-root>/</context-root>
 	 *    </weblogic-web-app>
 	 * 	
-	 * 	½¨ÒéÅäÖÃÎª¡°¡± Îª×îºÃ¡£
-	 *      µ±Ç°servletÈİÆ÷°æ±¾ÏÂ»ù±¾ÉÏÊÇÓëÈİÆ÷ÎŞ¹Ø£¬µ«ÊÇÓëÅäÖÃÓĞ¹Ø¡£
-	 *      ×Ü½á£º¶ÔÓÚÍ¨³£pathÊôĞÔµÄÖµ£¬Ò»°ã·µ»ØµÄ¶¼²»ÒÔ¡°/¡±½áÎ²¡£
+	 * 	å»ºè®®é…ç½®ä¸ºâ€œâ€ ä¸ºæœ€å¥½ã€‚
+	 *      å½“å‰servletå®¹å™¨ç‰ˆæœ¬ä¸‹åŸºæœ¬ä¸Šæ˜¯ä¸å®¹å™¨æ— å…³ï¼Œä½†æ˜¯ä¸é…ç½®æœ‰å…³ã€‚
+	 *      æ€»ç»“ï¼šå¯¹äºé€šå¸¸pathå±æ€§çš„å€¼ï¼Œä¸€èˆ¬è¿”å›çš„éƒ½ä¸ä»¥â€œ/â€ç»“å°¾ã€‚
 	 *     
-	 * @deprecated µ±Ç°servletÈİÆ÷°æ±¾ÏÂ»ù±¾ÉÏÊÇÓëÈİÆ÷ÎŞ¹Ø£¬µ«ÊÇÓëÅäÖÃÓĞ¹Ø¡£
+	 * @deprecated å½“å‰servletå®¹å™¨ç‰ˆæœ¬ä¸‹åŸºæœ¬ä¸Šæ˜¯ä¸å®¹å™¨æ— å…³ï¼Œä½†æ˜¯ä¸é…ç½®æœ‰å…³ã€‚
 	 * @param request
 	 * @return
 	 */
@@ -52,8 +52,8 @@ public interface ServletContainer {
 	
 	
 	/**
-	 * ¸ù¾İ²»Í¬µÄServletÈİÆ÷£¬ÔÚ±»includeµÄ×ÓÒ³ÃæÊä³ö contentTypeµÄÖµ¡£
-	 * 		Èç£ºtext/html;charset=utf-8
+	 * æ ¹æ®ä¸åŒçš„Servletå®¹å™¨ï¼Œåœ¨è¢«includeçš„å­é¡µé¢è¾“å‡º contentTypeçš„å€¼ã€‚
+	 * 		å¦‚ï¼štext/html;charset=utf-8
 	 * 		   text/xml;charset=utf-8
 	 *	       text/html;charset=gb2312
 	 * @param request

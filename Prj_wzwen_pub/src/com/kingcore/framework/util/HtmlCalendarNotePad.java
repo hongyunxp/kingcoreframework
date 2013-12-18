@@ -8,15 +8,15 @@ import java.util.Locale;
 
 public class HtmlCalendarNotePad
 {
-public static final int MONDAY_FIRST = 1; //ÉèÖÃÃ¿ĞÇÆÚÊÇÒÔĞÇÆÚÒ»ÎªµÚÒ»Ìì
-public static final int SUNDAY_FIRST = 2; //ÉèÖÃÃ¿ĞÇÆÚÊÇÒÔĞÇÆÚÈÕÎªµÚÒ»Ìì
+public static final int MONDAY_FIRST = 1; //è®¾ç½®æ¯æ˜ŸæœŸæ˜¯ä»¥æ˜ŸæœŸä¸€ä¸ºç¬¬ä¸€å¤©
+public static final int SUNDAY_FIRST = 2; //è®¾ç½®æ¯æ˜ŸæœŸæ˜¯ä»¥æ˜ŸæœŸæ—¥ä¸ºç¬¬ä¸€å¤©
 private Hashtable config;
 public int  htmlCalendarYear,htmlCalendarMonth, htmlCalendarStyle ;
 
 private static final String Mnth[] = {
 
-"Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ",
-"ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"
+"ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ",
+"ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"
 };
 
 private int year;
@@ -28,16 +28,16 @@ private static String NEWLINE = "\n";
 
 
 
-public HtmlCalendarNotePad () //¹¹Ôìº¯Êı
+public HtmlCalendarNotePad () //æ„é€ å‡½æ•°
 {
 sFont = null;
-GregorianCalendar gCalendar = new GregorianCalendar(); //?Ãµ±Ç°µÄÈÕÀú£¨¸ñÀï¸ßÀïÀú£?
-config = new Hashtable(); //´´½¨ĞÂµÄ¹şÏ£±í´¢´æÅäÖÃĞÅÏ¢
+GregorianCalendar gCalendar = new GregorianCalendar(); //?ç«é¼»æš—å¨œç»½î‹²Çœçª­é””å‘ƒé”¢î‹²?
+config = new Hashtable(); //åˆ›å»ºæ–°çš„å“ˆå¸Œè¡¨å‚¨å­˜é…ç½®ä¿¡æ¯
 NEWLINE = System.getProperty("line.separator");
-style = 2; //ÉèÖÃÃ¿ĞÇÆÚÊÇÒÔĞÇÆÚÈÕÎªµÚÒ»Ìì
-month = gCalendar.get(2); //?ÃÔÂ·?
-year = gCalendar.get(1); //?ÄÄê·?
-loc = Locale.PRC; //ÉèÖÃ¹ú¼ÒÃû£¬Ä¬ÈÏÎªÖĞ»ªÈËÃñ¹²ºÍ¹ú
+style = 2; //è®¾ç½®æ¯æ˜ŸæœŸæ˜¯ä»¥æ˜ŸæœŸæ—¥ä¸ºç¬¬ä¸€å¤©
+month = gCalendar.get(2); //?è¿·è·¯?
+year = gCalendar.get(1); //?å“ªæ”´?
+loc = Locale.PRC; //è®¾ç½®å›½å®¶åï¼Œé»˜è®¤ä¸ºä¸­åäººæ°‘å…±å’Œå›½
 }
 
 private String formatObject(String s, Object obj)
@@ -51,7 +51,7 @@ else
 return s + s1 + "</font>";
 }
 
-private int getDay(Calendar calendar) //?ÃÄ³ÈÕÔÚÈÕÀúÖĞµÄÎ»Ö?
+private int getDay(Calendar calendar) //?åªšæ©™èµµè°Œç»½îŒ¥æ¢°å¥ˆæ¢?
 {
 if(style == 2)
 return calendar.get(7) - 1;
@@ -64,12 +64,12 @@ public String getHtml()
 GregorianCalendar gCalendar = new GregorianCalendar(year, month - 1, 1);
 GregorianCalendar gCalendar1 = new GregorianCalendar(2001, 3, 24);
 SimpleDateFormat simpledateformat = new SimpleDateFormat("EEE", loc);
-//ÉèÖÃËõĞ´¸ñÊ½£¬EEEÊÇĞÇÆÚµÄËõĞ´£¬Èç Sun, ÈôEEEEÔòÎªSunday¡£
+//è®¾ç½®ç¼©å†™æ ¼å¼ï¼ŒEEEæ˜¯æ˜ŸæœŸçš„ç¼©å†™ï¼Œå¦‚ Sun, è‹¥EEEEåˆ™ä¸ºSundayã€‚
 int i = month - 1;
 int j = 0;
-StringBuffer stringbuffer = new StringBuffer(""); //´´½¨ĞÂµÄ×Ö·û´®»º³åÇø
-stringbuffer.append("<table><tr>\n"); //ÔÚstringbufferÉÏÌí¼Ó<table><tr>£¬Îª´´½¨±í¸ñ×÷×¼±¸
-if(style == 2) //¼ûÉÏ½âÊÍ
+StringBuffer stringbuffer = new StringBuffer(""); //åˆ›å»ºæ–°çš„å­—ç¬¦ä¸²ç¼“å†²åŒº
+stringbuffer.append("<table><tr>\n"); //åœ¨stringbufferä¸Šæ·»åŠ <table><tr>ï¼Œä¸ºåˆ›å»ºè¡¨æ ¼ä½œå‡†å¤‡
+if(style == 2) //è§ä¸Šè§£é‡Š
 {
 stringbuffer.append("<th align=right>" + formatObject(sFont, simpledateformat.format(gCalendar1.getTime())) + "</th>\n");
 gCalendar1.add(5, 1);
@@ -175,24 +175,24 @@ stringbuffer.append("</table>\n");
 return stringbuffer.toString();
 }
 
-public Locale getLocale() //»ñ?ØÇøÃ?
+public Locale getLocale() //è·?åî‰–?
 {
 return loc;
 }
-public int getYear() //?ÃÄê·?
+public int getYear() //?åªšæ”´?
 {
 return htmlCalendarYear;
 }
-public int getMonth() //?ÃÔÂ·?
+public int getMonth() //?è¿·è·¯?
 {
 return htmlCalendarMonth;
 }
 
-public int getStyle() //?ÃÈÕÀúµÄÑùÊ?
+public int getStyle() //?èŒç»½îŒ„éš¾îŠ»?
 {
 return htmlCalendarStyle;
 }
-//ÉèÖÃ¶¯×÷µÄURI£¬target_frame µÄÖµ¿ÉÒÔÎª_blank¡¢ _parent¡¢ _top¡¢ self¡£
+//è®¾ç½®åŠ¨ä½œçš„URIï¼Œtarget_frame çš„å€¼å¯ä»¥ä¸º_blankã€ _parentã€ _topã€ selfã€‚
 public void setAction(int day, String actionUri, String target_frame)
 {
 if(actionUri != null)
@@ -202,19 +202,19 @@ if(target_frame != null && target_frame.length() > 0)
 config.put(day + "target", target_frame);
 }
 }
-//ÉèÖÃÒ»¸öÔÂµÄËùÓĞÌìµÄ³¬Á´½Ó
+//è®¾ç½®ä¸€ä¸ªæœˆçš„æ‰€æœ‰å¤©çš„è¶…é“¾æ¥
 public void setActions(String actionUri, String target_frame)
 {
 for(int day = 1; day <= 31; day++)
 setAction(day, actionUri, target_frame);
 
 }
-//ÉèÖÃµØÇø
+//è®¾ç½®åœ°åŒº
 public void setLocale(Locale locale)
 {
 loc = locale;
 }
-//ÉèÖÃÄê·İ
+//è®¾ç½®å¹´ä»½
 public void setYear(int htmlCalendarYear)
 {
 if(htmlCalendarYear > 0)
@@ -223,7 +223,7 @@ year = htmlCalendarYear;
 config.clear();
 }
 }
-//ÉèÖÃÔÂ·İ
+//è®¾ç½®æœˆä»½
 public void setMonth(int htmlCalendarMonth)
 {
 if(htmlCalendarMonth >= 1 && htmlCalendarMonth <= 12)
@@ -232,7 +232,7 @@ month = htmlCalendarMonth;
 config.clear();
 }
 }
-//ÉèÖÃÈÕÀúµÄÑùÊ½
+//è®¾ç½®æ—¥å†çš„æ ·å¼
 public void setStyle(int htmlCalendarStyle)
 {
 style = htmlCalendarStyle;
@@ -242,11 +242,11 @@ private String stringDate(Calendar calendar)
 String strDay = String.valueOf(calendar.get(1));
 return strDay + twoDigits(calendar.get(2) + 1) + twoDigits(calendar.get(5));
 }
-private String twoDigits(int day) //ÎªÁËÈÕÀúÖĞÊı×ÖÄÜ¹»¶ÔÆë£¬ËùÒÔ1-9 Ç°½«¼Ó0
+private String twoDigits(int day) //ä¸ºäº†æ—¥å†ä¸­æ•°å­—èƒ½å¤Ÿå¯¹é½ï¼Œæ‰€ä»¥1-9 å‰å°†åŠ 0
 {
-String stringDay = String.valueOf(day); //?ÃdayµÄÖµ
-if(stringDay.length() == 1) //Èç¹û×Ö·û´®³¤¶ÈÎª1
-return "0" + stringDay; //ÔòÔÚ×Ö·û´®Ç°¼ÓÁã
+String stringDay = String.valueOf(day); //?èƒayçš„å€¼
+if(stringDay.length() == 1) //å¦‚æœå­—ç¬¦ä¸²é•¿åº¦ä¸º1
+return "0" + stringDay; //åˆ™åœ¨å­—ç¬¦ä¸²å‰åŠ é›¶
 else
 return stringDay;
 }

@@ -30,7 +30,7 @@ import wzw.util.DbUtils;
 import com.kingcore.framework.context.DatabaseManager;
 
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
  * @author Zeven on Jul 31, 2011
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -39,7 +39,7 @@ import com.kingcore.framework.context.DatabaseManager;
  * @since	JDK5
  */
 
-public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
+public class ConnectionPool implements DataSource { //è¿æ¥æ± å±æ€§
 	
 	private int checkedOut;
 	private Vector<Connection> freeConnections;
@@ -56,10 +56,10 @@ public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
 	public synchronized void freeConnection(Connection conn) {
 		freeConnections.addElement(conn);
 		checkedOut--;
-		log.info( (new StringBuffer("ÊÍ·ÅºóÁ¬½Ó³Ø")).append(name)
-						.append("ÖĞÓÃµô")
+		log.info( (new StringBuffer("é‡Šæ”¾åè¿æ¥æ± ")).append(name)
+						.append("ä¸­ç”¨æ‰")
 						.append(checkedOut)
-						.append("¸öÁ¬½Ó") );
+						.append("ä¸ªè¿æ¥") );
 		notifyAll();
 	}
 
@@ -83,40 +83,40 @@ public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
 			freeConnections.removeElementAt(0);
 			try {
 				if (conn == null || conn.isClosed()) {
-					log.info( (new StringBuffer("´ÓÁ¬½Ó³Ø")).append(name)
-								.append("É¾³ıÒ»¸öÎŞĞ§Á¬½Ó") );
+					log.info( (new StringBuffer("ä»è¿æ¥æ± ")).append(name)
+								.append("åˆ é™¤ä¸€ä¸ªæ— æ•ˆè¿æ¥") );
 					conn = getConnection();
 					return conn ;
 				}
 			} catch (SQLException e) {
-				log.info( (new StringBuffer("´ÓÁ¬½Ó³Ø")).append(name)
-								.append("É¾³ıÒ»¸öÎŞĞ§Á¬½Ó") );
+				log.info( (new StringBuffer("ä»è¿æ¥æ± ")).append(name)
+								.append("åˆ é™¤ä¸€ä¸ªæ— æ•ˆè¿æ¥") );
 				conn = getConnection();
 			}
 		} else if (maxConn == 0 || checkedOut < maxConn) {
 			conn = newConnection();
 		} else {
-			log.info( (new StringBuffer("Á¬½Ó³Ø")).append(name)
-							.append("ËùÓĞÁ¬½ÓÒÑ¾­±»Ê¹ÓÃÁË") );
+			log.info( (new StringBuffer("è¿æ¥æ± ")).append(name)
+							.append("æ‰€æœ‰è¿æ¥å·²ç»è¢«ä½¿ç”¨äº†") );
 		}
 
 		if (conn != null) {
 			checkedOut++;
-			log.info( (new StringBuffer("ÕıÔÚÊ¹ÓÃ")).append(name)
-							.append("Á¬½Ó³ØÖĞµÄ")
+			log.info( (new StringBuffer("æ­£åœ¨ä½¿ç”¨")).append(name)
+							.append("è¿æ¥æ± ä¸­çš„")
 							.append(checkedOut)
-							.append("¸öÁ¬½Ó")
+							.append("ä¸ªè¿æ¥")
 							.append(showTrace(10)) );
 		}
-		// Ã¿´ÎÉèÖÃÎª²»×Ô¶¯Ìá½»£¬ÏµÍ³¶¼ÊÇÔÚÓÃÊÖ¶¯Ö÷¶¯¿ØÖÆÊÂÎï£¬¼´Ê¹ÊÇÇ°ÃæÊ¹ÓÃÊ±ÉèÖÃÎªÁË×Ô¶¯·½Ê½£»
-		// ÕâÖÖÉèÖÃÒ²Ó¦¸Ã¿ÉÒÔÔÚÊı¾İ¿âÖĞÉèÖÃ£»
+		// æ¯æ¬¡è®¾ç½®ä¸ºä¸è‡ªåŠ¨æäº¤ï¼Œç³»ç»Ÿéƒ½æ˜¯åœ¨ç”¨æ‰‹åŠ¨ä¸»åŠ¨æ§åˆ¶äº‹ç‰©ï¼Œå³ä½¿æ˜¯å‰é¢ä½¿ç”¨æ—¶è®¾ç½®ä¸ºäº†è‡ªåŠ¨æ–¹å¼ï¼›
+		// è¿™ç§è®¾ç½®ä¹Ÿåº”è¯¥å¯ä»¥åœ¨æ•°æ®åº“ä¸­è®¾ç½®ï¼›
 		conn.setAutoCommit(false);
 		return conn;
 	}
 
     String showTrace(int maxdepth)
     {
-      String stack="µ÷ÓÃÂ·¾¶£º\n";
+      String stack="è°ƒç”¨è·¯å¾„ï¼š\n";
       StackTraceElement[] trace = new Exception().getStackTrace();
       for (int i = 1; i < Math.min(maxdepth + 1, trace.length); i++)
       {
@@ -150,19 +150,19 @@ public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
 			Connection conn = (Connection) allConnections.nextElement();
 			try {
 				conn.close();
-				log.info((new StringBuffer("¹Ø±ÕÁ¬½Ó³Ø")).append(name).append(
-						"ÖĞµÄÒ»¸öÁ¬½Ó"));
+				log.info((new StringBuffer("å…³é—­è¿æ¥æ± ")).append(name).append(
+						"ä¸­çš„ä¸€ä¸ªè¿æ¥"));
 			} catch (SQLException e) {
-				log.info((new StringBuffer("ÎŞ·¨¹Ø±ÕÁ¬½Ó³Ø")).append(name).append(
-						"ÖĞµÄÁ¬½Ó").append("\n").append(e.getMessage()));
+				log.info((new StringBuffer("æ— æ³•å…³é—­è¿æ¥æ± ")).append(name).append(
+						"ä¸­çš„è¿æ¥").append("\n").append(e.getMessage()));
 			}
 		}
 
 		freeConnections.removeAllElements();
 //		DriverManager.deregisterDriver(this.driver);
-//		log.info( (new StringBuffer("³·ÏúJDBCÇı¶¯³ÌĞò ")).
+//		log.info( (new StringBuffer("æ’¤é”€JDBCé©±åŠ¨ç¨‹åº ")).
 //				append(driver.getClass().getName()).
-//				append("µÄ×¢²á") );
+//				append("çš„æ³¨å†Œ") );
 	}
 	
 	/**
@@ -178,18 +178,18 @@ public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
 			} else {
 				conn = DriverManager.getConnection(url, user, password);
 			}
-			log.info( (new StringBuffer("Á¬½Ó³Ø")).append(name)
-								.append("´´½¨Ò»¸öĞÂµÄÁ¬½Ó") );
+			log.info( (new StringBuffer("è¿æ¥æ± ")).append(name)
+								.append("åˆ›å»ºä¸€ä¸ªæ–°çš„è¿æ¥") );
 		} catch (SQLException e) {
-			log.info( (new StringBuffer("Á¬½Ó³Ø")).append(name)
-					.append("ÎŞ·¨´´½¨ÏÂÁĞURLµÄÁ¬½Ó: ")
+			log.info( (new StringBuffer("è¿æ¥æ± ")).append(name)
+					.append("æ— æ³•åˆ›å»ºä¸‹åˆ—URLçš„è¿æ¥: ")
 					.append(url)
 					.append("\n")
 					.append(e.getMessage())
 					.toString() );
 			//return null;
-			throw new SQLException( (new StringBuffer("Á¬½Ó³Ø")).append(name)
-								.append("ÎŞ·¨´´½¨ÏÂÁĞURLµÄÁ¬½Ó: ")
+			throw new SQLException( (new StringBuffer("è¿æ¥æ± ")).append(name)
+								.append("æ— æ³•åˆ›å»ºä¸‹åˆ—URLçš„è¿æ¥: ")
 								.append(url)
 								.append("\n")
 								.append(e.getMessage())
@@ -234,7 +234,7 @@ public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
 	}
 
 	/**
-     * Á¬½Ó³Ø´´½¨Ê±¸ù¾İ²ÎÊı´´½¨³õÊ¼µÄÁ¬½Ó¶ÔÏó
+     * è¿æ¥æ± åˆ›å»ºæ—¶æ ¹æ®å‚æ•°åˆ›å»ºåˆå§‹çš„è¿æ¥å¯¹è±¡
 	 * @throws SQLException 
      */
     protected void init() throws SQLException  
@@ -298,19 +298,19 @@ public class ConnectionPool implements DataSource { //Á¬½Ó³ØÊôĞÔ
 
 	/**
 	 * for jdk update to 1.6
-     *  System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞĞèÒªÊµÏÖ");
+     *  System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­éœ€è¦å®ç°");
 	 */
 	public <T> T unwrap(Class<T> iface) throws SQLException {
-	    System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞ»¹Ã»ÓĞÊµÏÖ");
+	    System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­è¿˜æ²¡æœ‰å®ç°");
 		return null;
 	}
 
 	/**
 	 * for jdk update to 1.6
-     *  System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞĞèÒªÊµÏÖ");
+     *  System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­éœ€è¦å®ç°");
 	 */
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-	    System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞ»¹Ã»ÓĞÊµÏÖ");
+	    System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­è¿˜æ²¡æœ‰å®ç°");
 		return false;
 	}
 

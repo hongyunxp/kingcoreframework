@@ -13,7 +13,7 @@ import com.kingcore.framework.bean.Value;
 public class BigDecimalValue extends Value {
     private BigDecimal value;
 
-	//½«Ò³ÃæµÃµ½µÄ String ±äÁ¿Ö±½Ó×ªÎªBigDecimal¶ÔÏó¡£
+	//å°†é¡µé¢å¾—åˆ°çš„ String å˜é‡ç›´æ¥è½¬ä¸ºBigDecimalå¯¹è±¡ã€‚
     //public BigDecimalValue(String value) {
     //    this.value = new BigDecimal(value);
     //}

@@ -11,7 +11,7 @@ import com.kingcore.framework.bean.Value;
 public class IntValue extends Value {
     private int value;
 
-	//´ÓÒ³ÃæµÃµ½µÄString±äÁ¿¹¹Ôì
+	//ä»é¡µé¢å¾—åˆ°çš„Stringå˜é‡æ„é€ 
     public IntValue(String value) {
         this.value = Integer.parseInt(value);
     }

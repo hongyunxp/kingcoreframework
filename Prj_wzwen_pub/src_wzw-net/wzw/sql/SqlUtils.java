@@ -35,7 +35,7 @@ import wzw.beans.value.TimestampValue;
 
 
 /**
- * <BLOCKQUOTE>SQLÏà¹ØµÄ¹¤¾ßÀà¡£</BLOCKQUOTE>
+ * <BLOCKQUOTE>SQLç›¸å…³çš„å·¥å…·ç±»ã€‚</BLOCKQUOTE>
  * @author	zewen.wu on 2004.03.18
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -47,7 +47,7 @@ import wzw.beans.value.TimestampValue;
 public class SqlUtils {
 
     /**
-     * logÊÇÒ»¸ö¶¨ÒåÈÕÖ¾µÄ±äÁ¿
+     * logæ˜¯ä¸€ä¸ªå®šä¹‰æ—¥å¿—çš„å˜é‡
      */
     public static final Logger log = Logger.getLogger( SqlUtils.class);
 
@@ -69,7 +69,7 @@ public class SqlUtils {
     	if (inValue==null) {
         	ps.setNull(paramIndex, sqlType);
         	
-		} else if (sqlType == SqlTypeValue.TYPE_UNKNOWN) {	// ²»´øÓĞargType µÄÇé¿ö£¬ĞèÒªÅĞ¶Ï²ÎÊıÀàĞÍ
+		} else if (sqlType == SqlTypeValue.TYPE_UNKNOWN) {	// ä¸å¸¦æœ‰argType çš„æƒ…å†µï¼Œéœ€è¦åˆ¤æ–­å‚æ•°ç±»å‹
 			if (inValue instanceof String || inValue instanceof StringBuffer || inValue instanceof StringWriter) {
 				ps.setString(paramIndex, inValue.toString());
 			}
@@ -97,6 +97,11 @@ public class SqlUtils {
 				ps.setTimestamp(paramIndex, new java.sql.Timestamp(cal.getTime().getTime()));
 			}
 			else {
+		    	if(log.isInfoEnabled()){
+			    	log.debug("no matched Types found," 
+			    				+ ",SqlTypeValue=UNKNOWN"
+			    				+ ",inValue="+inValue );
+		    	}
 				// Fall back to generic setObject call without SQL type specified.
 				ps.setObject(paramIndex, inValue);
 			}
@@ -174,6 +179,11 @@ public class SqlUtils {
 			}
 			
 		} else {
+	    	if(log.isInfoEnabled()){
+		    	log.debug("no matched Types found," 
+		    				+ ",sqlType="+sqlType 
+		    				+ ",inValue="+inValue );
+	    	}
 			// Fall back to generic setObject call with SQL type specified.
 			ps.setObject(paramIndex, inValue, sqlType);
 		}
@@ -310,10 +320,10 @@ public class SqlUtils {
 
 	            }catch(Exception e) //UnsupportedConversionException
 				{
-					log.fatal("\nÀàĞÍ×ª»»Ê§°Ü!!") ;
+					log.fatal("\nç±»å‹è½¬æ¢å¤±è´¥!!") ;
 				}
 			} else {
-				log.fatal("\n²ÎÊıÎªnull !!") ;
+				log.fatal("\nå‚æ•°ä¸ºnull !!") ;
             	stmt.setNull(i + 1, Types.OTHER);
 			}
         }

@@ -27,11 +27,11 @@ import com.kingcore.framework.jdbc.PlainConnection;
 
 /**
  * <p>
- *    > DbUtils.java ÖĞËùÓĞÊı¾İ¿â²Ù×÷µÄ·½·¨¶¼²»Ö§³Ö¸´ÔÓÊÂÎñ£¬¶¼ÊÇµ¥ÊÂÎñµÄ¡£
- *   Êı¾İ¿â¹¤¾ßÀà£¬Ìá¹©»ñÈ¡Êı¾İ¿âÁ¬½ÓµÈ¹¦ÄÜ£¬·½·¨»ù±¾ÉÏ¶¼ÊÇ¾²Ì¬µÄ(static)£¬
- *		²»ĞèÒª´´½¨ÀàÊµÀı¾Í¿ÉÒÔµ÷ÓÃ·½·¨¡£Í¨ÓÃµÄÊı¾İ¿â¹¤¾ß£¬²»Çø·ÖÊı¾İ¿âÀàĞÍ¡£
- *  Èç¹ûËùÓĞµÄÊı¾İ¿â²Ù×÷»ù±¾·½·¨¶¼Ô´×ÔÓÚÕâÀï£¬ÄÇÃ´¾Í¿ÉÒÔÍêÈ«¿çÈİÆ÷¡¢¿çÊı¾İ¿â¡£
- *    Ó³ÉäÓëĞ­×÷£º
+ *    > DbUtils.java ä¸­æ‰€æœ‰æ•°æ®åº“æ“ä½œçš„æ–¹æ³•éƒ½ä¸æ”¯æŒå¤æ‚äº‹åŠ¡ï¼Œéƒ½æ˜¯å•äº‹åŠ¡çš„ã€‚
+ *   æ•°æ®åº“å·¥å…·ç±»ï¼Œæä¾›è·å–æ•°æ®åº“è¿æ¥ç­‰åŠŸèƒ½ï¼Œæ–¹æ³•åŸºæœ¬ä¸Šéƒ½æ˜¯é™æ€çš„(static)ï¼Œ
+ *		ä¸éœ€è¦åˆ›å»ºç±»å®ä¾‹å°±å¯ä»¥è°ƒç”¨æ–¹æ³•ã€‚é€šç”¨çš„æ•°æ®åº“å·¥å…·ï¼Œä¸åŒºåˆ†æ•°æ®åº“ç±»å‹ã€‚
+ *  å¦‚æœæ‰€æœ‰çš„æ•°æ®åº“æ“ä½œåŸºæœ¬æ–¹æ³•éƒ½æºè‡ªäºè¿™é‡Œï¼Œé‚£ä¹ˆå°±å¯ä»¥å®Œå…¨è·¨å®¹å™¨ã€è·¨æ•°æ®åº“ã€‚
+ *    æ˜ å°„ä¸åä½œï¼š
  *    	org.apache.commons.dbutils.DbUtils
  *    				.closeQuietly ;
  *    	org.apache.commons.dbutils.BeanProcessor
@@ -50,14 +50,14 @@ import com.kingcore.framework.jdbc.PlainConnection;
  *  		ScalarHandler 
  *  	
  *  
- *   DBUtils µÄ·½·¨À´×ÔÁ½·½Ãæ£º
- *   	1£¬ËùÓĞÊı¾İ¿âÍ¨ÓÃµÄjdbc²Ù×÷ÓÉDBUtils×Ô¼ºÊµÏÖ£» 
- *   	2£¬ËùÓĞÊı¾İ¿âÌØÓĞµÄ²Ù×÷£¬ÓÉ ApplicationContext.getInstance().getDatabaseManager() ¶ÔÏóÌá¹©£»
+ *   DBUtils çš„æ–¹æ³•æ¥è‡ªä¸¤æ–¹é¢ï¼š
+ *   	1ï¼Œæ‰€æœ‰æ•°æ®åº“é€šç”¨çš„jdbcæ“ä½œç”±DBUtilsè‡ªå·±å®ç°ï¼› 
+ *   	2ï¼Œæ‰€æœ‰æ•°æ®åº“ç‰¹æœ‰çš„æ“ä½œï¼Œç”± ApplicationContext.getInstance().getDatabaseManager() å¯¹è±¡æä¾›ï¼›
  *  
- *	  Êı¾İ¿â¹¤¾ßÓëÒÔÏÂÄÚÈİÏà¹Ø£º
- *		1¡£Êı¾İÔ´Ìá¹©¹ÜÀíÕß£»
- *		2¡£Êı¾İ¿â¹ÜÀíÕßÀàĞÍ£»
- *	   ÕâĞ©Ïà¹ØµÄÒòÊı¶¼²ÉÓÃ×¢ÈëµÄ·½Ê½£¬¼õÉÙÒÀÀµĞÔ¡£</p>
+ *	  æ•°æ®åº“å·¥å…·ä¸ä»¥ä¸‹å†…å®¹ç›¸å…³ï¼š
+ *		1ã€‚æ•°æ®æºæä¾›ç®¡ç†è€…ï¼›
+ *		2ã€‚æ•°æ®åº“ç®¡ç†è€…ç±»å‹ï¼›
+ *	   è¿™äº›ç›¸å…³çš„å› æ•°éƒ½é‡‡ç”¨æ³¨å…¥çš„æ–¹å¼ï¼Œå‡å°‘ä¾èµ–æ€§ã€‚</p>
  *
  * @author	WUZEWEN on 2004-09-15
  * @version	1.0
@@ -72,30 +72,30 @@ public class DbUtils {
 
 	
 //    /**
-//     * È±Ê¡µÄDataSource µÄJNDIµÄÃû³Æ¡£
+//     * ç¼ºçœçš„DataSource çš„JNDIçš„åç§°ã€‚
 //     */
 //    //public static String JNDI_DATASOURCE="jndi/jdbc";
 
     /**
-     * log4jÈÕÖ¾¶ÔÏó¡£
+     * log4jæ—¥å¿—å¯¹è±¡ã€‚
      */
     protected static Logger log=Logger.getLogger(wzw.util.DbUtils.class);
 
     /**
-	 *	¹¹Ôìº¯Êı¡£
+	 *	æ„é€ å‡½æ•°ã€‚
 	 */
 	public DbUtils() {
 	}
 
 	/**
-     * <p>»ñÈ¡Êı¾İ¿âÁ¬½Ó£¬Ê¹ÓÃµ±Ç°È±Ê¡µÄÃû×Ö ¡£
+     * <p>è·å–æ•°æ®åº“è¿æ¥ï¼Œä½¿ç”¨å½“å‰ç¼ºçœçš„åå­— ã€‚
      * <UL>
-     *    <LI>´ÓjndiÖĞ»ñÈ¡µÄDataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
-     *    <LI>µ¥Ò»¹¤³§Ä£Ê½£¬¾²Ì¬ÀàÀ´»ñÈ¡DataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
-     *    <LI>´Óscope=applicationÖĞ»ñÈ¡µÄDataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
+     *    <LI>ä»jndiä¸­è·å–çš„DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
+     *    <LI>å•ä¸€å·¥å‚æ¨¡å¼ï¼Œé™æ€ç±»æ¥è·å–DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
+     *    <LI>ä»scope=applicationä¸­è·å–çš„DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
      * </UL></p>
      * @author WUZEWEN on 2005-07-24
-     * @return conn Ò»¸öÊµÏÖÁËConnection½Ó¿ÚµÄ¶ÔÏó
+     * @return conn ä¸€ä¸ªå®ç°äº†Connectionæ¥å£çš„å¯¹è±¡
      * @exception SQLException
      */
 	public static Connection getConnection()
@@ -107,15 +107,15 @@ public class DbUtils {
 	}
 	
 	/**
-     * <p>¸ù¾İÖ¸¶¨µÄÃû×Ö£¬»ñÈ¡Êı¾İ¿âÁ¬½Ó£¬Ö§³ÖÁ¬½Ó¶à¸öÊı¾İÔ´¡£
-     * 		¸ÃÃû³Æ¿ÉÒÔÊÇÈİÆ÷Ìá¹©µÄ DataSource µÄjndi Ãû³Æ£¬Ò²¿ÉÒÔÊÇ ConnectionPool µÄÃû³Æ¡£
+     * <p>æ ¹æ®æŒ‡å®šçš„åå­—ï¼Œè·å–æ•°æ®åº“è¿æ¥ï¼Œæ”¯æŒè¿æ¥å¤šä¸ªæ•°æ®æºã€‚
+     * 		è¯¥åç§°å¯ä»¥æ˜¯å®¹å™¨æä¾›çš„ DataSource çš„jndi åç§°ï¼Œä¹Ÿå¯ä»¥æ˜¯ ConnectionPool çš„åç§°ã€‚
      * <UL>
-     *    <LI>´ÓjndiÖĞ»ñÈ¡µÄDataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
-     *    <LI>µ¥Ò»¹¤³§Ä£Ê½£¬¾²Ì¬ÀàÀ´»ñÈ¡DataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
-     *    <LI>´Óscope=applicationÖĞ»ñÈ¡µÄDataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
+     *    <LI>ä»jndiä¸­è·å–çš„DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
+     *    <LI>å•ä¸€å·¥å‚æ¨¡å¼ï¼Œé™æ€ç±»æ¥è·å–DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
+     *    <LI>ä»scope=applicationä¸­è·å–çš„DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
      * </UL></p>
      * 
-	 * @param sourceName Ô´µÄDataSource µÄjndi Ãû³Æ£¬»òÕßÊÇ ConnectionPool µÄÃû³Æ
+	 * @param sourceName æºçš„DataSource çš„jndi åç§°ï¼Œæˆ–è€…æ˜¯ ConnectionPool çš„åç§°
 	 * @return
 	 * @throws SQLException
 	 */
@@ -145,7 +145,7 @@ public class DbUtils {
         try {
 
         	log.debug(sql+"--0--1");
-            conn = getConnection();		// ÄÄÀï»ñÈ¡£¬¾ÍÔÚÄÄÀïÌá½»/»Ø¹ö¡¢¹Ø±Õ¡£
+            conn = getConnection();		// å“ªé‡Œè·å–ï¼Œå°±åœ¨å“ªé‡Œæäº¤/å›æ»šã€å…³é—­ã€‚
             return executeQuery(sql, conn);
 
         } finally {
@@ -155,7 +155,7 @@ public class DbUtils {
         		
             }catch(SQLException e)
             {
-	            log.fatal("ÔÚÖ´ĞĞDBUtils.doQuery³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+	            log.fatal("åœ¨æ‰§è¡ŒDBUtils.doQueryå‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
             }          
@@ -176,7 +176,7 @@ public class DbUtils {
       throws SQLException {
 
     	log.debug(sql+"--1"); 
-    	//²ÎÊı¼ì²é
+    	//å‚æ•°æ£€æŸ¥
     	if( conn==null || conn.isClosed()){	
     		throw new SQLException("Connection Object is null or is closed!");
     	}
@@ -213,11 +213,11 @@ public class DbUtils {
 	
     /**
      * Execute an SQL INSERT, UPDATE, or DELETE query without replacement
-     * parameters£¬²¢ÇÒ±¾ÉíÌá¹©ÊÂÎñ´¦Àí,Õâ¸ö·½·¨µ¥¶ÀĞ´£¬Ã»ÓĞµ÷ÓÃ doUpdate(List list).
+     * parametersï¼Œå¹¶ä¸”æœ¬èº«æä¾›äº‹åŠ¡å¤„ç†,è¿™ä¸ªæ–¹æ³•å•ç‹¬å†™ï¼Œæ²¡æœ‰è°ƒç”¨ doUpdate(List list).
      *
      * @param sql The SQL to execute
      * @return The number of rows updated
-     * @throws SQLException Êı¾İ¿â²Ù×÷Òì³£ 
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¼‚å¸¸ 
      */  
     public static int executeUpdate( String sql ) throws SQLException {
 
@@ -226,7 +226,7 @@ public class DbUtils {
     	Connection conn = null; 
 
         try {
-        	conn = getConnection(); //»ñÈ¡¡¢Ìá½»¡¢»Ø¹ö¡¢¹Ø±Õ ¶¼ÔÚÒ»¸öµØ·½Í³Ò»¿ØÖÆ£»
+        	conn = getConnection(); //è·å–ã€æäº¤ã€å›æ»šã€å…³é—­ éƒ½åœ¨ä¸€ä¸ªåœ°æ–¹ç»Ÿä¸€æ§åˆ¶ï¼›
         	int val = executeUpdate(sql, conn);
         	conn.commit();
             
@@ -245,7 +245,7 @@ public class DbUtils {
 
             }catch(SQLException e)
             {
-                log.fatal("ÔÚÖ´ĞĞDBUtils.doUpdate() ³ö´í£¨Exception£©£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.doUpdate() å‡ºé”™ï¼ˆExceptionï¼‰ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				/// log.debug("debug", e);
             	/// e.pri ntStackTrace();
                 //this.addErrors(new ActionError("error.database.deal"));
@@ -256,16 +256,16 @@ public class DbUtils {
 
     /**
      * Execute an SQL INSERT, UPDATE, or DELETE query without replacement
-     * parameters£¬²¢ÇÒ±¾ÉíÌá¹©ÊÂÎñ´¦Àí,Õâ¸ö·½·¨µ¥¶ÀĞ´£¬Ã»ÓĞµ÷ÓÃ doUpdate(List list).
+     * parametersï¼Œå¹¶ä¸”æœ¬èº«æä¾›äº‹åŠ¡å¤„ç†,è¿™ä¸ªæ–¹æ³•å•ç‹¬å†™ï¼Œæ²¡æœ‰è°ƒç”¨ doUpdate(List list).
      *
      * @param conn The connection to use to run the query
      * @param sql The SQL to execute
      * @return The number of rows updated
-     * @throws SQLException Êı¾İ¿â²Ù×÷Òì³£
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¼‚å¸¸
      */  
     public static int executeUpdate( String sql ,Connection conn) throws SQLException {    	 
 
-    	//²ÎÊı¼ì²é
+    	//å‚æ•°æ£€æŸ¥
     	if( conn==null || conn.isClosed()){	
     		throw new SQLException("Connection Object is null or is closed!");
     	}
@@ -273,7 +273,7 @@ public class DbUtils {
         PreparedStatement pstmt = null;
         int i_returns;
         try {
-        	/////conn = getConnection();  //»ñÈ¡¡¢Ìá½»¡¢»Ø¹ö¡¢¹Ø±Õ ¶¼ÔÚÒ»¸öµØ·½Í³Ò»¿ØÖÆ£»
+        	/////conn = getConnection();  //è·å–ã€æäº¤ã€å›æ»šã€å…³é—­ éƒ½åœ¨ä¸€ä¸ªåœ°æ–¹ç»Ÿä¸€æ§åˆ¶ï¼›
             pstmt = conn.prepareStatement( sql);
             i_returns = pstmt.executeUpdate();
             //log.debug("pstmt.executeUpdate success!");
@@ -293,7 +293,7 @@ public class DbUtils {
                     pstmt.close() ;
             }catch(SQLException e)
             {
-                log.fatal("ÔÚÖ´ĞĞDBUtils.doUpdate() ³ö´í£¨Exception£©£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.doUpdate() å‡ºé”™ï¼ˆExceptionï¼‰ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				///log.debug("debug", e);
             	/// e.pri ntStackTrace();
                 //this.addErrors(new ActionError("error.database.deal"));
@@ -304,11 +304,11 @@ public class DbUtils {
 	
 
     /**
-     * Ö´ĞĞÅú´¦Àí£¬²¢ÇÒ±¾Éí¹ÜÀíÊÂÎñÎÊÌâ.
+     * æ‰§è¡Œæ‰¹å¤„ç†ï¼Œå¹¶ä¸”æœ¬èº«ç®¡ç†äº‹åŠ¡é—®é¢˜.
      *
-     * @param allsql ÒªÖ´ĞĞµÄsqlÓï¾ä×é³ÉµÄÊı×é¡£
-     * @throws Ö´ĞĞÅú´¦ÀíÊ§°Ü¡£
-     * @return Ã¿¸ösqlÓï¾äÓ°ÏìµÄĞĞÊı×é³ÉµÄÊı×é¡£
+     * @param allsql è¦æ‰§è¡Œçš„sqlè¯­å¥ç»„æˆçš„æ•°ç»„ã€‚
+     * @throws æ‰§è¡Œæ‰¹å¤„ç†å¤±è´¥ã€‚
+     * @return æ¯ä¸ªsqlè¯­å¥å½±å“çš„è¡Œæ•°ç»„æˆçš„æ•°ç»„ã€‚
      */
     public static int[] executeBatch( List<String> list )
       throws SQLException {
@@ -317,9 +317,9 @@ public class DbUtils {
     	
     	Connection conn = null;
         try {
-        	conn = getConnection();  //»ñÈ¡¡¢Ìá½»¡¢»Ø¹ö¡¢¹Ø±Õ ¶¼ÔÚÒ»¸öµØ·½Í³Ò»¿ØÖÆ£»
+        	conn = getConnection();  //è·å–ã€æäº¤ã€å›æ»šã€å…³é—­ éƒ½åœ¨ä¸€ä¸ªåœ°æ–¹ç»Ÿä¸€æ§åˆ¶ï¼›
         	
-            int ret[] = executeBatch(list, conn);	// µ÷ÓÃÄÚ²¿·½·¨
+            int ret[] = executeBatch(list, conn);	// è°ƒç”¨å†…éƒ¨æ–¹æ³•
             
             conn.commit();
             return ret;
@@ -334,7 +334,7 @@ public class DbUtils {
 
             }catch(SQLException e)
             {
-                log.fatal("ÔÚÖ´ĞĞDBUtils.doBatch() ³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.doBatch() å‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
             }
@@ -343,16 +343,16 @@ public class DbUtils {
     }
 
     /**
-     * Ö´ĞĞÅú´¦Àí£¬²¢ÇÒ±¾Éí¹ÜÀíÊÂÎñÎÊÌâ.
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
-     * @param allsql ÒªÖ´ĞĞµÄsqlÓï¾ä×é³ÉµÄÊı×é¡£
-     * @throws Ö´ĞĞÅú´¦ÀíÊ§°Ü¡£
-     * @return Ã¿¸ösqlÓï¾äÓ°ÏìµÄĞĞÊı×é³ÉµÄÊı×é¡£
+     * æ‰§è¡Œæ‰¹å¤„ç†ï¼Œå¹¶ä¸”æœ¬èº«ç®¡ç†äº‹åŠ¡é—®é¢˜.
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
+     * @param allsql è¦æ‰§è¡Œçš„sqlè¯­å¥ç»„æˆçš„æ•°ç»„ã€‚
+     * @throws æ‰§è¡Œæ‰¹å¤„ç†å¤±è´¥ã€‚
+     * @return æ¯ä¸ªsqlè¯­å¥å½±å“çš„è¡Œæ•°ç»„æˆçš„æ•°ç»„ã€‚
      */
     public static int[] executeBatch( List<String> list, Connection conn )
         throws SQLException {
 
-    	//²ÎÊı¼ì²é
+    	//å‚æ•°æ£€æŸ¥
     	if( conn==null || conn.isClosed()){	
     		throw new SQLException("Connection Object is null or is closed!");
     	}
@@ -361,8 +361,8 @@ public class DbUtils {
         int returns[];
         boolean isConnCreated = false;
         try {
-        	if( conn==null || conn.isClosed()){		// ²»¿ÉÄÜµÄÇé¿ö£¬±£ÁôÕâÖÖĞ´·¨¡£
-            	conn = getConnection();  //»ñÈ¡¡¢Ìá½»¡¢»Ø¹ö¡¢¹Ø±Õ ¶¼ÔÚÒ»¸öµØ·½Í³Ò»¿ØÖÆ£»
+        	if( conn==null || conn.isClosed()){		// ä¸å¯èƒ½çš„æƒ…å†µï¼Œä¿ç•™è¿™ç§å†™æ³•ã€‚
+            	conn = getConnection();  //è·å–ã€æäº¤ã€å›æ»šã€å…³é—­ éƒ½åœ¨ä¸€ä¸ªåœ°æ–¹ç»Ÿä¸€æ§åˆ¶ï¼›
             	isConnCreated = true;
         	}
         	
@@ -371,14 +371,14 @@ public class DbUtils {
             returns = stmt.executeBatch();
             
             if( isConnCreated ){
-            	conn.commit() ;	 	//¶ÔÓÚÍâ²¿´«ÈëµÄÁ¬½Ó£¬²»Ìá½»£¬²»»Ø¹ö£¬²»¹Ø±Õ
+            	conn.commit() ;	 	//å¯¹äºå¤–éƒ¨ä¼ å…¥çš„è¿æ¥ï¼Œä¸æäº¤ï¼Œä¸å›æ»šï¼Œä¸å…³é—­
             }
             return returns;
             //log.debug("doUpdate commit success!");
 
         } catch (SQLException e) {
             if( isConnCreated ){
-            	conn.rollback(); 	 //¶ÔÓÚÍâ²¿´«ÈëµÄÁ¬½Ó£¬²»Ìá½»£¬²»»Ø¹ö£¬²»¹Ø±Õ
+            	conn.rollback(); 	 //å¯¹äºå¤–éƒ¨ä¼ å…¥çš„è¿æ¥ï¼Œä¸æäº¤ï¼Œä¸å›æ»šï¼Œä¸å…³é—­
             }
             
         	String info= "Result in doBatch Exception'SQLs is:" ;
@@ -396,18 +396,18 @@ public class DbUtils {
                     stmt.close() ;
             }catch(SQLException e)
             {		
-                log.fatal("ÔÚÖ´ĞĞDBUtils.doBatch() ³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.doBatch() å‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
             }
             
             try{
                 if(isConnCreated && conn!=null)
-                    conn.close() ; 	 //¶ÔÓÚÍâ²¿´«ÈëµÄÁ¬½Ó£¬²»Ìá½»£¬²»»Ø¹ö£¬²»¹Ø±Õ
+                    conn.close() ; 	 //å¯¹äºå¤–éƒ¨ä¼ å…¥çš„è¿æ¥ï¼Œä¸æäº¤ï¼Œä¸å›æ»šï¼Œä¸å…³é—­
 
             }catch(SQLException e)
             {		
-                log.fatal("ÔÚÖ´ĞĞDBUtils.doBatch() ³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.doBatch() å‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
             }
@@ -417,12 +417,12 @@ public class DbUtils {
 
     
     /**
-     * ¸ù¾İ±íÃû³ÆºÍ²éÑ¯Ìõ¼ş£¬»ñÈ¡·ûºÏÌõ¼şµÄÊı¾İµÄĞĞÊı¡£
+     * æ ¹æ®è¡¨åç§°å’ŒæŸ¥è¯¢æ¡ä»¶ï¼Œè·å–ç¬¦åˆæ¡ä»¶çš„æ•°æ®çš„è¡Œæ•°ã€‚
      *
-     * @param tableName Òª²éÑ¯µÄ±íÃû³Æ
-     * @param condition ¹ıÂËÌõ¼ş£¬Èç¡°WHERE numCol>100¡±
-     * @return ·ûºÏÌõ¼şµÄĞĞÊı
-     * @throws SQLException Êı¾İ¿â²Ù×÷Òì³£
+     * @param tableName è¦æŸ¥è¯¢çš„è¡¨åç§°
+     * @param condition è¿‡æ»¤æ¡ä»¶ï¼Œå¦‚â€œWHERE numCol>100â€
+     * @return ç¬¦åˆæ¡ä»¶çš„è¡Œæ•°
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¼‚å¸¸
      */
 	public static int getSize(String tableName, String condition) throws SQLException {
 		
@@ -439,7 +439,7 @@ public class DbUtils {
 				}
             }catch(SQLException e)
             {		
-                log.fatal("ÔÚÖ´ĞĞDBUtils.getSize() ³ö´í£¨Exception£©£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.getSize() å‡ºé”™ï¼ˆExceptionï¼‰ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
                 //this.addErrors(new ActionError("error.database.deal"));
@@ -449,13 +449,13 @@ public class DbUtils {
 
 	
     /**
-     * ¸ù¾İ±íÃû³ÆºÍ²éÑ¯Ìõ¼ş£¬»ñÈ¡·ûºÏÌõ¼şµÄÊı¾İµÄĞĞÊı¡£
+     * æ ¹æ®è¡¨åç§°å’ŒæŸ¥è¯¢æ¡ä»¶ï¼Œè·å–ç¬¦åˆæ¡ä»¶çš„æ•°æ®çš„è¡Œæ•°ã€‚
      *
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
-     * @param tableName Òª²éÑ¯µÄ±íÃû³Æ
-     * @param condition ¹ıÂËÌõ¼ş£¬Èç¡°WHERE numCol>100¡±
-     * @return ·ûºÏÌõ¼şµÄĞĞÊı
-     * @throws SQLException Êı¾İ¿â²Ù×÷Òì³£
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
+     * @param tableName è¦æŸ¥è¯¢çš„è¡¨åç§°
+     * @param condition è¿‡æ»¤æ¡ä»¶ï¼Œå¦‚â€œWHERE numCol>100â€
+     * @return ç¬¦åˆæ¡ä»¶çš„è¡Œæ•°
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¼‚å¸¸
      */
 	public static int getSize(String tableName, String condition, Connection conn) throws SQLException {
 		
@@ -470,7 +470,7 @@ public class DbUtils {
 	
 
 	/**
-	 * ÀàËÆ Spring µÄ queryForInt ·½·¨£¬Ö´ĞĞÒ»¸öÖ¸¶¨µÄÓï¾ä²¢·µ»ØÒ»¸öintÊı¾İ¡£
+	 * ç±»ä¼¼ Spring çš„ queryForInt æ–¹æ³•ï¼Œæ‰§è¡Œä¸€ä¸ªæŒ‡å®šçš„è¯­å¥å¹¶è¿”å›ä¸€ä¸ªintæ•°æ®ã€‚
 	 * @param sql
 	 * @return
 	 * @throws SQLException
@@ -490,7 +490,7 @@ public class DbUtils {
 				}
             }catch(SQLException e)
             {		
-                log.fatal("ÔÚÖ´ĞĞDBUtils.queryForInt() ³ö´í£¨Exception£©£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.queryForInt() å‡ºé”™ï¼ˆExceptionï¼‰ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug( e.getMessage(), e);
             	/// e.pri ntStackTrace();
                 //this.addErrors(new ActionError("error.database.deal"));
@@ -527,7 +527,7 @@ public class DbUtils {
 	
 
 	/**
-	 * ÀàËÆ Spring µÄ queryForLong ·½·¨£¬Ö´ĞĞÒ»¸öÖ¸¶¨µÄÓï¾ä²¢·µ»ØÒ»¸ölongÊı¾İ¡£
+	 * ç±»ä¼¼ Spring çš„ queryForLong æ–¹æ³•ï¼Œæ‰§è¡Œä¸€ä¸ªæŒ‡å®šçš„è¯­å¥å¹¶è¿”å›ä¸€ä¸ªlongæ•°æ®ã€‚
 	 * @param sql
 	 * @return
 	 * @throws SQLException
@@ -547,7 +547,7 @@ public class DbUtils {
 				}
             }catch(SQLException e)
             {		
-                log.fatal("ÔÚÖ´ĞĞDBUtils.queryForInt() ³ö´í£¨Exception£©£¬´íÎóĞÅÏ¢Îª£º\n", e);
+                log.fatal("åœ¨æ‰§è¡ŒDBUtils.queryForInt() å‡ºé”™ï¼ˆExceptionï¼‰ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug( e.getMessage(), e);
             	/// e.pri ntStackTrace();
                 //this.addErrors(new ActionError("error.database.deal"));
@@ -584,11 +584,11 @@ public class DbUtils {
 	
 	
     /**
-     * »ñÈ¡OracleÊı¾İ¿âÖ¸¶¨ĞòÁĞµÄÏÂÒ»¸öĞòÁĞÖµ£¬for Oracle Only¡£
+     * è·å–Oracleæ•°æ®åº“æŒ‡å®šåºåˆ—çš„ä¸‹ä¸€ä¸ªåºåˆ—å€¼ï¼Œfor Oracle Onlyã€‚
      * 
-     * @param seqName ĞòÁĞ¶ÔÏóÃû³Æ
-     * @return ĞòÁĞµÄÏÂÒ»¸öÖµ
-     * @throws SQLException Êı¾İ¿â²Ù×÷Ê§°ÜÒì³£¡£
+     * @param seqName åºåˆ—å¯¹è±¡åç§°
+     * @return åºåˆ—çš„ä¸‹ä¸€ä¸ªå€¼
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¤±è´¥å¼‚å¸¸ã€‚
      */
 	public static int getSequenceValue( String seqName) throws SQLException {
 
@@ -610,7 +610,7 @@ public class DbUtils {
         			conn.close();
             }catch(SQLException e)
             {
-	            log.fatal("ÔÚÖ´ĞĞDBUtils.getSequenceValue()³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+	            log.fatal("åœ¨æ‰§è¡ŒDBUtils.getSequenceValue()å‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 	            log.debug(e.getMessage(), e);
             	/// e.pri ntStackTrace();
             }
@@ -619,26 +619,26 @@ public class DbUtils {
 	
 
     /**
-     * »ñÈ¡OracleÊı¾İ¿âÖ¸¶¨ĞòÁĞµÄÏÂÒ»¸öĞòÁĞÖµ£¬for Oracle Only¡£
+     * è·å–Oracleæ•°æ®åº“æŒ‡å®šåºåˆ—çš„ä¸‹ä¸€ä¸ªåºåˆ—å€¼ï¼Œfor Oracle Onlyã€‚
      * 
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
-     * @param seqName ĞòÁĞ¶ÔÏóÃû³Æ
-     * @return ĞòÁĞµÄÏÂÒ»¸öÖµ
-     * @throws SQLException Êı¾İ¿â²Ù×÷Ê§°ÜÒì³£¡£
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
+     * @param seqName åºåˆ—å¯¹è±¡åç§°
+     * @return åºåˆ—çš„ä¸‹ä¸€ä¸ªå€¼
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¤±è´¥å¼‚å¸¸ã€‚
      */
 	public static int getSequenceValue( String seqName, Connection conn ) throws SQLException {
 	   	
-		return new Long(((PlainConnection)conn).getDatabaseManager().getIdentityValue( seqName, conn)).intValue() ; //ÔİÊ±´¦Àí
-    	//return new Long(ApplicationContext.getInstance().getDatabaseManager().getIdentityValue( seqName, conn)).intValue(); //ÔİÊ±´¦Àí
+		return new Long(((PlainConnection)conn).getDatabaseManager().getIdentityValue( seqName, conn)).intValue() ; //æš‚æ—¶å¤„ç†
+    	//return new Long(ApplicationContext.getInstance().getDatabaseManager().getIdentityValue( seqName, conn)).intValue(); //æš‚æ—¶å¤„ç†
 	}
 
 
     /**
-     * »ñÈ¡OracleÊı¾İ¿âÖ¸¶¨ĞòÁĞµÄÏÂÒ»¸öĞòÁĞÖµ£¬for Oracle Only¡£
+     * è·å–Oracleæ•°æ®åº“æŒ‡å®šåºåˆ—çš„ä¸‹ä¸€ä¸ªåºåˆ—å€¼ï¼Œfor Oracle Onlyã€‚
      * 
-     * @param tblName ĞèÒªÊ¹ÓÃidµÄ±íµÄÃû³Æ
-     * @return ĞòÁĞµÄÏÂÒ»¸öÖµ
-     * @throws SQLException Êı¾İ¿â²Ù×÷Ê§°ÜÒì³£¡£
+     * @param tblName éœ€è¦ä½¿ç”¨idçš„è¡¨çš„åç§°
+     * @return åºåˆ—çš„ä¸‹ä¸€ä¸ªå€¼
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¤±è´¥å¼‚å¸¸ã€‚
      */
 	public static long getIdentityValue( String tblName) throws SQLException {
 
@@ -646,7 +646,7 @@ public class DbUtils {
 //    	Connection conn = null;
 //        try {
 //        	conn = getConnection();
-//        	conn.setAutoCommit( true );		// ×Ô¶¯Ìá½»º¯Êı´¦Àí
+//        	conn.setAutoCommit( true );		// è‡ªåŠ¨æäº¤å‡½æ•°å¤„ç†
 //        	return getIdentityValue(tblName, conn);
 //
 //        } catch (SQLException e) {
@@ -664,19 +664,19 @@ public class DbUtils {
 //            }catch(SQLException e)
 //            {
 //            	e.pri ntStackTrace();
-//	            log.fatal("ÔÚÖ´ĞĞDBUtils.getSequenceValue()³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+//	            log.fatal("åœ¨æ‰§è¡ŒDBUtils.getSequenceValue()å‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 //            }
 //        } 
 	}
 	
 
     /**
-     * »ñÈ¡OracleÊı¾İ¿âÖ¸¶¨ĞòÁĞµÄÏÂÒ»¸öĞòÁĞÖµ£¬for Oracle Only¡£
+     * è·å–Oracleæ•°æ®åº“æŒ‡å®šåºåˆ—çš„ä¸‹ä¸€ä¸ªåºåˆ—å€¼ï¼Œfor Oracle Onlyã€‚
      * 
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
-     * @param tblName ĞèÒªÊ¹ÓÃidµÄ±íµÄÃû³Æ
-     * @return ĞòÁĞµÄÏÂÒ»¸öÖµ
-     * @throws SQLException Êı¾İ¿â²Ù×÷Ê§°ÜÒì³£¡£
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
+     * @param tblName éœ€è¦ä½¿ç”¨idçš„è¡¨çš„åç§°
+     * @return åºåˆ—çš„ä¸‹ä¸€ä¸ªå€¼
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¤±è´¥å¼‚å¸¸ã€‚
      */
 	public static long getIdentityValue( String tblName, Connection conn ) throws SQLException {
 	   	
@@ -685,9 +685,9 @@ public class DbUtils {
 	}
 	
 	/**
-	 * ½«Ò»¸öList¼¯ºÏ¶ÔÏóÖĞµÄËùÓĞSQLÓï¾ä×°ÔØµ½ StatementÖĞ¡£
-	 * @param stmt ÊµÏÖÁËStatement½Ó¿ÚµÄ¶ÔÏó
-	 * @param list ÊµÏÖÁËList½Ó¿ÚµÄ¶ÔÏó
+	 * å°†ä¸€ä¸ªListé›†åˆå¯¹è±¡ä¸­çš„æ‰€æœ‰SQLè¯­å¥è£…è½½åˆ° Statementä¸­ã€‚
+	 * @param stmt å®ç°äº†Statementæ¥å£çš„å¯¹è±¡
+	 * @param list å®ç°äº†Listæ¥å£çš„å¯¹è±¡
 	 * @throws SQLException
 	 */
 	public static void addBatch(Statement stmt, List<String> list) throws SQLException{
@@ -700,16 +700,16 @@ public class DbUtils {
 	}
 
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âµÄÌØÊâ¹æÔò¶ÔĞèÒª²åÈëµÄÄÚÈİ²ÉÓÃÕıÔò±í´ïÊ½×öÌØÊâ´¦Àí¡£
-	 * 		Õë¶Ô×Ö·û´®ÀàĞÍ(Varchar)£¬Êı×Ö(Number)¡¢ÈÕÆÚ(Date)ºÍ¶ş½øÖÆ(LOB)ÀàĞÍ²»ÓÃÕâ¸ö´¦Àí¡£
-	 * 		-- µ±Ç°ÊÇÕë¶Ô Oracle Êı¾İ¿â£¬½« ' ·ûºÅ Ìæ»»Îª '' £¬²ÅÄÜ²åÈëµ½Êı¾İ¿âÖĞ¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“çš„ç‰¹æ®Šè§„åˆ™å¯¹éœ€è¦æ’å…¥çš„å†…å®¹é‡‡ç”¨æ­£åˆ™è¡¨è¾¾å¼åšç‰¹æ®Šå¤„ç†ã€‚
+	 * 		é’ˆå¯¹å­—ç¬¦ä¸²ç±»å‹(Varchar)ï¼Œæ•°å­—(Number)ã€æ—¥æœŸ(Date)å’ŒäºŒè¿›åˆ¶(LOB)ç±»å‹ä¸ç”¨è¿™ä¸ªå¤„ç†ã€‚
+	 * 		-- å½“å‰æ˜¯é’ˆå¯¹ Oracle æ•°æ®åº“ï¼Œå°† ' ç¬¦å· æ›¿æ¢ä¸º '' ï¼Œæ‰èƒ½æ’å…¥åˆ°æ•°æ®åº“ä¸­ã€‚
 	 * <pre>
 	 * DBUtils.escape2Sql("ab'cd")			="ab''cd"
 	 * DBUtils.escape2Sql("ab'c'd")			="ab''c''d"
 	 * DBUtils.escape2Sql("ab''cd")			="ab''''cd"
 	 * </pre>
-	 *   ½¨Òé£º±¾·½·¨²»ÔÙÊ¹ÓÃDBUtilsµ÷ÓÃ£¬¶øÊÇÊ¹ÓÃDAO, DBBean¶ÔÏóµ÷ÓÃ»òÕßÖ±½ÓÍ¨¹ıDatabaseManager¶ÔÏóµ÷ÓÃ¡£
-	 * @param src ĞèÒª±£´æµ½Êı¾İ¿âµÄÒ»¸ö×Ö¶Î¡£
+	 *   å»ºè®®ï¼šæœ¬æ–¹æ³•ä¸å†ä½¿ç”¨DBUtilsè°ƒç”¨ï¼Œè€Œæ˜¯ä½¿ç”¨DAO, DBBeanå¯¹è±¡è°ƒç”¨æˆ–è€…ç›´æ¥é€šè¿‡DatabaseManagerå¯¹è±¡è°ƒç”¨ã€‚
+	 * @param src éœ€è¦ä¿å­˜åˆ°æ•°æ®åº“çš„ä¸€ä¸ªå­—æ®µã€‚
 	 * @return
 	 */
 	public static String escape2Sql(DatabaseManager databaseManager, String src ) {
@@ -727,8 +727,8 @@ public class DbUtils {
 	 *	  Zeven on 2007-06-06, this static method manager which RowSet's implement used by System.
 	 *		It's safe for mutil thread case.
 	 *		
-	 *		¸ù¾İµ±Ç°ÏµÍ³ÉèÖÃµÄÊı¾İ¿âÀàĞÍ¹¹Ôì RowSet ¶ÔÏó£»
-	 *		Ö§³Ö¶àÊı¾İ¿âµÄÆÕÍ¨Êı¾İµÄ ResultSet to RowSet ´¦Àí¡£
+	 *		æ ¹æ®å½“å‰ç³»ç»Ÿè®¾ç½®çš„æ•°æ®åº“ç±»å‹æ„é€  RowSet å¯¹è±¡ï¼›
+	 *		æ”¯æŒå¤šæ•°æ®åº“çš„æ™®é€šæ•°æ®çš„ ResultSet to RowSet å¤„ç†ã€‚
 	 *
 	 * @param rs
 	 * @return
@@ -741,11 +741,11 @@ public class DbUtils {
 	}
 	
 	/**
-	 *  ¸ù¾İ´«ÈëµÄÊı¾İ¿âÀàĞÍ¹¹ÔìÏàÓ¦µÄ RowSet ¶ÔÏó£¬ÒÔ½â¾ö³ÌĞòÖĞ¿ÉÄÜÁ¬½Ó¶à¸öÀàĞÍÊı¾İµÄÎÊÌâ£¬
-	 *  	¶ø¶ÔÓÚServlet Container µÄ Web ·şÎñ¾Í²»¿ÉÄÜÓĞ¶à¸öµÄÇé¿ö¡£
-	 * @deprecated ÇëÊ¹ÓÃ resultSet2RowSet(DatabaseManager databaseManager, ResultSet rs )
-	 * @param rs ĞèÒª×°Èë RowSet µÄ ResultSet ¶ÔÏóÒıÓÃ
-	 * @param dbms_type Ã¶¾ÙÖµ£¬²Î¿¼ com.kingcore.framework.Constants.DBMS_Type_...
+	 *  æ ¹æ®ä¼ å…¥çš„æ•°æ®åº“ç±»å‹æ„é€ ç›¸åº”çš„ RowSet å¯¹è±¡ï¼Œä»¥è§£å†³ç¨‹åºä¸­å¯èƒ½è¿æ¥å¤šä¸ªç±»å‹æ•°æ®çš„é—®é¢˜ï¼Œ
+	 *  	è€Œå¯¹äºServlet Container çš„ Web æœåŠ¡å°±ä¸å¯èƒ½æœ‰å¤šä¸ªçš„æƒ…å†µã€‚
+	 * @deprecated è¯·ä½¿ç”¨ resultSet2RowSet(DatabaseManager databaseManager, ResultSet rs )
+	 * @param rs éœ€è¦è£…å…¥ RowSet çš„ ResultSet å¯¹è±¡å¼•ç”¨
+	 * @param dbms_type æšä¸¾å€¼ï¼Œå‚è€ƒ com.kingcore.framework.Constants.DBMS_Type_...
 	 * @return
 	 * @throws SQLException
 	 * @see com.kingcore.framework.Constants.DBMS_Type_...
@@ -759,13 +759,13 @@ public class DbUtils {
 	}
 
 	/**
-	 * ½«¶ş½øÖÆ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†äºŒè¿›åˆ¶å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   BLOB(Binary   Large   Object)   
-	 *     ¿ÉÓÃÀ´´æ´¢ÎŞ½á¹¹µÄ¶ş½øÖÆÊı¾İ¡££¨ÀàËÆÓÚrowºÍlong   row£©
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param strPath Òª·ÅÈëÊı¾İ¿âµÄÎÄ¼şµÄÈ«Â·¾¶£¬Èç "D:/upload/a.txe","D:\\upload\\a.txt"
+	 *     å¯ç”¨æ¥å­˜å‚¨æ— ç»“æ„çš„äºŒè¿›åˆ¶æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºrowå’Œlong   rowï¼‰
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param strPath è¦æ”¾å…¥æ•°æ®åº“çš„æ–‡ä»¶çš„å…¨è·¯å¾„ï¼Œå¦‚ "D:/upload/a.txe","D:\\upload\\a.txt"
 	 * @return
 	 */	
 	public static boolean  updateBlobColumn(Connection conn,String tablename,
@@ -782,14 +782,14 @@ public class DbUtils {
 	
 
 	/**
-	 * ½«×Ö·ûĞÍ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†å­—ç¬¦å‹å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£©   
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰   
 	 *      
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param Content Òª·ÅÈëÊı¾İ¿âµÄÄÚÈİ
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param Content è¦æ”¾å…¥æ•°æ®åº“çš„å†…å®¹
 	 * @return
 	 */	
 	public static boolean updateClobColumn(Connection conn, String tablename, 
@@ -804,7 +804,7 @@ public class DbUtils {
 	}
 
 	/**
-	 * »ñÈ¡×Ö·ûĞÍ´ó¶ÔÏóµÄÄÚÈİ¡£
+	 * è·å–å­—ç¬¦å‹å¤§å¯¹è±¡çš„å†…å®¹ã€‚
 	 * @param sql
 	 * @return
 	 * @throws Exception
@@ -816,7 +816,7 @@ public class DbUtils {
 	
 	// begin ********************************************************************
 	// like org.apache.commons.dbutils.DbUtils.class
-	//   Óë closeQuietly µÄ²»Í¬Ö®´¦ÔÚÓÚ»áÏòºóÌ¨Êä³öĞÅÏ¢£¬Í¬Ê±Ò²ÓĞlog4jĞÅÏ¢Êä³ö¡£
+	//   ä¸ closeQuietly çš„ä¸åŒä¹‹å¤„åœ¨äºä¼šå‘åå°è¾“å‡ºä¿¡æ¯ï¼ŒåŒæ—¶ä¹Ÿæœ‰log4jä¿¡æ¯è¾“å‡ºã€‚
 	// **************************************************************************
     public static void closeQuietly(Connection conn, Statement stmt, ResultSet rs)
     {
@@ -836,7 +836,7 @@ public class DbUtils {
 	        }
         }
         catch(SQLException sqle) {
-        	log.info("½á¹û¼¯rs¹Ø±ÕÊ±²úÉúÒì³££¬ĞÅÏ¢£º"+ sqle.getMessage(), sqle );
+        	log.info("ç»“æœé›†rså…³é—­æ—¶äº§ç”Ÿå¼‚å¸¸ï¼Œä¿¡æ¯ï¼š"+ sqle.getMessage(), sqle );
 			/// log.debug("debug", sqle );
         	/// sqle.pri ntStackTrace();
         }
@@ -852,7 +852,7 @@ public class DbUtils {
 	        }
         }
         catch(SQLException sqle) {
-        	log.info("stmt¹Ø±ÕÊ±²úÉúÒì³££¬ĞÅÏ¢£º"+ sqle.getMessage(), sqle );
+        	log.info("stmtå…³é—­æ—¶äº§ç”Ÿå¼‚å¸¸ï¼Œä¿¡æ¯ï¼š"+ sqle.getMessage(), sqle );
 			/// log.debug("debug", sqle );
         	/// sqle.pri ntStackTrace();
         }
@@ -860,7 +860,7 @@ public class DbUtils {
     
     static String showTrace(int maxdepth)
     {
-      String stack="µ÷ÓÃÂ·¾¶£º\n";
+      String stack="è°ƒç”¨è·¯å¾„ï¼š\n";
       StackTraceElement[] trace = new Exception().getStackTrace();
       for (int i = 1; i < Math.min(maxdepth + 1, trace.length); i++)
       {
@@ -870,44 +870,44 @@ public class DbUtils {
     }
 
     /**
-     * Connection »Ø¹ö£¬²»Å×³öÒì³£¡£
+     * Connection å›æ»šï¼Œä¸æŠ›å‡ºå¼‚å¸¸ã€‚
      * @param conn
      */
     public static void rollbackQuietly(Connection conn)
     {
         try
         {
-        	if(conn != null && !conn.isClosed())  // ±ÜÃâÖØ¸´¹Ø±ÕÒì³£
+        	if(conn != null && !conn.isClosed())  // é¿å…é‡å¤å…³é—­å¼‚å¸¸
 	        {
         		conn.rollback();
 	        }
         }
         catch(SQLException sqle) {
-        	log.info("Êı¾İ¿âÁ¬½Óconn»Ø¹öÊ±²úÉúÒì³££¬ĞÅÏ¢£º"+ sqle.getMessage(), sqle );
+        	log.info("æ•°æ®åº“è¿æ¥connå›æ»šæ—¶äº§ç”Ÿå¼‚å¸¸ï¼Œä¿¡æ¯ï¼š"+ sqle.getMessage(), sqle );
         }
     }
 
     /**
-     * Connection Ìá½»£¬²»Å×³öÒì³£¡£
+     * Connection æäº¤ï¼Œä¸æŠ›å‡ºå¼‚å¸¸ã€‚
      * @param conn
      */
     public static void commitQuietly(Connection conn)
     {
         try
         {
-        	if(conn != null && !conn.isClosed())  // ±ÜÃâÖØ¸´¹Ø±ÕÒì³£
+        	if(conn != null && !conn.isClosed())  // é¿å…é‡å¤å…³é—­å¼‚å¸¸
 	        {
         		conn.commit();
 	        }
         }
         catch(SQLException sqle) {
-        	log.info("Êı¾İ¿âÁ¬½ÓconnÌá½»Ê±²úÉúÒì³££¬ĞÅÏ¢£º"+ sqle.getMessage(), sqle );
+        	log.info("æ•°æ®åº“è¿æ¥connæäº¤æ—¶äº§ç”Ÿå¼‚å¸¸ï¼Œä¿¡æ¯ï¼š"+ sqle.getMessage(), sqle );
         }
     }
     
     
     /**
-     * Connection ¹Ø±Õ£¬²»Å×³öÒì³£¡£
+     * Connection å…³é—­ï¼Œä¸æŠ›å‡ºå¼‚å¸¸ã€‚
      * @param conn
      */
     public static void closeQuietly(Connection conn)
@@ -916,9 +916,9 @@ public class DbUtils {
         {
         	log.debug(conn != null?"not null":"is null"); //
 		
-        	if(conn != null && !conn.isClosed())  // ±ÜÃâÖØ¸´¹Ø±ÕÒì³£
+        	if(conn != null && !conn.isClosed())  // é¿å…é‡å¤å…³é—­å¼‚å¸¸
 	        {
-        		log.debug("Á¬½Ó¹Ø±ÕÊ±hashcode="+conn.hashCode()+""+"¡£µ÷ÓÃÂ·¾¶£º"+showTrace(8) ); //
+        		log.debug("è¿æ¥å…³é—­æ—¶hashcode="+conn.hashCode()+""+"ã€‚è°ƒç”¨è·¯å¾„ï¼š"+showTrace(8) ); //
         		//log.debug(conn.isClosed()?"---a---conn isClosed":"conn not closed");
         		//log.debug(conn.getClass());
         		conn.close();
@@ -927,7 +927,7 @@ public class DbUtils {
 	        }
         }
         catch(SQLException sqle) {
-        	log.info("Êı¾İ¿âÁ¬½Óconn¹Ø±ÕÊ±²úÉúÒì³££¬ĞÅÏ¢£º"+ sqle.getMessage(), sqle );
+        	log.info("æ•°æ®åº“è¿æ¥connå…³é—­æ—¶äº§ç”Ÿå¼‚å¸¸ï¼Œä¿¡æ¯ï¼š"+ sqle.getMessage(), sqle );
 			/// log.debug("debug", sqle );
         	/// sqle.pri ntStackTrace();
         }
@@ -939,14 +939,14 @@ public class DbUtils {
 	
 
     /**
-     * »ñÈ¡Êı¾İ¿âÁ¬½Ó¡£
+     * è·å–æ•°æ®åº“è¿æ¥ã€‚
      * <UL>
-     *    <LI>´Óscope=applicationÖĞ»ñÈ¡µÄDataSourceÔÙ»ñµÃConnection¶ÔÏó¡£
+     *    <LI>ä»scope=applicationä¸­è·å–çš„DataSourceå†è·å¾—Connectionå¯¹è±¡ã€‚
      * </UL>
      * @author WUZEWEN on 2005-07-24
-     * @deprecated ½¨ÒéÊ¹ÓÃÈİÆ÷µÄ jndi »òÕßÊÇ ×Ô¶¨ÒåµÄ ConnnectionPool µÄ»ñÈ¡Êı¾İ¿âÁ¬½Ó£¬²»½¨Òé´ÓapplicationµÈÓòÖĞ»ñÈ¡¡£
-     * @param  request:ÇëÇó¶ÔÏó£¬´Óscope=application»ñÈ¡conn×¨ÓÃ
-     * @return Connection conn:Ò»¸öÊµÏÖÁËConnection½Ó¿ÚµÄ¶ÔÏó
+     * @deprecated å»ºè®®ä½¿ç”¨å®¹å™¨çš„ jndi æˆ–è€…æ˜¯ è‡ªå®šä¹‰çš„ ConnnectionPool çš„è·å–æ•°æ®åº“è¿æ¥ï¼Œä¸å»ºè®®ä»applicationç­‰åŸŸä¸­è·å–ã€‚
+     * @param  request:è¯·æ±‚å¯¹è±¡ï¼Œä»scope=applicationè·å–connä¸“ç”¨
+     * @return Connection conn:ä¸€ä¸ªå®ç°äº†Connectionæ¥å£çš„å¯¹è±¡
      * @exception no exception 
      */
 	public static Connection getConnection(javax.servlet.http.HttpServletRequest request )
@@ -957,17 +957,17 @@ public class DbUtils {
 
         String DATA_SOURCE_KEY_IN_STRUTS1 = "org.apache.struts.action.DATA_SOURCE";
 		datasource = (DataSource)HttpUtils.getObjectInApplication( request, DATA_SOURCE_KEY_IN_STRUTS1 ) ;
-		if(datasource!=null)	//ÔÚÊ¹ÓÃÇ°Ò»¶¨Òª×önullÅĞ¶Ï
+		if(datasource!=null)	//åœ¨ä½¿ç”¨å‰ä¸€å®šè¦åšnullåˆ¤æ–­
 			conn = datasource.getConnection();
 		//if cann't find ds in application,get it in jndi...
 		if(conn==null){
-			conn = getConnection() ;   //ÕâÀï²»ÄÜÓÃthis.getConn
+			conn = getConnection() ;   //è¿™é‡Œä¸èƒ½ç”¨this.getConn
 		}
 
 		return conn;
 	}
 
-	// Ê¹ÓÃÃû³ÆÔØÈëÊÇÎªÁË½Ó¿ÚÓëÊµÏÖ·ÖÀë¡£ Í¬Ê±Õâ¸öÊÇ¿ÉÒÔÅäÖÃ×¢Èë»òÕßÉèÖÃµÄ¡£
+	// ä½¿ç”¨åç§°è½½å…¥æ˜¯ä¸ºäº†æ¥å£ä¸å®ç°åˆ†ç¦»ã€‚ åŒæ—¶è¿™ä¸ªæ˜¯å¯ä»¥é…ç½®æ³¨å…¥æˆ–è€…è®¾ç½®çš„ã€‚
 	private static final String Database_Name_PlainDatabase  = "com.kingcore.framework.context.PlainDatabase";
 	private static final String Database_Name_OracleDatabase = "com.kingcore.framework.context.OracleDatabase";
 	private static final String Database_Name_MySqlDatabase  = "com.kingcore.framework.context.MySqlDatabase";

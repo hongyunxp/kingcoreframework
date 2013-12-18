@@ -2,7 +2,7 @@ package wzw.security;
 
  
 /************************************************
-MD5 Ëã·¨µÄJava Bean
+MD5 ç®—æ³•çš„Java Bean
 @author:Topcat Tuppin
 Last Modified:10,Mar,2001
 *************************************************/
@@ -10,14 +10,14 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 
 /**
- * Zeven: ²ÉÓÃutf-8×Ö·û¼¯£¬ÔÚ²»Í¬µÄ²Ù×÷ÏµÍ³Æ½Ì¨Ã»ÓĞÖĞÎÄÎÊÌâ¡£
- * 	MD5µÄ½á¹û¿ÉÄÜÒòÎªÒÔÏÂÒòÊı¶ø²»Í¬£º³¤¶È32/16¡¢´óĞ¡Ğ´¡¢²ÉÓÃ×Ö·û¼¯¡¢³õÊ¼ÖµµÈ¡£
+ * Zeven: é‡‡ç”¨utf-8å­—ç¬¦é›†ï¼Œåœ¨ä¸åŒçš„æ“ä½œç³»ç»Ÿå¹³å°æ²¡æœ‰ä¸­æ–‡é—®é¢˜ã€‚
+ * 	MD5çš„ç»“æœå¯èƒ½å› ä¸ºä»¥ä¸‹å› æ•°è€Œä¸åŒï¼šé•¿åº¦32/16ã€å¤§å°å†™ã€é‡‡ç”¨å­—ç¬¦é›†ã€åˆå§‹å€¼ç­‰ã€‚
  */
 
 public class MD5 {
-    /* ÏÂÃæÕâĞ©S11-S44Êµ¼ÊÉÏÊÇÒ»¸ö4*4µÄ¾ØÕó£¬ÔÚÔ­Ê¼µÄCÊµÏÖÖĞÊÇÓÃ#define ÊµÏÖµÄ£¬
-    ÕâÀï°ÑËüÃÇÊµÏÖ³ÉÎªstatic finalÊÇ±íÊ¾ÁËÖ»¶Á£¬ÇĞÄÜÔÚÍ¬Ò»¸ö½ø³Ì¿Õ¼äÄÚµÄ¶à¸ö
-    Instance¼ä¹²Ïí*/
+    /* ä¸‹é¢è¿™äº›S11-S44å®é™…ä¸Šæ˜¯ä¸€ä¸ª4*4çš„çŸ©é˜µï¼Œåœ¨åŸå§‹çš„Cå®ç°ä¸­æ˜¯ç”¨#define å®ç°çš„ï¼Œ
+    è¿™é‡ŒæŠŠå®ƒä»¬å®ç°æˆä¸ºstatic finalæ˜¯è¡¨ç¤ºäº†åªè¯»ï¼Œåˆ‡èƒ½åœ¨åŒä¸€ä¸ªè¿›ç¨‹ç©ºé—´å†…çš„å¤šä¸ª
+    Instanceé—´å…±äº«*/
         static final int S11 = 7;
         static final int S12 = 12;
         static final int S13 = 17;
@@ -42,28 +42,28 @@ public class MD5 {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        /* ÏÂÃæµÄÈı¸ö³ÉÔ±ÊÇMD5¼ÆËã¹ı³ÌÖĞÓÃµ½µÄ3¸öºËĞÄÊı¾İ£¬ÔÚÔ­Ê¼µÄCÊµÏÖÖĞ
-           ±»¶¨Òåµ½MD5_CTX½á¹¹ÖĞ
+        /* ä¸‹é¢çš„ä¸‰ä¸ªæˆå‘˜æ˜¯MD5è®¡ç®—è¿‡ç¨‹ä¸­ç”¨åˆ°çš„3ä¸ªæ ¸å¿ƒæ•°æ®ï¼Œåœ¨åŸå§‹çš„Cå®ç°ä¸­
+           è¢«å®šä¹‰åˆ°MD5_CTXç»“æ„ä¸­
         
          */
         private long[] state = new long[4];  // state (ABCD)
         private long[] count = new long[2];  // number of bits, modulo 2^64 (lsb first)
         private byte[] buffer = new byte[64]; // input buffer
         
-    /* digestHexStrÊÇMD5µÄÎ¨Ò»Ò»¸ö¹«¹²³ÉÔ±£¬ÊÇ×îĞÂÒ»´Î¼ÆËã½á¹ûµÄ
-    ¡¡ 16½øÖÆASCII±íÊ¾.
+    /* digestHexStræ˜¯MD5çš„å”¯ä¸€ä¸€ä¸ªå…¬å…±æˆå‘˜ï¼Œæ˜¯æœ€æ–°ä¸€æ¬¡è®¡ç®—ç»“æœçš„
+    ã€€ 16è¿›åˆ¶ASCIIè¡¨ç¤º.
     */
         public String digestHexStr;
         
-        /* digest,ÊÇ×îĞÂÒ»´Î¼ÆËã½á¹ûµÄ2½øÖÆÄÚ²¿±íÊ¾£¬±íÊ¾128bitµÄMD5Öµ.
+        /* digest,æ˜¯æœ€æ–°ä¸€æ¬¡è®¡ç®—ç»“æœçš„2è¿›åˆ¶å†…éƒ¨è¡¨ç¤ºï¼Œè¡¨ç¤º128bitçš„MD5å€¼.
     */
         private byte[] digest = new byte[16];
         
 
 	/**
-     * getMD5ofStrÊÇÀàMD5×îÖ÷ÒªµÄ¹«¹²·½·¨£¬Èë¿Ú²ÎÊıÊÇÄãÏëÒª½øĞĞMD5±ä»»µÄ×Ö·û´®
-     * ·µ»ØµÄÊÇ±ä»»ÍêµÄ½á¹û£¬Õâ¸ö½á¹ûÊÇ´Ó¹«¹²³ÉÔ±digestHexStrÈ¡µÃµÄ£®
-     * »ñÈ¡ 32 Î»´óĞ´µÄMD5½á¹û¡£
+     * getMD5ofStræ˜¯ç±»MD5æœ€ä¸»è¦çš„å…¬å…±æ–¹æ³•ï¼Œå…¥å£å‚æ•°æ˜¯ä½ æƒ³è¦è¿›è¡ŒMD5å˜æ¢çš„å­—ç¬¦ä¸²
+     * è¿”å›çš„æ˜¯å˜æ¢å®Œçš„ç»“æœï¼Œè¿™ä¸ªç»“æœæ˜¯ä»å…¬å…±æˆå‘˜digestHexStrå–å¾—çš„ï¼
+     * è·å– 32 ä½å¤§å†™çš„MD5ç»“æœã€‚
 	 * @param inbuf
 	 * @return
 	 */
@@ -87,11 +87,11 @@ public class MD5 {
     }
         
     /**
-     *  getMD5ofStrÊÇÀàMD5×îÖ÷ÒªµÄ¹«¹²·½·¨£¬Èë¿Ú²ÎÊıÊÇÄãÏëÒª½øĞĞMD5±ä»»µÄ×Ö·û´®
-     * ·µ»ØµÄÊÇ±ä»»ÍêµÄ½á¹û£¬Õâ¸ö½á¹ûÊÇ´Ó¹«¹²³ÉÔ±digestHexStrÈ¡µÃµÄ£®
-     * @deprecated Ê¹ÓÃ getMD5ofStr(String inbuf)
+     *  getMD5ofStræ˜¯ç±»MD5æœ€ä¸»è¦çš„å…¬å…±æ–¹æ³•ï¼Œå…¥å£å‚æ•°æ˜¯ä½ æƒ³è¦è¿›è¡ŒMD5å˜æ¢çš„å­—ç¬¦ä¸²
+     * è¿”å›çš„æ˜¯å˜æ¢å®Œçš„ç»“æœï¼Œè¿™ä¸ªç»“æœæ˜¯ä»å…¬å…±æˆå‘˜digestHexStrå–å¾—çš„ï¼
+     * @deprecated ä½¿ç”¨ getMD5ofStr(String inbuf)
      * @param inbuf
-     * @param isUpperCase ÊÇ·ñ·µ»ØĞ¡Ğ´µÄ32Î»£¬Ä¬ÈÏfalse;
+     * @param isUpperCase æ˜¯å¦è¿”å›å°å†™çš„32ä½ï¼Œé»˜è®¤false;
      * @return
      */
         public String getMD5ofStr(String inbuf , boolean isLowerCase) {
@@ -112,13 +112,13 @@ public class MD5 {
         }
         
         /**
-         *  MD5µÄ¼ÆËã±È½Ï¶à£¬²»ÊÊºÏÊ¹ÓÃµ¥¼şÄ£Ê½£¬±ØĞë´´½¨¶ÔÏóÔÙÖ´ĞĞ£¬
-         * 	Èç¹ûÏëÊ¹ÓÃstatic·½·¨µ÷ÓÃ¶ø¼õÉÙµ÷ÓÃ´úÂë£¬¿ÉÒÔÊ¹ÓÃÕâ¸ö·½·¨¡£
-         *  ±¾·½·¨Ö±½Óµ÷ÓÃ getMD5ofStr ·½·¨¡£
-         * @deprecated Ê¹ÓÃ toU32, toU16, toL32, toL16
+         *  MD5çš„è®¡ç®—æ¯”è¾ƒå¤šï¼Œä¸é€‚åˆä½¿ç”¨å•ä»¶æ¨¡å¼ï¼Œå¿…é¡»åˆ›å»ºå¯¹è±¡å†æ‰§è¡Œï¼Œ
+         * 	å¦‚æœæƒ³ä½¿ç”¨staticæ–¹æ³•è°ƒç”¨è€Œå‡å°‘è°ƒç”¨ä»£ç ï¼Œå¯ä»¥ä½¿ç”¨è¿™ä¸ªæ–¹æ³•ã€‚
+         *  æœ¬æ–¹æ³•ç›´æ¥è°ƒç”¨ getMD5ofStr æ–¹æ³•ã€‚
+         * @deprecated ä½¿ç”¨ toU32, toU16, toL32, toL16
          * @author Zeven on 2008
-         * @param inbuf ĞèÒªMD5¼ÓÃÜµÄÔ­×Ö·û´®
-         * @param isLowerCase ·µ»ØµÄÖµÊÇ·ñĞèÒªĞ¡Ğ´£¬Ä¬ÈÏÎªfalse£¬¼´·µ»Ø´óĞ´µÄ32Î»½á¹û
+         * @param inbuf éœ€è¦MD5åŠ å¯†çš„åŸå­—ç¬¦ä¸²
+         * @param isLowerCase è¿”å›çš„å€¼æ˜¯å¦éœ€è¦å°å†™ï¼Œé»˜è®¤ä¸ºfalseï¼Œå³è¿”å›å¤§å†™çš„32ä½ç»“æœ
          * @return
          */
         public static String md5( String inbuf , boolean isLowerCase){
@@ -127,12 +127,12 @@ public class MD5 {
         }
 
         /**
-         *  MD5µÄ¼ÆËã±È½Ï¶à£¬²»ÊÊºÏÊ¹ÓÃµ¥¼şÄ£Ê½£¬±ØĞë´´½¨¶ÔÏóÔÙÖ´ĞĞ£¬
-         * 	Èç¹ûÏëÊ¹ÓÃstatic·½·¨µ÷ÓÃ¶ø¼õÉÙµ÷ÓÃ´úÂë£¬¿ÉÒÔÊ¹ÓÃÕâ¸ö·½·¨¡£
-         *  ±¾·½·¨Ö±½Óµ÷ÓÃ getMD5ofStr ·½·¨£¬·µ»Ø32Î»´óĞ´½á¹û¡£
-         * @deprecated Ê¹ÓÃ toU32, toU16, toL32, toL16
+         *  MD5çš„è®¡ç®—æ¯”è¾ƒå¤šï¼Œä¸é€‚åˆä½¿ç”¨å•ä»¶æ¨¡å¼ï¼Œå¿…é¡»åˆ›å»ºå¯¹è±¡å†æ‰§è¡Œï¼Œ
+         * 	å¦‚æœæƒ³ä½¿ç”¨staticæ–¹æ³•è°ƒç”¨è€Œå‡å°‘è°ƒç”¨ä»£ç ï¼Œå¯ä»¥ä½¿ç”¨è¿™ä¸ªæ–¹æ³•ã€‚
+         *  æœ¬æ–¹æ³•ç›´æ¥è°ƒç”¨ getMD5ofStr æ–¹æ³•ï¼Œè¿”å›32ä½å¤§å†™ç»“æœã€‚
+         * @deprecated ä½¿ç”¨ toU32, toU16, toL32, toL16
          * @author Zeven on 2008
-         * @param inbuf ĞèÒªMD5¼ÓÃÜµÄÔ­×Ö·û´®
+         * @param inbuf éœ€è¦MD5åŠ å¯†çš„åŸå­—ç¬¦ä¸²
          * @return
          */
         public static String md5( String inbuf ){
@@ -181,14 +181,14 @@ public class MD5 {
         }
         
         
-        // ÕâÊÇMD5Õâ¸öÀàµÄ±ê×¼¹¹Ôìº¯Êı£¬JavaBeanÒªÇóÓĞÒ»¸öpublicµÄ²¢ÇÒÃ»ÓĞ²ÎÊıµÄ¹¹Ôìº¯Êı
+        // è¿™æ˜¯MD5è¿™ä¸ªç±»çš„æ ‡å‡†æ„é€ å‡½æ•°ï¼ŒJavaBeanè¦æ±‚æœ‰ä¸€ä¸ªpublicçš„å¹¶ä¸”æ²¡æœ‰å‚æ•°çš„æ„é€ å‡½æ•°
         public MD5() {
                 md5Init();
                 return;
         }
         
 
-        /* md5InitÊÇÒ»¸ö³õÊ¼»¯º¯Êı£¬³õÊ¼»¯ºËĞÄ±äÁ¿£¬×°Èë±ê×¼µÄ»ÃÊı */
+        /* md5Initæ˜¯ä¸€ä¸ªåˆå§‹åŒ–å‡½æ•°ï¼Œåˆå§‹åŒ–æ ¸å¿ƒå˜é‡ï¼Œè£…å…¥æ ‡å‡†çš„å¹»æ•° */
         private void md5Init() {
                 count[0] = 0L;
                 count[1] = 0L;
@@ -201,9 +201,9 @@ public class MD5 {
 
                 return;
         }
-        /* F, G, H ,I ÊÇ4¸ö»ù±¾µÄMD5º¯Êı£¬ÔÚÔ­Ê¼µÄMD5µÄCÊµÏÖÖĞ£¬ÓÉÓÚËüÃÇÊÇ
-        ¼òµ¥µÄÎ»ÔËËã£¬¿ÉÄÜ³öÓÚĞ§ÂÊµÄ¿¼ÂÇ°ÑËüÃÇÊµÏÖ³ÉÁËºê£¬ÔÚjavaÖĞ£¬ÎÒÃÇ°ÑËüÃÇ
-     ¡¡¡¡ÊµÏÖ³ÉÁËprivate·½·¨£¬Ãû×Ö±£³ÖÁËÔ­À´CÖĞµÄ¡£ */
+        /* F, G, H ,I æ˜¯4ä¸ªåŸºæœ¬çš„MD5å‡½æ•°ï¼Œåœ¨åŸå§‹çš„MD5çš„Cå®ç°ä¸­ï¼Œç”±äºå®ƒä»¬æ˜¯
+        ç®€å•çš„ä½è¿ç®—ï¼Œå¯èƒ½å‡ºäºæ•ˆç‡çš„è€ƒè™‘æŠŠå®ƒä»¬å®ç°æˆäº†å®ï¼Œåœ¨javaä¸­ï¼Œæˆ‘ä»¬æŠŠå®ƒä»¬
+     ã€€ã€€å®ç°æˆäº†privateæ–¹æ³•ï¼Œåå­—ä¿æŒäº†åŸæ¥Cä¸­çš„ã€‚ */
 
         private long F(long x, long y, long z) {
                 return (x & y) | ((~x) & z);
@@ -222,7 +222,7 @@ public class MD5 {
         }
         
        /* 
-          FF,GG,HHºÍII½«µ÷ÓÃF,G,H,I½øĞĞ½üÒ»²½±ä»»
+          FF,GG,HHå’ŒIIå°†è°ƒç”¨F,G,H,Iè¿›è¡Œè¿‘ä¸€æ­¥å˜æ¢
           FF, GG, HH, and II transformations for rounds 1, 2, 3, and 4.
           Rotation is separate from addition to prevent recomputation.
        */  
@@ -257,8 +257,8 @@ public class MD5 {
                 return a;
         }
         /*
-         md5UpdateÊÇMD5µÄÖ÷¼ÆËã¹ı³Ì£¬inbufÊÇÒª±ä»»µÄ×Ö½Ú´®£¬inputlenÊÇ³¤¶È£¬Õâ¸ö
-         º¯ÊıÓÉgetMD5ofStrµ÷ÓÃ£¬µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃmd5init£¬Òò´Ë°ÑËüÉè¼Æ³ÉprivateµÄ
+         md5Updateæ˜¯MD5çš„ä¸»è®¡ç®—è¿‡ç¨‹ï¼Œinbufæ˜¯è¦å˜æ¢çš„å­—èŠ‚ä¸²ï¼Œinputlenæ˜¯é•¿åº¦ï¼Œè¿™ä¸ª
+         å‡½æ•°ç”±getMD5ofStrè°ƒç”¨ï¼Œè°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨md5initï¼Œå› æ­¤æŠŠå®ƒè®¾è®¡æˆprivateçš„
         */
         private void md5Update(byte[] inbuf, int inputLen) {
 
@@ -294,7 +294,7 @@ public class MD5 {
         }
         
         /*
-          md5FinalÕûÀíºÍÌîĞ´Êä³ö½á¹û
+          md5Finalæ•´ç†å’Œå¡«å†™è¾“å‡ºç»“æœ
         */
         private void md5Final () {
                 byte[] bits = new byte[8];
@@ -316,8 +316,8 @@ public class MD5 {
 
         }
          
-        /* md5MemcpyÊÇÒ»¸öÄÚ²¿Ê¹ÓÃµÄbyteÊı×éµÄ¿é¿½±´º¯Êı£¬´ÓinputµÄinpos¿ªÊ¼°Ñlen³¤¶ÈµÄ
-¡¡¡¡¡¡¡¡¡¡ ×Ö½Ú¿½±´µ½outputµÄoutposÎ»ÖÃ¿ªÊ¼ 
+        /* md5Memcpyæ˜¯ä¸€ä¸ªå†…éƒ¨ä½¿ç”¨çš„byteæ•°ç»„çš„å—æ‹·è´å‡½æ•°ï¼Œä»inputçš„inposå¼€å§‹æŠŠlené•¿åº¦çš„
+ã€€ã€€ã€€ã€€ã€€ å­—èŠ‚æ‹·è´åˆ°outputçš„outposä½ç½®å¼€å§‹ 
         */
 
         private void md5Memcpy (byte[] output, byte[] input,
@@ -330,7 +330,7 @@ public class MD5 {
         }
         
         /*
-           md5TransformÊÇMD5ºËĞÄ±ä»»³ÌĞò£¬ÓĞmd5Updateµ÷ÓÃ£¬blockÊÇ·Ö¿éµÄÔ­Ê¼×Ö½Ú
+           md5Transformæ˜¯MD5æ ¸å¿ƒå˜æ¢ç¨‹åºï¼Œæœ‰md5Updateè°ƒç”¨ï¼Œblockæ˜¯åˆ†å—çš„åŸå§‹å­—èŠ‚
         */
         private void md5Transform (byte block[]) {
                 long a = state[0], b = state[1], c = state[2], d = state[3];
@@ -417,8 +417,8 @@ public class MD5 {
 
         }
         
-        /*Encode°ÑlongÊı×é°´Ë³Ğò²ğ³ÉbyteÊı×é£¬ÒòÎªjavaµÄlongÀàĞÍÊÇ64bitµÄ£¬
-          Ö»²ğµÍ32bit£¬ÒÔÊÊÓ¦Ô­Ê¼CÊµÏÖµÄÓÃÍ¾
+        /*EncodeæŠŠlongæ•°ç»„æŒ‰é¡ºåºæ‹†æˆbyteæ•°ç»„ï¼Œå› ä¸ºjavaçš„longç±»å‹æ˜¯64bitçš„ï¼Œ
+          åªæ‹†ä½32bitï¼Œä»¥é€‚åº”åŸå§‹Cå®ç°çš„ç”¨é€”
         */
         private void Encode (byte[] output, long[] input, int len) {
                 int i, j;
@@ -431,8 +431,8 @@ public class MD5 {
                 }
         }
 
-        /*Decode°ÑbyteÊı×é°´Ë³ĞòºÏ³É³ÉlongÊı×é£¬ÒòÎªjavaµÄlongÀàĞÍÊÇ64bitµÄ£¬
-          Ö»ºÏ³ÉµÍ32bit£¬¸ß32bitÇåÁã£¬ÒÔÊÊÓ¦Ô­Ê¼CÊµÏÖµÄÓÃÍ¾
+        /*DecodeæŠŠbyteæ•°ç»„æŒ‰é¡ºåºåˆæˆæˆlongæ•°ç»„ï¼Œå› ä¸ºjavaçš„longç±»å‹æ˜¯64bitçš„ï¼Œ
+          åªåˆæˆä½32bitï¼Œé«˜32bitæ¸…é›¶ï¼Œä»¥é€‚åº”åŸå§‹Cå®ç°çš„ç”¨é€”
         */
         private void Decode (long[] output, byte[] input, int len) {
                 int i, j;
@@ -448,14 +448,14 @@ public class MD5 {
         }
        
         /*
-          b2iuÊÇÎÒĞ´µÄÒ»¸ö°Ñbyte°´ÕÕ²»¿¼ÂÇÕı¸ººÅµÄÔ­ÔòµÄ£¢ÉıÎ»£¢³ÌĞò£¬ÒòÎªjavaÃ»ÓĞunsignedÔËËã
+          b2iuæ˜¯æˆ‘å†™çš„ä¸€ä¸ªæŠŠbyteæŒ‰ç…§ä¸è€ƒè™‘æ­£è´Ÿå·çš„åŸåˆ™çš„ï¼‚å‡ä½ï¼‚ç¨‹åºï¼Œå› ä¸ºjavaæ²¡æœ‰unsignedè¿ç®—
         */
         public static long b2iu(byte b) {
                 return b < 0 ? b & 0x7F + 128 : b;
         }
         
-    /*byteHEX()£¬ÓÃÀ´°ÑÒ»¸öbyteÀàĞÍµÄÊı×ª»»³ÉÊ®Áù½øÖÆµÄASCII±íÊ¾£¬
-    ¡¡ÒòÎªjavaÖĞµÄbyteµÄtoStringÎŞ·¨ÊµÏÖÕâÒ»µã£¬ÎÒÃÇÓÖÃ»ÓĞCÓïÑÔÖĞµÄ
+    /*byteHEX()ï¼Œç”¨æ¥æŠŠä¸€ä¸ªbyteç±»å‹çš„æ•°è½¬æ¢æˆåå…­è¿›åˆ¶çš„ASCIIè¡¨ç¤ºï¼Œ
+    ã€€å› ä¸ºjavaä¸­çš„byteçš„toStringæ— æ³•å®ç°è¿™ä¸€ç‚¹ï¼Œæˆ‘ä»¬åˆæ²¡æœ‰Cè¯­è¨€ä¸­çš„
       sprintf(outbuf,"%02X",ib)
     */
         public static String byteHEX(byte ib) {
@@ -472,13 +472,13 @@ public class MD5 {
 
 		
 		MD5 md5 = new MD5();
-		if (Array.getLength(args) == 0) {   //Èç¹ûÃ»ÓĞ²ÎÊı£¬Ö´ĞĞ±ê×¼µÄTest Suite
+		if (Array.getLength(args) == 0) {   //å¦‚æœæ²¡æœ‰å‚æ•°ï¼Œæ‰§è¡Œæ ‡å‡†çš„Test Suite
 			System.out.println("MD5 Test suite:");
 			System.out.println("MD5(\"\"):" + md5.getMD5ofStr(""));
 			System.out.println("MD5(\"admin\"):" + md5.getMD5ofStr("admin"));
 			System.out.println("MD5(\"123\"):" + md5.getMD5ofStr("123"));
-			System.out.println("MD5(\"ÖĞÎÄ\"):" + md5.getMD5ofStr("ÖĞÎÄ"));
-			System.out.println("MD5(\"ÖĞÎÄ\"):" + md5.getMD5ofStr("ÑÏÖØ¸æ¾¯,¶ÔÏóÀàĞÍ£ºhost,±àºÅ£º172.168.2.41,ÏîÄ¿£ºcpu,×ÓÏî²ÎÊı£ºcpu,Öµ£º60.7%,Ê±¼ä£º60.7%CREATE"));
+			System.out.println("MD5(\"ä¸­æ–‡\"):" + md5.getMD5ofStr("ä¸­æ–‡"));
+			System.out.println("MD5(\"ä¸­æ–‡\"):" + md5.getMD5ofStr("ä¸¥é‡å‘Šè­¦,å¯¹è±¡ç±»å‹ï¼šhost,ç¼–å·ï¼š172.168.2.41,é¡¹ç›®ï¼šcpu,å­é¡¹å‚æ•°ï¼šcpu,å€¼ï¼š60.7%,æ—¶é—´ï¼š60.7%CREATE"));
 			System.out.println("MD5(\"a\"):" + md5.getMD5ofStr("a"));
 			System.out.println("MD5(\"abc\"):" + md5.getMD5ofStr("abc"));
 			System.out.println("MD5(\"message digest\"):" + md5.getMD5ofStr("message digest"));

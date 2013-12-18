@@ -10,7 +10,7 @@ import java.util.Calendar;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * <p>ÈÕÆÚ²Ù×÷¹¤¾ß¼¯¡£</p>
+ * <p>æ—¥æœŸæ“ä½œå·¥å…·é›†ã€‚</p>
  * 
  * <pre>
  * getCurrentDate()                   =2007-06-07
@@ -18,17 +18,17 @@ import org.apache.commons.lang.StringUtils;
  * getCurrentTime()                   =11:13:44
  * getCurrentTime('.')                =11.13.44
  * getCerrentDateAndTime()            =2007-06-07 11:13:44
- * getYear(¡°2002-09-13¡±)              =2002
- * getYear(¡°2002-9-13¡±)               =2002
- * getYear(¡°2002-9-1¡±)                =2002
- * getMonth(¡°2002-09-13¡±)             =09
- * getMonth(¡°2002-9-13¡±)              =9
- * getMonth(¡°2002-9-1¡±)               =9
- * getDay(¡°2002-09-13¡±)               =13
- * getDay(¡°2002-9-13¡±)                =13
- * getDay(¡°2002-9-1¡±)                 =1
- * getDay(¡°2002-9-01¡±)                =01
- * getDay(¡°2002-9-1 12:02:05¡±)        =1
+ * getYear(â€œ2002-09-13â€)              =2002
+ * getYear(â€œ2002-9-13â€)               =2002
+ * getYear(â€œ2002-9-1â€)                =2002
+ * getMonth(â€œ2002-09-13â€)             =09
+ * getMonth(â€œ2002-9-13â€)              =9
+ * getMonth(â€œ2002-9-1â€)               =9
+ * getDay(â€œ2002-09-13â€)               =13
+ * getDay(â€œ2002-9-13â€)                =13
+ * getDay(â€œ2002-9-1â€)                 =1
+ * getDay(â€œ2002-9-01â€)                =01
+ * getDay(â€œ2002-9-1 12:02:05â€)        =1
  * </pre>
  * 
  * @author WZWEN on 2006-09-01
@@ -37,16 +37,16 @@ import org.apache.commons.lang.StringUtils;
 public class DateUtils {	
 
 	/**
-	 * »ñÈ¡µ±Ç°ÈÕÆÚ£¬·µ»ØµÄÄ¬ÈÏ¸ñÊ½Îª yyyy-mm-dd
-	 * @return µ±Ç°ÈÕÆÚ×Ö·û´®
+	 * è·å–å½“å‰æ—¥æœŸï¼Œè¿”å›çš„é»˜è®¤æ ¼å¼ä¸º yyyy-mm-dd
+	 * @return å½“å‰æ—¥æœŸå­—ç¬¦ä¸²
 	 */
 	public static String getCurrentDate(){
 	    return getXXXDate(0,"-");
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°ÈÕÆÚ£¬¿ÉÒÔÖ¸¶¨yyyy, mm, dd Ö®¼äµÄÁ¬½Ó·û
-	 * @param sep ·Ö¸î·û£¬Èç"-",".","/"
+	 * è·å–å½“å‰æ—¥æœŸï¼Œå¯ä»¥æŒ‡å®šyyyy, mm, dd ä¹‹é—´çš„è¿æ¥ç¬¦
+	 * @param sep åˆ†å‰²ç¬¦ï¼Œå¦‚"-",".","/"
 	 * @return
 	 */
 	public static String getCurrentDate( String sep)
@@ -55,9 +55,9 @@ public class DateUtils {
 	}
 	
 	/**
-	 * »ñÈ¡ÈÕÆÚ£¬ÕâÊÇÒ»¸öË½ÓĞ·½·¨¡£
-	 * @param i ĞèÒªÌáÇ°µÄÌìÊı£¬µ¥Î»ÎªÌì
-	 * @param sep Á¬½Ó·û£¬Èç"-",".","/"
+	 * è·å–æ—¥æœŸï¼Œè¿™æ˜¯ä¸€ä¸ªç§æœ‰æ–¹æ³•ã€‚
+	 * @param i éœ€è¦æå‰çš„å¤©æ•°ï¼Œå•ä½ä¸ºå¤©
+	 * @param sep è¿æ¥ç¬¦ï¼Œå¦‚"-",".","/"
 	 * @return
 	 */
 	private static String getXXXDate(int i, String sep)
@@ -65,16 +65,16 @@ public class DateUtils {
 	    //if (x.equals("") || x == null)
 	    //	x = "-";
 	    Calendar calendar = Calendar.getInstance();
-	    calendar.add(5, -i); //ÉèÖÃÌáÇ°Ê±¼ä»¹ÊÇÍí¼¸Ììi=0 is today
+	    calendar.add(5, -i); //è®¾ç½®æå‰æ—¶é—´è¿˜æ˜¯æ™šå‡ å¤©i=0 is today
 	    int j = calendar.get(1);
 	    int k = calendar.get(2) + 1;
 	    int l = calendar.get(5);
 	    return j + sep + formatString(k, 2) + sep + formatString(l, 2);
 	}
 	/**
-	 * ½«ÔÂ·İ£¬ÈÕÆÚ£¬¿ÉÄÜÊÇÒ»Î»µÄÊ±ºò£¬²¹³äµ½Ö¸¶¨µÄ³¤¶È£¬Èç '2'²¹³äÎª'02'¡£
-	 * @param i ³õÊ¼×Ö·û´®
-	 * @param j ²¹³äµ½µÄ³¤¶È
+	 * å°†æœˆä»½ï¼Œæ—¥æœŸï¼Œå¯èƒ½æ˜¯ä¸€ä½çš„æ—¶å€™ï¼Œè¡¥å……åˆ°æŒ‡å®šçš„é•¿åº¦ï¼Œå¦‚ '2'è¡¥å……ä¸º'02'ã€‚
+	 * @param i åˆå§‹å­—ç¬¦ä¸²
+	 * @param j è¡¥å……åˆ°çš„é•¿åº¦
 	 * @return
 	 */
 	private static String formatString(int i, int j)
@@ -85,9 +85,9 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÌáÇ°¼¸¸öÔÂ£¬Íí¼¸¸öÔÂ
-	 * @param i ÌáÇ°µÄÔÂÊı
-	 * @param sep ·Ö¸î·ûºÅ
+	 * æå‰å‡ ä¸ªæœˆï¼Œæ™šå‡ ä¸ªæœˆ
+	 * @param i æå‰çš„æœˆæ•°
+	 * @param sep åˆ†å‰²ç¬¦å·
 	 * @return
 	 */
 	private static String getYYYDate(int i, String sep)
@@ -95,7 +95,7 @@ public class DateUtils {
 	    //if (x.equals("") || x == null)
 	    //	x = "-";
 	    Calendar calendar = Calendar.getInstance();
-	    calendar.add(2, -i); //ÉèÖÃÌáÇ°¼¸¸öÔÂ»¹ÊÇÍí¼¸¸öÔÂi=0 ÊÇ±¾ÔÂ
+	    calendar.add(2, -i); //è®¾ç½®æå‰å‡ ä¸ªæœˆè¿˜æ˜¯æ™šå‡ ä¸ªæœˆi=0 æ˜¯æœ¬æœˆ
 	    int j = calendar.get(1);
 	    int k = calendar.get(2) + 1;
 	    int l = calendar.get(5);
@@ -103,16 +103,16 @@ public class DateUtils {
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°Ê±¼ä£¬Ä¬ÈÏ¸ñÊ½Îª hh:mi:ss
-	 * @return µ±Ç°Ê±¼ä×Ö·û´®£¬Èç '12:15:59'
+	 * è·å–å½“å‰æ—¶é—´ï¼Œé»˜è®¤æ ¼å¼ä¸º hh:mi:ss
+	 * @return å½“å‰æ—¶é—´å­—ç¬¦ä¸²ï¼Œå¦‚ '12:15:59'
 	 */
 	public static String getCurrentTime(){
 	     return getXXXTime(":");
 	}
 	
 	/** 
-	 * »ñÈ¡µ±Ç°Ê±¼ä
-	 * @param sep Ö¸¶¨Ğ¡Ê±¡¢·ÖÖÓ¡¢ÃëÖ®¼äµÄÁ¬½Ó×Ö·û´®
+	 * è·å–å½“å‰æ—¶é—´
+	 * @param sep æŒ‡å®šå°æ—¶ã€åˆ†é’Ÿã€ç§’ä¹‹é—´çš„è¿æ¥å­—ç¬¦ä¸²
 	 * @return
 	 */
 	public static String getCurrentTime(String sep){
@@ -131,8 +131,8 @@ public class DateUtils {
 	}
 	
 	/**
-	 * »ñÈ¡ÈÕÆÚ¼ÓÊ±¼ä
-	 * @return ·µ»ØÈÕÆÚºÍÊ±¼ä×Ö·û´®£¬Èç '2006-09-12 11:25:30'
+	 * è·å–æ—¥æœŸåŠ æ—¶é—´
+	 * @return è¿”å›æ—¥æœŸå’Œæ—¶é—´å­—ç¬¦ä¸²ï¼Œå¦‚ '2006-09-12 11:25:30'
 	 */
 	public static String getCerrentDateTime()
 	{
@@ -141,8 +141,8 @@ public class DateUtils {
 
 
 	/**
-	 * ·µ»Ø²ÎÊınumberÌìÒÔÇ°µÄÈÕÆÚ £¬¸ñÊ½Îªyyyymmdd¸ñÊ½ day ´óÓÚÁã±íÊ¾ÌáÇ°ÌìÊı
-	 * @param day ÌáÇ°µÄÌìÊı
+	 * è¿”å›å‚æ•°numberå¤©ä»¥å‰çš„æ—¥æœŸ ï¼Œæ ¼å¼ä¸ºyyyymmddæ ¼å¼ day å¤§äºé›¶è¡¨ç¤ºæå‰å¤©æ•°
+	 * @param day æå‰çš„å¤©æ•°
 	 * @return
 	 */
 	public static String getDateBeforeDay(int day){
@@ -150,9 +150,9 @@ public class DateUtils {
 	      return dateStr;
 	}
 	/**	 * 
-	 * ·µ»Ø²ÎÊınumberÌìÒÔÇ°µÄÈÕÆÚ £¬¸ñÊ½Îªyyyymmdd¸ñÊ½ day ´óÓÚÁã±íÊ¾ÌáÇ°ÌìÊı
-	 * @param day ÌáÇ°µÄÌìÊı
-	 * @param sep ·Ö¸î·û
+	 * è¿”å›å‚æ•°numberå¤©ä»¥å‰çš„æ—¥æœŸ ï¼Œæ ¼å¼ä¸ºyyyymmddæ ¼å¼ day å¤§äºé›¶è¡¨ç¤ºæå‰å¤©æ•°
+	 * @param day æå‰çš„å¤©æ•°
+	 * @param sep åˆ†å‰²ç¬¦
 	 * @return
 	 */
 	public static String getDateBeforeDay(int day,String sep){
@@ -161,7 +161,7 @@ public class DateUtils {
 	}
 	
 	/**
-	 * ·µ»Ø²ÎÊınumberÔÂÒÔÇ°µÄÈÕÆÚ £¬¸ñÊ½Îªyyyymmdd¸ñÊ½
+	 * è¿”å›å‚æ•°numberæœˆä»¥å‰çš„æ—¥æœŸ ï¼Œæ ¼å¼ä¸ºyyyymmddæ ¼å¼
 	 * @param month
 	 * @return
 	 */
@@ -171,8 +171,8 @@ public class DateUtils {
 	}
 	
 	/**
-	 * »ñÈ¡ÈÕÆÚ×Ö·û´®µÄ year ²¿·Ö£¬ÈÕÆÚ×Ö·û´®Ò»°ãÊÇÊ¹ÓÃto_char( DateColn,'yyyy-mm-dd')
-	 * @param str_date ÈÕÆÚ£¬Èç 2006-09-20£¬Ä¬ÈÏÊ¹ÓÃ'-'Á¬½Ó
+	 * è·å–æ—¥æœŸå­—ç¬¦ä¸²çš„ year éƒ¨åˆ†ï¼Œæ—¥æœŸå­—ç¬¦ä¸²ä¸€èˆ¬æ˜¯ä½¿ç”¨to_char( DateColn,'yyyy-mm-dd')
+	 * @param str_date æ—¥æœŸï¼Œå¦‚ 2006-09-20ï¼Œé»˜è®¤ä½¿ç”¨'-'è¿æ¥
 	 * @return
 	 */
 	public static String getYear(String str_date){
@@ -183,8 +183,8 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡ÈÕÆÚ×Ö·û´®µÄ month ²¿·Ö£¬ÈÕÆÚ×Ö·û´®Ò»°ãÊÇÊ¹ÓÃto_char( DateColn,'yyyy-mm-dd')
-	 * @param str_date ÈÕÆÚ£¬Èç 2006-09-20£¬Ä¬ÈÏÊ¹ÓÃ'-'Á¬½Ó
+	 * è·å–æ—¥æœŸå­—ç¬¦ä¸²çš„ month éƒ¨åˆ†ï¼Œæ—¥æœŸå­—ç¬¦ä¸²ä¸€èˆ¬æ˜¯ä½¿ç”¨to_char( DateColn,'yyyy-mm-dd')
+	 * @param str_date æ—¥æœŸï¼Œå¦‚ 2006-09-20ï¼Œé»˜è®¤ä½¿ç”¨'-'è¿æ¥
 	 * @return
 	 */
 	public static String getMonth(String str_date){
@@ -195,8 +195,8 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡ÈÕÆÚ×Ö·û´®µÄ day ²¿·Ö£¬ÈÕÆÚ×Ö·û´®Ò»°ãÊÇÊ¹ÓÃto_char( DateColn,'yyyy-mm-dd')
-	 * @param str_date ÈÕÆÚ£¬Èç 2006-09-20£¬Ä¬ÈÏÊ¹ÓÃ'-'Á¬½Ó
+	 * è·å–æ—¥æœŸå­—ç¬¦ä¸²çš„ day éƒ¨åˆ†ï¼Œæ—¥æœŸå­—ç¬¦ä¸²ä¸€èˆ¬æ˜¯ä½¿ç”¨to_char( DateColn,'yyyy-mm-dd')
+	 * @param str_date æ—¥æœŸï¼Œå¦‚ 2006-09-20ï¼Œé»˜è®¤ä½¿ç”¨'-'è¿æ¥
 	 * @return
 	 */
 	public static String getDay(String str_date){
@@ -215,7 +215,7 @@ public class DateUtils {
 	 */
 	public static void main(String[] args) {
 		
-		// ¸÷¾²Ì¬·½·¨²âÊÔÈçÏÂ£º
+		// å„é™æ€æ–¹æ³•æµ‹è¯•å¦‚ä¸‹ï¼š
 		int pad = 35;
 		System.out.println( StringUtils.rightPad("getCurrentDate()", pad," ") + "="
 												+ getCurrentDate());
@@ -231,29 +231,29 @@ public class DateUtils {
 		System.out.println( StringUtils.rightPad("getCerrentDateAndTime()", pad," ") + "="
 												+ getCerrentDateTime());
 
-		System.out.println( StringUtils.rightPad("getYear(¡°2002-09-13¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getYear(â€œ2002-09-13â€)", pad," ") + "="
 												+ getYear("2002-09-13"));
-		System.out.println( StringUtils.rightPad("getYear(¡°2002-9-13¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getYear(â€œ2002-9-13â€)", pad," ") + "="
 												+ getYear("2002-9-13"));
-		System.out.println( StringUtils.rightPad("getYear(¡°2002-9-1¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getYear(â€œ2002-9-1â€)", pad," ") + "="
 												+ getYear("2002-9-1"));
 
-		System.out.println( StringUtils.rightPad("getMonth(¡°2002-09-13¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getMonth(â€œ2002-09-13â€)", pad," ") + "="
 												+ getMonth("2002-09-13"));
-		System.out.println( StringUtils.rightPad("getMonth(¡°2002-9-13¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getMonth(â€œ2002-9-13â€)", pad," ") + "="
 												+ getMonth("2002-9-13"));
-		System.out.println( StringUtils.rightPad("getMonth(¡°2002-9-1¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getMonth(â€œ2002-9-1â€)", pad," ") + "="
 												+ getMonth("2002-9-1"));
 		
-		System.out.println( StringUtils.rightPad("getDay(¡°2002-09-13¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getDay(â€œ2002-09-13â€)", pad," ") + "="
 												+ getDay("2002-09-13"));
-		System.out.println( StringUtils.rightPad("getDay(¡°2002-9-13¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getDay(â€œ2002-9-13â€)", pad," ") + "="
 												+ getDay("2002-9-13"));
-		System.out.println( StringUtils.rightPad("getDay(¡°2002-9-1¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getDay(â€œ2002-9-1â€)", pad," ") + "="
 												+ getDay("2002-9-1"));
-		System.out.println( StringUtils.rightPad("getDay(¡°2002-9-01¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getDay(â€œ2002-9-01â€)", pad," ") + "="
 												+ getDay("2002-9-01"));
-		System.out.println( StringUtils.rightPad("getDay(¡°2002-9-1 12:02:05¡±)", pad," ") + "="
+		System.out.println( StringUtils.rightPad("getDay(â€œ2002-9-1 12:02:05â€)", pad," ") + "="
 												+ getDay("2002-9-1 12:02:05"));
 		
 	}

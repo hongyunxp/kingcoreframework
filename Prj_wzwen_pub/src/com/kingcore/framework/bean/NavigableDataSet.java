@@ -13,8 +13,8 @@ import java.util.List;
 import javax.sql.RowSet;
 
 /**
- * <p>¿ÉÒÔµ¼º½µÄÊı¾İ¼¯ºÏ½Ó¿Ú£¬
- * 		 -- extends RowSet£¬Èç¹ûÒªÊµÏÖ RowSet ·½·¨£¬ĞèÒªÔÚÊµÏÖµÄÀàÖĞÌí¼Ó 160 ¸ö×óÓÒµÄ·½·¨¡£</p>
+ * <p>å¯ä»¥å¯¼èˆªçš„æ•°æ®é›†åˆæ¥å£ï¼Œ
+ * 		 -- extends RowSetï¼Œå¦‚æœè¦å®ç° RowSet æ–¹æ³•ï¼Œéœ€è¦åœ¨å®ç°çš„ç±»ä¸­æ·»åŠ  160 ä¸ªå·¦å³çš„æ–¹æ³•ã€‚</p>
  * @author Zeven on 2006-7-20
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -27,65 +27,65 @@ public interface NavigableDataSet extends DataSet, Navigator{
 
 	
 	/**
-	 * Éè¶¨Í¼Æ¬µÄ´æ·ÅÎ»ÖÃ, the method cann't be static.
+	 * è®¾å®šå›¾ç‰‡çš„å­˜æ”¾ä½ç½®, the method cann't be static.
 	 */
 	public void setImgPath(String path);
 	
 	/**
-	 * È¡µÃÍ¼Æ¬´æ·ÅÎ»ÖÃ
+	 * å–å¾—å›¾ç‰‡å­˜æ”¾ä½ç½®
 	 */
 	public String getImgPath();
 
 	
 	/**
-	 *ÉèÖÃprimaryKey
+	 *è®¾ç½®primaryKey
 	 */
 	///public void setPrimaryKey(String key);
 	
 	/**
-	 *»ñÈ¡primaryKey
+	 *è·å–primaryKey
 	 */
 	///public String getPrimaryKey();
 	
 	/**
-	 * ·µ»Ø¿ªÊ¼ĞĞ
+	 * è¿”å›å¼€å§‹è¡Œ
 	 * @return int
 	 */
 	public int getBeginIndex();
 	
 
 	/**
-	 * ÆäÖĞµÄÒ»ÖÖÊ¹ÓÃList±£´æ±í¸ñÊı¾İµÄ·½°¸¡£
+	 * å…¶ä¸­çš„ä¸€ç§ä½¿ç”¨Listä¿å­˜è¡¨æ ¼æ•°æ®çš„æ–¹æ¡ˆã€‚
 	 */
 	public List getDataList();
 	public void setDataList(List dataList);
 	
 	/**
-	 *µÃµ½ËùÓĞµÄĞĞ¼¯
+	 *å¾—åˆ°æ‰€æœ‰çš„è¡Œé›†
 	 * @return List
 	 */
 	public RowSet getDatas();
 
 	/**
-	 *µÃµ½³éÏóÊı¾İ¼¯¶ÔÏó£¬°üÀ¨ dataList, crs¡£
+	 *å¾—åˆ°æŠ½è±¡æ•°æ®é›†å¯¹è±¡ï¼ŒåŒ…æ‹¬ dataList, crsã€‚
 	 * @return List
 	 */
 	public Object getDataObject();
 	
 	/**
-	 *µÃµ½¼ìË÷µÄ×îºóÒ»Ìõ¼ÇÂ¼ºÅ
+	 *å¾—åˆ°æ£€ç´¢çš„æœ€åä¸€æ¡è®°å½•å·
 	 * @return int
 	 */
 	public int getEndIndex();
 	
 	/**
-	 * ·µ»ØÊÇ·ñÊÇ·ÖÒ³
+	 * è¿”å›æ˜¯å¦æ˜¯åˆ†é¡µ
 	 * @return boolean
 	 */
 	public boolean getIsPaged();
 	
 	/**
-	 * ·µ»Ø×î½üÒ»´ÎÖ´ĞĞµÄsqlÓï¾ä
+	 * è¿”å›æœ€è¿‘ä¸€æ¬¡æ‰§è¡Œçš„sqlè¯­å¥
 	 * @return String
 	 */
 	public String getLastSql();
@@ -118,32 +118,32 @@ public interface NavigableDataSet extends DataSet, Navigator{
 
 	
 	/**
-	 * ·ÖÒ³Çé¿öÏÂÃ¿Ò³Êµ¼ÊÏÔÊ¾µÄĞĞÊı£¬¸Ã·½·¨Ö÷ÒªÊÇÔÚJSPÖĞµ÷ÓÃ
+	 * åˆ†é¡µæƒ…å†µä¸‹æ¯é¡µå®é™…æ˜¾ç¤ºçš„è¡Œæ•°ï¼Œè¯¥æ–¹æ³•ä¸»è¦æ˜¯åœ¨JSPä¸­è°ƒç”¨
 	 * @return int
 	 */
 	public int getShowRows();
 	
 	/**
-	 * ÊÇ·ñĞèÒª·ÖÒ³ÏÔÊ¾
+	 * æ˜¯å¦éœ€è¦åˆ†é¡µæ˜¾ç¤º
 	 * @return boolean
 	 */
 	public boolean isNeedPaged(int forPageIndex);
 	
 	/**
-	 * ×ªµ½ÏÂÒ³
+	 * è½¬åˆ°ä¸‹é¡µ
 	 * @return void
 	 */
 	public void nextPage();
 	
 	/**
-	 * ÖØÖÃÒ³Ãæ
+	 * é‡ç½®é¡µé¢
 	 */
 	public void reIndex();
 	
 	public void resetCurrentPageIndex();
 	
 	/**
-	 * ×ªµ½Ä³Ò³
+	 * è½¬åˆ°æŸé¡µ
 	 * @param int pageIndex
 	 * @return void
 	 */
@@ -152,7 +152,7 @@ public interface NavigableDataSet extends DataSet, Navigator{
 	
 	
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 * @parma page:Page
 	 * @return void
 	 */
@@ -167,7 +167,7 @@ public interface NavigableDataSet extends DataSet, Navigator{
 //	}
 	
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 * @parma page:Page
 	 * @return void
 //	 */
@@ -175,7 +175,7 @@ public interface NavigableDataSet extends DataSet, Navigator{
 	
 	
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 */
 	
 	public void setDataset( RowSet crs);
@@ -184,38 +184,38 @@ public interface NavigableDataSet extends DataSet, Navigator{
 	
 	
 	/**
-	 *	ÆäËü·½·¨, ÒÆ¶¯µ½DataSetÖĞ¡£
+	 *	å…¶å®ƒæ–¹æ³•, ç§»åŠ¨åˆ°DataSetä¸­ã€‚
 	 */
 
 //	/**
-//	 * ·ÖÒ³
-//	 * @param java.lang.String commandName CommandµÄURL
+//	 * åˆ†é¡µ
+//	 * @param java.lang.String commandName Commandçš„URL
 //	 * @return java.lang.String
 //	 */
 //	public String pages(String commandName);
 //	
 //	/**
-//	 * ·ÖÒ³
-//	 * @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-//	 * @param java.lang.String commandName CommandµÄURL
+//	 * åˆ†é¡µ
+//	 * @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+//	 * @param java.lang.String commandName Commandçš„URL
 //	 * @return java.lang.String
 //	 */
 //	public String pages(int rows, String commandName);
 //	
 	
 //	/**
-//	 * ·ÖÒ³
-//	 * @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-//	 * @param java.lang.String commandName CommandµÄURL
+//	 * åˆ†é¡µ
+//	 * @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+//	 * @param java.lang.String commandName Commandçš„URL
 //	 * @return java.lang.String
 //	 */
 //	public String pagesPN(int rows, String commandName);
 //	
 //	
 //	/**
-//	 * ·ÖÒ³
-//	 * @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-//	 * @param java.lang.String commandName CommandµÄURL
+//	 * åˆ†é¡µ
+//	 * @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+//	 * @param java.lang.String commandName Commandçš„URL
 //	 * @return java.lang.String
 //	 */
 //	public String pagesPNFL(int rows, String commandName);

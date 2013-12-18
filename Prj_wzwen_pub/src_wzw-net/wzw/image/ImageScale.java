@@ -9,11 +9,11 @@ import javax.imageio.ImageIO;
 import org.apache.log4j.Logger;
 
 /**
- * <p>ËõÂÔÍ¼Àà£¬
- *	±¾javaÀàÄÜ½«jpgÍ¼Æ¬ÎÄ¼ş£¬½øĞĞµÈ±È»ò·ÇµÈ±ÈµÄ´óĞ¡×ª»»¡£
- * 	¾ßÌåÊ¹ÓÃ·½·¨£ºÏÈ¹¹½¨ÊµÀı£¬ÔÙµ÷ÓÃcreateImage·½·¨¡£
- * 	 > ÄÜ´¦ÀíÓĞÍ¸Ã÷±³¾°²ãµÄgifÍ¼Æ¬¡£
- *   > ËùÓĞÍ¼Æ¬ÖÊÁ¿½Ï¸ß¡£
+ * <p>ç¼©ç•¥å›¾ç±»ï¼Œ
+ *	æœ¬javaç±»èƒ½å°†jpgå›¾ç‰‡æ–‡ä»¶ï¼Œè¿›è¡Œç­‰æ¯”æˆ–éç­‰æ¯”çš„å¤§å°è½¬æ¢ã€‚
+ * 	å…·ä½“ä½¿ç”¨æ–¹æ³•ï¼šå…ˆæ„å»ºå®ä¾‹ï¼Œå†è°ƒç”¨createImageæ–¹æ³•ã€‚
+ * 	 > èƒ½å¤„ç†æœ‰é€æ˜èƒŒæ™¯å±‚çš„gifå›¾ç‰‡ã€‚
+ *   > æ‰€æœ‰å›¾ç‰‡è´¨é‡è¾ƒé«˜ã€‚
  * 
  * </p>
  * @author	WUZEWEN on 2005-09-15 
@@ -27,7 +27,7 @@ import org.apache.log4j.Logger;
 public class ImageScale {
 	
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	protected static Logger log = Logger.getLogger( wzw.image.ImageScale.class);
 	
@@ -67,8 +67,8 @@ public class ImageScale {
             is.saveImageAsJpg("E:/My Documents_200608/Tmp_work/imageScale/e182b2a2b79fa5f7336ddbc41c9c5484.jpg",
             		          "E:/My Documents_200608/Tmp_work/imageScale/e182b2a2b79fa5f7336ddbc41c9c5484_200_bad.jpg", 
             		          200, 200);
-            is.saveImageAsJpg("E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--Ğ¡Í¼Ëõ·Å²âÊÔ2.gif",
-  		          "E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--Ğ¡Í¼Ëõ·Å²âÊÔ2_200_bad.jpg", 
+            is.saveImageAsJpg("E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--å°å›¾ç¼©æ”¾æµ‹è¯•2.gif",
+  		          "E:/My Documents_200608/Tmp_work/imageScale/42699ecd616adcee2c9cb5e5cb4a440d--å°å›¾ç¼©æ”¾æµ‹è¯•2_200_bad.jpg", 
   		          200, 200);
             
             
@@ -81,23 +81,23 @@ public class ImageScale {
 
 	/**
 	 * <p>
-	 * °´ÕÕÖ¸¶¨Í¼Æ¬Éú³ÉÖ¸¶¨´óĞ¡¹æ¸ñµÄĞÂÍ¼Æ¬¡£ÔÚjdk1.4ÏÂÃæ£¬Ö§³ÖgifÍ¼Æ¬£»ÔÚjdk5ÏÂÃæ£¬Ö§³Ögif,bmp,pngµÈÍ¼Æ¬¸ñÊ½¡£
+	 * æŒ‰ç…§æŒ‡å®šå›¾ç‰‡ç”ŸæˆæŒ‡å®šå¤§å°è§„æ ¼çš„æ–°å›¾ç‰‡ã€‚åœ¨jdk1.4ä¸‹é¢ï¼Œæ”¯æŒgifå›¾ç‰‡ï¼›åœ¨jdk5ä¸‹é¢ï¼Œæ”¯æŒgif,bmp,pngç­‰å›¾ç‰‡æ ¼å¼ã€‚
 	 * </p>
 	 * 
 	 * @param inputDir
-	 *            ²Î¿¼Í¼Æ¬Â·¾¶£¬eg: "D:/temp/", "/usr/temp/"
+	 *            å‚è€ƒå›¾ç‰‡è·¯å¾„ï¼Œeg: "D:/temp/", "/usr/temp/"
 	 * @param outputDir
-	 *            Êä³öÍ¼Æ¬Â·¾¶£¬eg: "D:/temp/", "/usr/temp/"
+	 *            è¾“å‡ºå›¾ç‰‡è·¯å¾„ï¼Œeg: "D:/temp/", "/usr/temp/"
 	 * @param inputFileName
-	 *            ²Î¿¼Í¼Æ¬Ãû³Æ
+	 *            å‚è€ƒå›¾ç‰‡åç§°
 	 * @param outputFileName
-	 *            Êä³öÍ¼Æ¬Ãû³Æ
+	 *            è¾“å‡ºå›¾ç‰‡åç§°
 	 * @param w
-	 *            ĞÂÍ¼Æ¬¿í¶ÈÏñËØÖµ
+	 *            æ–°å›¾ç‰‡å®½åº¦åƒç´ å€¼
 	 * @param h
-	 *            ĞÂÍ¼Æ¬¸ß¶ÈÏñËØÖµ
+	 *            æ–°å›¾ç‰‡é«˜åº¦åƒç´ å€¼
 	 * @param gp
-	 *            ÊÇ·ñĞèÒªµÈ±ÈËõ·Å£¬Ä¬ÈÏtrue
+	 *            æ˜¯å¦éœ€è¦ç­‰æ¯”ç¼©æ”¾ï¼Œé»˜è®¤true
 	 * @return
 	 * @throws Exception
 	 */
@@ -131,7 +131,7 @@ public class ImageScale {
 	}
 
     
-	// fromFileStrÔ­Í¼Æ¬µØÖ·,saveToFileStrÉú³ÉËõÂÔÍ¼µØÖ·,formatWidethÉú³ÉÍ¼Æ¬¿í¶È,formatHeight¸ß¶È
+	// fromFileStråŸå›¾ç‰‡åœ°å€,saveToFileStrç”Ÿæˆç¼©ç•¥å›¾åœ°å€,formatWidethç”Ÿæˆå›¾ç‰‡å®½åº¦,formatHeighté«˜åº¦
     public void saveImageAsJpg(String fromFileStr, String saveToFileStr,
             int formatWideth, int formatHeight) throws Exception {
         BufferedImage srcImage;
@@ -182,13 +182,13 @@ public class ImageScale {
     }
 
     /** *//**
-     * ¾ö¶¨Í¼Ïñ³ß´ç
+     * å†³å®šå›¾åƒå°ºå¯¸
      */
     private int DetermineResultSize(int w, int h) {
         double scaleH, scaleV;
         scaleH = (double) w / (double) width;
         scaleV = (double) h / (double) height;
-        // ĞèÒªÅĞ¶ÏÒ»ÏÂscaleH£¬scaleV£¬²»×ö·Å´ó²Ù×÷
+        // éœ€è¦åˆ¤æ–­ä¸€ä¸‹scaleHï¼ŒscaleVï¼Œä¸åšæ”¾å¤§æ“ä½œ
         if (scaleH >= 1.0 && scaleV >= 1.0) {
             return 1;
         }
@@ -242,7 +242,7 @@ public class ImageScale {
         }
     } // end of CalContrib()
 
-    // ´¦Àí±ßÔµ
+    // å¤„ç†è¾¹ç¼˜
     private void CalTempContrib(int start, int stop) {
         double weight = 0;
 
@@ -276,7 +276,7 @@ public class ImageScale {
         return (redValue << 16) + (greenValue << 8) + blueValue;
     }
 
-    // ĞĞË®Æ½ÂË²¨
+    // è¡Œæ°´å¹³æ»¤æ³¢
     private int HorizontalFilter(BufferedImage bufImg, int startX, int stopX,
             int start, int stop, int y, double[] pContrib) {
         double valueRed = 0.0;
@@ -299,7 +299,7 @@ public class ImageScale {
 
     } // end of HorizontalFilter()
 
-    // Í¼Æ¬Ë®Æ½ÂË²¨
+    // å›¾ç‰‡æ°´å¹³æ»¤æ³¢
     private BufferedImage HorizontalFiltering(BufferedImage bufImage, int iOutW) {
         int dwInW = bufImage.getWidth();
         int dwInH = bufImage.getHeight();

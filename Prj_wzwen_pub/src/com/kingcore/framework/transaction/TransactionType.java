@@ -14,7 +14,7 @@ package com.kingcore.framework.transaction;
 import java.util.HashMap;
 
 /**
- * <p>javaÀàÎÄ¼þµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜Ž...</p>
  * @author Zeven on 2011-8-9
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -25,9 +25,9 @@ import java.util.HashMap;
 
 public enum TransactionType {
 
-	NEW_TRANSACTION,      //¿ªÆôÐÂÊÂÎñ£¬¸ôÀëÉÏÏÂÎÄÊÂÎñ
-	REQUIRED_TRANSACTION,      //ÓÐÔò¼ÓÈëÊÂÎñ£¬Ã»ÓÐ¾Í¿ªÆôÐÂÊÂÎï
-	MAYBE_TRANSACTION,      //ÓÐÔò¼ÓÈëÊÂÎñ£¬Ã»ÓÐ¾Í²»¿ªÆôÊÂÎñ
-	NO_TRANSACTION      //²»¿ªÆôÊÂÎñÒ²²»¼ÓÈëÉÏÏÂÎÄÊÂÎñ
+	NEW_TRANSACTION,      //å¼€å¯æ–°äº‹åŠ¡ï¼Œéš”ç¦»ä¸Šä¸‹æ–‡äº‹åŠ¡
+	REQUIRED_TRANSACTION,      //æœ‰åˆ™åŠ å…¥äº‹åŠ¡ï¼Œæ²¡æœ‰å°±å¼€å¯æ–°äº‹ç‰©
+	MAYBE_TRANSACTION,      //æœ‰åˆ™åŠ å…¥äº‹åŠ¡ï¼Œæ²¡æœ‰å°±ä¸å¼€å¯äº‹åŠ¡
+	NO_TRANSACTION      //ä¸å¼€å¯äº‹åŠ¡ä¹Ÿä¸åŠ å…¥ä¸Šä¸‹æ–‡äº‹åŠ¡
 	//WIDE_TRANSACTION      //
 }

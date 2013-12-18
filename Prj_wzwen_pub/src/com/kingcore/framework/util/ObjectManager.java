@@ -33,7 +33,7 @@ import javax.servlet.http.HttpSession;
 public class ObjectManager {
 	
 	/**
-	 *	½«SessionÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†SessionåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */	 
 	public static void reMoveObjectInSession( HttpServletRequest request, String name )
 	{
@@ -45,7 +45,7 @@ public class ObjectManager {
 	
 	
 	/**
-	 *	½«ApplicationÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†ApplicationåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */
 	public static void reMoveObjectInApplication( HttpServletRequest request, String name )
 	{
@@ -59,7 +59,7 @@ public class ObjectManager {
 	
 	
 	/**
-	 *	·ÅÖÃ¶ÔÏóÔÚSessionÓòÖĞ
+	 *	æ”¾ç½®å¯¹è±¡åœ¨SessionåŸŸä¸­
 	 */
 	public static void setObjectInSession( HttpServletRequest request ,String name ,Object obj)
 	{
@@ -73,7 +73,7 @@ public class ObjectManager {
 	
 	
 	/**
-	 *	·ÅÖÃ¶ÔÏóÔÚApplication ÓòÖĞ
+	 *	æ”¾ç½®å¯¹è±¡åœ¨Application åŸŸä¸­
 	 */
 	public static void setObjectInApplication( HttpServletRequest request, String name ,Object obj )
 	{
@@ -86,7 +86,7 @@ public class ObjectManager {
 		context.setAttribute( name, obj ) ;		
 	} 
 	/**
-	 *	½«SessionÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†SessionåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */	 
 	public static Object getObjectInSession( HttpServletRequest request, String name )
 	{
@@ -96,7 +96,7 @@ public class ObjectManager {
 	
 	
 	/**
-	 *	½«ApplicationÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†ApplicationåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */
 	public static Object getObjectInApplication( HttpServletRequest request, String name )
 	{

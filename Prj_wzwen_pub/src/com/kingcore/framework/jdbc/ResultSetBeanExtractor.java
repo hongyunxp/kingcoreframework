@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 /**
- * <p> ĞÂÆğÒ»¸öResultSetExtractor£¬±ãÓÚ¶Ô²éÑ¯½á¹ûµ½Bean/BeanList×öÌØÊâµÄ´¦Àí¡£</p>
+ * <p> æ–°èµ·ä¸€ä¸ªResultSetExtractorï¼Œä¾¿äºå¯¹æŸ¥è¯¢ç»“æœåˆ°Bean/BeanListåšç‰¹æ®Šçš„å¤„ç†ã€‚</p>
  * @author Zeven on Aug 5, 2011
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

@@ -8,7 +8,7 @@ package com.kingcore.framework.util;
 
 /**
  * @author WUZEWEN
- * ÓÃÀ´±êÊ¶ÊÇOracleÊı¾İ¿â
+ * ç”¨æ¥æ ‡è¯†æ˜¯Oracleæ•°æ®åº“
  */
 public interface OraDatabaseInterface extends DatabaseInterface {
 

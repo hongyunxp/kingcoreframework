@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Vector;
 
 /**
- * <p>¶ÔString¶ÔÏó½øĞĞ´¦ÀíµÄ¹¤¾ßÀà£¬ËùÓĞµÄ·½·¨¶¼ÊÇ¾²Ì¬(static)µÄ£¬²»ĞèÒª´´½¨
- *			¶ÔÏóÊµÀı¾Í¿ÉÒÔµ÷ÓÃ¡£</p>
+ * <p>å¯¹Stringå¯¹è±¡è¿›è¡Œå¤„ç†çš„å·¥å…·ç±»ï¼Œæ‰€æœ‰çš„æ–¹æ³•éƒ½æ˜¯é™æ€(static)çš„ï¼Œä¸éœ€è¦åˆ›å»º
+ *			å¯¹è±¡å®ä¾‹å°±å¯ä»¥è°ƒç”¨ã€‚</p>
  * @author	WUZEWEN on 2004-09-15
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -24,13 +24,13 @@ import java.util.Vector;
 public class StringUtils {
 	
 	/**
-	 * wzw: ×ª»» txt to link
+	 * wzw: è½¬æ¢ txt to link
 	 * @param txt
 	 * @return
 	 */
 	public static String convert2Link(String txt){
 		return txt.replaceAll("(http|ftp|https)(://)\\w+\\.\\w+([\\.\\w+]*)([/\\w+]*)[\\.\\w+]*[?\\w+=\\w+][&\\w+=\\w+]*",
-						"<a target='_blank' class='link_blueer12a' href='$0'>$0</a>"); //wzw:´¦ÀíÁ¬½ÓÎÄ±¾	
+						"<a target='_blank' class='link_blueer12a' href='$0'>$0</a>"); //wzw:å¤„ç†è¿æ¥æ–‡æœ¬	
 
 	}
 	
@@ -133,7 +133,7 @@ public class StringUtils {
 	
 	
 	/**
-	 * <p>½«Ö¸¶¨×Ö·û´®ÖĞËùÓĞµÄÌØ¶¨×Ö·ûÌæ»»ÎªĞÂµÄ×Ö·û£¬²ÉÓÃµÄÊÇµİ¹é·½·¨¡£
+	 * <p>å°†æŒ‡å®šå­—ç¬¦ä¸²ä¸­æ‰€æœ‰çš„ç‰¹å®šå­—ç¬¦æ›¿æ¢ä¸ºæ–°çš„å­—ç¬¦ï¼Œé‡‡ç”¨çš„æ˜¯é€’å½’æ–¹æ³•ã€‚
 	 * 		this is as same as the StringUtils.replace method in common-lang.jar(Apache) file.</p>
 	 * 
      * <pre>
@@ -147,16 +147,16 @@ public class StringUtils {
      * StringUtils.replace("aba", "a", "z")   = "zbz"
      * </pre>
      *
-	 * @param text ĞèÒªÌæ»»µÄ×Ö·û´®
-	 * @param repl ±»Ìæ»»µÄ×Ö·û
-	 * @param with Ìæ»»³É×Ö·û
-	 * @return Ìæ»»Ö®ºóµÄ×Ö·û´®
+	 * @param text éœ€è¦æ›¿æ¢çš„å­—ç¬¦ä¸²
+	 * @param repl è¢«æ›¿æ¢çš„å­—ç¬¦
+	 * @param with æ›¿æ¢æˆå­—ç¬¦
+	 * @return æ›¿æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static String replace(String text, String repl, String with) {
 		return replace(text, repl, with, -1);
 	}
 	/**
-	 * <p>½«Ö¸¶¨×Ö·û´®ÖĞËùÓĞµÄÌØ¶¨×Ö·ûÌæ»»ÎªĞÂµÄ×Ö·û£¬²ÉÓÃµÄÊÇµİ¹é·½·¨¡£
+	 * <p>å°†æŒ‡å®šå­—ç¬¦ä¸²ä¸­æ‰€æœ‰çš„ç‰¹å®šå­—ç¬¦æ›¿æ¢ä¸ºæ–°çš„å­—ç¬¦ï¼Œé‡‡ç”¨çš„æ˜¯é€’å½’æ–¹æ³•ã€‚
 	 * 		this is as same as the StringUtils.replace method in common-lang.jar(Apache) file.</p>
 	 * 
      * <pre>
@@ -174,11 +174,11 @@ public class StringUtils {
      * StringUtils.replace("abaa", "a", "z", -1)  = "zbzz"
      * </pre>
      *
-	 * @param text ĞèÒªÌæ»»µÄ×Ö·û´®
-	 * @param repl ±»Ìæ»»µÄ×Ö·û
-	 * @param with Ìæ»»³É×Ö·û
+	 * @param text éœ€è¦æ›¿æ¢çš„å­—ç¬¦ä¸²
+	 * @param repl è¢«æ›¿æ¢çš„å­—ç¬¦
+	 * @param with æ›¿æ¢æˆå­—ç¬¦
      * @param max  maximum number of values to replace, or <code>-1</code> if no maximum
-	 * @return Ìæ»»Ö®ºóµÄ×Ö·û´®
+	 * @return æ›¿æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static String replace(String text, String repl, String with, int max) {    
 		if (text == null || isEmpty(repl) || with == null || max == 0) {
@@ -201,7 +201,7 @@ public class StringUtils {
 	
 	
 	/**
-	 * <p>½«×Ö·û´®¶ÔÏó×ª»»ÎªÊı×é¶ÔÏó¡£</p>
+	 * <p>å°†å­—ç¬¦ä¸²å¯¹è±¡è½¬æ¢ä¸ºæ•°ç»„å¯¹è±¡ã€‚</p>
 	 * 
 	 * <pre>
 	 * StringUtils.stringToArray("a,b,c", ",")		= {"a","b","c"}
@@ -209,9 +209,9 @@ public class StringUtils {
 	 * StringUtils.stringToArray("a$b$c", "$")		= {"a","b","c"}
 	 * </pre>
 	 * 
-	 * @param s Òª×ª»»ÎªÊı×éµÄ×Ö·û´®
-	 * @param c ·Ö¸ôµÄ×Ö·û´®
-	 * @return ×ª»»Ö®ºóµÄÊı×é¶ÔÏó
+	 * @param s è¦è½¬æ¢ä¸ºæ•°ç»„çš„å­—ç¬¦ä¸²
+	 * @param c åˆ†éš”çš„å­—ç¬¦ä¸²
+	 * @return è½¬æ¢ä¹‹åçš„æ•°ç»„å¯¹è±¡
 	 */
 	public static String[] stringToArray(String s,String c) {
 		int i,j,len;
@@ -251,11 +251,11 @@ public class StringUtils {
 	}
 	
 	/**
-	 * <p>¼ÓÃÜ×Ö·û´®¡£</p>
+	 * <p>åŠ å¯†å­—ç¬¦ä¸²ã€‚</p>
 	 * @deprecated 
-	 * @param s Òª¼ÓÃÜµÄ×Ö·û´®
+	 * @param s è¦åŠ å¯†çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ¼ÓÃÜÖ®ºóµÄ×Ö·û´®
+	 * @return åŠ å¯†ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  toSecretString(String s) throws Exception{
 		byte[] bString=s.getBytes();
@@ -267,9 +267,9 @@ public class StringUtils {
 	
 	/**
 	 * <P>Translate a string from ISO-8859-1 to GB2312 character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  toGB2312(String s) throws Exception{
 		if (s==null || s.length()<1) return s;
@@ -280,9 +280,9 @@ public class StringUtils {
 	
 	/**
 	 * <p>Translate a string from ISO-8859-1 to UTF-8 character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  toUTF_8(String s) throws Exception{
 		if (s==null || s.length()<1) return s;
@@ -293,9 +293,9 @@ public class StringUtils {
 	
 	/**
 	 * <p>Translate a string from GB2312 to ISO-8859-1 character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  toISO(String s) throws Exception{
 		if (s==null || s.length()<1) return s;
@@ -306,9 +306,9 @@ public class StringUtils {
 	
 	/**
 	 * <p>Translate a string from ISO-8859-1 to GBK character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  toGBK(String s) throws Exception{
 		return toGBK(s, "ISO-8859-1");
@@ -316,9 +316,9 @@ public class StringUtils {
 	
 	/**
 	 * <p>Translate a string from GB2312 to ISO-8859-1 character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  gbk2ISO(String s) throws Exception{
 		if (s==null || s.length()<1) return s;
@@ -330,9 +330,9 @@ public class StringUtils {
 	
 	/**
 	 * <p>Translate a string from ISO-8859-1 to GBK character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  iso2GBK(String s) throws Exception{
 		return toGBK(s, "ISO-8859-1");
@@ -340,10 +340,10 @@ public class StringUtils {
 	
 	/**
 	 * <p>Translate a string from ISO-8859-1 to GBK character set.</p>
-	 * @param s Òª×ª»»µÄ×Ö·û´®
-	 * @param lang ÏÖÔÚµÄ×Ö·û¼¯
+	 * @param s è¦è½¬æ¢çš„å­—ç¬¦ä¸²
+	 * @param lang ç°åœ¨çš„å­—ç¬¦é›†
 	 * @throws Exception
-	 * @return ×ª»»Ö®ºóµÄ×Ö·û´®
+	 * @return è½¬æ¢ä¹‹åçš„å­—ç¬¦ä¸²
 	 */
 	public static  String  toGBK(String s,String lang) throws Exception{
 		if (s==null || s.length()<1) return s;
@@ -353,9 +353,9 @@ public class StringUtils {
 	}
 	
 	/** 
-	 * <p>°Ñ×Ö·û´®×ª»»³ÉUnicodeÂë£¬¸ñÊ½Îª\\uXXXX\\uXXXX</p> 
-	 * @param strText ´ı×ª»»µÄ×Ö·û´®(ÖĞÓ¢ÎÄ¡¢Êı×Ö)
-	 * @return ×ª»»ºóµÄUnicodeÂë×Ö·û´® 
+	 * <p>æŠŠå­—ç¬¦ä¸²è½¬æ¢æˆUnicodeç ï¼Œæ ¼å¼ä¸º\\uXXXX\\uXXXX</p> 
+	 * @param strText å¾…è½¬æ¢çš„å­—ç¬¦ä¸²(ä¸­è‹±æ–‡ã€æ•°å­—)
+	 * @return è½¬æ¢åçš„Unicodeç å­—ç¬¦ä¸² 
 	 */ 
 	public static String toUnicode(String strText) throws UnsupportedEncodingException{
 		char c; 
@@ -379,17 +379,17 @@ public class StringUtils {
 	}
 	
 	/**
-	 * <p>»ñÈ¡×Ö·û´®×Ö½Ú³¤¶È£¬ÒòÎª²åÈëµ½Êı¾İ¿âÖĞÊ±£¬Ò»¸öÖĞÎÄ×Ö·ûÏàµ±ÓÚÁ½¸öÓ¢ÎÄ×Ö·û¡£</p>
+	 * <p>è·å–å­—ç¬¦ä¸²å­—èŠ‚é•¿åº¦ï¼Œå› ä¸ºæ’å…¥åˆ°æ•°æ®åº“ä¸­æ—¶ï¼Œä¸€ä¸ªä¸­æ–‡å­—ç¬¦ç›¸å½“äºä¸¤ä¸ªè‹±æ–‡å­—ç¬¦ã€‚</p>
 	 * 
 	 * <pre>
 	 * StringUtils.getByteLength("abc")		= 3
-	 * StringUtils.getByteLength("ÖĞÎÄ")		= 4
-	 * StringUtils.getByteLength("ÖĞÎÄabc")	= 7
+	 * StringUtils.getByteLength("ä¸­æ–‡")		= 4
+	 * StringUtils.getByteLength("ä¸­æ–‡abc")	= 7
 	 * StringUtils.getByteLength(null)		= 0
 	 * StringUtils.getByteLength("")		= 0
 	 * </pre>
-	 * @param str ĞèÒª¼ÆËã³¤¶ÈµÄ×Ö·û´®¶ÔÏó
-	 * @return ×Ö·û´®µÄ×Ö½Ú³¤
+	 * @param str éœ€è¦è®¡ç®—é•¿åº¦çš„å­—ç¬¦ä¸²å¯¹è±¡
+	 * @return å­—ç¬¦ä¸²çš„å­—èŠ‚é•¿
 	 */
 	public static int getByteLength(String str){
 		if( str==null) {
@@ -400,9 +400,9 @@ public class StringUtils {
 			//if(hello.value.charCodeAt(i)<=8192)
 			if(str.charAt(i)<128 && str.charAt(i)>0){
 				
-				count+=1;//alert("µ¥×Ö½Ú·û:"+hello.value.charAt(i));
+				count+=1;//alert("å•å­—èŠ‚ç¬¦:"+hello.value.charAt(i));
 			}else{
-				count+=2;// alert("Ë«×Ö½Ú·û:"+hello.value.charAt(i));
+				count+=2;// alert("åŒå­—èŠ‚ç¬¦:"+hello.value.charAt(i));
 			}
 		}
 		return count ;
@@ -410,7 +410,7 @@ public class StringUtils {
 	
 	
 	/**
-	 * <p>¼ì²éÒ»¸ö String ¶ÔÏóÎªnull »òÕß"".</p>
+	 * <p>æ£€æŸ¥ä¸€ä¸ª String å¯¹è±¡ä¸ºnull æˆ–è€…"".</p>
 	 *
 	 * <pre>
 	 * StringUtils.isEmpty(null)      = true
@@ -420,17 +420,17 @@ public class StringUtils {
 	 * StringUtils.isEmpty("  bob  ") = false
 	 * </pre>
 	 *
-	 * <p>ËµÃ÷: ±¾·½·¨²»¶ÔString ¶ÔÏóÖ´ĞĞtrims²Ù×÷.</p>
+	 * <p>è¯´æ˜: æœ¬æ–¹æ³•ä¸å¯¹String å¯¹è±¡æ‰§è¡Œtrimsæ“ä½œ.</p>
 	 *
-	 * @param str  Òª¼ì²éµÄ×Ö·û´®
-	 * @return <code>true</code> Èç¹û×Ö·û´®¼È²»ÊÇnull£¬Ò²²»ÊÇ""¡£
+	 * @param str  è¦æ£€æŸ¥çš„å­—ç¬¦ä¸²
+	 * @return <code>true</code> å¦‚æœå­—ç¬¦ä¸²æ—¢ä¸æ˜¯nullï¼Œä¹Ÿä¸æ˜¯""ã€‚
 	 */
 	public static boolean isEmpty(String str) {
 		return str == null || str.length() == 0;
 	}
 	
 	/**
-	 * <p>¼ÆËã×Ó×Ö·û´®ÔÚ×Ö·û´®ÖĞ³öÏÖÁË¶àÉÙ´Î.</p>
+	 * <p>è®¡ç®—å­å­—ç¬¦ä¸²åœ¨å­—ç¬¦ä¸²ä¸­å‡ºç°äº†å¤šå°‘æ¬¡.</p>
 	 *
 	 * <p>A <code>null</code> or empty ("") String input returns <code>0</code>.</p>
 	 *
@@ -444,9 +444,9 @@ public class StringUtils {
 	 * StringUtils.countMatches("abba", "xxx") = 0
 	 * </pre>
 	 *
-	 * @param str  ±»¼ì²éµÄ×Ö·û´®£¬²»ÄÜÊÇ null
-	 * @param sub  ¼ÆËã³öÏÖ¶àÉÙ´ÎµÄ×Ö·û´®£¬²»ÄÜÊÇ null
-	 * @return ³öÏÖµÄ´ÎÊı£¬Èç¹ûÊÇnull£¬·µ»Ø0¡£
+	 * @param str  è¢«æ£€æŸ¥çš„å­—ç¬¦ä¸²ï¼Œä¸èƒ½æ˜¯ null
+	 * @param sub  è®¡ç®—å‡ºç°å¤šå°‘æ¬¡çš„å­—ç¬¦ä¸²ï¼Œä¸èƒ½æ˜¯ null
+	 * @return å‡ºç°çš„æ¬¡æ•°ï¼Œå¦‚æœæ˜¯nullï¼Œè¿”å›0ã€‚
 	 */
 	public static int countMatches(String str, String sub) {
 		if (isEmpty(str) || isEmpty(sub)) {
@@ -469,9 +469,9 @@ public class StringUtils {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		// System.out.println( StringUtils.toUTF_8_2("user.jhtml?id=123&pw=aÖĞbÎÄc") );
+		// System.out.println( StringUtils.toUTF_8_2("user.jhtml?id=123&pw=aä¸­bæ–‡c") );
 		
-		System.out.println( StringUtils.encodeHex("ÖĞ".getBytes() ) );
+		System.out.println( StringUtils.encodeHex("ä¸­".getBytes() ) );
 		
 		System.out.println("--" + StringUtils.replace("a'b''c", "'", "''"));
 	}

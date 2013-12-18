@@ -16,7 +16,7 @@ import java.util.HashMap;
 import org.springframework.dao.DataAccessException;
 
 /**
- * <p>Ô¶³ÌÊı¾İ¿â·ÃÎÊÒì³££¬¿ÉÒÔµ¼ÖÂÕû¸öÊÂÎñÒì³£¡£</p>
+ * <p>è¿œç¨‹æ•°æ®åº“è®¿é—®å¼‚å¸¸ï¼Œå¯ä»¥å¯¼è‡´æ•´ä¸ªäº‹åŠ¡å¼‚å¸¸ã€‚</p>
  * @author Zeven on 2008-6-4
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

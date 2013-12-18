@@ -20,7 +20,7 @@ import java.util.HashMap;
 
 /**
  * <p>
- * ±¾¿ò¼ÜÖĞµÄÒì³£»ùÀà£¬RuntimeException¡£
+ * æœ¬æ¡†æ¶ä¸­çš„å¼‚å¸¸åŸºç±»ï¼ŒRuntimeExceptionã€‚
  * </p>
  * 
  * @author WUZEWEN on 2006.03.21
@@ -46,17 +46,17 @@ public class BaseException extends RuntimeException {
 	 */
 	private Throwable previousThrowable = null;
 	/**
-	 * Òì³£ĞÅÏ¢ÀàĞÍ£¬¶ÔÓÚApplicationExceptionÊÇÏÔÊ¾ÀàĞÍ£¬
-	 * 		¶ÔÓÚInvalidSessionExceptionÊÇ±íÊ¾µÇÂ¼Ö®ºóÊÇ·ñÔÙÌø×ªµ½Ç°Ò»¸öÒ³Ãæ¡£
+	 * å¼‚å¸¸ä¿¡æ¯ç±»å‹ï¼Œå¯¹äºApplicationExceptionæ˜¯æ˜¾ç¤ºç±»å‹ï¼Œ
+	 * 		å¯¹äºInvalidSessionExceptionæ˜¯è¡¨ç¤ºç™»å½•ä¹‹åæ˜¯å¦å†è·³è½¬åˆ°å‰ä¸€ä¸ªé¡µé¢ã€‚
 	 */
 	protected int showType = 0;
 
 	/**
-	 * ÒÔÆÕÍ¨Ò³ÃæÏÔÊ¾Òì³£ĞÅÏ¢
+	 * ä»¥æ™®é€šé¡µé¢æ˜¾ç¤ºå¼‚å¸¸ä¿¡æ¯
 	 */
 	public static final int SHOW_TYPE_NORMAL = 0;
 	/**
-	 * ÒÔ¶Ô»°¿òÏÔÊ¾Òì³£ĞÅÏ¢
+	 * ä»¥å¯¹è¯æ¡†æ˜¾ç¤ºå¼‚å¸¸ä¿¡æ¯
 	 */
 	public static final int SHOW_TYPE_DIALOG = 1;
 

@@ -10,7 +10,7 @@ import com.kingcore.framework.bean.Value;
 public class LongValue extends Value {
     private long value;
 
-	//´ÓÒ³ÃæµÃµ½µÄString±äÁ¿¹¹Ôì
+	//ä»é¡µé¢å¾—åˆ°çš„Stringå˜é‡æ„é€ 
     public LongValue(String value) {
         this.value = Long.parseLong(value);
     }

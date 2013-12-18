@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
 
  
 /**
- * <p>ÊµÏÖÁË¿ÉĞòÁĞ»¯¡¢¿Éµ¼º½µÄ½Ó¿Ú¡£</p>
+ * <p>å®ç°äº†å¯åºåˆ—åŒ–ã€å¯å¯¼èˆªçš„æ¥å£ã€‚</p>
  * @version		1.00 2004.04.13
  * @author		zewen.wu
  *
@@ -53,85 +53,85 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 
 
 	/**
-	 * ÈÕÖ¾±äÁ¿
+	 * æ—¥å¿—å˜é‡
 	 */
 	public static Logger log = Logger.getLogger(com.kingcore.framework.bean.QueryDataSet.class);
 	
 	
 //	/**
-//	 * ÇëÇóµÄuri×Ö·û´®£¬±ÈÈç /user/userDeal.jhtml?Action=add&id=123
-//	 * ¿ÉÓÃÓÚÉú³Éµ¼º½ĞÅÏ¢¡£
+//	 * è¯·æ±‚çš„uriå­—ç¬¦ä¸²ï¼Œæ¯”å¦‚ /user/userDeal.jhtml?Action=add&id=123
+//	 * å¯ç”¨äºç”Ÿæˆå¯¼èˆªä¿¡æ¯ã€‚
 //	 */
 //	protected String commandName = null; 
 	
 	
 	/**
-	 * Í¼Æ¬Â·¾¶
+	 * å›¾ç‰‡è·¯å¾„
 	 */
 	
 	protected static String imgPath = "jsp/image/";
 	
 	/**
-	 * Ö÷¼ü
+	 * ä¸»é”®
 	 */
 	protected String primaryKey = "";
 	
 	/**
-	 * ¼ìË÷µÄµÚÒ»Ìõ¼ÍÂ¼ĞĞºÅ
+	 * æ£€ç´¢çš„ç¬¬ä¸€æ¡çºªå½•è¡Œå·
 	 */
 	protected int beginIndex;
 	
 	/**
-	 * ¼ìË÷µÄ×îºóÒ»Ìõ¼ÍÂ¼ĞĞºÅ
+	 * æ£€ç´¢çš„æœ€åä¸€æ¡çºªå½•è¡Œå·
 	 */
 	protected int endIndex;
 	
 	/**
-	 * Ò»ĞĞ¼ÇÂ¼
+	 * ä¸€è¡Œè®°å½•
 	 */
 	//protected DataBean data;
 	
 	/**
-	 * ËùÓĞÊı¾İ¼¯ºÏ£¬Ö§³Ö3ÖÖ RowSet, List, DataSet(=RowSet and List)
+	 * æ‰€æœ‰æ•°æ®é›†åˆï¼Œæ”¯æŒ3ç§ RowSet, List, DataSet(=RowSet and List)
 	 */
 	protected Object dataObject ;	
 	protected RowSet crs ;
 	protected RowSet datas ;
-	private List dataList ;	// add by Zeven on 2008-08-16¡£´¿´â±£´æList¶ÔÏó£¬ÈçList<Bean>, List<Map>£¬¶ÔÓÚdataListµÄ²Ù×÷£¬±ØĞëÖ±½ÓÏÈ»ñdatList¡£
+	private List dataList ;	// add by Zeven on 2008-08-16ã€‚çº¯ç²¹ä¿å­˜Listå¯¹è±¡ï¼Œå¦‚List<Bean>, List<Map>ï¼Œå¯¹äºdataListçš„æ“ä½œï¼Œå¿…é¡»ç›´æ¥å…ˆè·datListã€‚
 	
 
 	protected Navigator navigator = null;
 	
 	/**
-	 * ×îºóÒ»´Î²éÑ¯µÄSQLÓï¾ä
+	 * æœ€åä¸€æ¬¡æŸ¥è¯¢çš„SQLè¯­å¥
 	 */
 	protected String lastSql;
 	/**
-	 * ×îºóÒ»´Î²éÑ¯µÄselect×Ó¾ä£¨³ı¡°select¡±)
+	 * æœ€åä¸€æ¬¡æŸ¥è¯¢çš„selectå­å¥ï¼ˆé™¤â€œselectâ€)
 	 */
 	protected String selectString = "";
 	/**
-	 * ×îºóÒ»´Î²éÑ¯µÄfrom×Ó¾ä£¨³ı¡°from¡±)
+	 * æœ€åä¸€æ¬¡æŸ¥è¯¢çš„fromå­å¥ï¼ˆé™¤â€œfromâ€)
 	 */
 	protected String fromString = "";
 	/**
-	 * ×îºóÒ»´Î²éÑ¯µÄwhere×Ó¾ä£¨³ı¡°where¡±)
+	 * æœ€åä¸€æ¬¡æŸ¥è¯¢çš„whereå­å¥ï¼ˆé™¤â€œwhereâ€)
 	 */
 	protected String whereString = "";
 	/**
-	 * ×îºóÒ»´Î²éÑ¯µÄgruop by×Ó¾ä£¨³ı¡°group by¡±)
+	 * æœ€åä¸€æ¬¡æŸ¥è¯¢çš„gruop byå­å¥ï¼ˆé™¤â€œgroup byâ€)
 	 */
 	protected String groupByString = "";
 	/**
-	 *  ×îºóÒ»´Î²éÑ¯µÄhaving×Ó¾ä£¨³ı¡°having¡±)
+	 *  æœ€åä¸€æ¬¡æŸ¥è¯¢çš„havingå­å¥ï¼ˆé™¤â€œhavingâ€)
 	 */
 	protected String havingString = "";
 	/**
-	 * ×îºóÒ»´Î²éÑ¯µÄorder by×Ó¾ä£¨³ı¡°order by¡±)
+	 * æœ€åä¸€æ¬¡æŸ¥è¯¢çš„order byå­å¥ï¼ˆé™¤â€œorder byâ€)
 	 */
 	protected String orderByString = "";
 	/**
-	 * ·ÖÒ³±ê¼Ç
+	 * åˆ†é¡µæ ‡è®°
 	 */
 	protected boolean isPaged;
 
@@ -139,14 +139,14 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	private String path;
 	
 	/**
-	 * ÔİÊ±²»ĞèÒªµÄ±äÁ¿
-	 *protected boolean isUpdate; //Êı¾İĞŞ¸Ä¡¢É¾³ı±ê¼Ç
-	 *protected boolean isInsert; //Êı¾İÔö¼Ó±ê¼Ç
-	 *protected boolean isDetail; //Êı¾İÃ÷Ï¸±ê¼Ç
+	 * æš‚æ—¶ä¸éœ€è¦çš„å˜é‡
+	 *protected boolean isUpdate; //æ•°æ®ä¿®æ”¹ã€åˆ é™¤æ ‡è®°
+	 *protected boolean isInsert; //æ•°æ®å¢åŠ æ ‡è®°
+	 *protected boolean isDetail; //æ•°æ®æ˜ç»†æ ‡è®°
 	 */
 	
 	/**
-	 * ÆäÖĞµÄÒ»ÖÖÊ¹ÓÃList±£´æ±í¸ñÊı¾İµÄ·½°¸¡£
+	 * å…¶ä¸­çš„ä¸€ç§ä½¿ç”¨Listä¿å­˜è¡¨æ ¼æ•°æ®çš„æ–¹æ¡ˆã€‚
 	 */
 	public List getDataList() {
 		return this.dataList;
@@ -157,7 +157,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * Éè¶¨Í¼Æ¬µÄ´æ·ÅÎ»ÖÃ
+	 * è®¾å®šå›¾ç‰‡çš„å­˜æ”¾ä½ç½®
 	 */
 	public void setImgPath(String path)
 	{
@@ -165,7 +165,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * È¡µÃÍ¼Æ¬´æ·ÅÎ»ÖÃ
+	 * å–å¾—å›¾ç‰‡å­˜æ”¾ä½ç½®
 	 */
 	public String getImgPath()
 	{
@@ -173,7 +173,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *ÉèÖÃprimaryKey
+	 *è®¾ç½®primaryKey
 	 */
 	public void setPrimaryKey(String key)
 	{
@@ -181,7 +181,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *»ñÈ¡primaryKey
+	 *è·å–primaryKey
 	 */
 	public String getPrimaryKey()
 	{
@@ -189,7 +189,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ·µ»Ø¿ªÊ¼ĞĞ
+	 * è¿”å›å¼€å§‹è¡Œ
 	 * @return int
 	 */
 	public int getBeginIndex()
@@ -198,7 +198,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * µ±Ç°Ò³
+	 * å½“å‰é¡µ
 	 * @return int
 	 */
 	public int getPageNumber()
@@ -207,7 +207,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *µÃµ½ËùÓĞµÄĞĞ¼¯
+	 *å¾—åˆ°æ‰€æœ‰çš„è¡Œé›†
 	 * @return List<Map>,List<Bean>,RowSet,SqlRowSet
 	 */
 	public RowSet getDatas()
@@ -216,7 +216,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *µÃµ½¼ìË÷µÄ×îºóÒ»Ìõ¼ÇÂ¼ºÅ
+	 *å¾—åˆ°æ£€ç´¢çš„æœ€åä¸€æ¡è®°å½•å·
 	 * @return int
 	 */
 	public int getEndIndex()
@@ -225,7 +225,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ·µ»ØÊÇ·ñÊÇ·ÖÒ³
+	 * è¿”å›æ˜¯å¦æ˜¯åˆ†é¡µ
 	 * @return boolean
 	 */
 	public boolean getIsPaged()
@@ -233,7 +233,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 		return this.isPaged;
 	}
 	/**
-	 * ·µ»Ø×î½üÒ»´ÎÖ´ĞĞµÄsqlÓï¾ä
+	 * è¿”å›æœ€è¿‘ä¸€æ¬¡æ‰§è¡Œçš„sqlè¯­å¥
 	 * @return String
 	 */
 	public String getLastSql()
@@ -295,7 +295,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ×ÜÒ³Êı
+	 * æ€»é¡µæ•°
 	 * @return int
 	 */
 	public void setPageCount(int pageCount)
@@ -304,7 +304,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 
 	/**
-	 * ×ÜÒ³Êı, ¼ÆËã·ÅÔÚAction»ùÀàÖĞ¡£
+	 * æ€»é¡µæ•°, è®¡ç®—æ”¾åœ¨ActionåŸºç±»ä¸­ã€‚
 	 * @return int
 	 */
 	public int getPageCount()
@@ -313,7 +313,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * Ã¿Ò³ÏÔÊ¾µÄĞĞÊı
+	 * æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•°
 	 * @return int
 	 */
 	public int getPageSize()
@@ -330,7 +330,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ×ÜµÄĞĞÊı
+	 * æ€»çš„è¡Œæ•°
 	 * @return int
 	 */
 	public int getRowCount()
@@ -343,7 +343,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *µ±Ç°Ò³ºÅ
+	 *å½“å‰é¡µå·
 	 */
 	public void setPageNumber(int index)
 	{
@@ -351,7 +351,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * »ñµÃµ±Ç°ĞĞºÅ
+	 * è·å¾—å½“å‰è¡Œå·
 	 * @return int
 	 */
 	public int getRow()
@@ -366,7 +366,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 
 	
 	/**
-	 * ·ÖÒ³Çé¿öÏÂÃ¿Ò³Êµ¼ÊÏÔÊ¾µÄĞĞÊı£¬¸Ã·½·¨Ö÷ÒªÊÇÔÚJSPÖĞµ÷ÓÃ
+	 * åˆ†é¡µæƒ…å†µä¸‹æ¯é¡µå®é™…æ˜¾ç¤ºçš„è¡Œæ•°ï¼Œè¯¥æ–¹æ³•ä¸»è¦æ˜¯åœ¨JSPä¸­è°ƒç”¨
 	 * @deprecated
 	 * @return int
 	 */
@@ -376,7 +376,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇµÚÒ»Ò³
+	 * åˆ¤æ–­æ˜¯ç¬¬ä¸€é¡µ
 	 * @return boolean
 	 */
 	public boolean isFirstPage()
@@ -386,7 +386,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇ×îºóÒ»Ò³
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯æœ€åä¸€é¡µ
 	 * @return boolean
 	 */
 	public boolean isLastPage()
@@ -395,7 +395,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÓĞÏÂÒ³
+	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸‹é¡µ
 	 * @return boolean
 	 */
 	public boolean hasNextPage()
@@ -404,7 +404,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÓĞÉÏÒ³
+	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šé¡µ
 	 * @return boolean
 	 */
 	public boolean hasPreviousPage()
@@ -413,7 +413,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ÊÇ·ñĞèÒª·ÖÒ³ÏÔÊ¾
+	 * æ˜¯å¦éœ€è¦åˆ†é¡µæ˜¾ç¤º
 	 * @return boolean
 	 */
 	public boolean isNeedPaged(int forPageIndex)
@@ -430,7 +430,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ×ªµ½ÏÂÒ³
+	 * è½¬åˆ°ä¸‹é¡µ
 	 * @return void
 	 */
 	public void nextPage()
@@ -444,7 +444,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ÖØÖÃÒ³Ãæ
+	 * é‡ç½®é¡µé¢
 	 */
 	public void reIndex()
 	{
@@ -463,7 +463,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * ×ªµ½Ä³Ò³
+	 * è½¬åˆ°æŸé¡µ
 	 * @param int pageIndex
 	 * @return void
 	 */
@@ -474,7 +474,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 * @parma page:Page
 	 * @return void
 	 */
@@ -487,7 +487,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	{
 		doinit() ;
 		// wzw on 2007-06-05
-		// ¶ÔÓÚÒ»¸ö RowSet ¶ÔÏó£¬Èç¹û²»Á¢¼´¼ÓÔØÊı¾İ£¬µ¥´¿µÄ¹¹½¨Ò»¸öÃ»ÓĞ±ØÒª
+		// å¯¹äºä¸€ä¸ª RowSet å¯¹è±¡ï¼Œå¦‚æœä¸ç«‹å³åŠ è½½æ•°æ®ï¼Œå•çº¯çš„æ„å»ºä¸€ä¸ªæ²¡æœ‰å¿…è¦
 		// log.debug("Error: the code has been drop by Zeven on 2007-06-05."); 
 		// this.crs = new RowSet() ;
 		
@@ -510,7 +510,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 
 	/**
-	 * Zeven on 2008-05-27£¬ ½«µ¼º½ĞÅÏ¢´ÓDaoÒÆµ½ControllerÖĞ¡£
+	 * Zeven on 2008-05-27ï¼Œ å°†å¯¼èˆªä¿¡æ¯ä»Daoç§»åˆ°Controllerä¸­ã€‚
 	 * @param pageParams
 	 * @param datas
 	 * @throws SQLException
@@ -526,7 +526,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 
 	/**
-	 * Zeven on 2008-08-16£¬ ½«µ¼º½ĞÅÏ¢´ÓDaoÒÆµ½ControllerÖĞ¡£
+	 * Zeven on 2008-08-16ï¼Œ å°†å¯¼èˆªä¿¡æ¯ä»Daoç§»åˆ°Controllerä¸­ã€‚
 	 * @param pageParams
 	 * @param datas
 	 * @throws SQLException
@@ -545,7 +545,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 
 	
 	/**
-	 * ³õÊ¼²¿·ÖĞÅÏ¢¡£
+	 * åˆå§‹éƒ¨åˆ†ä¿¡æ¯ã€‚
 	 *
 	 */
 	private void doinit()
@@ -559,7 +559,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 	
 	/**
-	 * Ìí¼ÓÊı¾İ
+	 * æ·»åŠ æ•°æ®
 	 */
 	
 	public void setDataset( RowSet crs)
@@ -575,7 +575,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 	
 	/**
-	 *	ÆäËü·½·¨ --------------------------
+	 *	å…¶å®ƒæ–¹æ³• --------------------------
 	 */
 	public boolean absolute( int row) throws SQLException
 	{
@@ -612,7 +612,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 	
 	/**
-	 *	BigDecimal µÄgeter ·½·¨¡£
+	 *	BigDecimal çš„geter æ–¹æ³•ã€‚
 	 */
 	public BigDecimal getBigDecimal( int colNum ) throws SQLException
 	{
@@ -625,7 +625,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Blob µÄgeter ·½·¨¡£
+	 *	Blob çš„geter æ–¹æ³•ã€‚
 	 */
 	public Blob getBlob( int colNum) throws SQLException
 	{
@@ -638,7 +638,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Boolean µÄgeter ·½·¨¡£
+	 *	Boolean çš„geter æ–¹æ³•ã€‚
 	 */
 	public boolean getBoolean( int colNum) throws SQLException
 	{
@@ -652,7 +652,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 	
 	/**
-	 *	Byte µÄgeter ·½·¨¡£
+	 *	Byte çš„geter æ–¹æ³•ã€‚
 	 */
 	public byte getByte( int colNum ) throws SQLException
 	{
@@ -665,7 +665,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 	
 	/**
-	 *	Byte[] µÄgeter ·½·¨¡£
+	 *	Byte[] çš„geter æ–¹æ³•ã€‚
 	 */
 	public byte[] getBytes( int colNum ) throws SQLException
 	{
@@ -677,7 +677,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	CharacterStream µÄgeter ·½·¨¡£
+	 *	CharacterStream çš„geter æ–¹æ³•ã€‚
 	 
 	 public CharacterStream getCharacterStream( int colNum)
 	 {
@@ -692,7 +692,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	
 	
 	/**
-	 *	Clob µÄgeter ·½·¨¡£
+	 *	Clob çš„geter æ–¹æ³•ã€‚
 	 */
 	public Clob getClob( int colNum) throws SQLException
 	{
@@ -704,7 +704,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Date µÄgeter ·½·¨¡£
+	 *	Date çš„geter æ–¹æ³•ã€‚
 	 */
 	public Date getDate( int colNum) throws SQLException
 	{
@@ -717,7 +717,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Double µÄgeter ·½·¨¡£
+	 *	Double çš„geter æ–¹æ³•ã€‚
 	 */
 	public double getDouble( int colNum ) throws SQLException
 	{
@@ -729,7 +729,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Double µÄgeter ·½·¨¡£
+	 *	Double çš„geter æ–¹æ³•ã€‚
 	 */
 	public float getFloat( int colNum) throws SQLException
 	{
@@ -741,7 +741,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Integer µÄgeter ·½·¨¡£
+	 *	Integer çš„geter æ–¹æ³•ã€‚
 	 */
 	public int getInt( int colNum) throws SQLException
 	{
@@ -754,7 +754,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Long µÄgeter ·½·¨¡£
+	 *	Long çš„geter æ–¹æ³•ã€‚
 	 */
 	public long getLong( int colNum ) throws SQLException
 	{
@@ -766,7 +766,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Object µÄgeter ·½·¨¡£
+	 *	Object çš„geter æ–¹æ³•ã€‚
 	 */
 	public Object getObject( int colNum) throws SQLException
 	{
@@ -778,7 +778,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 //	/**
-//	 *	³éÏóµÄ µÄgeter ·½·¨£¬ÓëgetObejctÏàÍ¬£¬ÔÚ½Ó¿ÚÖĞÈ¥µôÁË¡£
+//	 *	æŠ½è±¡çš„ çš„geter æ–¹æ³•ï¼Œä¸getObejctç›¸åŒï¼Œåœ¨æ¥å£ä¸­å»æ‰äº†ã€‚
 //	 */
 //	public Object get( int colNum) throws SQLException
 //	{
@@ -791,7 +791,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 //	
 	
 	/**
-	 *	Short µÄgeter ·½·¨¡£
+	 *	Short çš„geter æ–¹æ³•ã€‚
 	 */
 	public short getShort( int colNum ) throws SQLException
 	{
@@ -803,7 +803,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	String µÄgeter ·½·¨¡£
+	 *	String çš„geter æ–¹æ³•ã€‚
 	 */
 	public String getString( int colNum) throws SQLException
 	{
@@ -815,7 +815,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Time µÄgeter ·½·¨¡£
+	 *	Time çš„geter æ–¹æ³•ã€‚
 	 */
 	public Time getTime( int colNum ) throws SQLException
 	{
@@ -827,7 +827,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	}
 	
 	/**
-	 *	Timestamp µÄgeter ·½·¨¡£
+	 *	Timestamp çš„geter æ–¹æ³•ã€‚
 	 */
 	public Timestamp getTimestamp( int colNum ) throws SQLException
 	{
@@ -839,12 +839,12 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 		return ( crs.getTimestamp( colName ) ) ;
 	}
 	
-	// --------------------------------------------  get ·½·¨ end 
-	//ËµÃ÷£ºÆäËûµÄget·½·¨ĞèÒªÔÙÌí¼Ó¡£
+	// --------------------------------------------  get æ–¹æ³• end 
+	//è¯´æ˜ï¼šå…¶ä»–çš„getæ–¹æ³•éœ€è¦å†æ·»åŠ ã€‚
 	
 	
 	/**
-	 *	·µ»Ø×ÜµÄĞĞÊı
+	 *	è¿”å›æ€»çš„è¡Œæ•°
 	 */
 	public int size()
 	{
@@ -854,18 +854,18 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 		}else{
 			return this.navigator.getRowCount();
 			
-		}   // ÕâÀïÖ»ÊÇÔİÊ±Ê¹ÓÃ
+		}   // è¿™é‡Œåªæ˜¯æš‚æ—¶ä½¿ç”¨
 		
 		// eturn rowCount ;
 	}
 
 
 	/**
-	* <p>²»²ÉÓÃWeb·şÎñÆ÷»º´æ£¬Ã¿´Î·­Ò³¶¼²éÕÒÊı¾İ¿â£¬
-	* 		Õë¶Ô²»Í¬µÄÊı¾İÈçOracle,SQL Server²ÉÓÃ²»Í¬µÄ·â×°ÊµÏÖ¡£
-	* 	wzw on 2006-11-28 ½«onclickÊÂ¼şÖĞµÄexitĞŞ¸ÄÎª'',Ê¹ÓÃreturn Ò²²»ĞĞ¡£</p>
-	* @param commandName ·­Ò³Ê±ÓÃµÄµÄURL£¬ºóÃæ´øÓĞ·­Ò³ĞÅÏ¢²ÎÊıºÍÆäËûĞèÒªµÄ²ÎÊı
-	* @return ²éÑ¯µ¼º½ĞÅÏ¢html´úÂë
+	* <p>ä¸é‡‡ç”¨WebæœåŠ¡å™¨ç¼“å­˜ï¼Œæ¯æ¬¡ç¿»é¡µéƒ½æŸ¥æ‰¾æ•°æ®åº“ï¼Œ
+	* 		é’ˆå¯¹ä¸åŒçš„æ•°æ®å¦‚Oracle,SQL Serveré‡‡ç”¨ä¸åŒçš„å°è£…å®ç°ã€‚
+	* 	wzw on 2006-11-28 å°†onclickäº‹ä»¶ä¸­çš„exitä¿®æ”¹ä¸º'',ä½¿ç”¨return ä¹Ÿä¸è¡Œã€‚</p>
+	* @param commandName ç¿»é¡µæ—¶ç”¨çš„çš„URLï¼Œåé¢å¸¦æœ‰ç¿»é¡µä¿¡æ¯å‚æ•°å’Œå…¶ä»–éœ€è¦çš„å‚æ•°
+	* @return æŸ¥è¯¢å¯¼èˆªä¿¡æ¯htmlä»£ç 
 	*/
 	public String getPagesPnfl( )
 	{
@@ -884,7 +884,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
  
 	
 	/**
-	 * Zeven:·½±ãÒ³Ãæµ÷ÓÃ£¬Ö±½ÓÊ¹ÓÃ dataObject£¬¶ø²»ĞèÒª¾ßÌåÖ¸¶¨ÊÇdataList»¹ÊÇcrs¶ÔÏó¡£
+	 * Zeven:æ–¹ä¾¿é¡µé¢è°ƒç”¨ï¼Œç›´æ¥ä½¿ç”¨ dataObjectï¼Œè€Œä¸éœ€è¦å…·ä½“æŒ‡å®šæ˜¯dataListè¿˜æ˜¯crså¯¹è±¡ã€‚
 	 */
 	public Object getDataObject() {
 		if(this.crs==null){
@@ -903,7 +903,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public void setPath(String path) {
 		this.path = path ;
-		this.navigator.setPath(path);  //ĞŞ¸Äµ¼º½¶ÔÏóµÄpathÊôĞÔ
+		this.navigator.setPath(path);  //ä¿®æ”¹å¯¼èˆªå¯¹è±¡çš„pathå±æ€§
 		
 	}
 

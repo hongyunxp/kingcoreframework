@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 import com.kingcore.framework.bean.Navigator;
 
 /**
- * <p>web Ò³ÃæÊ¹ÓÃµÄµ¼º½·­Ò³¶ÔÏó£¬Ö§³Ögetter,ÔÚÒ³Ãæ¿ÉÊ¹ÓÃ±êÇ©»ñÈ¡¡£</p>
+ * <p>web é¡µé¢ä½¿ç”¨çš„å¯¼èˆªç¿»é¡µå¯¹è±¡ï¼Œæ”¯æŒgetter,åœ¨é¡µé¢å¯ä½¿ç”¨æ ‡ç­¾è·å–ã€‚</p>
  * @author Zeven on 2008-10-2
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -36,27 +36,27 @@ public class WebPageNavigator implements Navigator {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * ÈÕÖ¾±äÁ¿
+	 * æ—¥å¿—å˜é‡
 	 */
 	public static Logger log = Logger.getLogger(com.kingcore.framework.bean.impl.WebPageNavigator.class);
 	
 	/**
-	 * ¼ìË÷µÄµÚÒ»Ìõ¼ÍÂ¼ĞĞºÅ
+	 * æ£€ç´¢çš„ç¬¬ä¸€æ¡çºªå½•è¡Œå·
 	 */
 	protected int beginIndex;
 	
 	/**
-	 * ¼ìË÷µÄ×îºóÒ»Ìõ¼ÍÂ¼ĞĞºÅ
+	 * æ£€ç´¢çš„æœ€åä¸€æ¡çºªå½•è¡Œå·
 	 */
 	protected int endIndex;
 	
 	/**
-	 * Ò»ĞĞ¼ÇÂ¼
+	 * ä¸€è¡Œè®°å½•
 	 */
 	//protected DataBean data;
 
 	/**
-	 * ·ÖÒ³±ê¼Ç
+	 * åˆ†é¡µæ ‡è®°
 	 */
 	protected boolean isPaged;
 	
@@ -66,7 +66,7 @@ public class WebPageNavigator implements Navigator {
 	private static int nvlCount=6;
 	
 	/**
-	 *  wzw ³õÊ¼µ¼º½À¸µÄËùÓĞĞÅÏ¢
+	 *  wzw åˆå§‹å¯¼èˆªæ çš„æ‰€æœ‰ä¿¡æ¯
 	 * @param pageParams
 	 */
 	public WebPageNavigator(int[] pageParams, String path) {
@@ -76,7 +76,7 @@ public class WebPageNavigator implements Navigator {
 		int pageNumber = pageParams[2];
 		
 		if(pageSize<1 || pageNumber<1 || rowCount<0){
-			log.fatal("²ÎÊı³õÊ¼Ê§°Ü£¬ÇëÏÈµ÷ÓÃ getPageParameter¡¢getNavigableDataSet Á½¸ö·½·¨Ö®ºóµ÷ÓÃ±¾·½·¨");
+			log.fatal("å‚æ•°åˆå§‹å¤±è´¥ï¼Œè¯·å…ˆè°ƒç”¨ getPageParameterã€getNavigableDataSet ä¸¤ä¸ªæ–¹æ³•ä¹‹åè°ƒç”¨æœ¬æ–¹æ³•");
 		}
 		
 		this.setPageSize( pageSize );
@@ -95,7 +95,7 @@ public class WebPageNavigator implements Navigator {
 
 
 	/**
-	 * ³õÊ¼²¿·ÖĞÅÏ¢¡£
+	 * åˆå§‹éƒ¨åˆ†ä¿¡æ¯ã€‚
 	 *
 	 */
 	private void doinit()
@@ -109,7 +109,7 @@ public class WebPageNavigator implements Navigator {
 
 	public String getPagesPn() {
 		if(getRowCount()<1){
-			return "<div class='tab_bot_box'>µ±Ç°Ã»ÓĞ¼ÇÂ¼£¡</div>";	//wzw on 2006-11-15, Èç¹ûÒ»ÌõÊı¾İ¶¼Ã»ÓĞ£¬²»Êä³öµ¼º½ĞÅÏ¢¡£ 
+			return "<div class='tab_bot_box'>å½“å‰æ²¡æœ‰è®°å½•ï¼</div>";	//wzw on 2006-11-15, å¦‚æœä¸€æ¡æ•°æ®éƒ½æ²¡æœ‰ï¼Œä¸è¾“å‡ºå¯¼èˆªä¿¡æ¯ã€‚ 
 		}
 		
 		String commandName = this.path;
@@ -118,11 +118,11 @@ public class WebPageNavigator implements Navigator {
 		pageSize = getPageSize();	//;rows;
 		//pageCount = (getRowCount() - 1) / rows + 1;
 //		String title =
-//			"(ĞĞ"
+//			"(è¡Œ"
 //			+ ((currentPageIndex - 1) * pageSize + 1)
 //			+ "/"
 //			+ getRowCount()
-//			+ ",Ò³"
+//			+ ",é¡µ"
 //			+ getPageNumber()
 //			+ "/"
 //			+ getPageCount()
@@ -146,17 +146,17 @@ public class WebPageNavigator implements Navigator {
 		
 //		sb.append( "<div class='tab_bot_box'>")
 //			.append("<span class='list_all'>")			
-//			.append("µÚ")
+//			.append("ç¬¬")
 //			.append(getPageNumber())
 //			.append("/")
 //			.append(getPageCount())
-//			.append("Ò³£¬")
+//			.append("é¡µï¼Œ")
 //			.append((currentPageIndex - 1) * pageSize + 1)
 //			.append("-")
 //			.append( (((currentPageIndex - 1) * pageSize + getPageSize())<this.rowCount)?((currentPageIndex - 1) * pageSize + getPageSize()):this.rowCount)
-//			.append("£¬¹²")
+//			.append("ï¼Œå…±")
 //			.append(getRowCount())
-//			.append("Ìõ")	
+//			.append("æ¡")	
 //			.append("</span>");
 			
 //		if (!isFirstPage())
@@ -164,11 +164,11 @@ public class WebPageNavigator implements Navigator {
 //			sb
 //			.append( pubHref )
 //			.append("&pageNumber=1")
-//			.append("\">1</a>");	//Ê× Ò³
+//			.append("\">1</a>");	//é¦– é¡µ
 //		}
 //		else
 //		{
-//			sb.append("<span >Ê× Ò³</span>");
+//			sb.append("<span >é¦– é¡µ</span>");
 //		}
 		//
 		if (hasPreviousPage())
@@ -177,12 +177,12 @@ public class WebPageNavigator implements Navigator {
 			.append( pubHref )
 			.append("&pageNumber=")
 			.append(String.valueOf(currentPageIndex - 1))
-			.append("\" class=\"page_turn\">&lt; ÉÏÒ»Ò³</a>");
+			.append("\" class=\"page_turn\">&lt; ä¸Šä¸€é¡µ</a>");
 		}
 		else
 		{
 			sb
-			.append("<span class=\"no_page_turn\">&lt; ÉÏÒ»Ò³</span>"); 
+			.append("<span class=\"no_page_turn\">&lt; ä¸Šä¸€é¡µ</span>"); 
 		}
 
 //		// ...234567891011...
@@ -255,12 +255,12 @@ public class WebPageNavigator implements Navigator {
 			.append( pubHref )
 			.append("&pageNumber=")
 			.append(String.valueOf(currentPageIndex + 1))
-			.append("\" class=\"page_turn\">ÏÂÒ»Ò³&gt;</a>");
+			.append("\" class=\"page_turn\">ä¸‹ä¸€é¡µ&gt;</a>");
 		}
 		else
 		{
 			sb
-			.append("<span class=\"no_page_turn\">ÏÂÒ»Ò³&gt;</span>");
+			.append("<span class=\"no_page_turn\">ä¸‹ä¸€é¡µ&gt;</span>");
 		}
 
 		//
@@ -275,7 +275,7 @@ public class WebPageNavigator implements Navigator {
 //		else
 //		{
 //			sb
-//			.append("<span >Ä© Ò³</span>");
+//			.append("<span >æœ« é¡µ</span>");
 //		}
  
 		
@@ -285,10 +285,10 @@ public class WebPageNavigator implements Navigator {
 //				//name=\"pageNumber\" id=\"toPage\" 
 //			sb
 //			.append("<td align=right valign=\"center\" nowrap>")
-//			.append("&nbsp;Ìøµ½µÚ</td><td><input id='")
+//			.append("&nbsp;è·³åˆ°ç¬¬</td><td><input id='")
 //			.append(id)
 //			.append("' size=\"4\"></td>")
-//			.append("<td>Ò³</td>")
+//			.append("<td>é¡µ</td>")
 //			.append("<td><input type=button onclick=\"javascript:")
 //			.append("((document.getElementById('")
 //			.append(id)
@@ -310,7 +310,7 @@ public class WebPageNavigator implements Navigator {
 //			.append(":")
 //			.append("document.getElementById('")
 //			.append(id)
-//			.append("').value)))\" value=²é¿´ class=input></td>") ;
+//			.append("').value)))\" value=æŸ¥çœ‹ class=input></td>") ;
 //		}
 		
 		sb.append("</div>");
@@ -318,9 +318,9 @@ public class WebPageNavigator implements Navigator {
 	}
 
 	
-//  // -----------------------  ·ÅÈëµ½»ùÀàÖĞ
+//  // -----------------------  æ”¾å…¥åˆ°åŸºç±»ä¸­
 //	/**
-//	 * ÅĞ¶ÏÊÇ·ñÓĞÏÂÒ³
+//	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸‹é¡µ
 //	 * @return boolean
 //	 */
 //	public boolean hasNextPage()
@@ -335,7 +335,7 @@ public class WebPageNavigator implements Navigator {
 //	} 
 //
 //	/**
-//	 * ÅĞ¶ÏÊÇ·ñÓĞÉÏÒ³
+//	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šé¡µ
 //	 * @return boolean
 //	 */
 //	public boolean hasPreviousPage()
@@ -350,16 +350,16 @@ public class WebPageNavigator implements Navigator {
 
 	
 	/**
-	* <p>²»²ÉÓÃWeb·şÎñÆ÷»º´æ£¬Ã¿´Î·­Ò³¶¼²éÕÒÊı¾İ¿â£¬
-	* 		Õë¶Ô²»Í¬µÄÊı¾İÈçOracle,SQL Server²ÉÓÃ²»Í¬µÄ·â×°ÊµÏÖ¡£
-	* 	wzw on 2006-11-28 ½«onclickÊÂ¼şÖĞµÄexitĞŞ¸ÄÎª'',Ê¹ÓÃreturn Ò²²»ĞĞ¡£</p>
-	* @param commandName ·­Ò³Ê±ÓÃµÄµÄURL£¬ºóÃæ´øÓĞ·­Ò³ĞÅÏ¢²ÎÊıºÍÆäËûĞèÒªµÄ²ÎÊı
-	* @return ²éÑ¯µ¼º½ĞÅÏ¢html´úÂë
+	* <p>ä¸é‡‡ç”¨WebæœåŠ¡å™¨ç¼“å­˜ï¼Œæ¯æ¬¡ç¿»é¡µéƒ½æŸ¥æ‰¾æ•°æ®åº“ï¼Œ
+	* 		é’ˆå¯¹ä¸åŒçš„æ•°æ®å¦‚Oracle,SQL Serveré‡‡ç”¨ä¸åŒçš„å°è£…å®ç°ã€‚
+	* 	wzw on 2006-11-28 å°†onclickäº‹ä»¶ä¸­çš„exitä¿®æ”¹ä¸º'',ä½¿ç”¨return ä¹Ÿä¸è¡Œã€‚</p>
+	* @param commandName ç¿»é¡µæ—¶ç”¨çš„çš„URLï¼Œåé¢å¸¦æœ‰ç¿»é¡µä¿¡æ¯å‚æ•°å’Œå…¶ä»–éœ€è¦çš„å‚æ•°
+	* @return æŸ¥è¯¢å¯¼èˆªä¿¡æ¯htmlä»£ç 
 	*/
 	public String getPagesPnfl( )
 	{
 		if(getRowCount()<1){
-			return "<div class='tab_bot_box'>µ±Ç°Ã»ÓĞ¼ÇÂ¼£¡</div>";	//wzw on 2006-11-15, Èç¹ûÒ»ÌõÊı¾İ¶¼Ã»ÓĞ£¬²»Êä³öµ¼º½ĞÅÏ¢¡£ 
+			return "<div class='tab_bot_box'>å½“å‰æ²¡æœ‰è®°å½•ï¼</div>";	//wzw on 2006-11-15, å¦‚æœä¸€æ¡æ•°æ®éƒ½æ²¡æœ‰ï¼Œä¸è¾“å‡ºå¯¼èˆªä¿¡æ¯ã€‚ 
 		}
 		
 		String commandName = this.path;
@@ -368,11 +368,11 @@ public class WebPageNavigator implements Navigator {
 		pageSize = getPageSize();	//;rows;
 		//pageCount = (getRowCount() - 1) / rows + 1;
 		String title =
-			"(ĞĞ"
+			"(è¡Œ"
 			+ ((currentPageIndex - 1) * pageSize + 1)
 			+ "/"
 			+ getRowCount()
-			+ ",Ò³"
+			+ ",é¡µ"
 			+ getPageNumber()
 			+ "/"
 			+ getPageCount()
@@ -394,17 +394,17 @@ public class WebPageNavigator implements Navigator {
 		
 		sb.append( "<div class='tab_bot_box'>")
 			.append("<span class='list_all'>")			
-			.append("µÚ")
+			.append("ç¬¬")
 			.append(getPageNumber())
 			.append("/")
 			.append(getPageCount())
-			.append("Ò³£¬")
+			.append("é¡µï¼Œ")
 			.append((currentPageIndex - 1) * pageSize + 1)
 			.append("-")
 			.append( (((currentPageIndex - 1) * pageSize + getPageSize())<this.rowCount)?((currentPageIndex - 1) * pageSize + getPageSize()):this.rowCount)
-			.append("£¬¹²")
+			.append("ï¼Œå…±")
 			.append(getRowCount())
-			.append("Ìõ")	
+			.append("æ¡")	
 			.append("</span>");
 			
 //		if (!isFirstPage())
@@ -412,11 +412,11 @@ public class WebPageNavigator implements Navigator {
 //			sb
 //			.append( pubHref )
 //			.append("&pageNumber=1")
-//			.append("\">1</a>");	//Ê× Ò³
+//			.append("\">1</a>");	//é¦– é¡µ
 //		}
 //		else
 //		{
-//			sb.append("<span >Ê× Ò³</span>");
+//			sb.append("<span >é¦– é¡µ</span>");
 //		}
 		//
 		if (hasPreviousPage())
@@ -425,12 +425,12 @@ public class WebPageNavigator implements Navigator {
 			.append( pubHref )
 			.append("&pageNumber=")
 			.append(String.valueOf(currentPageIndex - 1))
-			.append("\">&lt; ÉÏÒ»Ò³</a>");
+			.append("\">&lt; ä¸Šä¸€é¡µ</a>");
 		}
 		else
 		{
 			sb
-			.append("<span >&lt; ÉÏÒ»Ò³</span>"); 
+			.append("<span >&lt; ä¸Šä¸€é¡µ</span>"); 
 		}
 
 		// ...234567891011...
@@ -503,12 +503,12 @@ public class WebPageNavigator implements Navigator {
 			.append( pubHref )
 			.append("&pageNumber=")
 			.append(String.valueOf(currentPageIndex + 1))
-			.append("\">ÏÂÒ»Ò³&gt;</a>");
+			.append("\">ä¸‹ä¸€é¡µ&gt;</a>");
 		}
 		else
 		{
 			sb
-			.append("<span >ÏÂÒ»Ò³&gt;</span>");
+			.append("<span >ä¸‹ä¸€é¡µ&gt;</span>");
 		}
 
 //
@@ -523,19 +523,19 @@ public class WebPageNavigator implements Navigator {
 //		else
 //		{
 //			sb
-//			.append("<span >Ä© Ò³</span>");
+//			.append("<span >æœ« é¡µ</span>");
 //		}
  
 		
-		// ÒªÇóÒ³Êı´óÓÚ1²Å»á³öÏÖ¡°Ìø×ªµ½...¡±¹¦ÄÜ
-		// Ö´ĞĞÇëÇóµÄÌõ¼ş£º 
-		//      > ÌîĞ´µÄÒ²ºÅ ±ØĞëÔÚ1->×ÜÒ³ÊıµÄÖ®¼ä£¬²¢ÇÒ²»ÄÜµÈÓÚµ±Ç°Ò³ºÅ
+		// è¦æ±‚é¡µæ•°å¤§äº1æ‰ä¼šå‡ºç°â€œè·³è½¬åˆ°...â€åŠŸèƒ½
+		// æ‰§è¡Œè¯·æ±‚çš„æ¡ä»¶ï¼š 
+		//      > å¡«å†™çš„ä¹Ÿå· å¿…é¡»åœ¨1->æ€»é¡µæ•°çš„ä¹‹é—´ï¼Œå¹¶ä¸”ä¸èƒ½ç­‰äºå½“å‰é¡µå·
 		if (pageCount > 1 )
 		{
 			String id = "toPage";	//commandName + "pageNumber";
 				//name=\"pageNumber\" id=\"toPage\" 
 			sb
-			.append("<span>Ìø×ªµ½")
+			.append("<span>è·³è½¬åˆ°")
 			.append( pubHref )
 			.append("\" id=\"toPageHref\" style='display:none;'></a>")
 			.append("<input type=\"text\" class=\"tab_bot_text\" id=\"")
@@ -568,12 +568,12 @@ public class WebPageNavigator implements Navigator {
 	
 
 	/**
-	* <p>·ÖÒ³µ¼º½ĞÅÏ¢¡£Zeven on 2009-07-31£¬ÁíÒ»ÖÖ·ç¸ñµÄµ¼º½´úÂë¡£
+	* <p>åˆ†é¡µå¯¼èˆªä¿¡æ¯ã€‚Zeven on 2009-07-31ï¼Œå¦ä¸€ç§é£æ ¼çš„å¯¼èˆªä»£ç ã€‚
 	* 
-	* 	Ğ§¹ûÈçÏÂ£º
+	* 	æ•ˆæœå¦‚ä¸‹ï¼š
 	*************************************************************************************
 			<div class="page_box">
-                <a class="page_up" href="#"><span>ÉÏÒ»Ò³</span></a><!--Ã»ÓĞÉÏÒ»Ò³Ê±£¬È¥µôhref="#"£¬ÑùÊ½¸ÄÎª¡°page_up_unable¡±-->
+                <a class="page_up" href="#"><span>ä¸Šä¸€é¡µ</span></a><!--æ²¡æœ‰ä¸Šä¸€é¡µæ—¶ï¼Œå»æ‰href="#"ï¼Œæ ·å¼æ”¹ä¸ºâ€œpage_up_unableâ€-->
                 <a href="#">1</a>
                 <span>2</span>
                 <a href="#">3</a>
@@ -581,22 +581,22 @@ public class WebPageNavigator implements Navigator {
                 <a href="#">5</a>
                 <a href="#">6</a>
                 <a href="#">7</a>
-                <span>¡­</span>
+                <span>â€¦</span>
                 <a href="#">30</a>
                 <a href="#">31</a>
-                <a class="page_down_unable"><span>ÏÂÒ»Ò³</span></a><!--Ã»ÓĞÏÂÒ»Ò³Ê±£¬È¥µôhref="#"£¬ÑùÊ½¸ÄÎª¡°page_down_unable¡±-->
-                <span>¹²30Ò³,µ½</span>
+                <a class="page_down_unable"><span>ä¸‹ä¸€é¡µ</span></a><!--æ²¡æœ‰ä¸‹ä¸€é¡µæ—¶ï¼Œå»æ‰href="#"ï¼Œæ ·å¼æ”¹ä¸ºâ€œpage_down_unableâ€-->
+                <span>å…±30é¡µ,åˆ°</span>
                 <input class="page_text" name="" type="text" />
-                <span>Ò³</span>
-                <input class="button" name="" type="button" value="È·¶¨" />
+                <span>é¡µ</span>
+                <input class="button" name="" type="button" value="ç¡®å®š" />
             </div>
 	*************************************************************************************
 	* 
 	* 	</p>
-	* @param rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	* @param commandName CommandµÄURL
-	* @param nvlCount µ¼º½ÖĞ¼äÍ¬Ê±ÏÔÊ¾µÄÁ´½ÓÊı£¬Ä¬ÈÏ¿ÉÒÔ6
-	* @return ²éÑ¯µ¼º½ĞÅÏ¢html´úÂë
+	* @param rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	* @param commandName Commandçš„URL
+	* @param nvlCount å¯¼èˆªä¸­é—´åŒæ—¶æ˜¾ç¤ºçš„é“¾æ¥æ•°ï¼Œé»˜è®¤å¯ä»¥6
+	* @return æŸ¥è¯¢å¯¼èˆªä¿¡æ¯htmlä»£ç 
 	*/
 	public String getPagesPnfl2( )
 	{
@@ -605,8 +605,8 @@ public class WebPageNavigator implements Navigator {
 	}
 	
 	/**
-	 * <p>±¾·½·¨¾ßÌåÉú³Éµ¼º½µÄhtml´úÂë£¬Ö»Ê¹ÓÃ²ÎÊı£¬²»Ê¹ÓÃÈÎºÎ³ÉÔ±¶ÔÏó£¬
-	 *       ¿ÉÒÔºÜ¿½±´ÒÆÖ²µ½jsÖĞ¡£</p>
+	 * <p>æœ¬æ–¹æ³•å…·ä½“ç”Ÿæˆå¯¼èˆªçš„htmlä»£ç ï¼Œåªä½¿ç”¨å‚æ•°ï¼Œä¸ä½¿ç”¨ä»»ä½•æˆå‘˜å¯¹è±¡ï¼Œ
+	 *       å¯ä»¥å¾ˆæ‹·è´ç§»æ¤åˆ°jsä¸­ã€‚</p>
 	 * @param p_path
 	 * @param p_rowCount
 	 * @param p_pageSize
@@ -618,7 +618,7 @@ public class WebPageNavigator implements Navigator {
 			 int p_nvlCount, int p_currentPageIndex) {
 		
 		if(p_rowCount<1){  //getRowCount()
-			return "<div class='page_box'>µ±Ç°Ã»ÓĞ¼ÇÂ¼£¡</div>"; 
+			return "<div class='page_box'>å½“å‰æ²¡æœ‰è®°å½•ï¼</div>"; 
 		}
 		int t_pageCount = (p_rowCount - 1) / p_pageSize + 1;
 		String commandName = p_path;  //this.path
@@ -648,12 +648,12 @@ public class WebPageNavigator implements Navigator {
 			.append( pubHref )
 			.append("&pageNumber=")
 			.append(String.valueOf( p_currentPageIndex - 1))
-			.append("\" class='page_up'><span>ÉÏÒ»Ò³</span></a>");
+			.append("\" class='page_up'><span>ä¸Šä¸€é¡µ</span></a>");
 		}
 		else
 		{
 			sb
-			.append("<a class='page_up_unable'><span>ÉÏÒ»Ò³</span></a>"); 
+			.append("<a class='page_up_unable'><span>ä¸Šä¸€é¡µ</span></a>"); 
 		}
 
 		// ...234567891011...
@@ -685,7 +685,7 @@ public class WebPageNavigator implements Navigator {
 		
 		int iCnt=0;
 		while(iCnt< p_nvlCount && fpi<= t_pageCount){
-			if(fpi== p_currentPageIndex){	// µ±Ç°Ò³
+			if(fpi== p_currentPageIndex){	// å½“å‰é¡µ
 				sb
 				.append("<span class='current_page'>"+ fpi++ +"</span>");
 				
@@ -706,7 +706,7 @@ public class WebPageNavigator implements Navigator {
 				.append("<span>...</span>");
 			}
 			
-			if( t_pageCount==p_currentPageIndex){  // µ±Ç°Ò³
+			if( t_pageCount==p_currentPageIndex){  // å½“å‰é¡µ
 				sb
 				.append( "<span class='current_page'>"+t_pageCount+"</span>" );
 			}else{
@@ -726,36 +726,36 @@ public class WebPageNavigator implements Navigator {
 			.append( pubHref )
 			.append("&pageNumber=")
 			.append(String.valueOf( p_currentPageIndex + 1))
-			.append("\" class='page_down'><span>ÏÂÒ»Ò³</span></a>");
+			.append("\" class='page_down'><span>ä¸‹ä¸€é¡µ</span></a>");
 		}
 		else
 		{
 			sb
-			.append("<a class='page_down_unable'><span>ÏÂÒ»Ò³</span></a>");
+			.append("<a class='page_down_unable'><span>ä¸‹ä¸€é¡µ</span></a>");
 		}
 		
-		//<span>¹²30Ò³,µ½</span>
+		//<span>å…±30é¡µ,åˆ°</span>
 		if ( t_pageCount > 1 ){
-			sb.append("<span>¹²"+ t_pageCount+"Ò³,µ½</span>");
+			sb.append("<span>å…±"+ t_pageCount+"é¡µ,åˆ°</span>");
 		}else{
-			sb.append("<span>¹²"+ t_pageCount+"Ò³</span>");
+			sb.append("<span>å…±"+ t_pageCount+"é¡µ</span>");
 		
 		}
 		
-		// ÒªÇóÒ³Êı´óÓÚ1²Å»á³öÏÖ¡°Ìø×ªµ½...¡±¹¦ÄÜ
-		// Ö´ĞĞÇëÇóµÄÌõ¼ş£º 
-		//      > ÌîĞ´µÄÒ²ºÅ ±ØĞëÔÚ1->×ÜÒ³ÊıµÄÖ®¼ä£¬²¢ÇÒ²»ÄÜµÈÓÚµ±Ç°Ò³ºÅ
+		// è¦æ±‚é¡µæ•°å¤§äº1æ‰ä¼šå‡ºç°â€œè·³è½¬åˆ°...â€åŠŸèƒ½
+		// æ‰§è¡Œè¯·æ±‚çš„æ¡ä»¶ï¼š 
+		//      > å¡«å†™çš„ä¹Ÿå· å¿…é¡»åœ¨1->æ€»é¡µæ•°çš„ä¹‹é—´ï¼Œå¹¶ä¸”ä¸èƒ½ç­‰äºå½“å‰é¡µå·
 		if ( t_pageCount > 1 )
 		{
 			String id = "toPage";	//commandName + "pageNumber";
 				//name=\"pageNumber\" id=\"toPage\" 
 			sb
-			//.append("<span>Ìø×ªµ½")
+			//.append("<span>è·³è½¬åˆ°")
 			.append( pubHref )
 			.append("\" id=\"toPageHref\" style='display:none;'></a>")
 			.append("<input type=\"text\" class=\"page_text\" id=\"")
 			.append(id)
-			.append("\"><span>Ò³</span><input type=\"button\" class=\"button\" onclick=\"javaScript:")
+			.append("\"><span>é¡µ</span><input type=\"button\" class=\"button\" onclick=\"javaScript:")
 			.append("if(!(document.getElementById('")
 			.append(id)
 			.append("').value==''||document.getElementById('")
@@ -772,7 +772,7 @@ public class WebPageNavigator implements Navigator {
 			.append("document.getElementById('")
 			.append(id)
 			.append("').value+'&t='+")
-			.append("new Date().getTime();if(typeof(navigatorClick)=='function'){navigatorClick(this);};window.location.href=document.getElementById('toPageHref').href;}\" value=\"È·¶¨\">") ; //</span>
+			.append("new Date().getTime();if(typeof(navigatorClick)=='function'){navigatorClick(this);};window.location.href=document.getElementById('toPageHref').href;}\" value=\"ç¡®å®š\">") ; //</span>
 			//.append("new Date().getTime())?document.getElementById('toPageHref').click():''))\" value=\"GO\"></span>") ;
 		}
 		
@@ -781,7 +781,7 @@ public class WebPageNavigator implements Navigator {
 	}
 	
 //	/**
-//	 *  »ù±¾¹¹Ôìº¯Êı¡£
+//	 *  åŸºæœ¬æ„é€ å‡½æ•°ã€‚
 //	 * @param pageParams
 //	 */
 //	public Navigator(int[] pageParams) {
@@ -789,27 +789,27 @@ public class WebPageNavigator implements Navigator {
 	
 	//------------------------------------------------- 
 	/**
-	 * ×ÜĞĞÊı
+	 * æ€»è¡Œæ•°
 	 */
-	protected int rowCount;
+	protected int rowCount = -1;
 	
 	/**
-	 * Ã¿Ò³ÏÔÊ¾µÄĞĞÊı Ä¬ÈÏÖµ
+	 * æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•° é»˜è®¤å€¼
 	 */
 	protected int pageSize = 20;
 	
 	/**
-	 * ×ÜÒ³Êı
+	 * æ€»é¡µæ•°
 	 */
 	protected int pageCount;
 
 	/**
-	 *µ±Ç°Ò³ºÅ
+	 *å½“å‰é¡µå·
 	 */
 	protected int currentPageIndex = 1;
 
 	/**
-	 * µ¼º½Á´½ÓĞÅÏ¢
+	 * å¯¼èˆªé“¾æ¥ä¿¡æ¯
 	 */
 	protected String path = null;
 	
@@ -827,12 +827,12 @@ public class WebPageNavigator implements Navigator {
 
 
 	/**
-	 *  ÉèÖÃÃ¿Ò³ÏÔÊ¾µÄĞĞÊı¡£
+	 *  è®¾ç½®æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•°ã€‚
 	 * @param pageSize
 	 */
 	public void setPageSize(int pageSize) {
 		
-		if(pageSize>120) {	// ÉèÖÃ×î´óÖµ£¬·ÀÖ¹¹¥»÷ĞĞÎª¡£	
+		if(pageSize>120) {	// è®¾ç½®æœ€å¤§å€¼ï¼Œé˜²æ­¢æ”»å‡»è¡Œä¸ºã€‚	
 			pageSize = 120;
 		}
 		this.pageSize = pageSize;
@@ -863,7 +863,7 @@ public class WebPageNavigator implements Navigator {
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÓĞÏÂÒ³
+	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸‹é¡µ
 	 * @return boolean
 	 */
 	public boolean hasNextPage()
@@ -878,7 +878,7 @@ public class WebPageNavigator implements Navigator {
 	} 
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÓĞÉÏÒ³
+	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šé¡µ
 	 * @return boolean
 	 */
 	public boolean hasPreviousPage()
@@ -891,7 +891,7 @@ public class WebPageNavigator implements Navigator {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇµÚÒ»Ò³
+	 * åˆ¤æ–­æ˜¯ç¬¬ä¸€é¡µ
 	 * @return boolean
 	 */
 	public boolean isFirstPage()
@@ -904,7 +904,7 @@ public class WebPageNavigator implements Navigator {
 		
 	}
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇ×îºóÒ»Ò³
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯æœ€åä¸€é¡µ
 	 * @return boolean
 	 */
 	public boolean isLastPage()
@@ -923,7 +923,7 @@ public class WebPageNavigator implements Navigator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// ×¢Òâ£º½Ó¿ÚÀïÃæµÄ³ÉÔ±¶ÔÏó£¬ÊÇfinalÀàĞÍ£¬²»ÄÜ±»ĞŞ¸ÄµÄ¡£
+		// æ³¨æ„ï¼šæ¥å£é‡Œé¢çš„æˆå‘˜å¯¹è±¡ï¼Œæ˜¯finalç±»å‹ï¼Œä¸èƒ½è¢«ä¿®æ”¹çš„ã€‚
 		Navigator wng = new WebPageNavigator();
 		System.out.println("=="+wng.getPageNumber() );
 		wng.setPageNumber( wng.getPageNumber()+2 );

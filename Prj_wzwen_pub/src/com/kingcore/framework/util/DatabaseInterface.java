@@ -15,11 +15,11 @@ import org.apache.commons.logging.LogFactory;
  */
 public interface DatabaseInterface {
 	/**
-	 * 日志变量
+	 * 鏃ュ織鍙橀噺
 	 */
 	public static final Log log = LogFactory.getLog(DatabaseInterface.class);
 	/**
-	 * 得到相应的sql语句
+	 * 寰楀埌鐩稿簲鐨剆ql璇彞
 	 * Create on 2003-6-20
 	 * @param method
 	 * @param parameteras

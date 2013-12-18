@@ -14,7 +14,7 @@ package wzw.sql;
 import java.util.HashMap;
 
 /**
- * <p>java类文件的说明...</p>
+ * <p>java绫绘枃浠剁殑璇存槑...</p>
  * @author Zeven on 2008-9-9
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
