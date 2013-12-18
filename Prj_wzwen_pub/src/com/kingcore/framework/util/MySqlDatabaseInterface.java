@@ -8,7 +8,7 @@ package com.kingcore.framework.util;
 
 /**
  * @author WUZEWEN
- * ÓÃÀ´±êÊ¶ÊÇMySqlÊı¾İ¿â
+ * ç”¨æ¥æ ‡è¯†æ˜¯MySqlæ•°æ®åº“
  */
 public interface MySqlDatabaseInterface extends DatabaseInterface {
 

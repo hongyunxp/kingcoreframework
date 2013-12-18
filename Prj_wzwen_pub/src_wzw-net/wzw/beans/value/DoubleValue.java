@@ -10,7 +10,7 @@ import wzw.beans.Value;
 public class DoubleValue extends Value {
     private double value;
 
-	//´ÓÒ³ÃæµÃµ½µÄString±äÁ¿¹¹Ôì
+	//ä»é¡µé¢å¾—åˆ°çš„Stringå˜é‡æ„é€ 
     public DoubleValue(String value) {
         this.value = Double.parseDouble(value) ;
     }

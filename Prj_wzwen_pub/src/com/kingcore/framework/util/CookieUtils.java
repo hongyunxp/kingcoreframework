@@ -26,14 +26,14 @@ import wzw.lang.Base64;
 public class CookieUtils {
 
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	protected static Logger log = Logger.getLogger( com.kingcore.framework.util.CookieUtils.class);
 	
     /**
      * Returns the value of the Cookie with the specified name,
      * or null of not found.
-     *   ¸ù¾İÇëÇóÕÒµ½ÇëÇócookieÖĞÃû³ÆÎªname µÄcookie Öµ¡£ ¶ÔcookieÖµ×öÁËBase64½âÂë¡£
+     *   æ ¹æ®è¯·æ±‚æ‰¾åˆ°è¯·æ±‚cookieä¸­åç§°ä¸ºname çš„cookie å€¼ã€‚ å¯¹cookieå€¼åšäº†Base64è§£ç ã€‚
      * @param name cookie's name.
      * @param req response Object.
      * @return
@@ -47,10 +47,10 @@ public class CookieUtils {
     /**
      * Returns the value of the Cookie with the specified name,
      * or null of not found.
-     *   ¸ù¾İÇëÇóÕÒµ½ÇëÇócookieÖĞÃû³ÆÎªname µÄcookie Öµ¡£
+     *   æ ¹æ®è¯·æ±‚æ‰¾åˆ°è¯·æ±‚cookieä¸­åç§°ä¸ºname çš„cookie å€¼ã€‚
      * @param name cookie's name.
      * @param req response Object.
-     * @param needEncode ÊÇ·ñĞèÒª¶ÔCookieÖµ½âÂë£¬Ä¬ÈÏtrue.
+     * @param needEncode æ˜¯å¦éœ€è¦å¯¹Cookieå€¼è§£ç ï¼Œé»˜è®¤true.
      * @return
      * @throws DecoderException 
      */
@@ -61,7 +61,7 @@ public class CookieUtils {
 		}
 
         Cookie[] cookies = req.getCookies();
-		if(cookies==null){// Èç¹ûÃ»ÓĞÈÎºÎcookie
+		if(cookies==null){// å¦‚æœæ²¡æœ‰ä»»ä½•cookie
 			//out.print("none any cookie");
 			return null;
 		}
@@ -89,11 +89,11 @@ public class CookieUtils {
     /**
      * Creates a Cookie with the specified name, value and max age,
      * and adds it to the response.
-     * 		Ìí¼Ócookies  ²¢ÇÒÄ¬ÈÏ¶ÔcookieÖµ×öÁËBase64 ±àÂë¡£
+     * 		æ·»åŠ cookies  å¹¶ä¸”é»˜è®¤å¯¹cookieå€¼åšäº†Base64 ç¼–ç ã€‚
      * @param name cookie's name.
      * @param value cookie's value.
      * @param maxAge the time cookie been keeped. the unit is second.
-     *      age of the cookie in seconds,¸ºÊı±íÊ¾¹Ø±Õä¯ÀÀÆ÷¼´É¾³ıCookie.
+     *      age of the cookie in seconds,è´Ÿæ•°è¡¨ç¤ºå…³é—­æµè§ˆå™¨å³åˆ é™¤Cookie.
 	 *		an integer specifying the maximum age of the cookie in seconds; 
 	 *		if negative, means the cookie is not stored; if zero, deletes the cookie.
      * @param res response Object.
@@ -107,15 +107,15 @@ public class CookieUtils {
      * 
      * Creates a Cookie with the specified name, value and max age,
      * and adds it to the response.
-     * Ìí¼Ócookies  ¶ÔcookieÖµ×öÁËBase64 ±àÂë¡£
+     * æ·»åŠ cookies  å¯¹cookieå€¼åšäº†Base64 ç¼–ç ã€‚
      * @param name cookie's name.
      * @param value cookie's value.
      * @param maxAge the time cookie been keeped. the unit is second.
-     *      age of the cookie in seconds,¸ºÊı±íÊ¾¹Ø±Õä¯ÀÀÆ÷¼´É¾³ıCookie.
+     *      age of the cookie in seconds,è´Ÿæ•°è¡¨ç¤ºå…³é—­æµè§ˆå™¨å³åˆ é™¤Cookie.
 	 *		an integer specifying the maximum age of the cookie in seconds; 
 	 *		if negative, means the cookie is not stored; if zero, deletes the cookie.
      * @param res response Object.
-     * @param needEncode ÊÇ·ñĞèÒª¶ÔCookieÖµ×öBase64±àÂë£¬Ä¬ÈÏtrue
+     * @param needEncode æ˜¯å¦éœ€è¦å¯¹Cookieå€¼åšBase64ç¼–ç ï¼Œé»˜è®¤true
      */
     public static void sendCookie(String name, String value, int maxAge,
 			HttpServletResponse response, boolean needEncode) {
@@ -125,7 +125,7 @@ public class CookieUtils {
    /** 
     * Creates a Cookie with the specified name, value and max age,
     * and adds it to the response.
-    * Ìí¼Ócookies  ¶ÔcookieÖµ×öÁËBase64 ±àÂë¡£
+    * æ·»åŠ cookies  å¯¹cookieå€¼åšäº†Base64 ç¼–ç ã€‚
     * 	The form of the domain name is specified by RFC 2109. A domain name begins with a dot (.foo.com) 
     * 		and means that the cookie is visible to servers in a specified Domain Name System (DNS) zone 
     * 		(for example, www.foo.com, but not a.b.foo.com). By default, cookies are only returned to 
@@ -133,11 +133,11 @@ public class CookieUtils {
     * @param name cookie's name.
     * @param value cookie's value.
     * @param maxAge the time cookie been keeped. the unit is second.
-    *      age of the cookie in seconds,¸ºÊı±íÊ¾¹Ø±Õä¯ÀÀÆ÷¼´É¾³ıCookie.
+    *      age of the cookie in seconds,è´Ÿæ•°è¡¨ç¤ºå…³é—­æµè§ˆå™¨å³åˆ é™¤Cookie.
 	 *		an integer specifying the maximum age of the cookie in seconds; 
 	 *		if negative, means the cookie is not stored; if zero, deletes the cookie.
     * @param res response Object.
-    * @param needEncode ÊÇ·ñĞèÒª¶ÔCookieÖµ×öBase64±àÂë£¬Ä¬ÈÏtrue
+    * @param needEncode æ˜¯å¦éœ€è¦å¯¹Cookieå€¼åšBase64ç¼–ç ï¼Œé»˜è®¤true
     * @param domain Cookie's domain
     */
     public static void sendCookie(String name, String value, int maxAge,
@@ -145,15 +145,15 @@ public class CookieUtils {
 
     	try {
     		if (needEncode) {
-    			value = Base64.encode( value.getBytes("utf-8") );	//¶ÔÓ¦¿Í»§¶Ë½âÂë
-//    			 value = new String(Base64.encode( value.getBytes("utf-8")), "utf-8" );	//¶¼Ê¹ÓÃutf-8
+    			value = Base64.encode( value.getBytes("utf-8") );	//å¯¹åº”å®¢æˆ·ç«¯è§£ç 
+//    			 value = new String(Base64.encode( value.getBytes("utf-8")), "utf-8" );	//éƒ½ä½¿ç”¨utf-8
 			}
 			//System.out.println("value = " + value);
 	        Cookie cookie = new Cookie(name, value);//Hex.encode(value.getBytes()) );
 	        cookie.setMaxAge(maxAge);
 			cookie.setPath("/");
 			if(domain!=null){
-				cookie.setDomain( domain );	// ÉèÖÃdomain
+				cookie.setDomain( domain );	// è®¾ç½®domain
 			}
 	        response.addCookie(cookie);
 	        
@@ -166,7 +166,7 @@ public class CookieUtils {
 
     
     /**
-     *  ²»´ø domain µÄclearCookie¡£
+     *  ä¸å¸¦ domain çš„clearCookieã€‚
      * clear a cookie from client side.
      * @param name the name of cookie will be cleared.
      * @param response HttpServletResponse Object.
@@ -180,14 +180,14 @@ public class CookieUtils {
     
     
     /**
-     * ´øÓĞ domain µÄclearCookie¡£
+     * å¸¦æœ‰ domain çš„clearCookieã€‚
      * 	The form of the domain name is specified by RFC 2109. A domain name begins with a dot (.foo.com) 
      * 		and means that the cookie is visible to servers in a specified Domain Name System (DNS) zone 
      * 		(for example, www.foo.com, but not a.b.foo.com). By default, cookies are only returned to 
      * 		the server that sent them.
-     * @param name ĞèÒªÇå³ıCookieµÄÃû×Ö
-     * @param response ÏìÓ¦¶ÔÏó
-     * @param domain ÔÚÖ¸¶¨ÓòÇå³ıCookie£¬Èç¹û²»Ö¸¶¨ÔòÄ¬ÈÏÎªµ±Ç°Óò
+     * @param name éœ€è¦æ¸…é™¤Cookieçš„åå­—
+     * @param response å“åº”å¯¹è±¡
+     * @param domain åœ¨æŒ‡å®šåŸŸæ¸…é™¤Cookieï¼Œå¦‚æœä¸æŒ‡å®šåˆ™é»˜è®¤ä¸ºå½“å‰åŸŸ
      */
     public static void clearCookie(String name, HttpServletResponse response, String domain){
         Cookie cookie = new Cookie(name, null);
@@ -198,15 +198,15 @@ public class CookieUtils {
     }
 
     /**
-     * ´øÓĞ domain,path ²ÎÊıµÄ clearCookie¡£
+     * å¸¦æœ‰ domain,path å‚æ•°çš„ clearCookieã€‚
      * 	The form of the domain name is specified by RFC 2109. A domain name begins with a dot (.foo.com) 
      * 		and means that the cookie is visible to servers in a specified Domain Name System (DNS) zone 
      * 		(for example, www.foo.com, but not a.b.foo.com). By default, cookies are only returned to 
      * 		the server that sent them.
-     * @param name ĞèÒªÇå³ıCookieµÄÃû×Ö
-     * @param response ÏìÓ¦¶ÔÏó
-     * @param domain ÔÚÖ¸¶¨ÓòÇå³ıCookie£¬Èç¹û²»Ö¸¶¨ÔòÄ¬ÈÏÎªµ±Ç°Óò
-     * @param path ÔÚÖ¸¶¨Ä¿Â¼Çå³ıCookie£¬Èç¹û²»Ö¸¶¨ÔòÄ¬ÈÏÎª¸ùÄ¿Â¼
+     * @param name éœ€è¦æ¸…é™¤Cookieçš„åå­—
+     * @param response å“åº”å¯¹è±¡
+     * @param domain åœ¨æŒ‡å®šåŸŸæ¸…é™¤Cookieï¼Œå¦‚æœä¸æŒ‡å®šåˆ™é»˜è®¤ä¸ºå½“å‰åŸŸ
+     * @param path åœ¨æŒ‡å®šç›®å½•æ¸…é™¤Cookieï¼Œå¦‚æœä¸æŒ‡å®šåˆ™é»˜è®¤ä¸ºæ ¹ç›®å½•
      */
     public static void clearCookie(String name, HttpServletResponse response, 
     							   String domain, String path){
@@ -221,7 +221,7 @@ public class CookieUtils {
     /**
      * Returns true if a cookie with the specified name is
      * present in the request.
-     * ÅĞ¶ÏÊÇ·ñÓĞÃû³ÆÎªname µÄcookie£¬ ¶ÔcookiÖµ±àÂëÃ»ÓĞÒªÇó¡£
+     * åˆ¤æ–­æ˜¯å¦æœ‰åç§°ä¸ºname çš„cookieï¼Œ å¯¹cookiå€¼ç¼–ç æ²¡æœ‰è¦æ±‚ã€‚
      * @param name the name of the cookie will be checked.
      * @param req response Object.
      * @return
@@ -234,7 +234,7 @@ public class CookieUtils {
     		}
 
             Cookie[] cookies = req.getCookies();
-    		if(cookies==null){// Èç¹ûÃ»ÓĞÈÎºÎcookie
+    		if(cookies==null){// å¦‚æœæ²¡æœ‰ä»»ä½•cookie
     			//out.print("none any cookie");
     			return false;
     		}

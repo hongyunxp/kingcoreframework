@@ -11,9 +11,11 @@
 
 package com.kingcore.framework.base.controller;
 
+import java.util.HashMap;
+
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
- * @author Zeven on 2013Äê12ÔÂ15ÈÕ
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
+ * @author Zeven on 2013å¹´12æœˆ15æ—¥
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
  * @see		Object#hashCode()

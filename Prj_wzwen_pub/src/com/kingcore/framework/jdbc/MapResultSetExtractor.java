@@ -21,7 +21,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import wzw.sql.ResultSetConverter;
 
 /**
- * <p>ÕâÊÇÒ»¸ö ListResultSetExtractor ¶ÔÏó¡£ °üÀ¨List<Map> ºÍ List<Bean>¡£</p>
+ * <p>è¿™æ˜¯ä¸€ä¸ª ListResultSetExtractor å¯¹è±¡ã€‚ åŒ…æ‹¬List<Map> å’Œ List<Bean>ã€‚</p>
  * @author Zeven on 2008-8-20
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -32,7 +32,7 @@ import wzw.sql.ResultSetConverter;
 
 public class MapResultSetExtractor implements ResultSetExtractor {
 
-	private boolean isList = false;		// ÊÇ·µ»ØMap,»¹ÊÇ·µ»ØList<Map>
+	private boolean isList = false;		// æ˜¯è¿”å›žMap,è¿˜æ˜¯è¿”å›žList<Map>
 	
 	public MapResultSetExtractor(boolean isList) {
 		this.isList = isList;

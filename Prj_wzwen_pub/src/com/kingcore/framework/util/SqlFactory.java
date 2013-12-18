@@ -18,15 +18,15 @@ public class SqlFactory implements Serializable {
 
 	public static final Log log = LogFactory.getLog(SqlFactory.class);
 	/**
-	 * µ±Ç°ÀàµÄÊµÀı
+	 * å½“å‰ç±»çš„å®ä¾‹
 	 */
 	public static SqlFactory instance = new SqlFactory();
 	/**
-	 * ´æ·ÅÒÑ¾­ÊµÀı»¯µÄ¶ÔÏó
+	 * å­˜æ”¾å·²ç»å®ä¾‹åŒ–çš„å¯¹è±¡
 	 */
 	public HashMap classInstances = new HashMap();
 	/**
-	 * Êı¾İ¿âÀàĞÍµÄÈ¡Öµ
+	 * æ•°æ®åº“ç±»å‹çš„å–å€¼
 	 */
 	public final int ORA_TYPE = 1;
 	public final int DB2_TYPE = 2;
@@ -35,7 +35,7 @@ public class SqlFactory implements Serializable {
 	public final int MYSQL_TYPE = 5;
 	public final int INFORMIX_TYPE = 6;
 	/**
-	 * Êı¾İ¿âÀàĞÍµÄÃû³Æ
+	 * æ•°æ®åº“ç±»å‹çš„åç§°
 	 */
 	public final String ORA_NAME = "ORA";
 	public final String DB2_NAME = "DB2";
@@ -44,13 +44,13 @@ public class SqlFactory implements Serializable {
 	public final String MYSQL_NAME = "MYSQL";
 	public final String INFORMIX_NAME = "INFORMIX";
 	/**
-	 * ´æ·ÅÊı¾İ¿âÀàĞÍÃû
+	 * å­˜æ”¾æ•°æ®åº“ç±»å‹å
 	 */
 	public HashMap databaseName;
 	//--------------------------------------------
-	//---- Êı¾İ¿â¶ÔÓ¦µÄÀàµÄÊµÏÖÃû³Æ --------------
-	//- ÀıÈç£ºstrOra = "Ora",´«À´µÄÀàµÄºó×ºÃûÎªTest,
-	//- ÄÇÃ´ÕæÊµµÄÀàÃû£ºOraTest ------------------
+	//---- æ•°æ®åº“å¯¹åº”çš„ç±»çš„å®ç°åç§° --------------
+	//- ä¾‹å¦‚ï¼šstrOra = "Ora",ä¼ æ¥çš„ç±»çš„åç¼€åä¸ºTest,
+	//- é‚£ä¹ˆçœŸå®çš„ç±»åï¼šOraTest ------------------
 	//--------------------------------------------
 	public String strOra = "Ora";
 	public String strDb2 = "Db2";
@@ -59,7 +59,7 @@ public class SqlFactory implements Serializable {
 	public String strMySql = "MySql";
 	public String strInformix = "Informix";
 	//-----------------------------------------
-	//----- ÉèÖÃÕâĞ©Ç°×ºµÄÃû³Æ ----------------
+	//----- è®¾ç½®è¿™äº›å‰ç¼€çš„åç§° ----------------
 	//-----------------------------------------
 
 	/**
@@ -105,7 +105,7 @@ public class SqlFactory implements Serializable {
 
 	//------------------------------------------- Method
 	/**
-	 * Ë½ÓĞ¹¹Ôìº¯Êı
+	 * ç§æœ‰æ„é€ å‡½æ•°
 	 *
 	 */
 	private SqlFactory() {
@@ -118,7 +118,7 @@ public class SqlFactory implements Serializable {
 		databaseName.put(SYB_NAME, strSyb);
 	}
 	/**
-	 * µÃµ½µ±Ç°ÀàµÄÎ¨Ò»ÊµÀı
+	 * å¾—åˆ°å½“å‰ç±»çš„å”¯ä¸€å®ä¾‹
 	 * @author WUZEWEN
 	 */
 	public static SqlFactory getInstance() {
@@ -139,7 +139,7 @@ public class SqlFactory implements Serializable {
 		String suffix)
 		throws Throwable {
 		if (!databaseName.containsKey(databasename)) {
-			throw new Exception("²»Ö§³Ö" + databasename + "µÄÊı¾İ¿âÀàĞÍ");
+			throw new Exception("ä¸æ”¯æŒ" + databasename + "çš„æ•°æ®åº“ç±»å‹");
 		}
 		String prefix = (String) databaseName.get(databasename);
 		StringBuffer name = new StringBuffer();
@@ -181,7 +181,7 @@ public class SqlFactory implements Serializable {
 				prefix = strSyb;
 				break;
 			default :
-				throw new Exception("²»Ö§³ÖÊı¾İ¿âÀàĞÍ£¡");
+				throw new Exception("ä¸æ”¯æŒæ•°æ®åº“ç±»å‹ï¼");
 		}
 		StringBuffer name = new StringBuffer();
 		name.append(pack).append(".").append(prefix).append(suffix);
@@ -206,7 +206,7 @@ public class SqlFactory implements Serializable {
 				classInstances.put(name, o);
 			} else {
 				throw new Exception(
-					"Í¨¹ıÃû³Æ" + name + "µÃµ½µÄÊµÀıÃ»ÓĞÊµÏÖDatabaseInterface½Ó¿Ú");
+					"é€šè¿‡åç§°" + name + "å¾—åˆ°çš„å®ä¾‹æ²¡æœ‰å®ç°DatabaseInterfaceæ¥å£");
 			}
 		} catch (ClassNotFoundException e) {
 			throw e;

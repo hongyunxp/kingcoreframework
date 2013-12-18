@@ -53,7 +53,7 @@
 	<target name="kingcore_jar" depends="init" description="pub jar for wzwen">
 		<delete dir="${kingcore.build}"/>
 		<mkdir dir="${kingcore.build}"/>
-		<javac srcdir="${kingcore.src}" destdir="${kingcore.build}" excludes="**/Tmp*.java" deprecation="off" debug="true">
+		<javac srcdir="${kingcore.src}" encoding="utf-8" destdir="${kingcore.build}" excludes="**/Tmp*.java" deprecation="off" debug="true">
 			<classpath>
 				<fileset dir="${wzwen-lib}">
 					<include name="activation.jar"/>
@@ -167,7 +167,7 @@
 
 		<delete dir="${project.classes}"/>
 		<mkdir dir="${project.classes}"/>
-		<javac srcdir="${project.home}\src_wzw-net" destdir="${project.classes}" excludes="**/Test*.java" deprecation="off" debug="true">
+		<javac srcdir="${project.home}\src_wzw-net" encoding="utf-8" destdir="${project.classes}" excludes="**/Test*.java" deprecation="off" debug="true">
 			<classpath>
 				<fileset dir="${project.lib}">
 					<include name="**/*.jar"/>
@@ -221,7 +221,7 @@
 	</target>
 
 	<target name="compile" depends="init">
-		<javac srcdir="${scm.src}" destdir="${scm.build}" excludes="**/Test*.java" deprecation="off" debug="true">
+		<javac srcdir="${scm.src}" encoding="utf-8" destdir="${scm.build}" excludes="**/Test*.java" deprecation="off" debug="true">
 			<classpath>
 				<fileset dir="${scm.prj}">
 					<include name="wfclient.jar"/>

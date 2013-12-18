@@ -26,7 +26,7 @@ import org.apache.log4j.Logger;
 
 
 /**
- * <p>×Ô¶¨Òå¸üºÃµÄÊµÏÖ·½Ê½£¬°´ÕÕ¹æÔò¸ù¾İÊı¾İ¿âÁĞÃ÷ÃÀ»¯ÕÒµ½BeanµÄÊôĞÔÃû¡£</p>
+ * <p>è‡ªå®šä¹‰æ›´å¥½çš„å®ç°æ–¹å¼ï¼ŒæŒ‰ç…§è§„åˆ™æ ¹æ®æ•°æ®åº“åˆ—æ˜ç¾åŒ–æ‰¾åˆ°Beançš„å±æ€§åã€‚</p>
  * @author Zeven on 2006-9-16
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -55,24 +55,24 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	}
 
 	/*
-	 * ´ÓResultSet°ó¶¨µ½JavaBean  
+	 * ä»ResultSetç»‘å®šåˆ°JavaBean  
 	 *   
 	 * @param ResultSet  
-	 * @param Class£¨JavaBean£©  
+	 * @param Classï¼ˆJavaBeanï¼‰  
 	 * @return bean  
 	 */   
 	private Object bindDataToDto(ResultSet rs, Class<?> bean, boolean isList) throws SQLException, InstantiationException, IllegalAccessException {  // throws Exception  
  
-	    //È¡µÃMethod·½·¨   
+	    //å–å¾—Methodæ–¹æ³•   
 	    Method[] methods = bean.getMethods();   //.getClass() 
 
-	    //È¡µÃResultSetµÄÁĞÃû   
+	    //å–å¾—ResultSetçš„åˆ—å   
 	    ResultSetMetaData rsmd = rs.getMetaData();   
 	    int columnsCount = rsmd.getColumnCount();   
 	    String[] columnLabels = new String[columnsCount];
 	    String[] setMethodNames = new String[columnsCount];
 	    String colNameForSetter = null;
-	    for (int i = 0; i < columnsCount; i++) { //Ê××ÖÄ¸×ªÎª´óĞ´
+	    for (int i = 0; i < columnsCount; i++) { //é¦–å­—æ¯è½¬ä¸ºå¤§å†™
 	    	columnLabels[i] = rsmd.getColumnLabel(i + 1);
 	    	colNameForSetter = generatePropertyName(columnLabels[i]);
 	        setMethodNames[i] = "set" + colNameForSetter.substring(0,1).toUpperCase() +
@@ -81,14 +81,14 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 
 	    Object obj = null;
 	    List<Object> objList = new ArrayList<Object>();
-	    //±éÀúResultSet   
+	    //éå†ResultSet   
 	    while (rs.next()) {   
-	        //·´Éä, ´ÓResultSet°ó¶¨µ½JavaBean   
+	        //åå°„, ä»ResultSetç»‘å®šåˆ°JavaBean   
 	    	obj = bean.newInstance();
 	        for (int i = 0; i < setMethodNames.length; i++) {   
-	            //È¡µÃSet·½·¨   
+	            //å–å¾—Setæ–¹æ³•   
 	            String setMethodName = setMethodNames[i];   
-	            //±éÀúMethod   
+	            //éå†Method   
             	//System.out.println("=====================begin" );
 	            for (int j = 0; j < methods.length; j++) {     
                 	//System.out.println("---"+methods[j].getName());
@@ -96,14 +96,14 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	                    setMethodName = methods[j].getName();   
 	                    Object value = rs.getObject(columnLabels[i]);  
 
-	                    //ÊµĞĞSet·½·¨   
+	                    //å®è¡ŒSetæ–¹æ³•   
 	                    try {   
-	                        //JavaBeanÄÚ²¿ÊôĞÔºÍResultSetÖĞÒ»ÖÂÊ±ºò   
+	                        //JavaBeanå†…éƒ¨å±æ€§å’ŒResultSetä¸­ä¸€è‡´æ—¶å€™   
 	                        Method setMethod = bean.getMethod(     //.getClass()
 	                                setMethodName, value.getClass());   
 	                        setMethod.invoke(obj, value);   
 	                    } catch (Exception e) {   
-	                        //JavaBeanÄÚ²¿ÊôĞÔºÍResultSetÖĞ²»Ò»ÖÂÊ±ºò£¬Ê¹ÓÃStringÀ´ÊäÈëÖµ¡£   
+	                        //JavaBeanå†…éƒ¨å±æ€§å’ŒResultSetä¸­ä¸ä¸€è‡´æ—¶å€™ï¼Œä½¿ç”¨Stringæ¥è¾“å…¥å€¼ã€‚   
 	                        Method setMethod;
 							try {
 								setMethod = bean.getClass().getMethod(   
@@ -111,7 +111,7 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 		                        setMethod.invoke(obj, value.toString());   
 		                        
 							} catch (Exception e1) {
-								log.warn("ÉèÖÃÊôĞÔÊ§°Ü£ºbeanName="+bean.getName()+" ÊôĞÔ="+setMethodName,
+								log.warn("è®¾ç½®å±æ€§å¤±è´¥ï¼šbeanName="+bean.getName()+" å±æ€§="+setMethodName,
 												e1);
 							}
 	                    }   
@@ -129,9 +129,9 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 
     private static Pattern pattern = Pattern.compile("(_[a-z]{1})");
 	/**
-	 * ½«Êı¾İ¿âµÄÁĞÃ÷¸ñÊ½ÎªBeanµÄÊôĞÔÃû£¬¿ÉÒÔ¸ù¾İ×Ô¼ºµÄ¹æÔòover write±¾·½·¨¡£
-	 *    ±ÈÈçÊı¾İ¿âÁĞÃû user_name -->ÊôĞÔÃû userName
-	 *                user_name -->ÊôĞÔÃû user_name
+	 * å°†æ•°æ®åº“çš„åˆ—æ˜æ ¼å¼ä¸ºBeançš„å±æ€§åï¼Œå¯ä»¥æ ¹æ®è‡ªå·±çš„è§„åˆ™over writeæœ¬æ–¹æ³•ã€‚
+	 *    æ¯”å¦‚æ•°æ®åº“åˆ—å user_name -->å±æ€§å userName
+	 *                user_name -->å±æ€§å user_name
 	 * @param columnLabel
 	 * @return
 	 */

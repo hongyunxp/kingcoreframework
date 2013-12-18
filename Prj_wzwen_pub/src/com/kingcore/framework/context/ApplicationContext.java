@@ -22,10 +22,10 @@ import com.kingcore.framework.jdbc.ResultSetBeanExtractor;
 
 
 /**
- * <p> ¹ÜÀíÕû¸ö¿ò¼ÜµÄÔËĞĞ»·¾³ÉèÖÃ£¬°üÀ¨ÈçÏÂ¼¸µã£º
- * 		1¡£DataSource µÄÌá¹©Õß£»
- * 		2¡£Êı¾İ¿â¹ÜÀíÏµÍ³£»
- *    ²ÉÓÃ³éÏó½Ó¿Ú¡¢×¢Èë·½Ê½£¬²»ÒÀÀµÓÚÆ½Ì¨¡£
+ * <p> ç®¡ç†æ•´ä¸ªæ¡†æ¶çš„è¿è¡Œç¯å¢ƒè®¾ç½®ï¼ŒåŒ…æ‹¬å¦‚ä¸‹å‡ ç‚¹ï¼š
+ * 		1ã€‚DataSource çš„æä¾›è€…ï¼›
+ * 		2ã€‚æ•°æ®åº“ç®¡ç†ç³»ç»Ÿï¼›
+ *    é‡‡ç”¨æŠ½è±¡æ¥å£ã€æ³¨å…¥æ–¹å¼ï¼Œä¸ä¾èµ–äºå¹³å°ã€‚
  * 	</p>
  * 
  * @author Zeven on 2007-6-24
@@ -39,17 +39,17 @@ import com.kingcore.framework.jdbc.ResultSetBeanExtractor;
 public class ApplicationContext {
 
     /**
-     * log4jÈÕÖ¾¶ÔÏó¡£
+     * log4jæ—¥å¿—å¯¹è±¡ã€‚
      */
     protected static Logger log=Logger.getLogger( com.kingcore.framework.context.ApplicationContext.class );
 
     /**
-     * µ¥¼şµÄÉè¼ÆÄ£Ê½Ìæ»»È«¾²Ì¬·½·¨£¬±ãÓÚspring ¹¹Ôì
+     * å•ä»¶çš„è®¾è®¡æ¨¡å¼æ›¿æ¢å…¨é™æ€æ–¹æ³•ï¼Œä¾¿äºspring æ„é€ 
      */
 	private static ApplicationContext instance;
 	
 	/**
-	 * Ä¬ÈÏÎªWebLogic ÈİÆ÷Ìá¹©Êı¾İÔ´£¬ÆäËû»¹ÓĞTomcatÈİÆ÷¡¢×Ô¼º±àĞ´µÄConnectionPool£¬²ÉÓÃ×¢Èë·½Ê½¡£
+	 * é»˜è®¤ä¸ºWebLogic å®¹å™¨æä¾›æ•°æ®æºï¼Œå…¶ä»–è¿˜æœ‰Tomcatå®¹å™¨ã€è‡ªå·±ç¼–å†™çš„ConnectionPoolï¼Œé‡‡ç”¨æ³¨å…¥æ–¹å¼ã€‚
 	 */
 	private DataSourceManager dataSourceManager = null;
 	
@@ -57,24 +57,24 @@ public class ApplicationContext {
 	private String defaultDataSourceName = null;
 	
 	/**
-	 * ´æ·ÅÅäÖÃÎÄ¼şµÄ¸ùÄ¿Â¼¡£
+	 * å­˜æ”¾é…ç½®æ–‡ä»¶çš„æ ¹ç›®å½•ã€‚
 	 */
 	private String configPath = null;
 
 	/**
-	 * Ä¬ÈÏÊ¹ÓÃµÄÊı¾İÔ´Ãû³Æ¡£
+	 * é»˜è®¤ä½¿ç”¨çš„æ•°æ®æºåç§°ã€‚
 	 */
 	//private String defaultDataSourceName = null;
 
 	/**
-	 * @deprecated databaseManager²»½¨Òé¸úApplicationContext¹ØÁª£¬¶øÊÇÓëDataSource¹ØÁª¡£
-	 * Ä¬ÈÏÎª Oracle10i ÈİÆ÷Ìá¹©Êı¾İÔ´£¬ÆäËû»¹ÓĞMySQL£¬²ÉÓÃ×¢Èë·½Ê½¡£
+	 * @deprecated databaseManagerä¸å»ºè®®è·ŸApplicationContextå…³è”ï¼Œè€Œæ˜¯ä¸DataSourceå…³è”ã€‚
+	 * é»˜è®¤ä¸º Oracle10i å®¹å™¨æä¾›æ•°æ®æºï¼Œå…¶ä»–è¿˜æœ‰MySQLï¼Œé‡‡ç”¨æ³¨å…¥æ–¹å¼ã€‚
 	 */
 	private DatabaseManager databaseManager = null;
 	
 
 	/**
-	 * Ä¬ÈÏÎªTomcat ÈİÆ÷£¬ÆäËû»¹ÓĞWebLogicµÈÈİÆ÷¡£
+	 * é»˜è®¤ä¸ºTomcat å®¹å™¨ï¼Œå…¶ä»–è¿˜æœ‰WebLogicç­‰å®¹å™¨ã€‚
 	 */
 	private ServletContainer servletContainer = new TomcatContainer();
 	
@@ -87,12 +87,12 @@ public class ApplicationContext {
 	}
 	
 	/**
-	 * ¹¹Ôì¶ÔÏó²¢ÇÒ¸³ÓèÄ¬ÈÏÖµ¡£ »á±»spring µ÷ÓÃ£¬µ¼ÖÂÁ½´Î¹¹Ôì!!!!!!!!!!!!
+	 * æ„é€ å¯¹è±¡å¹¶ä¸”èµ‹äºˆé»˜è®¤å€¼ã€‚ ä¼šè¢«spring è°ƒç”¨ï¼Œå¯¼è‡´ä¸¤æ¬¡æ„é€ !!!!!!!!!!!!
 	 *
 	 */
 	private ApplicationContext() {
-		//×¢ÏúÕâÀïÊÇÊµÏÖ´¿½Ó¿Ú£¬²»ÒÀÀµÓÚ¾ßÌåÊµÏÖ£¬¹ÊÒªÇóÏµÍ³Ò»¶¨Òª³õÊ¼ÕâĞ©ÊôĞÔ
-		//»òÕß×¢Èë£¬»òÕß±àĞ´´úÂëµ÷ÓÃsetter¡£
+		//æ³¨é”€è¿™é‡Œæ˜¯å®ç°çº¯æ¥å£ï¼Œä¸ä¾èµ–äºå…·ä½“å®ç°ï¼Œæ•…è¦æ±‚ç³»ç»Ÿä¸€å®šè¦åˆå§‹è¿™äº›å±æ€§
+		//æˆ–è€…æ³¨å…¥ï¼Œæˆ–è€…ç¼–å†™ä»£ç è°ƒç”¨setterã€‚
 		//this.databaseManager = new OracleDatabase();
 		//WebLogicContainer webLogic = new WebLogicContainer();
 		//this.dataSourceManager = webLogic;
@@ -119,8 +119,8 @@ public class ApplicationContext {
 
 	/**
 	 * 
-	 *  ±£ÁôÕâ¸öÊÇÎªÁË¼æÈİ²¿·Ö´úÂë£¬±ÈÈçspring jdbcÊµÏÖ¡£
-	 * @deprecated databaseManager²»½¨Òé¸úApplicationContext¹ØÁª£¬¶øÊÇÓëDataSource¹ØÁª¡£
+	 *  ä¿ç•™è¿™ä¸ªæ˜¯ä¸ºäº†å…¼å®¹éƒ¨åˆ†ä»£ç ï¼Œæ¯”å¦‚spring jdbcå®ç°ã€‚
+	 * @deprecated databaseManagerä¸å»ºè®®è·ŸApplicationContextå…³è”ï¼Œè€Œæ˜¯ä¸DataSourceå…³è”ã€‚
 	 * getter.
 	 * @return
 	 */
@@ -130,7 +130,7 @@ public class ApplicationContext {
 	
 	/**
 	 * setter. 
-	 * @deprecated databaseManager²»½¨Òé¸úApplicationContext¹ØÁª£¬¶øÊÇÓëDataSource¹ØÁª¡£
+	 * @deprecated databaseManagerä¸å»ºè®®è·ŸApplicationContextå…³è”ï¼Œè€Œæ˜¯ä¸DataSourceå…³è”ã€‚
 	 * @param databaseManager
 	 */
 	public void setDatabaseManager(DatabaseManager databaseManager) {
@@ -176,7 +176,7 @@ public class ApplicationContext {
 	public void initContext(DataSourceManager dataSourceManager,	
 							String configPath,
 							String defaultDataSourceName){
-		//³õÊ¼ DataSourceManagerµÄÅäÖÃ¡£
+		//åˆå§‹ DataSourceManagerçš„é…ç½®ã€‚
 		this.setDataSourceManager(dataSourceManager);
 		this.setConfigPath(configPath);
 		this.defaultDataSourceName = defaultDataSourceName;

@@ -14,9 +14,9 @@ package wzw.util;
 import java.util.HashMap;
 
 /**
- * <p>ÕâÊÇÒ»¸öÀàËÆHexµÄ±àÂë¹¤¾ßÀà£¬¾É°æÖĞµÄCookie²Ù×÷ÓÃµ½¡£
- * 		½¨Òé²»ÔÙÊ¹ÓÃ¸ÃÀà¡£</p>
- * @deprecated ½¨ÒéÊ¹ÓÃ Hex ÀàÌæ»»±¾ÀàµÄ¹¦ÄÜ¡£
+ * <p>è¿™æ˜¯ä¸€ä¸ªç±»ä¼¼Hexçš„ç¼–ç å·¥å…·ç±»ï¼Œæ—§ç‰ˆä¸­çš„Cookieæ“ä½œç”¨åˆ°ã€‚
+ * 		å»ºè®®ä¸å†ä½¿ç”¨è¯¥ç±»ã€‚</p>
+ * @deprecated å»ºè®®ä½¿ç”¨ Hex ç±»æ›¿æ¢æœ¬ç±»çš„åŠŸèƒ½ã€‚
  * @author Zeven on 2005-9-22
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

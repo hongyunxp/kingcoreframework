@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * <p>ÏµÍ³³£Á¿£¬¿çÏµÍ³¹«ÓÃµÄ¡£
- *  ËµÃ÷£º·²ÊÇÎ»ÓÚ "**xx/base/xx**" Ä¿Â¼ÏÂ¡¢»òÕßÃû³ÆÎª Base***.class µÄÀà(½Ó¿Ú)£¬
- * 		¶¼ÊÇ×ö»ùÀà£¬ÓÃÓÚ±»¼Ì³Ğ£¬²»ÒªÖ±½ÓÊ¹ÓÃ¸ÃÀàµÄ·½·¨»ò³ÉÔ±¡£
+ * <p>ç³»ç»Ÿå¸¸é‡ï¼Œè·¨ç³»ç»Ÿå…¬ç”¨çš„ã€‚
+ *  è¯´æ˜ï¼šå‡¡æ˜¯ä½äº "**xx/base/xx**" ç›®å½•ä¸‹ã€æˆ–è€…åç§°ä¸º Base***.class çš„ç±»(æ¥å£)ï¼Œ
+ * 		éƒ½æ˜¯åšåŸºç±»ï¼Œç”¨äºè¢«ç»§æ‰¿ï¼Œä¸è¦ç›´æ¥ä½¿ç”¨è¯¥ç±»çš„æ–¹æ³•æˆ–æˆå‘˜ã€‚
  * 	/p>
  * @author	WUZEWEN on 2006-05-17
  * @version	1.0
@@ -38,11 +38,11 @@ public class BaseConstants implements Serializable{
 	/******************************************************************
 						 Constants for System Level
 	******************************************************************/
-	//Ö÷ÒªÂ·¾¶ĞÅÏ¢
+	//ä¸»è¦è·¯å¾„ä¿¡æ¯
 	public static String System_App_Home = "";	  
 	public static String System_App_ConfigPath = "";	
 
-	//ÏµÍ³ÔËĞĞÄ£Ê½
+	//ç³»ç»Ÿè¿è¡Œæ¨¡å¼
 	//key - value - value items - default
 	public static final String RunMode_Dev = "dev";
 	public static final String RunMode_Test = "test";
@@ -52,20 +52,20 @@ public class BaseConstants implements Serializable{
 	public static String System_RunMode_Default = RunMode_Dev;
 	public static String System_RunMode_Val = System_RunMode_Default;
 	
-	//ÓÃ»§ÊäÈëÑÓÊ±£¬ÊôÓÚÓÃ»§ÌåÑé
+	//ç”¨æˆ·è¾“å…¥å»¶æ—¶ï¼Œå±äºç”¨æˆ·ä½“éªŒ
 	public static int User_Input_Delay = 500;  //millisecond
 	
 	
 	/******************************************************************
 	                      Constants for Desktop System
 	 ******************************************************************/
-	//VistaºÍWindows 7Ğ¡Í¼±êÄ£Ê½¶¼ÊÇ30ÏñËØ£¬Windows 7´óÍ¼±êÄ£Ê½ÔòÊÇ40ÏñËØ£¬¼´Ôö¸ßÁËÈı·ÖÖ®Ò»¡£ 
+	//Vistaå’ŒWindows 7å°å›¾æ ‡æ¨¡å¼éƒ½æ˜¯30åƒç´ ï¼ŒWindows 7å¤§å›¾æ ‡æ¨¡å¼åˆ™æ˜¯40åƒç´ ï¼Œå³å¢é«˜äº†ä¸‰åˆ†ä¹‹ä¸€ã€‚ 
 	public static final int System_TaskBar_Height = 30;	
 	public static int Min_TableColumn_Width = 55;
 	public final static String MainFrame_Size_Width   ="MainFrame_Size_Width";
 	public final static String MainFrame_Size_Height   ="MainFrame_Size_Height";
 	
-	/** ÏµÍ³·ç¸ñ */
+	/** ç³»ç»Ÿé£æ ¼ */
 	//key - value - value items - default
 	public static String LookAndFeel_Current="Current";
 	public static String LookAndFeel_Windows="Windows";
@@ -75,7 +75,7 @@ public class BaseConstants implements Serializable{
 	public final static String System_LookAndFeel_Key="system.lookAndFeel";
 	public final static String System_LookAndFeel_Default=LookAndFeel_Metal;
 	
-	/** ÏµÍ³ÓïÑÔ */
+	/** ç³»ç»Ÿè¯­è¨€ */
 	//key - value - value items - default
 	public final static String System_Language_CN   ="Chinese.CN";
 	public final static String System_Language_TW   ="Chinese.TW";
@@ -85,7 +85,7 @@ public class BaseConstants implements Serializable{
 	public final static String System_Language_Key   ="system.language";
 	public final static String System_Language_Default = System_Language_CN;	
 
-	//¹ú¼Ê»¯Ö®-ÓïÑÔ¹ú¼Ê»¯×ÊÔ´Ãû³Æ
+	//å›½é™…åŒ–ä¹‹-è¯­è¨€å›½é™…åŒ–èµ„æºåç§°
 	public final static String I18n_Language_Name = "Language";
 }
 

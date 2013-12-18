@@ -26,9 +26,9 @@ import org.apache.log4j.Logger;
  * @version		1.00 2006.11.16
  * @author		Zeven.WU
  *
- * È¡requestÓòÖĞµÄRowSet¶ÔÏó£¬Éú³ÉÒ»¸ö½çÃæµÄListBox¶ÔÏó¡£
+ * å–requeståŸŸä¸­çš„RowSetå¯¹è±¡ï¼Œç”Ÿæˆä¸€ä¸ªç•Œé¢çš„ListBoxå¯¹è±¡ã€‚
  * 
- *  mod by Zeven on 2007-08-08, ¼ÓÈë id ÊôĞÔ£¬idÈç¹ûÃ»ÓĞÉèÖÃÔòÈ¡nameµÄÖµ£»
+ *  mod by Zeven on 2007-08-08, åŠ å…¥ id å±æ€§ï¼Œidå¦‚æœæ²¡æœ‰è®¾ç½®åˆ™å–nameçš„å€¼ï¼›
  */
 
 public class ListBoxTag extends TagSupport
@@ -41,28 +41,28 @@ public class ListBoxTag extends TagSupport
 	protected static Logger log = Logger.getLogger( com.kingcore.framework.tag.ListBoxTag.class);
 	
 	/**
-	 * ÊÇ·ñ¿ÉÒÔ¶àÑ¡¡£
+	 * æ˜¯å¦å¯ä»¥å¤šé€‰ã€‚
 	 */
 	private String multiple = null;
 	
     /**
-     * Î»ÓÚrequestÓòÖĞ£¬´æ·ÅÁËlistBox¶ÔÏóµÄÊı¾İ¼¯ºÏµÄRowSet¶ÔÏóµÄÃû³Æ¡£
+     * ä½äºrequeståŸŸä¸­ï¼Œå­˜æ”¾äº†listBoxå¯¹è±¡çš„æ•°æ®é›†åˆçš„RowSetå¯¹è±¡çš„åç§°ã€‚
      */
 	protected String dataSetName=null;
     /**
-     * ÔÚ¿Õ°×´¦ÏÔÊ¾µÄÄÚÈİ£¬Èç¹ûÃ»ÓĞ¾Í²»ÔÊĞíÎª¿Õ
+     * åœ¨ç©ºç™½å¤„æ˜¾ç¤ºçš„å†…å®¹ï¼Œå¦‚æœæ²¡æœ‰å°±ä¸å…è®¸ä¸ºç©º
      */
     protected String blank = null;
     /**
-     * ÏÔÊ¾¶ÔÓ¦sqlÓï¾äµÄÁĞÃû
+     * æ˜¾ç¤ºå¯¹åº”sqlè¯­å¥çš„åˆ—å
      */
     protected String show = null;
     /**
-     * È¡ÖµµÄÁĞÃû
+     * å–å€¼çš„åˆ—å
      */
     protected String value = null;
     /**
-     * ÊÇ·ñÏÔÊ¾È¡ÖµµÄÁĞ
+     * æ˜¯å¦æ˜¾ç¤ºå–å€¼çš„åˆ—
      */
     protected String together = null;
 
@@ -169,7 +169,7 @@ public class ListBoxTag extends TagSupport
     }
 
 	/**
-	 * »ñÈ¡ requestÓòÖĞµÄÃû³ÆÎª dataSetNameµÄRowSet¶ÔÏó£¬×öÎªselectÑ¡ÏîÖµÊä³ö¡£
+	 * è·å– requeståŸŸä¸­çš„åç§°ä¸º dataSetNameçš„RowSetå¯¹è±¡ï¼Œåšä¸ºselecté€‰é¡¹å€¼è¾“å‡ºã€‚
 	 */
     public int doStartTag() throws JspException
     {
@@ -314,7 +314,7 @@ public class ListBoxTag extends TagSupport
 	}
 
 	/**
-	 * »ñÈ¡Ò³Ãæselect¶ÔÏóÊÇ·ñ¿ÉÒÔ¶àÑ¡£¬true or false¡£
+	 * è·å–é¡µé¢selectå¯¹è±¡æ˜¯å¦å¯ä»¥å¤šé€‰ï¼Œtrue or falseã€‚
 	 */
 	public String getMultiple() {
 		return multiple;
@@ -325,9 +325,9 @@ public class ListBoxTag extends TagSupport
 	}
 
 	/**
-	 * »ñÈ¡Ò³Ãæselect¶ÔÏóµÄid ÊôĞÔÖµ£¬
-	 * 		Èç¹ûÉèÖÃÁËidÊôĞÔÔòÈ¡idÊôĞÔµÄÖµ×÷Îªselect¶ÔÏóµÄidÊôĞÔ£¬
-	 * 		Ã»ÓĞÉèÖÃÔòÈ¡nameÊôĞÔ×÷ÎªidÊôĞÔµÄÖµ¡£
+	 * è·å–é¡µé¢selectå¯¹è±¡çš„id å±æ€§å€¼ï¼Œ
+	 * 		å¦‚æœè®¾ç½®äº†idå±æ€§åˆ™å–idå±æ€§çš„å€¼ä½œä¸ºselectå¯¹è±¡çš„idå±æ€§ï¼Œ
+	 * 		æ²¡æœ‰è®¾ç½®åˆ™å–nameå±æ€§ä½œä¸ºidå±æ€§çš„å€¼ã€‚
 	 */
 	public String getId() {
 		return id==null?name:id;

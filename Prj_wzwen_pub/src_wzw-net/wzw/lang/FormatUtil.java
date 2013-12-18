@@ -1,24 +1,24 @@
 package wzw.lang;
 
 /**
- * ¸ñÊ½»¯¹¤¾ßÀà
+ * æ ¼å¼åŒ–å·¥å…·ç±»
  * 
  * @author gembler
- * @version 2008-12-3 ÏÂÎç03:01:50
+ * @version 2008-12-3 ä¸‹åˆ03:01:50
  */
 public class FormatUtil {
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ¡£Ä¬ÈÏÈ¡8Î»£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£
-	 * ¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ã€‚é»˜è®¤å–8ä½ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚
+	 * æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:06
+	 * @version 2008-12-3 ä¸‹åˆ03:15:06
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄ×Ö·û´®¡£
+	 * @return æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²ã€‚
 	 */
 	public static String formatBinary(byte binary) {
 
@@ -27,17 +27,17 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:09
+	 * @version 2008-12-3 ä¸‹åˆ03:15:09
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * @param bitCount
-	 *            ĞèÒª¸ñÊ½»¯µÄÎ»Êı¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„ä½æ•°ã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄ×Ö·û´®¡£
+	 * @return æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²ã€‚
 	 */
 	public static String formatBinary(byte binary, int bitCount) {
 
@@ -46,17 +46,17 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:12
+	 * @version 2008-12-3 ä¸‹åˆ03:15:12
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * @param toAppendTo
-	 *            ×·¼Óµ½µÄBuilder¡£
+	 *            è¿½åŠ åˆ°çš„Builderã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄStringBuffer¡£
+	 * @return æ ¼å¼åŒ–åçš„StringBufferã€‚
 	 */
 	public static StringBuffer formatBinary(byte binary,
 			StringBuffer toAppendTo) {
@@ -65,19 +65,19 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:16
+	 * @version 2008-12-3 ä¸‹åˆ03:15:16
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * @param toAppendTo
-	 *            ×·¼Óµ½µÄBuilder¡£
+	 *            è¿½åŠ åˆ°çš„Builderã€‚
 	 * @param bitCount
-	 *            ĞèÒª¸ñÊ½»¯µÄÎ»Êı¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„ä½æ•°ã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄStringBuffer¡£
+	 * @return æ ¼å¼åŒ–åçš„StringBufferã€‚
 	 */
 	public static StringBuffer formatBinary(byte binary,
 			StringBuffer toAppendTo, int bitCount) {
@@ -88,15 +88,15 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:20
+	 * @version 2008-12-3 ä¸‹åˆ03:15:20
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄ×Ö·û´®¡£
+	 * @return æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²ã€‚
 	 */
 	public static String formatBinary(String binary) {
 
@@ -105,17 +105,17 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:24
+	 * @version 2008-12-3 ä¸‹åˆ03:15:24
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * @param bitCount
-	 *            ĞèÒª¸ñÊ½»¯µÄÎ»Êı¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„ä½æ•°ã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄ×Ö·û´®¡£
+	 * @return æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²ã€‚
 	 */
 	public static String formatBinary(String binary, int bitCount) {
 
@@ -124,17 +124,17 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:27
+	 * @version 2008-12-3 ä¸‹åˆ03:15:27
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * @param toAppendTo
-	 *            ×·¼Óµ½µÄBuilder¡£
+	 *            è¿½åŠ åˆ°çš„Builderã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄStringBuffer¡£
+	 * @return æ ¼å¼åŒ–åçš„StringBufferã€‚
 	 */
 	public static StringBuffer formatBinary(String binary,
 			StringBuffer toAppendTo) {
@@ -144,19 +144,19 @@ public class FormatUtil {
 	}
 
 	/**
-	 * ¸ñÊ½»¯¶ş½øÖÆ£¬³¬¹ıÔò½ØÈ¡£¬²»×ãÔò²¹Áã¡£¸ñÊ½£º¡°00000000¡±£¬ÓëNumberFormatµÄpattern£º¡°########¡±ÀàËÆ¡£
+	 * æ ¼å¼åŒ–äºŒè¿›åˆ¶ï¼Œè¶…è¿‡åˆ™æˆªå–ï¼Œä¸è¶³åˆ™è¡¥é›¶ã€‚æ ¼å¼ï¼šâ€œ00000000â€ï¼Œä¸NumberFormatçš„patternï¼šâ€œ########â€ç±»ä¼¼ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:31
+	 * @version 2008-12-3 ä¸‹åˆ03:15:31
 	 * 
 	 * @param binary
-	 *            ĞèÒª¸ñÊ½»¯µÄ×Ö½Ú¡£
+	 *            éœ€è¦æ ¼å¼åŒ–çš„å­—èŠ‚ã€‚
 	 * @param toAppendTo
-	 *            ×·¼Óµ½µÄBuilder¡£
+	 *            è¿½åŠ åˆ°çš„Builderã€‚
 	 * @param bitCount
-	 *            ×·¼Óµ½µÄBuilder¡£
+	 *            è¿½åŠ åˆ°çš„Builderã€‚
 	 * 
-	 * @return ¸ñÊ½»¯ºóµÄStringBuffer¡£
+	 * @return æ ¼å¼åŒ–åçš„StringBufferã€‚
 	 */
 	public static StringBuffer formatBinary(String binary,
 			StringBuffer toAppendTo, int bitCount) {
@@ -182,7 +182,7 @@ public class FormatUtil {
 		}
 
 		/*
-		 * Ç°²¹0£¬ Èç£º "100011" to "00100011"
+		 * å‰è¡¥0ï¼Œ å¦‚ï¼š "100011" to "00100011"
 		 */
 		if (binary.length() < bitCount) {
 
@@ -203,7 +203,7 @@ public class FormatUtil {
 		}
 
 		/*
-		 * ½ØÈ¡£¬ Èç£º "11111111111111111111111110100011" to "10100011"
+		 * æˆªå–ï¼Œ å¦‚ï¼š "11111111111111111111111110100011" to "10100011"
 		 */
 		if (binary.length() > bitCount) {
 

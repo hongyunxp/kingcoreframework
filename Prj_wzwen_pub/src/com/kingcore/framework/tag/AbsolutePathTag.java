@@ -26,13 +26,13 @@ import javax.servlet.jsp.tagext.TagSupport;
 import com.kingcore.framework.bean.Param;
 
 /**
- * <p>±¾ÀàµÄÄ¿µÄÊÇ·ÅÔÚjspÒ³Ãæ£¬Éú³Éµ±Ç°Ò³ÃæµÄ¾ø¶ÔurlÖµ¡£
- * 		ÀıÈç£º<img src='<woo:absolutePath/>/../images/logo.gif />   
- * 	 Ò²¿ÉÒÔ²»ÓÃĞ´µ½Ã¿¸öÒıÓÃµÄÔªËØÉÏ£¬¶øÊÇÕû¸öÖ¸¶¨µ±Ç°Ò³ÃæµÄbase href£¬Èç£º
+ * <p>æœ¬ç±»çš„ç›®çš„æ˜¯æ”¾åœ¨jspé¡µé¢ï¼Œç”Ÿæˆå½“å‰é¡µé¢çš„ç»å¯¹urlå€¼ã€‚
+ * 		ä¾‹å¦‚ï¼š<img src='<woo:absolutePath/>/../images/logo.gif />   
+ * 	 ä¹Ÿå¯ä»¥ä¸ç”¨å†™åˆ°æ¯ä¸ªå¼•ç”¨çš„å…ƒç´ ä¸Šï¼Œè€Œæ˜¯æ•´ä¸ªæŒ‡å®šå½“å‰é¡µé¢çš„base hrefï¼Œå¦‚ï¼š
  * 			<base href="<woo:absolutePath/>" tager="_self">
- *    »òÕß£º
+ *    æˆ–è€…ï¼š
  * 		<%
- * 		//wzw:2010-01 Ò³ÃæÖ±½ÓÊ¹ÓÃ${path}£¬²»Ê¹ÓÃ´Ë±êÇ©¡£
+ * 		//wzw:2010-01 é¡µé¢ç›´æ¥ä½¿ç”¨${path}ï¼Œä¸ä½¿ç”¨æ­¤æ ‡ç­¾ã€‚
  * 		String path = request.getContextPath(); 
  * 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;//+"/";
  * 		%>

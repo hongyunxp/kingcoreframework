@@ -15,8 +15,8 @@ import wzw.util.StringUtils;
 
 /**
  * 
- * <p>ÎÄ¼ş¡¢ÎÄ¼ş¼Ğ¡¢´ÅÅÌÏµÍ³¡¢¸´ÖÆµÈ²Ù×÷¹¤¾ßÀà¡£
- * 		¸¨ÖúÏà¹ØÀà£ºorg.apache.commens.io.*
+ * <p>æ–‡ä»¶ã€æ–‡ä»¶å¤¹ã€ç£ç›˜ç³»ç»Ÿã€å¤åˆ¶ç­‰æ“ä½œå·¥å…·ç±»ã€‚
+ * 		è¾…åŠ©ç›¸å…³ç±»ï¼šorg.apache.commens.io.*
  * 
  * </p>
  * @author Zeven on 2005-11-27
@@ -30,8 +30,8 @@ import wzw.util.StringUtils;
 public class FileUtils {
 
 	/**
-	 * ¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ£¬Ïàµ±ÓÚLinuxÖĞµÄ touch ·½·¨¡£
-	 * @deprecated ÔÚ apache µÄ common-io.jar °üÖĞÓĞFileUtils.class¾ßÓĞtouch·½·¨£¬Ê¹ÓÃÄÇ¸ö·½·¨¼´¿É
+	 * æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œç›¸å½“äºLinuxä¸­çš„ touch æ–¹æ³•ã€‚
+	 * @deprecated åœ¨ apache çš„ common-io.jar åŒ…ä¸­æœ‰FileUtils.classå…·æœ‰touchæ–¹æ³•ï¼Œä½¿ç”¨é‚£ä¸ªæ–¹æ³•å³å¯
 	 * @param fileName
 	 * @throws IOException
 	 */

@@ -20,7 +20,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
  * @author Zeven/wzw on Mar 3, 2009
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -31,21 +31,21 @@ public interface DataSourceManager {
 
 
     /**
-     * È±Ê¡µÄDataSource µÄÃû³Æ¡£
-     * @ depr ecated ÏÖÔÚ²ÉÓÃÄ¬ÈÏÖµºÍ×¢ÈëÉèÖÃ·½Ê½£¬²»ÔÙÊ¹ÓÃ static Öµ¡£
+     * ç¼ºçœçš„DataSource çš„åç§°ã€‚
+     * @ depr ecated ç°åœ¨é‡‡ç”¨é»˜è®¤å€¼å’Œæ³¨å…¥è®¾ç½®æ–¹å¼ï¼Œä¸å†ä½¿ç”¨ static å€¼ã€‚
      */
     ///public static String DEFAULT_DATASOURCE_NAME="jndi/jdbc";
 
     /**
-     * <p>»ñÈ¡Ä¬ÈÏµÄ DataSource.</p>
+     * <p>è·å–é»˜è®¤çš„ DataSource.</p>
      * @return
      * @throws SQLException
      */
     //public DataSource getDataSource() throws SQLException;
 
     /**
-     *   ÆÁ±ÎÊÇÎªÁË±ÜÃâÇ°¶ËÖ±½ÓÊ¹ÓÃ  dataSource.getConnnection¡£¡£¡£
-     * »ñÈ¡Ãû³ÆÎªdataSourceNameµÄ DataSource.
+     *   å±è”½æ˜¯ä¸ºäº†é¿å…å‰ç«¯ç›´æ¥ä½¿ç”¨  dataSource.getConnnectionã€‚ã€‚ã€‚
+     * è·å–åç§°ä¸ºdataSourceNameçš„ DataSource.
      * @param dataSourceName
      * @return
      * @throws SQLException
@@ -53,7 +53,7 @@ public interface DataSourceManager {
     //public DataSource getDataSource(String dataSourceName) throws SQLException;
     
 	/**
-	 * »ñÈ¡Ö¸¶¨Ãû³ÆµÄÊı¾İÔ´µÄÊı¾İ¿âÁ¬½Ó¡£
+	 * è·å–æŒ‡å®šåç§°çš„æ•°æ®æºçš„æ•°æ®åº“è¿æ¥ã€‚
 	 * @param dataSourceName
 	 * @return
 	 * @throws SQLException
@@ -61,7 +61,7 @@ public interface DataSourceManager {
 	public Connection getConnection(String dataSourceName) throws SQLException;
 
 	/**
-	 * »ñÈ¡ÏµÍ³Ä¬ÈÏµÄÊı¾İÔ´µÄÊı¾İ¿âÁ¬½Ó¡£
+	 * è·å–ç³»ç»Ÿé»˜è®¤çš„æ•°æ®æºçš„æ•°æ®åº“è¿æ¥ã€‚
 	 * @return
 	 */
 	public Connection getConnection() throws SQLException;
@@ -73,7 +73,7 @@ public interface DataSourceManager {
 	public void setDefaultDataSourceName(String dataSourceName);
 	
 	/**
-	 * »ñÈ¡defaultDataSourceName.
+	 * è·å–defaultDataSourceName.
 	 * @return
 	 */
 	public String getDefaultDataSourceName();

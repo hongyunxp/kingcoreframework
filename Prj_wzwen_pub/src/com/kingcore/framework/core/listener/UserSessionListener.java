@@ -24,7 +24,7 @@ import wzw.util.DbUtils;
 
 
 /**
- * <p>一个会话开始和结束时的时间监听器！</p>
+ * <p>涓�涓細璇濆紑濮嬪拰缁撴潫鏃剁殑鏃堕棿鐩戝惉鍣紒</p>
  * @author	WUZEWEN on 2005-11-16
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

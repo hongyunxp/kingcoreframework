@@ -21,7 +21,7 @@ import com.kingcore.framework.base.service.Service;
 import com.kingcore.framework.context.ApplicationContext;
 
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
  * @author Zeven on 2008-5-31
  * @version	2.0
  * @see		Object#equals(java.lang.Object)
@@ -34,19 +34,19 @@ public abstract class ServiceImpl implements Service{
 
 
     /**
-     * log4jÈÕÖ¾¶ÔÏó¡£
+     * log4jæ—¥å¿—å¯¹è±¡ã€‚
      */
     protected static Logger log=Logger.getLogger( ServiceImpl.class );
 
     /**
-     * µ¥¼şµÄÉè¼ÆÄ£Ê½Ìæ»»È«¾²Ì¬·½·¨£¬±ãÓÚspring ¹¹Ôì
+     * å•ä»¶çš„è®¾è®¡æ¨¡å¼æ›¿æ¢å…¨é™æ€æ–¹æ³•ï¼Œä¾¿äºspring æ„é€ 
      */
 	private static ServiceImpl instance;
 	
 
     /**
-     * <p>»ñÈ¡µ¥¼ş¶ÔÏó£¬²Î¿¼Õâ¸ö·½·¨±ØĞëÔÚ×ÓÀàÖĞÈ¥¶¨ÒåÏàÓ¦µÄ
-     * 		·½·¨getInstance() ÒÔÊµÏÖµ¥¼şÉè¼ÆÄ£Ê½¡£
+     * <p>è·å–å•ä»¶å¯¹è±¡ï¼Œå‚è€ƒè¿™ä¸ªæ–¹æ³•å¿…é¡»åœ¨å­ç±»ä¸­å»å®šä¹‰ç›¸åº”çš„
+     * 		æ–¹æ³•getInstance() ä»¥å®ç°å•ä»¶è®¾è®¡æ¨¡å¼ã€‚
      * </p>
      * @return 
      */
@@ -56,9 +56,9 @@ public abstract class ServiceImpl implements Service{
 
 	
 	/**
-	 * <p>»ñÈ¡Êı¾İ¿âµÄÁ¬½á£¬ÒÔ±ã¸ù¾İÒµÎñÂß¼­¿ØÖÆÊı¾İ¿âÁ¬½ÓÊÂÎñ¡£</p>
+	 * <p>è·å–æ•°æ®åº“çš„è¿ç»“ï¼Œä»¥ä¾¿æ ¹æ®ä¸šåŠ¡é€»è¾‘æ§åˆ¶æ•°æ®åº“è¿æ¥äº‹åŠ¡ã€‚</p>
 	 * 
-	 * @param poolName Á¬½Ó³Ø¶ÔÏóµÄÃû³Æ¡£
+	 * @param poolName è¿æ¥æ± å¯¹è±¡çš„åç§°ã€‚
 	 * @return
 	 * @throws SQLException
 	 */
@@ -69,10 +69,10 @@ public abstract class ServiceImpl implements Service{
 	}
 	
 	/**
-	 * <p>»ñÈ¡Êı¾İ¿âµÄÁ¬½á£¬ÒÔ±ã¸ù¾İÒµÎñÂß¼­¿ØÖÆÊı¾İ¿âÁ¬½ÓÊÂÎñ¡£</p>
+	 * <p>è·å–æ•°æ®åº“çš„è¿ç»“ï¼Œä»¥ä¾¿æ ¹æ®ä¸šåŠ¡é€»è¾‘æ§åˆ¶æ•°æ®åº“è¿æ¥äº‹åŠ¡ã€‚</p>
 	 * 
 	 * 
-	 * @param poolName Á¬½Ó³Ø¶ÔÏóµÄÃû³Æ¡£
+	 * @param poolName è¿æ¥æ± å¯¹è±¡çš„åç§°ã€‚
 	 * @return
 	 * @throws SQLException
 	 */

@@ -35,7 +35,7 @@ import javax.sql.RowSetListener;
 import org.apache.log4j.Logger;
 
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
  * @author Zeven on 2006-9-16
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -49,30 +49,30 @@ public class CachedRowSet implements RowSet,DataSet {
 	protected final static Logger log = Logger.getLogger(com.kingcore.framework.bean.CachedRowSet.class);
 		
 	/**
-	 * Êı¾İ¶ÔÏó
+	 * æ•°æ®å¯¹è±¡
 	 */
 	private List list=null;
 	private int rowNumber=-1;
 	/**
-	 * ±£´æµ±Ç°ĞĞ¶ÔÏó
+	 * ä¿å­˜å½“å‰è¡Œå¯¹è±¡
 	 */
 	private Map currentRow=null;	//Hashtable
 	/**
-	 * Ä£Äâ RowSetµÄ Iterator¶ÔÏó¡£
+	 * æ¨¡æ‹Ÿ RowSetçš„ Iteratorå¯¹è±¡ã€‚
 	 */
 	private Iterator iterator = null;
 	
 	/**
-	 * ²ÉÓÃ¡¡List(Vector,ArrayList,Stack etc) ¹¹½¨ CachedRowSet¶ÔÏó
+	 * é‡‡ç”¨ã€€List(Vector,ArrayList,Stack etc) æ„å»º CachedRowSetå¯¹è±¡
 	 */
 	public CachedRowSet(List list) {
 		populate(list);
 	}
 	
 	/**
-	 * ²ÉÓÃ ResultSet/RowSet ¹¹½¨ CachedRowSet¶ÔÏó
+	 * é‡‡ç”¨ ResultSet/RowSet æ„å»º CachedRowSetå¯¹è±¡
 	 * 
-	 * Ê¹ÓÃ rsmd.getColumnLabel(j) Ìæ»» rsmd.getColumnName(j)¡£
+	 * ä½¿ç”¨ rsmd.getColumnLabel(j) æ›¿æ¢ rsmd.getColumnName(j)ã€‚
 	 */
 	public CachedRowSet(ResultSet rs) {
 		list = new Vector();

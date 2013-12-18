@@ -29,7 +29,7 @@ public class EncodeFilter implements Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
 
 		this.encoding=filterConfig.getInitParameter("encoding");
-		if(this.encoding==null || this.encoding.equals("")){		// Zeven£º´ÓdoFilter·½·¨ÒÆµ½init·½·¨£¬Ö»ĞèÒªÅĞ¶ÏÒ»´Î¼´¿É¡£
+		if(this.encoding==null || this.encoding.equals("")){		// Zevenï¼šä»doFilteræ–¹æ³•ç§»åˆ°initæ–¹æ³•ï¼Œåªéœ€è¦åˆ¤æ–­ä¸€æ¬¡å³å¯ã€‚
 			this.encoding = "UTF-8";	//
 		}
 	}
@@ -44,23 +44,23 @@ public class EncodeFilter implements Filter {
 			
 		}catch (Exception e){
 			
-			// Zeven on 2009-2-20 Ôö¼ÓÌáÊ¾ĞÅÏ¢£¬ÄÇ¸öÇëÇóÓĞÎÊÌâ£¬À´×ÔÓÚÄÄÀï¡£
+			// Zeven on 2009-2-20 å¢åŠ æç¤ºä¿¡æ¯ï¼Œé‚£ä¸ªè¯·æ±‚æœ‰é—®é¢˜ï¼Œæ¥è‡ªäºå“ªé‡Œã€‚
 			String previousURL=((HttpServletRequest)request).getRequestURI()+"?";// +request.getQueryString();
 			
 			Enumeration er = request.getParameterNames();
 			String name=null;
 			while(er.hasMoreElements()){
 				name=er.nextElement().toString() ;
-				previousURL += name + "="+ java.net.URLEncoder.encode(request.getParameter(name), "utf-8") + "&";	//"%26";--Õë¶Ô¸úÔÚurlºóÃæµÄÇé¿ö±àÂë
+				previousURL += name + "="+ java.net.URLEncoder.encode(request.getParameter(name), "utf-8") + "&";	//"%26";--é’ˆå¯¹è·Ÿåœ¨urlåé¢çš„æƒ…å†µç¼–ç 
 			}
 			
-			log.info(e.getMessage()+"---Referer="+((HttpServletRequest)request).getHeader("Referer")+"---previousURL="+previousURL );	// ÎªÁË²»ÔÚ¿ØÖÆÌ¨Êä³öĞÅÏ¢£¬Òì³£ÇëÇó£¬Ê¹ÓÃinfo¼¶±ğ£¬²»Ê¹ÓÃerror¼¶±ğ¡£
+			log.info(e.getMessage()+"---Referer="+((HttpServletRequest)request).getHeader("Referer")+"---previousURL="+previousURL );	// ä¸ºäº†ä¸åœ¨æ§åˆ¶å°è¾“å‡ºä¿¡æ¯ï¼Œå¼‚å¸¸è¯·æ±‚ï¼Œä½¿ç”¨infoçº§åˆ«ï¼Œä¸ä½¿ç”¨errorçº§åˆ«ã€‚
 		}
 		
 	}
 
 //	/**
-//	 * ÅĞ¶ÏÄÄĞ©ÊÇĞèÒª»º´æµÄÇëÇó
+//	 * åˆ¤æ–­å“ªäº›æ˜¯éœ€è¦ç¼“å­˜çš„è¯·æ±‚
 //	 * @param uri
 //	 * @return
 //	 */

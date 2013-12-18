@@ -8,7 +8,7 @@ package com.kingcore.framework.util;
 
 /**
  * @author WUZEWEN
- * ÓÃÀ´±êÊ¶ÊÇInformixÊı¾İ¿â
+ * ç”¨æ¥æ ‡è¯†æ˜¯Informixæ•°æ®åº“
  */
 public interface InformixDatabaseInterface extends DatabaseInterface {
 

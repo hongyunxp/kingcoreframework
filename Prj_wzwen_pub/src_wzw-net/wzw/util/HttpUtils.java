@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  
 
 /**
- * <p>javaÀàÎÄ¼şµÄËµÃ÷...</p>
+ * <p>javaç±»æ–‡ä»¶çš„è¯´æ˜...</p>
  * @author Zeven on 2008-1-31
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -32,12 +32,12 @@ public class HttpUtils {
 
 
 	/**
-     * <p>¶Ôrequest,sessionÓòÖĞµÄ¶ÔÏóµÄ»ñÈ¡,Èç¹ûÊÇ¶à¸öÔò·µ»ØµÚÒ»¸öÖµ¡£</p>
+     * <p>å¯¹request,sessionåŸŸä¸­çš„å¯¹è±¡çš„è·å–,å¦‚æœæ˜¯å¤šä¸ªåˆ™è¿”å›ç¬¬ä¸€ä¸ªå€¼ã€‚</p>
      * @author WUZEWEN on 2004-3-26
-     * @param request ÇëÇó¶ÔÏó
-     * @param parameterName ¶ÔÏóÃû³Æ
-     * @param defaultValue ¶ÔÏóÈ±Ê¡Öµ
-     * @return ¶ÔÏóµÄÖµ¡£
+     * @param request è¯·æ±‚å¯¹è±¡
+     * @param parameterName å¯¹è±¡åç§°
+     * @param defaultValue å¯¹è±¡ç¼ºçœå€¼
+     * @return å¯¹è±¡çš„å€¼ã€‚
      */
    	public static String getParameter(
         					HttpServletRequest request,
@@ -57,7 +57,7 @@ public class HttpUtils {
         return paramValue;
     }
 	/**
-	 *	½«SessionÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†SessionåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */	 
 	public static void removeObjectInSession( HttpServletRequest request, String name )
 	{
@@ -69,7 +69,7 @@ public class HttpUtils {
 	
 	
 	/**
-	 *	½«ApplicationÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†ApplicationåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */
 	public static void removeObjectInApplication( HttpServletRequest request, String name )
 	{
@@ -83,7 +83,7 @@ public class HttpUtils {
 	
 	
 	/**
-	 *	·ÅÖÃ¶ÔÏóÔÚSessionÓòÖĞ
+	 *	æ”¾ç½®å¯¹è±¡åœ¨SessionåŸŸä¸­
 	 */
 	public static void setObjectInSession( HttpServletRequest request ,String name ,Object obj)
 	{
@@ -97,7 +97,7 @@ public class HttpUtils {
 	
 	
 	/**
-	 *	·ÅÖÃ¶ÔÏóÔÚApplication ÓòÖĞ
+	 *	æ”¾ç½®å¯¹è±¡åœ¨Application åŸŸä¸­
 	 */
 	public static void setObjectInApplication( HttpServletRequest request, String name ,Object obj )
 	{
@@ -110,7 +110,7 @@ public class HttpUtils {
 		context.setAttribute( name, obj ) ;		
 	} 
 	/**
-	 *	½«SessionÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†SessionåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */	 
 	public static Object getObjectInSession( HttpServletRequest request, String name )
 	{
@@ -120,7 +120,7 @@ public class HttpUtils {
 	
 	
 	/**
-	 *	½«ApplicationÓòÖĞµÄ¶ÔÏóÒÆ³ı
+	 *	å°†ApplicationåŸŸä¸­çš„å¯¹è±¡ç§»é™¤
 	 */
 	public static Object getObjectInApplication( HttpServletRequest request, String name )
 	{

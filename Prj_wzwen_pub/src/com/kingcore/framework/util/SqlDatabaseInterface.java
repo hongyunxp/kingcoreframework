@@ -8,7 +8,7 @@ package com.kingcore.framework.util;
 
 /**
  * @author WUZEWEN
- * ÓÃÀ´±êÊ¶ÊÇMs SQL ServerÊı¾İ¿â
+ * ç”¨æ¥æ ‡è¯†æ˜¯Ms SQL Serveræ•°æ®åº“
  */
 public interface SqlDatabaseInterface extends DatabaseInterface {
 

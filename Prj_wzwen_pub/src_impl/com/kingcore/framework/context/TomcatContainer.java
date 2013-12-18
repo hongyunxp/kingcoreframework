@@ -28,8 +28,8 @@ import org.apache.log4j.Logger;
 import com.kingcore.framework.jdbc.ConnectionManager;
 
 /**
- * <p>Tomcat ÈİÆ÷Ìá¹©µÄÌØÓĞµÄÄÚÈİ¡£°üÀ¨DataSource µÈ¡£Ö§³Ö¶àÊı¾İÔ´¡£
- * 		µ±Ç°Õë¶ÔTomcat5.5¡£ Ö§³ÖÖ÷Á÷°æ±¾£¬Ò²¿ÉÒÔÏòÏÂ¼æÈİÆäËû°æ±¾¡£»¹¿ÉÒÔ×Ô¼º±àĞ´²¢×¢Èë¡£</p>
+ * <p>Tomcat å®¹å™¨æä¾›çš„ç‰¹æœ‰çš„å†…å®¹ã€‚åŒ…æ‹¬DataSource ç­‰ã€‚æ”¯æŒå¤šæ•°æ®æºã€‚
+ * 		å½“å‰é’ˆå¯¹Tomcat5.5ã€‚ æ”¯æŒä¸»æµç‰ˆæœ¬ï¼Œä¹Ÿå¯ä»¥å‘ä¸‹å…¼å®¹å…¶ä»–ç‰ˆæœ¬ã€‚è¿˜å¯ä»¥è‡ªå·±ç¼–å†™å¹¶æ³¨å…¥ã€‚</p>
  * @author Zeven on 2007-6-24
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -41,7 +41,7 @@ import com.kingcore.framework.jdbc.ConnectionManager;
 public class TomcatContainer implements ServletContainer,DataSourceManager {
 
 	/**
-	 * ÈÕÖ¾¶ÔÏó
+	 * æ—¥å¿—å¯¹è±¡
 	 */
 	protected static Logger log=Logger.getLogger(com.kingcore.framework.context.TomcatContainer.class);
     
@@ -53,12 +53,12 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
 
 	}
 	/**
-	 * ±£´æDataSourceµÄÒıÓÃ£¬Ö§³Ö¶àÊı¾İÔ´£¬²»ÓÃÃ¿´Î»ñÈ¡
+	 * ä¿å­˜DataSourceçš„å¼•ç”¨ï¼Œæ”¯æŒå¤šæ•°æ®æºï¼Œä¸ç”¨æ¯æ¬¡è·å–
 	 */
 	private Map<String, DataSource> dataSourceMap = new HashMap<String, DataSource>();
 
     /**
-     * »ñÈ¡Ä¬ÈÏµÄ DataSource.
+     * è·å–é»˜è®¤çš„ DataSource.
      * @return
      * @throws SQLException
      */
@@ -67,31 +67,31 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
     }
 
     /**
-     * »ñÈ¡Ãû³ÆÎªdataSourceNameµÄ DataSource.
+     * è·å–åç§°ä¸ºdataSourceNameçš„ DataSource.
      * @param dataSourceName
      * @return
      * @throws SQLException
      */
     public DataSource getDataSource(String dataSourceName) throws SQLException{
 
-    	// ÊÇ·ñÊÇÒÑ¾­»ñÈ¡µÄDataSource¶ÔÏó¡£
+    	// æ˜¯å¦æ˜¯å·²ç»è·å–çš„DataSourceå¯¹è±¡ã€‚
     	DataSource ods = dataSourceMap.get(dataSourceName);
 		if(ods!=null){
 			return ods;
 		}
 
 		DataSource ds = null;
-//		1.´ÓÉÏÏÂÎÄ¸ù¾İJNDI»ñÈ¡DataSource
+//		1.ä»ä¸Šä¸‹æ–‡æ ¹æ®JNDIè·å–DataSource
 		Context initCtx = null;
 		try {
-			initCtx = new InitialContext(); //´´½¨ÉÏÏÂÎÄÊµÀı
+			initCtx = new InitialContext(); //åˆ›å»ºä¸Šä¸‹æ–‡å®ä¾‹
 		
 //			get DataSource by different Servlet Container Type.
-			// Tomcat5 ĞèÒª×öÌØÊâµÄ´¦Àí
+			// Tomcat5 éœ€è¦åšç‰¹æ®Šçš„å¤„ç†
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			
 			ds = (DataSource)envCtx.lookup( dataSourceName );
-			dataSourceMap.put(dataSourceName, ds);    // »º´æÆğÀ´
+			dataSourceMap.put(dataSourceName, ds);    // ç¼“å­˜èµ·æ¥
 			return ds ;
 			
 		}catch (NamingException ex) {
@@ -110,7 +110,7 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
     }
 
 	/**
-	 * »ñÈ¡ÏµÍ³Ä¬ÈÏµÄÊı¾İÔ´µÄÊı¾İ¿âÁ¬½Ó¡£
+	 * è·å–ç³»ç»Ÿé»˜è®¤çš„æ•°æ®æºçš„æ•°æ®åº“è¿æ¥ã€‚
 	 * @return
 	 */
 	public Connection getConnection() throws SQLException {
@@ -118,7 +118,7 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
 	}
 
 	/**
-	 * »ñÈ¡Ö¸¶¨Ãû³ÆµÄÊı¾İÔ´µÄÊı¾İ¿âÁ¬½Ó¡£
+	 * è·å–æŒ‡å®šåç§°çš„æ•°æ®æºçš„æ•°æ®åº“è¿æ¥ã€‚
 	 * @param dataSourceName
 	 * @return
 	 * @throws SQLException
@@ -128,25 +128,25 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
 		
 		Connection conn = null ;
 		
-		//	1.´ÓÉÏÏÂÎÄ¸ù¾İJNDI»ñÈ¡DataSource
+		//	1.ä»ä¸Šä¸‹æ–‡æ ¹æ®JNDIè·å–DataSource
 		DataSource ds = getDataSource( dataSourceName );
 					
 		if (ds != null){
 			conn = ds.getConnection();
 			if( conn==null ){
-				log.debug("Ê¹ÓÃjndi·½Ê½»ñÈ¡Ãû³ÆÎª[" +dataSourceName+ "]µÄDataSourceÖĞµÄConnectionÎªnull¡£");
+				log.debug("ä½¿ç”¨jndiæ–¹å¼è·å–åç§°ä¸º[" +dataSourceName+ "]çš„DataSourceä¸­çš„Connectionä¸ºnullã€‚");
 			}
-			conn.setAutoCommit(false);		// WeblogicµÄDataSourceµÄJNDIÄ¬ÈÏÎª true.
+			conn.setAutoCommit(false);		// Weblogicçš„DataSourceçš„JNDIé»˜è®¤ä¸º true.
 			//log.debug("obtain a connection:   "+conn);
 			return conn;
 			
 		}else{
 			log.debug("get DateSource from JNDI failed!");
-			log.debug("Ê¹ÓÃjndi·½Ê½»ñÈ¡Ãû³ÆÎª[" +dataSourceName+ "]µÄDataSourceÊ§°Ü");
+			log.debug("ä½¿ç”¨jndiæ–¹å¼è·å–åç§°ä¸º[" +dataSourceName+ "]çš„DataSourceå¤±è´¥");
 		}
 			
 		
-		//	2.Èç¹ûjndiÖĞÃ»ÓĞ£¬´Ó¾²Ì¬ÀàÖĞ»ñÈ¡
+		//	2.å¦‚æœjndiä¸­æ²¡æœ‰ï¼Œä»é™æ€ç±»ä¸­è·å–
 		if(conn==null){
 			try{
 				conn = ConnectionManager.getInstance().getConnection() ;
@@ -171,21 +171,21 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
 	}
 
 	/**
-	 * Tomcat ÈİÆ÷ÏÂµÄ request.getContextPath() ·µ»ØµÄ±ê×¼»¯´¦Àí¡£
+	 * Tomcat å®¹å™¨ä¸‹çš„ request.getContextPath() è¿”å›çš„æ ‡å‡†åŒ–å¤„ç†ã€‚
 	 */
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
 	}
 
 	/**
-	 * Tomcat ÈİÆ÷µÄincluded µÄ×ÓÒ³ÃæÒªÖ¸¶¨ contentType¡£
+	 * Tomcat å®¹å™¨çš„included çš„å­é¡µé¢è¦æŒ‡å®š contentTypeã€‚
 	 */
 	public void setIncludedPageContentType(HttpServletResponse response,String contentType) {
 		response.setContentType( contentType );
 	}
 	
     /**
-     * È±Ê¡µÄDataSource µÄÃû³Æ¡£
+     * ç¼ºçœçš„DataSource çš„åç§°ã€‚
      */
 	protected String defaultDataSourceName = "jndi/jdbc";
 	private String configPath;
@@ -205,7 +205,7 @@ public class TomcatContainer implements ServletContainer,DataSourceManager {
 	}
 	
 	/**
-	 * Tomcat5.5ÒªÇóÉèÖÃÃ¿¸öÒ³ÃæµÄContextType£¬²»ÉèÖÃÄÇÃ´Ò³Ãæ»á±¨´í¡£
+	 * Tomcat5.5è¦æ±‚è®¾ç½®æ¯ä¸ªé¡µé¢çš„ContextTypeï¼Œä¸è®¾ç½®é‚£ä¹ˆé¡µé¢ä¼šæŠ¥é”™ã€‚
 	 */
 	public void setPageContentTypeIndividually(HttpServletResponse response, String contentType) {
 		response.setContentType( contentType );

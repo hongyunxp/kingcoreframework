@@ -14,9 +14,9 @@ package com.kingcore.framework.transaction;
 import java.util.HashMap;
 
 /**
- * <p>ÊÂÎñ¹ÜÀíÆ÷½Ó¿Ú¡£
- * 		ÊÂÎñ¹ÜÀí·ÅÔÚÒµÎñ´¦Àí²ã£¬ÊÇÊµÏÖÒµÎñ´¦Àí²ãµÄ»ù´¡¡£
- * 		ÊÂÎñ¹ÜÀíµÄÄÚÈÝºÜ¶à£¬°üÀ¨Êý¾Ý¿âÁ¬½ÓÊÂÎñ£¬ÓÊ¼þ·¢ËÍÊÂÎñ£¬ÎÄ¼þ¶ÁÐ´ÊÂÎñ£¬Ô¶³Ìµ÷ÓÃÊÂÎñµÈµÈ¡£
+ * <p>äº‹åŠ¡ç®¡ç†å™¨æŽ¥å£ã€‚
+ * 		äº‹åŠ¡ç®¡ç†æ”¾åœ¨ä¸šåŠ¡å¤„ç†å±‚ï¼Œæ˜¯å®žçŽ°ä¸šåŠ¡å¤„ç†å±‚çš„åŸºç¡€ã€‚
+ * 		äº‹åŠ¡ç®¡ç†çš„å†…å®¹å¾ˆå¤šï¼ŒåŒ…æ‹¬æ•°æ®åº“è¿žæŽ¥äº‹åŠ¡ï¼Œé‚®ä»¶å‘é€äº‹åŠ¡ï¼Œæ–‡ä»¶è¯»å†™äº‹åŠ¡ï¼Œè¿œç¨‹è°ƒç”¨äº‹åŠ¡ç­‰ç­‰ã€‚
  * 
  * try {
  *  TransactionManager tm = new ConnectionTransactionManager();

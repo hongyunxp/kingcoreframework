@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 /** 
- * <p>²ÉÓÃ½Ó¿Ú±à³Ì£¬ËùÓĞ¿Éµ¼º½Æ÷¶ÔÏóÊµÏÖ±¾½Ó¿Ú¶¨ÒåµÄµ¼º½·½·¨£¬¿É±»NavigatorTag ±êÇ©Ê¹ÓÃ¡£</p>
+ * <p>é‡‡ç”¨æ¥å£ç¼–ç¨‹ï¼Œæ‰€æœ‰å¯å¯¼èˆªå™¨å¯¹è±¡å®ç°æœ¬æ¥å£å®šä¹‰çš„å¯¼èˆªæ–¹æ³•ï¼Œå¯è¢«NavigatorTag æ ‡ç­¾ä½¿ç”¨ã€‚</p>
  * @author	WUZEWEN on 2006.11.01
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -26,7 +26,7 @@ import java.util.HashMap;
 public interface Navigator extends Serializable {
 	
 //	/**
-//	 *  »ù±¾¹¹Ôìº¯Êı¡£
+//	 *  åŸºæœ¬æ„é€ å‡½æ•°ã€‚
 //	 * @param pageParams
 //	 */
 //	public Navigator(int[] pageParams) {
@@ -43,21 +43,21 @@ public interface Navigator extends Serializable {
 
 	
 	/**
-	 * ×ÜÒ³Êı
-	 * @deprecated wzw£ºpageCountÓÉrowCount/pageSize¼ÆËã³öÀ´£¬²»ĞèÒªÉèÖÃ¡£
+	 * æ€»é¡µæ•°
+	 * @deprecated wzwï¼špageCountç”±rowCount/pageSizeè®¡ç®—å‡ºæ¥ï¼Œä¸éœ€è¦è®¾ç½®ã€‚
 	 * @return int
 	 */
 	public void setPageCount(int pageCount);
 	
 	/**
-	 * ×ÜÒ³Êı
+	 * æ€»é¡µæ•°
 	 * @return int
 	 */
 	public int getPageCount();
 	
 	
 	/**
-	 * Ã¿Ò³ÏÔÊ¾µÄĞĞÊı
+	 * æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•°
 	 * @return int
 	 */
 	public int getPageSize();
@@ -66,13 +66,13 @@ public interface Navigator extends Serializable {
 	public void setPageSize(int pageSize);
 	
 	/**
-	 * ×ÜµÄĞĞÊı
+	 * æ€»çš„è¡Œæ•°
 	 * @return int
 	 */
 	public int getRowCount();
 	
 	/**
-	 * »ù±¾µØÖ·
+	 * åŸºæœ¬åœ°å€
 	 * @return
 	 */
 	public String getPath();
@@ -82,68 +82,68 @@ public interface Navigator extends Serializable {
 	public void setPath(String path);
 	
 	/**
-	 *µ±Ç°Ò³ºÅ
+	 *å½“å‰é¡µå·
 	 */
 	public void setPageNumber(int index);
 	
 	/**
-	 * µ±Ç°Ò³
+	 * å½“å‰é¡µ
 	 * @return int
 	 */
 	public int getPageNumber();
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÓĞÏÂÒ³
+	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸‹é¡µ
 	 * @return boolean
 	 */
 	public boolean hasNextPage();
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÓĞÉÏÒ³
+	 * åˆ¤æ–­æ˜¯å¦æœ‰ä¸Šé¡µ
 	 * @return boolean
 	 */
 	public boolean hasPreviousPage();
 
 	/**
-	 * ÅĞ¶ÏÊÇµÚÒ»Ò³
+	 * åˆ¤æ–­æ˜¯ç¬¬ä¸€é¡µ
 	 * @return boolean
 	 */
 	public boolean isFirstPage();
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇ×îºóÒ»Ò³
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯æœ€åä¸€é¡µ
 	 * @return boolean
 	 */
 	public boolean isLastPage();
 	
 //
 //	/**
-//	 * @deprecated ²»ÔÙ´«µİÃ¿Ò³µÄĞĞÊı¡£
-//	 * <p>²»²ÉÓÃWeb·şÎñÆ÷»º´æ£¬Ã¿´Î·­Ò³¶¼²éÕÒÊı¾İ¿â£¬
-//	 * 		Õë¶Ô²»Í¬µÄÊı¾İÈçOracle,SQL Server²ÉÓÃ²»Í¬µÄ·â×°ÊµÏÖ¡£
-//	 * 	wzw on 2006-11-28 ½«onclickÊÂ¼şÖĞµÄexitĞŞ¸ÄÎª'',Ê¹ÓÃreturn Ò²²»ĞĞ¡£</p>
-//	 * @param commandName ·­Ò³Ê±ÓÃµÄµÄURL£¬ºóÃæ´øÓĞ·­Ò³ĞÅÏ¢²ÎÊıºÍÆäËûĞèÒªµÄ²ÎÊı
-//	 * @param rows Ã¿Ò³ÏÔÊ¾µÄĞĞÊı
-//	 * @return ²éÑ¯µ¼º½ĞÅÏ¢html´úÂë
+//	 * @deprecated ä¸å†ä¼ é€’æ¯é¡µçš„è¡Œæ•°ã€‚
+//	 * <p>ä¸é‡‡ç”¨WebæœåŠ¡å™¨ç¼“å­˜ï¼Œæ¯æ¬¡ç¿»é¡µéƒ½æŸ¥æ‰¾æ•°æ®åº“ï¼Œ
+//	 * 		é’ˆå¯¹ä¸åŒçš„æ•°æ®å¦‚Oracle,SQL Serveré‡‡ç”¨ä¸åŒçš„å°è£…å®ç°ã€‚
+//	 * 	wzw on 2006-11-28 å°†onclickäº‹ä»¶ä¸­çš„exitä¿®æ”¹ä¸º'',ä½¿ç”¨return ä¹Ÿä¸è¡Œã€‚</p>
+//	 * @param commandName ç¿»é¡µæ—¶ç”¨çš„çš„URLï¼Œåé¢å¸¦æœ‰ç¿»é¡µä¿¡æ¯å‚æ•°å’Œå…¶ä»–éœ€è¦çš„å‚æ•°
+//	 * @param rows æ¯é¡µæ˜¾ç¤ºçš„è¡Œæ•°
+//	 * @return æŸ¥è¯¢å¯¼èˆªä¿¡æ¯htmlä»£ç 
 //	 */
 //	
-//	public String pagesPnfl(int rows,String commandName);  //¼æÈİ¾É°æ±¾
+//	public String pagesPnfl(int rows,String commandName);  //å…¼å®¹æ—§ç‰ˆæœ¬
 //	
 
 	/**
-	 * <p>·­Ò³µ¼º½ĞÅÏ¢µÄÊä³ö£¬ËùÓĞĞèÒª·­Ò³µÄ¶ÔÏó¶¼ÊµÏÖ¸Ã½Ó¿Ú£¬
-	 * 		±¾·½·¨Êä³ö Privious,Next,First,Last, toPage, Îå¸öµ¼º½Á´½Ó¡£</p>
-	 * @param commandName ·­Ò³Ê±ÓÃµÄµÄURL£¬ºóÃæ´øÓĞ·­Ò³ĞÅÏ¢²ÎÊıºÍÆäËûĞèÒªµÄ²ÎÊı
-	 * @return ²éÑ¯µ¼º½ĞÅÏ¢html´úÂë
+	 * <p>ç¿»é¡µå¯¼èˆªä¿¡æ¯çš„è¾“å‡ºï¼Œæ‰€æœ‰éœ€è¦ç¿»é¡µçš„å¯¹è±¡éƒ½å®ç°è¯¥æ¥å£ï¼Œ
+	 * 		æœ¬æ–¹æ³•è¾“å‡º Privious,Next,First,Last, toPage, äº”ä¸ªå¯¼èˆªé“¾æ¥ã€‚</p>
+	 * @param commandName ç¿»é¡µæ—¶ç”¨çš„çš„URLï¼Œåé¢å¸¦æœ‰ç¿»é¡µä¿¡æ¯å‚æ•°å’Œå…¶ä»–éœ€è¦çš„å‚æ•°
+	 * @return æŸ¥è¯¢å¯¼èˆªä¿¡æ¯htmlä»£ç 
 	 */
 	public String getPagesPnfl( );
 	public String getPagesPnfl2( ); 
  
 
 	/**
-	 * ·ÖÒ³
-	 * @param int rows Ã¿Ò³ÏÔÊ¾µÄ×î´óĞĞÊı
-	 * @param java.lang.String commandName CommandµÄURL
+	 * åˆ†é¡µ
+	 * @param int rows æ¯é¡µæ˜¾ç¤ºçš„æœ€å¤§è¡Œæ•°
+	 * @param java.lang.String commandName Commandçš„URL
 	 * @return java.lang.String
 	 */
 	public String getPagesPn( );

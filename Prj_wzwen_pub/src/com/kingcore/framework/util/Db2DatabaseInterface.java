@@ -8,7 +8,7 @@ package com.kingcore.framework.util;
 
 /**
  * @author WUZEWEN
- * ÓÃÀ´±êÊ¶ÊÇDB2Êı¾İ¿â
+ * ç”¨æ¥æ ‡è¯†æ˜¯DB2æ•°æ®åº“
  */
 public interface Db2DatabaseInterface extends DatabaseInterface {
 

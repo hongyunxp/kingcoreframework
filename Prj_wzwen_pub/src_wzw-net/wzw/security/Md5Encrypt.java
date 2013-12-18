@@ -14,9 +14,9 @@ import java.security.NoSuchAlgorithmException;
 
 
 /**
- * MD5¼ÓÃÜËã·¨
- * Zeven: ²ÉÓÃutf-8×Ö·û¼¯£¬ÔÚ²»Í¬µÄ²Ù×÷ÏµÍ³Æ½Ì¨Ã»ÓĞÖĞÎÄÎÊÌâ¡£
- * 	MD5µÄ½á¹û¿ÉÄÜÒòÎªÒÔÏÂÒòÊı¶ø²»Í¬£º³¤¶È32/16¡¢´óĞ¡Ğ´¡¢²ÉÓÃ×Ö·û¼¯¡¢³õÊ¼ÖµµÈ¡£
+ * MD5åŠ å¯†ç®—æ³•
+ * Zeven: é‡‡ç”¨utf-8å­—ç¬¦é›†ï¼Œåœ¨ä¸åŒçš„æ“ä½œç³»ç»Ÿå¹³å°æ²¡æœ‰ä¸­æ–‡é—®é¢˜ã€‚
+ * 	MD5çš„ç»“æœå¯èƒ½å› ä¸ºä»¥ä¸‹å› æ•°è€Œä¸åŒï¼šé•¿åº¦32/16ã€å¤§å°å†™ã€é‡‡ç”¨å­—ç¬¦é›†ã€åˆå§‹å€¼ç­‰ã€‚
  * 
  */
 public class Md5Encrypt {
@@ -27,20 +27,20 @@ public class Md5Encrypt {
 			'7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
 	/**
-	 * ¶Ô×Ö·û´®½øĞĞMD5¼ÓÃÜ
+	 * å¯¹å­—ç¬¦ä¸²è¿›è¡ŒMD5åŠ å¯†
 	 * 
 	 * @param text
-	 *            Ã÷ÎÄ
+	 *            æ˜æ–‡
 	 * 
-	 * @return ÃÜÎÄ
+	 * @return å¯†æ–‡
 	 */
 	public static String md5(String text) {
 		return md5(text, "utf-8");
 	}
 	/**
 	 * 
-	 * @param text ¼ÓÃÜµÄÃ÷ÎÄ 
-	 * @param charsetName ²ÉÓÃ×Ö·û¼¯
+	 * @param text åŠ å¯†çš„æ˜æ–‡ 
+	 * @param charsetName é‡‡ç”¨å­—ç¬¦é›†
 	 * @return
 	 */
 	public static String md5(String text, String charsetName) {
@@ -63,7 +63,7 @@ public class Md5Encrypt {
 	/**
 	 * 
 	 * @param inputBytes
-	 * @param charsetName ²ÉÓÃ×Ö·û¼¯
+	 * @param charsetName é‡‡ç”¨å­—ç¬¦é›†
 	 * @return
 	 */
 	public static String md5(byte[] inputBytes, String charsetName) {
@@ -105,10 +105,10 @@ public class Md5Encrypt {
         if(Array.getLength(args) == 0)
         {
             System.out.println("MD5 Test suite:");
-            System.out.println("MD5(\"ÖĞ»ªÈËÃñ¹²ºÍ¹ú\"):" + Md5Encrypt.md5("ÖĞ»ªÈËÃñ¹²ºÍ¹ú"));
-            System.out.println("MD5(\"ÖĞ»ªÈËÃñ¹²ºÍ¹ú\"):" + new MD5().getMD5ofStr("ÖĞ»ªÈËÃñ¹²ºÍ¹ú")); 
+            System.out.println("MD5(\"ä¸­åäººæ°‘å…±å’Œå›½\"):" + Md5Encrypt.md5("ä¸­åäººæ°‘å…±å’Œå›½"));
+            System.out.println("MD5(\"ä¸­åäººæ°‘å…±å’Œå›½\"):" + new MD5().getMD5ofStr("ä¸­åäººæ°‘å…±å’Œå›½")); 
             
-            System.out.println("MD5(\"ÖĞÎÄ\"):" + Md5Encrypt.md5("ÖĞÎÄ"));
+            System.out.println("MD5(\"ä¸­æ–‡\"):" + Md5Encrypt.md5("ä¸­æ–‡"));
             System.out.println("MD5(\"a\"):" + Md5Encrypt.md5("a"));
             System.out.println("MD5(\"abc\"):" + Md5Encrypt.md5("abc"));
             System.out.println("MD5(\"message digest\"):" + Md5Encrypt.md5("message digest"));

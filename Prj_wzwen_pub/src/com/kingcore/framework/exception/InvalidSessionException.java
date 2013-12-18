@@ -17,7 +17,7 @@ package com.kingcore.framework.exception;
 import java.util.HashMap;
 
 /** 
- * <p>Ó¦ÓÃ³ÌĞòÒì³££¬ËùÓĞÓ¦ÓÃ³ÌĞòÒì³£À©Õ¹¸ÃÀà¡£</p>
+ * <p>åº”ç”¨ç¨‹åºå¼‚å¸¸ï¼Œæ‰€æœ‰åº”ç”¨ç¨‹åºå¼‚å¸¸æ‰©å±•è¯¥ç±»ã€‚</p>
  * @author	WUZEWEN on 2006.03.21
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -34,15 +34,15 @@ public class InvalidSessionException extends BaseException {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * µÇÂ¼Ò³Ãæ¶ÔÓ¦µÄ ActionForward ¶ÔÓ¦µÄÃû³Æ£¬ÔÚstruts MVCÅäÖÃÎÄ¼şÖĞÅäÖÃ¡£
+	 * ç™»å½•é¡µé¢å¯¹åº”çš„ ActionForward å¯¹åº”çš„åç§°ï¼Œåœ¨struts MVCé…ç½®æ–‡ä»¶ä¸­é…ç½®ã€‚
 	 */
 	protected String forwardName = "user-login";		// the default forwardName.
 
 	/**
-	 * <p>Î´ÑéÖ¤µÄ»á»°Òì³£¡£</p>
-	 * @param showType Òì³£»ù±¾ÀàĞÍ
-	 * @param inMessage Òì³£ÏûÏ¢ÄÚÈİ
-	 * @param forwardName ActionForward ¶ÔÓ¦µÄÃû³Æ
+	 * <p>æœªéªŒè¯çš„ä¼šè¯å¼‚å¸¸ã€‚</p>
+	 * @param showType å¼‚å¸¸åŸºæœ¬ç±»å‹
+	 * @param inMessage å¼‚å¸¸æ¶ˆæ¯å†…å®¹
+	 * @param forwardName ActionForward å¯¹åº”çš„åç§°
 	 */
 	public InvalidSessionException(String inMessage,int showType, String forwardName) {
 		super(inMessage, showType);  //

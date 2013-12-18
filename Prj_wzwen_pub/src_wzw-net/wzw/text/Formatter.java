@@ -20,11 +20,11 @@ import org.apache.log4j.Logger;
 
 
 /**
- * <p>¶ÔÏó¸ñÊ½»¯¹¤¾ß¡£</p>
+ * <p>å¯¹è±¡æ ¼å¼åŒ–å·¥å…·ã€‚</p>
  * 
  * <pre>
- * fmt.formatObject( new Double("12345678"),"£¤##,##0.##")      =£¤12,345,678
- * fmt.formatObject( new Double("12345678"),"£¤##,##0.00")      =£¤12,345,678.00
+ * fmt.formatObject( new Double("12345678"),"ï¿¥##,##0.##")      =ï¿¥12,345,678
+ * fmt.formatObject( new Double("12345678"),"ï¿¥##,##0.00")      =ï¿¥12,345,678.00
  * fmt.formatObject( new Double("12345678"),"##,##0.0#")       =12,345,678.0
  * fmt.formatObject( new Double("12345678"),"##0.000")         =12345678.000
  * </pre>
@@ -40,7 +40,7 @@ public class Formatter {
 
 
 	/**
-	 * ÈÕÖ¾´¦Àí¶ÔÏó¡£
+	 * æ—¥å¿—å¤„ç†å¯¹è±¡ã€‚
 	 */
 	protected static Logger log = Logger.getLogger( wzw.text.Formatter.class);
 
@@ -71,11 +71,11 @@ public class Formatter {
     }
     
     /**
-     * ¸ñÊ½»¯¶ÔÏó¡£
-     * @param locale ±¾µØ·ç¸ñÀà
-     * @param valueToFormat Òª¸ñÊ½»¯µÄ¶ÔÏó
-     * @param formatString ¸ñÊ½»¯µÄÄ£Ê½
-     * @return ¸ñÊ½»¯Ö®ºóµÄÖµ
+     * æ ¼å¼åŒ–å¯¹è±¡ã€‚
+     * @param locale æœ¬åœ°é£æ ¼ç±»
+     * @param valueToFormat è¦æ ¼å¼åŒ–çš„å¯¹è±¡
+     * @param formatString æ ¼å¼åŒ–çš„æ¨¡å¼
+     * @return æ ¼å¼åŒ–ä¹‹åçš„å€¼
      * @throws JspException
      */
     public static String formatObject(Locale locale,Object valueToFormat,String formatString) throws JspException {
@@ -85,7 +85,7 @@ public class Formatter {
     	
     	Format format = null;
     	Object value = null;
-		if(value instanceof String){	//Ö§³Ö²ÎÊıÎªString
+		if(value instanceof String){	//æ”¯æŒå‚æ•°ä¸ºString
 			value =Double.valueOf( (String)valueToFormat );
 		}else{
 			value = valueToFormat;
@@ -192,11 +192,11 @@ public class Formatter {
 		
 		/// Formatter fmt = new Formatter();
 
-		System.out.println( StringUtils.rightPad("fmt.formatObject( new Double(\"12345678\"),\"£¤##,##0.##\") ", 60," ") + "=" 
-												+ Formatter.formatObject( new Double("12345678"),"£¤##,##0.##") );
+		System.out.println( StringUtils.rightPad("fmt.formatObject( new Double(\"12345678\"),\"ï¿¥##,##0.##\") ", 60," ") + "=" 
+												+ Formatter.formatObject( new Double("12345678"),"ï¿¥##,##0.##") );
 
-		System.out.println( StringUtils.rightPad("fmt.formatObject( new Double(\"12345678\"),\"£¤##,##0.00\") ", 60," ") + "=" 
-												+ Formatter.formatObject( new Double("12345678"),"£¤##,##0.00") );
+		System.out.println( StringUtils.rightPad("fmt.formatObject( new Double(\"12345678\"),\"ï¿¥##,##0.00\") ", 60," ") + "=" 
+												+ Formatter.formatObject( new Double("12345678"),"ï¿¥##,##0.00") );
 
 		System.out.println( StringUtils.rightPad("fmt.formatObject( new Double(\"12345678\"),\"$##,##0.0#\") ", 60," ") + "=" 	
 												+ Formatter.formatObject( new Double("12345678"),"$##,##0.0#") );

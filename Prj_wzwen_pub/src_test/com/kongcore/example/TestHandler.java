@@ -8,7 +8,7 @@ import java.util.Map;
 import com.kingcore.framework.base.handler.AbstractHandler;
 
 /**
- * <p>ÒµÎñÂß¼­´¦Àí£¬ÊÂÎïÍêÕûĞÔ¿ØÖÆÀà¡£</p>
+ * <p>ä¸šåŠ¡é€»è¾‘å¤„ç†ï¼Œäº‹ç‰©å®Œæ•´æ€§æ§åˆ¶ç±»ã€‚</p>
  * @author Zeven on 2007-8-25
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -24,7 +24,7 @@ public class TestHandler extends AbstractHandler {
 	 */
 
     /**
-     * µ¥¼şµÄÉè¼ÆÄ£Ê½Ìæ»»È«¾²Ì¬·½·¨£¬±ãÓÚspring ¹¹Ôì
+     * å•ä»¶çš„è®¾è®¡æ¨¡å¼æ›¿æ¢å…¨é™æ€æ–¹æ³•ï¼Œä¾¿äºspring æ„é€ 
      */
 	private static TestHandler instance;
 	
@@ -36,7 +36,7 @@ public class TestHandler extends AbstractHandler {
 		return instance;
 	}
 	/**
-	 * ¹¹Ôì¶ÔÏó²¢ÇÒ¸³ÓèÄ¬ÈÏÖµ¡£ »á±»spring µ÷ÓÃ£¬µ¼ÖÂÁ½´Î¹¹Ôì!!!!!!!!!!!!
+	 * æ„é€ å¯¹è±¡å¹¶ä¸”èµ‹äºˆé»˜è®¤å€¼ã€‚ ä¼šè¢«spring è°ƒç”¨ï¼Œå¯¼è‡´ä¸¤æ¬¡æ„é€ !!!!!!!!!!!!
 	 *
 	 */
 	private TestHandler() {
@@ -46,40 +46,40 @@ public class TestHandler extends AbstractHandler {
 	}
 	
 	/**
-	 * <p>ÕâÊÇÒ»¸ö´¦ÀíµêÆÌ×¢²áµÄÀı×Ó£¬
-	 * 		Õ¹Ê¾ÈçºÎÊ¹ÓÃÒµÎñ²ã´¦ÀíÒµÎñÂß¼­¡¢¿ØÖÆÊÂÎñ¡£</P>
+	 * <p>è¿™æ˜¯ä¸€ä¸ªå¤„ç†åº—é“ºæ³¨å†Œçš„ä¾‹å­ï¼Œ
+	 * 		å±•ç¤ºå¦‚ä½•ä½¿ç”¨ä¸šåŠ¡å±‚å¤„ç†ä¸šåŠ¡é€»è¾‘ã€æ§åˆ¶äº‹åŠ¡ã€‚</P>
 	 * @param map
 	 * @throws Exceptioin
 	 */
 	public void shopRegister(Map map) throws Exception {
 		
-		// JDBC Connection ¶ÔÏóÓÃÓÚ¿ØÖÆÊÂÎñÍêÕûĞÔ¡£
+		// JDBC Connection å¯¹è±¡ç”¨äºæ§åˆ¶äº‹åŠ¡å®Œæ•´æ€§ã€‚
 		Connection conn = null;
 		
 		try {
-			// »ñÈ¡Á¬½Ó
+			// è·å–è¿æ¥
 			conn = this.getConnection();
 			
-			// ¹¹½¨ DAO²¢ÇÒ×¢ÈëÁ¬½ÓÒÔ±ã¿ØÖÆÊÂÎñ
+			// æ„å»º DAOå¹¶ä¸”æ³¨å…¥è¿æ¥ä»¥ä¾¿æ§åˆ¶äº‹åŠ¡
 			//UserDealDAO udd = new UserDealDAO();
 			//ShopDealDAO sdd = new ShopDealDAO();
 			//udd.setConnection(conn);
 			//sdd.setConnection(conn);
 			
-			// µ÷ÓÃDAO¸÷ÖÖÊı¾İ´¦Àí·½·¨
+			// è°ƒç”¨DAOå„ç§æ•°æ®å¤„ç†æ–¹æ³•
 			// sdd.register(...);
 			// udd.updateInfor(...);
 			// ...
 			
-			// ´¦Àí³É¹¦Ìá½»ÊÂÎñ
+			// å¤„ç†æˆåŠŸæäº¤äº‹åŠ¡
 			conn.commit();
 		} catch (Exception e) {
-			// ´¦Àí²»³É¹¦»Ø¹öÊÂÎñ
+			// å¤„ç†ä¸æˆåŠŸå›æ»šäº‹åŠ¡
 			conn.rollback();
 			
 		} finally {
 			
-			// »ñÈ¡Á¬½ÓµÄµØ·½Ò»¶¨Òª¹Ø±ÕÁ¬½Ó
+			// è·å–è¿æ¥çš„åœ°æ–¹ä¸€å®šè¦å…³é—­è¿æ¥
 			if(conn!=null){
 				conn.close();
 			}

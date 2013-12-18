@@ -79,10 +79,10 @@ public class ValidateSessionTag extends TagSupport {
                 throw new JspException("ServletException when forwarding to loginPage: " +
                     e.getMessage());
             }
-        // 不再继续处理页面其他内容
+        // 涓嶅啀缁х画澶勭悊椤甸潰鍏朵粬鍐呭
             return SKIP_PAGE;
         }
-        // 继续处理页面其他内容
+        // 缁х画澶勭悊椤甸潰鍏朵粬鍐呭
         return EVAL_PAGE;
     }
 

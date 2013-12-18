@@ -10,20 +10,20 @@ import com.kingcore.framework.util.CookieUtils;
 
 /* wuzewen   2003.04.25
  *
- *  ¸ù¾İÃû³ÆÅĞ¶ÏÊÇ·ñ´æÔÚ¸ÃÃû³ÆµÄcookie£¬´æÔÚÔòÏòÒ³ÃæÊä³ö checked¡£
+ *  æ ¹æ®åç§°åˆ¤æ–­æ˜¯å¦å­˜åœ¨è¯¥åç§°çš„cookieï¼Œå­˜åœ¨åˆ™å‘é¡µé¢è¾“å‡º checkedã€‚
  *
  */
 public class IsCookieSetTag extends BodyTagSupport
 {
 	public String name  ;
 	private String  value ;
-	//»ñÈ¡²ÎÊı
+	//è·å–å‚æ•°
 	public void setName( String name )
 	{
-		this.name = name   ;    // name Îª¿ÕÊ±webÈİÆ÷²»»áÈÃjspÒ³ÃæÍ¨¹ı¡£
+		this.name = name   ;    // name ä¸ºç©ºæ—¶webå®¹å™¨ä¸ä¼šè®©jspé¡µé¢é€šè¿‡ã€‚
 	}
 
-	//Ö´ĞĞĞĞÎª
+	//æ‰§è¡Œè¡Œä¸º
 	public int doEndTag(  )
 	{
 		String checked ;
@@ -37,11 +37,11 @@ public class IsCookieSetTag extends BodyTagSupport
         return EVAL_PAGE;
 	}
 
-	//»ñÈ¡ĞĞÎªÌå
+	//è·å–è¡Œä¸ºä½“
 	public int doAfterBody( )
 	{
         //BodyContent bodyContent = getBodyContent();
-        //ÔÚBodyTagSuppor ÖĞÒÑ¾­µÃµ½bodyContect
+        //åœ¨BodyTagSuppor ä¸­å·²ç»å¾—åˆ°bodyContect
         JspWriter out = getPreviousOut();
 		value = bodyContent.getString() ;
 		return  SKIP_BODY ;
@@ -54,7 +54,7 @@ public class IsCookieSetTag extends BodyTagSupport
         super.release();
     }
 
-    /*  BodyTagSupport ÊµÏÖµÄ·½·¨
+    /*  BodyTagSupport å®ç°çš„æ–¹æ³•
     public void setPageContext (PageContext  pageContext) ;
     public int  doStartPage()
     public int  doInitBody()

@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import wzw.util.DbUtils;
 
 /**
- * <p> MySQL Êı¾İ¿âjdbc ¸öĞÔ²Ù×÷µÄÊµÏÖÀà¡£</p>
+ * <p> MySQL æ•°æ®åº“jdbc ä¸ªæ€§æ“ä½œçš„å®ç°ç±»ã€‚</p>
  * @author Zeven on 2007-6-24
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -28,11 +28,11 @@ public class MySqlDatabase extends PlainDatabase {
 
 
 	/**
-	 *  ¸ù¾İĞèÒª²éÑ¯µÄÄ³¶ÎÊı¾İĞĞ£¬°ü×°µ±Ç°µÄsql statement and return.
-	 * @param sql Ô­sql statement
-	 * @param offset ÆğÊ¼Î»ÖÃ£¬µÚÒ»ĞĞÎª[1]
-	 * @param row_count ĞèÒª»ñÈ¡µÄĞĞÊı
-	 * @return °ü×°Ö®ºóµÄ sql statement
+	 *  æ ¹æ®éœ€è¦æŸ¥è¯¢çš„æŸæ®µæ•°æ®è¡Œï¼ŒåŒ…è£…å½“å‰çš„sql statement and return.
+	 * @param sql åŸsql statement
+	 * @param offset èµ·å§‹ä½ç½®ï¼Œç¬¬ä¸€è¡Œä¸º[1]
+	 * @param row_count éœ€è¦è·å–çš„è¡Œæ•°
+	 * @return åŒ…è£…ä¹‹åçš„ sql statement
 	 */
 	public String getSubResultSetSql(String sql, int offset, int row_count) {
 
@@ -47,11 +47,11 @@ public class MySqlDatabase extends PlainDatabase {
 
 
 	/**
-	 * ½«ÎÄ¼ş±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param strPath Òª·ÅÈëÊı¾İ¿âµÄÎÄ¼şµÄÈ«Â·¾¶£¬Èç "D:/upload/a.txe","D:\\upload\\a.txt"
+	 * å°†æ–‡ä»¶ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param strPath è¦æ”¾å…¥æ•°æ®åº“çš„æ–‡ä»¶çš„å…¨è·¯å¾„ï¼Œå¦‚ "D:/upload/a.txe","D:\\upload\\a.txt"
 	 * @return
 	 */	
 	public  boolean  updateBlobColumn(String Tablename,
@@ -64,14 +64,14 @@ public class MySqlDatabase extends PlainDatabase {
 	
 
 	/**
-	 * ½«×Ö·ûĞÍ´ó¶ÔÏó±£´æµ½Êı¾İ¿âµÄ±íÖĞ¡£
+	 * å°†å­—ç¬¦å‹å¤§å¯¹è±¡ä¿å­˜åˆ°æ•°æ®åº“çš„è¡¨ä¸­ã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£©   
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰   
 	 *      
-	 * @param Tablename ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param Content Òª·ÅÈëÊı¾İ¿âµÄÄÚÈİ
+	 * @param Tablename è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param Content è¦æ”¾å…¥æ•°æ®åº“çš„å†…å®¹
 	 * @return
 	 */	
 	public boolean updateClobColumn(String tableName, 
@@ -88,12 +88,12 @@ public class MySqlDatabase extends PlainDatabase {
 		boolean isConnCreated = false;
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			if(conn==null){
 				conn = DbUtils.getConnection();
 				isConnCreated = true;
 			}
-			//conn.setAutoCommit(false);  //connÎªConnection¶ÔÏó
+			//conn.setAutoCommit(false);  //connä¸ºConnectionå¯¹è±¡
 
 			//set clob column to empty first.
 			str_sql="UPDATE " + tableName + " SET " +   picField +"=? "+ sqlWhere;
@@ -101,13 +101,13 @@ public class MySqlDatabase extends PlainDatabase {
 			pstmt.setString( 1, content );
 			pstmt.executeUpdate();
 			
-			if(isConnCreated){	//×Ô¼º´´½¨µÄÁ¬½Ó¾ÍÌá½»£¬·ñÔò²»´¦ÀíÊÂÎñÎÊÌâ
+			if(isConnCreated){	//è‡ªå·±åˆ›å»ºçš„è¿æ¥å°±æäº¤ï¼Œå¦åˆ™ä¸å¤„ç†äº‹åŠ¡é—®é¢˜
 				conn.commit();
 			}
 			return true;
 			
 		}catch (Exception e){
-			if(isConnCreated){	//×Ô¼º´´½¨µÄÁ¬½Ó¾Í»Ø¹ö£¬·ñÔò²»´¦ÀíÊÂÎñÎÊÌâ
+			if(isConnCreated){	//è‡ªå·±åˆ›å»ºçš„è¿æ¥å°±å›æ»šï¼Œå¦åˆ™ä¸å¤„ç†äº‹åŠ¡é—®é¢˜
 				conn.rollback();
 			}
 			
@@ -139,7 +139,7 @@ public class MySqlDatabase extends PlainDatabase {
 	}
 	
 	/* (non-Javadoc)
-	 * ¶ÀÁ¢µÄÊÂÎñ¡£
+	 * ç‹¬ç«‹çš„äº‹åŠ¡ã€‚
 	 * @see com.kingcore.framework.context.DatabaseManager#getClobColumn(java.lang.String)
 	 */
 	public String getClobColumn(String sql) throws Exception{
@@ -151,9 +151,9 @@ public class MySqlDatabase extends PlainDatabase {
         //StringBuffer sb = new StringBuffer();
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			conn = DbUtils.getConnection();
-			conn.setAutoCommit(false);  //connÎªConnection¶ÔÏó
+			conn.setAutoCommit(false);  //connä¸ºConnectionå¯¹è±¡
 
 			pstmt = conn.prepareStatement( sql );
 			rs = pstmt.executeQuery(sql);
@@ -210,7 +210,7 @@ public class MySqlDatabase extends PlainDatabase {
 	/**
 	 * just for MySQL,get id that insert last.
 	 * 
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó£¬²»ÄÜÎªnull¡£
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ï¼Œä¸èƒ½ä¸ºnullã€‚
 	 * @return last insert id
 	 */
 	public int getLastInsertIdentity(Connection conn) throws SQLException {
@@ -239,16 +239,16 @@ public class MySqlDatabase extends PlainDatabase {
 	
 
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âµÄÌØÊâ¹æÔò¶ÔĞèÒª²åÈëµÄÄÚÈİ²ÉÓÃÕıÔò±í´ïÊ½×öÌØÊâ´¦Àí¡£
-	 * 		Õë¶Ô×Ö·û´®ÀàĞÍ(Varchar)£¬Êı×Ö(Number)¡¢ÈÕÆÚ(Date)ºÍ¶ş½øÖÆ(LOB)ÀàĞÍ²»ÓÃÕâ¸ö´¦Àí¡£
-	 * 		-- µ±Ç°ÊÇÕë¶Ô Oracle Êı¾İ¿â£¬½« ' ·ûºÅ Ìæ»»Îª '' £¬²ÅÄÜ²åÈëµ½Êı¾İ¿âÖĞ¡£
-	 * 		-- Õë¶Ô MySQLÊı¾İ¿â£¬"'","\"Á½¸ö¶¼ÊÇ×ªÒå×Ö·û£¬¶¼Òª±äÎª"\'","\\"
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“çš„ç‰¹æ®Šè§„åˆ™å¯¹éœ€è¦æ’å…¥çš„å†…å®¹é‡‡ç”¨æ­£åˆ™è¡¨è¾¾å¼åšç‰¹æ®Šå¤„ç†ã€‚
+	 * 		é’ˆå¯¹å­—ç¬¦ä¸²ç±»å‹(Varchar)ï¼Œæ•°å­—(Number)ã€æ—¥æœŸ(Date)å’ŒäºŒè¿›åˆ¶(LOB)ç±»å‹ä¸ç”¨è¿™ä¸ªå¤„ç†ã€‚
+	 * 		-- å½“å‰æ˜¯é’ˆå¯¹ Oracle æ•°æ®åº“ï¼Œå°† ' ç¬¦å· æ›¿æ¢ä¸º '' ï¼Œæ‰èƒ½æ’å…¥åˆ°æ•°æ®åº“ä¸­ã€‚
+	 * 		-- é’ˆå¯¹ MySQLæ•°æ®åº“ï¼Œ"'","\"ä¸¤ä¸ªéƒ½æ˜¯è½¬ä¹‰å­—ç¬¦ï¼Œéƒ½è¦å˜ä¸º"\'","\\"
 	 * <pre>
 	 * escape2Sql("ab'cd")			="ab''cd"
 	 * escape2Sql("ab'c'd")			="ab''c''d"
 	 * escape2Sql("ab''cd")			="ab''''cd"
 	 * </pre>
-	 * @param src ĞèÒª±£´æµ½Êı¾İ¿âµÄÒ»¸ö×Ö¶Î¡£
+	 * @param src éœ€è¦ä¿å­˜åˆ°æ•°æ®åº“çš„ä¸€ä¸ªå­—æ®µã€‚
 	 * @return
 	 */
 //	public String convertString(String src) {
@@ -268,8 +268,8 @@ public class MySqlDatabase extends PlainDatabase {
 
 	/* (non-Javadoc)
 	 * @see com.kingcore.framework.context.DatabaseManager#identity(java.lang.String)
-	 * Zeven on 2009-01-17: MySql×öÁËÌØÊâ´¦Àí£¬ÎªÁË´¦Àí²¢·¢ÎÊÌâ£¬±¾º¯ÊıÊµ¼Ê·µ»ØµÄÊÇÒ»¸ö»ñÈ¡µÄÊı¾İ¿âÖµ£¬¶ø²»ÊÇSqlÆ¬¶Î¡£
-	 *					 ½«tsys_sequence±íÉèÖÃÎª MYISAMÀàĞÍµÄ·½Ê½È¡´úÁË¡£
+	 * Zeven on 2009-01-17: MySqlåšäº†ç‰¹æ®Šå¤„ç†ï¼Œä¸ºäº†å¤„ç†å¹¶å‘é—®é¢˜ï¼Œæœ¬å‡½æ•°å®é™…è¿”å›çš„æ˜¯ä¸€ä¸ªè·å–çš„æ•°æ®åº“å€¼ï¼Œè€Œä¸æ˜¯Sqlç‰‡æ®µã€‚
+	 *					 å°†tsys_sequenceè¡¨è®¾ç½®ä¸º MYISAMç±»å‹çš„æ–¹å¼å–ä»£äº†ã€‚
 	 * 
 	 */
 	public String identity(String tblName) {
@@ -280,7 +280,7 @@ public class MySqlDatabase extends PlainDatabase {
     	String sql = null;
     	
         try {
-        	// ×Ô¼º»ñÈ¡Ò»¸öÁ¬½Ó£¬¶ø²»¹ÜÁ¬½Ó²ÎÊıÊÇ·ñ´æÔÚ
+        	// è‡ªå·±è·å–ä¸€ä¸ªè¿æ¥ï¼Œè€Œä¸ç®¡è¿æ¥å‚æ•°æ˜¯å¦å­˜åœ¨
         	conn = ApplicationContext.getInstance().getDataSourceManager().getConnection();
         	
         	sql = "Select getSequenceValue('"+tblName.trim()+"')";
@@ -288,7 +288,7 @@ public class MySqlDatabase extends PlainDatabase {
         	
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			conn.commit() ;				// Ìá½»±ÜÃâËø¶¨±í¡£
+			conn.commit() ;				// æäº¤é¿å…é”å®šè¡¨ã€‚
 
 			if( rs.next() ) {
 	        	int ti = rs.getInt(1);

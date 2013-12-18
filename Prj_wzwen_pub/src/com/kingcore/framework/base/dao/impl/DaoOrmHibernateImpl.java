@@ -20,11 +20,11 @@ import com.kingcore.framework.base.dao.DaoOrm;
 
 /**
  * <pre>
- * 	»ùÀà£ºDao Hibernate Base Object.
+ * 	åŸºç±»ï¼šDao Hibernate Base Object.
  *	public class DaoHibernateImpl<T, PK extends Serializable> extends HibernateDaoSupport {
- *		> »ùÓÚ Spring HibernateDaoSupport£¬ĞèÒªÅäÖÃ;
- *		> ¿ÉÒÔÊ¹ÓÃSpring¿ØÖÆÊÂÎï»òÕßHibernate¿ØÖÆÊÂÎï;
- * 		> ÊÊºÏµÄ¿ª·¢½á¹¹ÎªÈı²ã£º Struts + Spring + HibernateDao;
+ *		> åŸºäº Spring HibernateDaoSupportï¼Œéœ€è¦é…ç½®;
+ *		> å¯ä»¥ä½¿ç”¨Springæ§åˆ¶äº‹ç‰©æˆ–è€…Hibernateæ§åˆ¶äº‹ç‰©;
+ * 		> é€‚åˆçš„å¼€å‘ç»“æ„ä¸ºä¸‰å±‚ï¼š Struts + Spring + HibernateDao;
  *      
  * </pre>
  * @author Zeven on 2008-5-31

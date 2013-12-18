@@ -1,19 +1,19 @@
 package com.kingcore.framework.transaction;
 
 /*
-ºÜÖØÒªµÄÒ»µãÊÇÒªÏëÊµÏÖÊÂÎñ£¬ÎÒÃÇ±ØĞëÓÃÍ¬Ò»¸öÊı¾İ¿âÁ¬½ÓÖ´ĞĞÕâĞ©Óï¾ä£¬×îÖÕ²ÅÄÜ×öµ½Í³Ò»µÄÌá½»ºÍ»Ø¹ö¡£ 
-ÎÒÃÇ¿ÉÒÔÕâÑù¼ÙÉè 
-insert1ºÍinsert2Îª²»Í¬DAOµÄ·½·¨ 
-×ĞÏ¸¹Û²ì£¬ÎÒÃÇµÄinsert1ºÍinsert2²¢Ã»ÓĞ¸ºÔğ´ò¿ªÁ¬½ÓºÍ¹Ø±ÕÁ¬½Ó¡£¶øÊÇ¼ä½ÓµÄµ÷ÓÃTransactionHelper.executeNonQuery(sql); 
-ÕâÑùÊ¹ÎÒÃÇÖ´ĞĞµÄËùÓĞ·½·¨¶¼ÊÇÊ¹ÓÃÍ¬Ò»¸öÁ¬½Ó½øĞĞÊı¾İ¿â²Ù×÷¡£ 
+å¾ˆé‡è¦çš„ä¸€ç‚¹æ˜¯è¦æƒ³å®ç°äº‹åŠ¡ï¼Œæˆ‘ä»¬å¿…é¡»ç”¨åŒä¸€ä¸ªæ•°æ®åº“è¿æ¥æ‰§è¡Œè¿™äº›è¯­å¥ï¼Œæœ€ç»ˆæ‰èƒ½åšåˆ°ç»Ÿä¸€çš„æäº¤å’Œå›æ»šã€‚ 
+æˆ‘ä»¬å¯ä»¥è¿™æ ·å‡è®¾ 
+insert1å’Œinsert2ä¸ºä¸åŒDAOçš„æ–¹æ³• 
+ä»”ç»†è§‚å¯Ÿï¼Œæˆ‘ä»¬çš„insert1å’Œinsert2å¹¶æ²¡æœ‰è´Ÿè´£æ‰“å¼€è¿æ¥å’Œå…³é—­è¿æ¥ã€‚è€Œæ˜¯é—´æ¥çš„è°ƒç”¨TransactionHelper.executeNonQuery(sql); 
+è¿™æ ·ä½¿æˆ‘ä»¬æ‰§è¡Œçš„æ‰€æœ‰æ–¹æ³•éƒ½æ˜¯ä½¿ç”¨åŒä¸€ä¸ªè¿æ¥è¿›è¡Œæ•°æ®åº“æ“ä½œã€‚ 
 
-  ÆäÊµÕâ¸öÀı×ÓÖ»ÊÇÏë¸æËß´ó¼ÒÒªÊµÏÖÉùÃ÷Ê½ÊÂÎñµÄÒ»²¿·ÖÄÚÈİ£¬Õâ¸öÀı×ÓÖ»ÄÜÊµÏÖ¼òµ¥µÄµ¥ÊÂÎñÄ£ĞÍ£¬ÒªÊµÏÖ¸ü¸´ÔÓµÄÊÂÎñ´«²¥Ä£ĞÍÈçÇ¶Ì×µÈ£¬»¹ĞèÒªÎÒÃÇÊ¹ÓÃ¸ü¶àµÄ¼¼Êõ£¬ÈçAOPµÈµÈ¡£ÏÈĞ´µ½ÕâÀï£¬Ï£Íû¶Ô´ó¼ÒÓĞËù°ïÖú£¡
+  å…¶å®è¿™ä¸ªä¾‹å­åªæ˜¯æƒ³å‘Šè¯‰å¤§å®¶è¦å®ç°å£°æ˜å¼äº‹åŠ¡çš„ä¸€éƒ¨åˆ†å†…å®¹ï¼Œè¿™ä¸ªä¾‹å­åªèƒ½å®ç°ç®€å•çš„å•äº‹åŠ¡æ¨¡å‹ï¼Œè¦å®ç°æ›´å¤æ‚çš„äº‹åŠ¡ä¼ æ’­æ¨¡å‹å¦‚åµŒå¥—ç­‰ï¼Œè¿˜éœ€è¦æˆ‘ä»¬ä½¿ç”¨æ›´å¤šçš„æŠ€æœ¯ï¼Œå¦‚AOPç­‰ç­‰ã€‚å…ˆå†™åˆ°è¿™é‡Œï¼Œå¸Œæœ›å¯¹å¤§å®¶æœ‰æ‰€å¸®åŠ©ï¼
 
-Wzw£º Ê¹ÓÃ
-tm.begin() ·½·¨£º¿ªÊ¼ÆôÓÃ±¾µØÏß³ÌµÄconn£¬²¢ÇÒ¿ÉÄÜ²»Ö»Ò»¸ö£¬ĞèÒªÊ¹ÓÃstack¹ÜÀíËùÓĞµÄconn£¬ 
-Stack<Map<String,Connection>();-->ÊÂÎñÇ¶Ì×+¶àDataSource¡£
-tm.commit() ·½·¨£ºÌá½»¶ÔÓ¦listÀïÃæËùÓĞµÄconn£»
-tm.rollback() ·½·¨£º»Ø¹ö¶ÔÓ¦listÀïÃæËùÓĞµÄconn£»
+Wzwï¼š ä½¿ç”¨
+tm.begin() æ–¹æ³•ï¼šå¼€å§‹å¯ç”¨æœ¬åœ°çº¿ç¨‹çš„connï¼Œå¹¶ä¸”å¯èƒ½ä¸åªä¸€ä¸ªï¼Œéœ€è¦ä½¿ç”¨stackç®¡ç†æ‰€æœ‰çš„connï¼Œ 
+Stack<Map<String,Connection>();-->äº‹åŠ¡åµŒå¥—+å¤šDataSourceã€‚
+tm.commit() æ–¹æ³•ï¼šæäº¤å¯¹åº”listé‡Œé¢æ‰€æœ‰çš„connï¼›
+tm.rollback() æ–¹æ³•ï¼šå›æ»šå¯¹åº”listé‡Œé¢æ‰€æœ‰çš„connï¼›
 */   
 
 import java.sql.Connection;
@@ -31,41 +31,41 @@ import com.kingcore.framework.context.ApplicationContext;
 public final class ConnectionTransactionManager implements TransactionManager{    
        
 	private static Logger log = Logger.getLogger(ConnectionTransactionManager.class);
-   //Ê¹ÓÃThreadLocal³ÖÓĞµ±Ç°Ïß³ÌµÄÊı¾İ¿âÁ¬½Ó      Map:Ö§³Ö¶àÊı¾İÔ´; Stack:Ö§³ÖÊÂÎñÇ¶Ì×
+   //ä½¿ç”¨ThreadLocalæŒæœ‰å½“å‰çº¿ç¨‹çš„æ•°æ®åº“è¿æ¥      Map:æ”¯æŒå¤šæ•°æ®æº; Stack:æ”¯æŒäº‹åŠ¡åµŒå¥—
    private final static ThreadLocal<Stack<Map<String,Connection>>> connection_holder 
    				= new ThreadLocal<Stack<Map<String,Connection>>>();    
    //private final static ThreadLocal<Connection> connection_holder = new ThreadLocal<Connection>();    
        
-//   //Á¬½ÓÅäÖÃ£¬À´×Ôconnection.properties    
+//   //è¿æ¥é…ç½®ï¼Œæ¥è‡ªconnection.properties    
 //   private final static Properties connectionProp = new Properties();    
 //       
 //   static{         
-//       //¼ÓÔØÅäÖÃÎÄ¼ş    
+//       //åŠ è½½é…ç½®æ–‡ä»¶    
 //       InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("connection.properties");    
 //       try {    
 //               
 //           connectionProp.load(is);    
 //           is.close();    
-//           //¼ÓÔØÇı¶¯³ÌĞò    
+//           //åŠ è½½é©±åŠ¨ç¨‹åº    
 //           Class.forName(connectionProp.getProperty("driverClassName"));    
 //       } catch (IOException e) {    
 //            throw new RuntimeException(e.getMessage(),e);    
 //       }catch(ClassNotFoundException e){    
-//           throw new RuntimeException("Çı¶¯Î´ÕÒµ½",e);    
+//           throw new RuntimeException("é©±åŠ¨æœªæ‰¾åˆ°",e);    
 //       }    
 //   }    
        
-   //»ñÈ¡µ±Ç°Ïß³ÌÖĞµÄÊı¾İ¿âÁ¬½Ó    
+   //è·å–å½“å‰çº¿ç¨‹ä¸­çš„æ•°æ®åº“è¿æ¥    
 	public static Connection getCurrentConnection(TransactionType transType, String dataSourceName) {
 		
-		//intiTransaction(transType);  //Ã¿´Î¿ÉÒÔ³õÊ¼Ò»´Î£¬´´½¨ĞèÒª´´½¨µÄ¶ÔÏó
+		//intiTransaction(transType);  //æ¯æ¬¡å¯ä»¥åˆå§‹ä¸€æ¬¡ï¼Œåˆ›å»ºéœ€è¦åˆ›å»ºçš„å¯¹è±¡
 		Map<String, Connection> connsMap = getLastConnectionsMap();
-		if (connsMap == null) { //Èç¹ûÃ»ÓĞ¿ªÆôÊÂÎñ(tm.begin)£¬Ôò·µ»Ønull.
+		if (connsMap == null) { //å¦‚æœæ²¡æœ‰å¼€å¯äº‹åŠ¡(tm.begin)ï¼Œåˆ™è¿”å›null.
 			return null;
 		}
 
 		Connection conn = connsMap.get(dataSourceName);
-		if (conn == null &&   //Èç¹û±ØĞëÒªÓĞÊÂÎñ£¬Ôò´´½¨
+		if (conn == null &&   //å¦‚æœå¿…é¡»è¦æœ‰äº‹åŠ¡ï¼Œåˆ™åˆ›å»º
 				(transType==TransactionType.NEW_TRANSACTION
 					||transType==TransactionType.REQUIRED_TRANSACTION)) {
 			try {
@@ -80,7 +80,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
 		return conn;
 	}
        
-//   //Ö´ĞĞSQLÓï¾ä    
+//   //æ‰§è¡ŒSQLè¯­å¥    
 //   public static int executeNonQuery(String sql) throws SQLException{    
 //           
 //       Connection conn = getCurrentConnection();    
@@ -90,17 +90,17 @@ public final class ConnectionTransactionManager implements TransactionManager{
 //   }    
        
 	/**
-	 * µ¯³ö×îºóÒ»¸öconnectionsMap.
+	 * å¼¹å‡ºæœ€åä¸€ä¸ªconnectionsMap.
 	 * @return
 	 */
    private static Map<String, Connection> popConnectionsMap(){
 	   Map<String, Connection> connsMap = null;
 		Stack<Map<String, Connection>> connsStack = connection_holder.get();    
-		//Èç¹û»¹Ã»ÓĞÊÂÎñ¶ÑÕ»£¬ÔòÏÈ´´½¨²¢¼ÇÂ¼
+		//å¦‚æœè¿˜æ²¡æœ‰äº‹åŠ¡å †æ ˆï¼Œåˆ™å…ˆåˆ›å»ºå¹¶è®°å½•
 		if (connsStack==null) {
 			return connsMap;
 		}
-		//Èç¹û»¹Ã»ÓĞconnetion Map,Ò²ĞèÒªÏÈ´´½¨²¢Ñ¹Èë¶ÑÕ»
+		//å¦‚æœè¿˜æ²¡æœ‰connetion Map,ä¹Ÿéœ€è¦å…ˆåˆ›å»ºå¹¶å‹å…¥å †æ ˆ
 		connsMap = connsStack.pop(); //pop out
 		if (connsMap==null) {
 			return connsMap;
@@ -109,17 +109,17 @@ public final class ConnectionTransactionManager implements TransactionManager{
    }
 
 	/**
-	 * »ñÈ¡×îºóÒ»¸öconnectionsMap£¬µ«ÊÇ²»µ¯³ö.
+	 * è·å–æœ€åä¸€ä¸ªconnectionsMapï¼Œä½†æ˜¯ä¸å¼¹å‡º.
 	 * @return
 	 */
    private static Map<String, Connection> getLastConnectionsMap(){
 	   Map<String, Connection> connsMap = null;
 		Stack<Map<String, Connection>> connsStack = connection_holder.get();    
-		//Èç¹û»¹Ã»ÓĞÊÂÎñ¶ÑÕ»£¬ÔòÏÈ´´½¨²¢¼ÇÂ¼
+		//å¦‚æœè¿˜æ²¡æœ‰äº‹åŠ¡å †æ ˆï¼Œåˆ™å…ˆåˆ›å»ºå¹¶è®°å½•
 		if (connsStack==null) {
 			return connsMap;
 		}
-		//Èç¹û»¹Ã»ÓĞconnetion Map,Ò²ĞèÒªÏÈ´´½¨²¢Ñ¹Èë¶ÑÕ»
+		//å¦‚æœè¿˜æ²¡æœ‰connetion Map,ä¹Ÿéœ€è¦å…ˆåˆ›å»ºå¹¶å‹å…¥å †æ ˆ
 		connsMap = connsStack.lastElement(); //just get, not pop out
 		if (connsMap==null) {
 			return connsMap;
@@ -127,7 +127,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
 		return connsMap;
    }
    
-   //Ìá½»ÊÂÎñ    
+   //æäº¤äº‹åŠ¡    
    public void commit() throws TransactionException {    
 
 	   Map<String, Connection> connsMap = popConnectionsMap();
@@ -136,7 +136,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
 					 "no transaction found! ");
 		   return;
 	   }
-		//Ìá½»ËùÓĞconn
+		//æäº¤æ‰€æœ‰conn
 		Iterator<Entry<String, Connection>> it = connsMap.entrySet().iterator() ;
 		try {
 			while(it.hasNext() ){
@@ -151,7 +151,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
    }    
        
        
-   //»Ø¹öÊÂÎñ    
+   //å›æ»šäº‹åŠ¡    
    public void rollback() throws TransactionException {
 
 	   Map<String, Connection> connsMap = popConnectionsMap();
@@ -160,7 +160,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
 					 "no transaction found! ");
 		   return;
 	   }
-		//Ìá½»ËùÓĞconn
+		//æäº¤æ‰€æœ‰conn
 		Iterator<Entry<String, Connection>> it = connsMap.entrySet().iterator() ;
 		try {
 			while(it.hasNext() ){
@@ -174,7 +174,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
 		log.info("rollback successfully!");  
    }    
        
-//   //´´½¨Ò»¸ö²»×Ô¶¯CommitµÄÊı¾İ¿âÁ¬½Ó    
+//   //åˆ›å»ºä¸€ä¸ªä¸è‡ªåŠ¨Commitçš„æ•°æ®åº“è¿æ¥    
 //   private static Connection createNotAutoCommitConnection() {    
 //       try {    
 //               
@@ -194,7 +194,7 @@ public final class ConnectionTransactionManager implements TransactionManager{
 	}
 	
 	public void begin(TransactionType transType) throws TransactionException { 
-		intiTransaction(transType); //ÊÂÎñ¹ÜÀí¿ªÊ¼
+		intiTransaction(transType); //äº‹åŠ¡ç®¡ç†å¼€å§‹
 	}
 	
 	private static void intiTransaction(TransactionType transType) throws TransactionException { 
@@ -203,27 +203,27 @@ public final class ConnectionTransactionManager implements TransactionManager{
 			
 		} else if (transType == TransactionType.REQUIRED_TRANSACTION) {
 			Stack<Map<String, Connection>> connsStack = connection_holder.get();    
-			//Èç¹û»¹Ã»ÓĞÏß³ÌÊÂÎñ¶ÑÕ»£¬ÔòÏÈ´´½¨²¢¼ÇÂ¼
+			//å¦‚æœè¿˜æ²¡æœ‰çº¿ç¨‹äº‹åŠ¡å †æ ˆï¼Œåˆ™å…ˆåˆ›å»ºå¹¶è®°å½•
 			if (connsStack==null) {
 				connsStack = new Stack<Map<String, Connection>>();
 				connection_holder.set(connsStack);
 			}
-			//Èç¹û»¹Ã»ÓĞÔò´´½¨¶àÊı¾İÔ´ÊÂÎñ:connetion Map,Ò²ĞèÒªÏÈ´´½¨²¢Ñ¹Èë¶ÑÕ»£¬ÓĞ¾Í²»ÓÃ¹Ü
+			//å¦‚æœè¿˜æ²¡æœ‰åˆ™åˆ›å»ºå¤šæ•°æ®æºäº‹åŠ¡:connetion Map,ä¹Ÿéœ€è¦å…ˆåˆ›å»ºå¹¶å‹å…¥å †æ ˆï¼Œæœ‰å°±ä¸ç”¨ç®¡
 			Map<String, Connection> connsMap = connsStack.lastElement();
-			if (connsMap==null || connsMap.size()<1) {  //Èç¹ûÒ»¸ö¶¼Ã»ÓĞ£¬¾Í´´½¨
+			if (connsMap==null || connsMap.size()<1) {  //å¦‚æœä¸€ä¸ªéƒ½æ²¡æœ‰ï¼Œå°±åˆ›å»º
 				connsMap = new HashMap<String, Connection>();
 				connsStack.push(connsMap);
 			}
-			// Connection·ÅÈëMapÔÚĞèÒªµÄÊ±ºòÔÙ´¦Àí£¬Ò²¾ÍÊÇ»ñÈ¡connµÄÊ±ºò¡£
+			// Connectionæ”¾å…¥Mapåœ¨éœ€è¦çš„æ—¶å€™å†å¤„ç†ï¼Œä¹Ÿå°±æ˜¯è·å–connçš„æ—¶å€™ã€‚
 			
 		} else if (transType == TransactionType.NEW_TRANSACTION) {
 			Stack<Map<String, Connection>> connsStack = connection_holder.get();    
-			//Èç¹û»¹Ã»ÓĞÏß³ÌÊÂÎñ¶ÑÕ»£¬ÔòÏÈ´´½¨²¢¼ÇÂ¼
+			//å¦‚æœè¿˜æ²¡æœ‰çº¿ç¨‹äº‹åŠ¡å †æ ˆï¼Œåˆ™å…ˆåˆ›å»ºå¹¶è®°å½•
 			if (connsStack==null) {
 				connsStack = new Stack<Map<String, Connection>>();
 				connection_holder.set(connsStack);
 			}
-			//´´½¨ĞÂµÄ¶àÊı¾İÔ´ÊÂÎñ:connetion Map,²¢Ñ¹Èë¶ÑÕ»
+			//åˆ›å»ºæ–°çš„å¤šæ•°æ®æºäº‹åŠ¡:connetion Map,å¹¶å‹å…¥å †æ ˆ
 			Map<String, Connection> connsMap = new HashMap<String, Connection>();
 			connsStack.push(connsMap);
 			

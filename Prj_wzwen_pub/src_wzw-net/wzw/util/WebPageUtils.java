@@ -24,7 +24,7 @@ import com.kingcore.framework.context.ApplicationContext;
 
 
 /**
- * <p>jsp webÒ³ÃæµÄ¹¤¾ßÀà¡£</p>
+ * <p>jsp webé¡µé¢çš„å·¥å…·ç±»ã€‚</p>
  * 
  * <pre>
  * WebPageUtils.toHTMLValue( a"b'"c'd' )     =a&#34;b&#39;&#34;c&#39;d&#39;
@@ -46,8 +46,8 @@ public class WebPageUtils {
 	
 	/**
 	 *
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë£¬×÷Îª±êÇ©µÄÖµ¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ï¼Œä½œä¸ºæ ‡ç­¾çš„å€¼ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	 */  
 	public static String escape2Html(String in) {
@@ -64,8 +64,8 @@ public class WebPageUtils {
 
 	/**
 	 * @deprecated replaced by to escape2Html.
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	public static String toHTMLString(String in) {
 		return Escaper.escape2Html( in );
@@ -74,8 +74,8 @@ public class WebPageUtils {
 	
 	/**
 	 *
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë£¬Êä³öµÄ´úÂëÊÇ×÷ÎªjsµÄ±äÁ¿Öµ¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ï¼Œè¾“å‡ºçš„ä»£ç æ˜¯ä½œä¸ºjsçš„å˜é‡å€¼ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	 */
 	public static String escape2HtmlForJavaScript(String in) {
@@ -93,8 +93,8 @@ public class WebPageUtils {
 	
 	/**
 	 * @deprecated replaced by escape2HtmlForJavaScript(String in).
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë£¬Êä³öµÄ´úÂëÊÇ×÷ÎªjsµÄ±äÁ¿¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ï¼Œè¾“å‡ºçš„ä»£ç æ˜¯ä½œä¸ºjsçš„å˜é‡ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	public static String toHTMLStringForScript(String in) {
 		return Escaper.escape2HtmlForJavaScript( in );
@@ -104,9 +104,9 @@ public class WebPageUtils {
 //	
 //	/**
 //	 *
-//	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë¡£
+//	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ã€‚
 //	 * @deprecated 
-//	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+//	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 //	 *
 //	 */
 //	public static String toHTMLString(String in, boolean asParam) {
@@ -115,7 +115,7 @@ public class WebPageUtils {
 
 	/**
 	 *
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª JScript¡¢JavaScript µÄ×Ö·û´®±äÁ¿Öµ¡£
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º JScriptã€JavaScript çš„å­—ç¬¦ä¸²å˜é‡å€¼ã€‚
 	 *
 	 */  
 	public static String escape2JavaScript(String in) {
@@ -132,9 +132,9 @@ public class WebPageUtils {
 
 	/**
 	 * @deprecated replace by escape2JavaScript(String in).
-	 * Zeven on 2008-05-08 £¬ĞŞ¸ÄÎªÊ¹ÓÃÒÑ¾­ÓĞÁËµÄ¸ü³ÉÊìµÄ apache common °ü£»
-	 * 	½¨Òé³ÌĞòÖĞÊ¹ÓÃ×Ô¼º·â×°µÄ£¬¶ø²»Ö±½ÓÊ¹ÓÃ commonÀïÃæµÄ£¬ÒÔ·½±ãÓ¦¸¶µÚÈı·½µÄ±ä¶¯£»
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª JScript¡¢JavaScript µÄ×Ö·û´®±äÁ¿¡£
+	 * Zeven on 2008-05-08 ï¼Œä¿®æ”¹ä¸ºä½¿ç”¨å·²ç»æœ‰äº†çš„æ›´æˆç†Ÿçš„ apache common åŒ…ï¼›
+	 * 	å»ºè®®ç¨‹åºä¸­ä½¿ç”¨è‡ªå·±å°è£…çš„ï¼Œè€Œä¸ç›´æ¥ä½¿ç”¨ commoné‡Œé¢çš„ï¼Œä»¥æ–¹ä¾¿åº”ä»˜ç¬¬ä¸‰æ–¹çš„å˜åŠ¨ï¼›
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º JScriptã€JavaScript çš„å­—ç¬¦ä¸²å˜é‡ã€‚
 	 *
 	public static String toScriptString(String in) {
 
@@ -178,7 +178,7 @@ public class WebPageUtils {
 
 
 	/**
-	 * ¸ù¾İ²»Í¬µÄServletÈİÆ÷£¬·µ»Ø request.getServletPath() Í³Ò»±ê×¼µÄÖµ¡£
+	 * æ ¹æ®ä¸åŒçš„Servletå®¹å™¨ï¼Œè¿”å› request.getServletPath() ç»Ÿä¸€æ ‡å‡†çš„å€¼ã€‚
 	 * @param request
 	 * @return
 	 */
@@ -196,7 +196,7 @@ public class WebPageUtils {
 	 */
 
 	/**
-	 * <p>»ñÈ¡¶ÔÏó£¬ÓÅÏÈË³Ğò£ºrequest, sessioin, application£¬ÕÒµ½¼´·µ»Ø¡£</p>
+	 * <p>è·å–å¯¹è±¡ï¼Œä¼˜å…ˆé¡ºåºï¼šrequest, sessioin, applicationï¼Œæ‰¾åˆ°å³è¿”å›ã€‚</p>
 	 * @param name
 	 * @param request
 	 * @param session
@@ -213,8 +213,8 @@ public class WebPageUtils {
 
 	
 	/**
-	 * ¸ù¾İ²»Í¬µÄServletÈİÆ÷£¬ÉèÖÃ¸ö±ğµÄjspÒ³ÃæµÄcontentType£»ÔÚ±»includeµÄ×ÓÒ³ÃæÊä³ö contentTypeµÄÖµ¡£
-	 * 		Èç£ºtext/html;charset=utf-8
+	 * æ ¹æ®ä¸åŒçš„Servletå®¹å™¨ï¼Œè®¾ç½®ä¸ªåˆ«çš„jspé¡µé¢çš„contentTypeï¼›åœ¨è¢«includeçš„å­é¡µé¢è¾“å‡º contentTypeçš„å€¼ã€‚
+	 * 		å¦‚ï¼štext/html;charset=utf-8
 	 * 		   text/xml;charset=utf-8
 	 *	       text/html;charset=gb2312
 	 * @param request

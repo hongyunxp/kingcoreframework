@@ -11,7 +11,7 @@ import com.kingcore.framework.bean.Value;
 public class FloatValue extends Value {
     private float value;
 
-	//´ÓÒ³ÃæµÃµ½µÄString±äÁ¿¹¹Ôì
+	//ä»é¡µé¢å¾—åˆ°çš„Stringå˜é‡æ„é€ 
     public FloatValue(String value) {
         this.value = Float.parseFloat(value) ;
     }

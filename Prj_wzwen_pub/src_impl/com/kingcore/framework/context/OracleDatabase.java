@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 import wzw.util.DbUtils;
 
 /**
- * <p>Oracle Êı¾İ¿âjdbcÌØÊâ²Ù×÷µÄÊµÏÖÀà¡£</p>
+ * <p>Oracle æ•°æ®åº“jdbcç‰¹æ®Šæ“ä½œçš„å®ç°ç±»ã€‚</p>
  * @author Zeven on 2007-6-24
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -32,7 +32,7 @@ import wzw.util.DbUtils;
 public class OracleDatabase implements DatabaseManager {
 
 	/**
-	 * ÈÕÖ¾¶ÔÏó final ¡£
+	 * æ—¥å¿—å¯¹è±¡ final ã€‚
 	 */
 	protected static Logger log = Logger.getLogger( OracleDatabase.class);
 
@@ -52,13 +52,13 @@ public class OracleDatabase implements DatabaseManager {
 
 
     /**
-     * »ñÈ¡OracleÊı¾İ¿âÖ¸¶¨ĞòÁĞµÄÏÂÒ»¸öĞòÁĞÖµ£¬for Oracle Only¡£
+     * è·å–Oracleæ•°æ®åº“æŒ‡å®šåºåˆ—çš„ä¸‹ä¸€ä¸ªåºåˆ—å€¼ï¼Œfor Oracle Onlyã€‚
      * 
-     * @deprecated ±£Áô¸Ã·½·¨ÊÇÎªÁËÏòÏÂ¼æÈİ£¬½¨ÒéÍ³Ò»Ê¹ÓÃ getIdentityValue ·½·¨¡£
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
-     * @param seqName ĞòÁĞ¶ÔÏóÃû³Æ
-     * @return ĞòÁĞµÄÏÂÒ»¸öÖµ
-     * @throws SQLException Êı¾İ¿â²Ù×÷Ê§°ÜÒì³£¡£
+     * @deprecated ä¿ç•™è¯¥æ–¹æ³•æ˜¯ä¸ºäº†å‘ä¸‹å…¼å®¹ï¼Œå»ºè®®ç»Ÿä¸€ä½¿ç”¨ getIdentityValue æ–¹æ³•ã€‚
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
+     * @param seqName åºåˆ—å¯¹è±¡åç§°
+     * @return åºåˆ—çš„ä¸‹ä¸€ä¸ªå€¼
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¤±è´¥å¼‚å¸¸ã€‚
 	public int getSequenceValue( String seqName, Connection conn ) throws SQLException {
 
 		/// return ApplicationContext.getDatabaseManager().updateBlobColumn(tablename,
@@ -93,7 +93,7 @@ public class OracleDatabase implements DatabaseManager {
 //        			conn.close();
             }catch(SQLException e)
             {
-	            log.fatal("ÔÚÖ´ĞĞ getSequenceValue()³ö´í£¬´íÎóĞÅÏ¢Îª£º\n", e);
+	            log.fatal("åœ¨æ‰§è¡Œ getSequenceValue()å‡ºé”™ï¼Œé”™è¯¯ä¿¡æ¯ä¸ºï¼š\n", e);
 				log.debug("debug", e);
             	/// e.pri ntStackTrace();
             }
@@ -104,13 +104,13 @@ public class OracleDatabase implements DatabaseManager {
 	
 	
     /**
-     * »ñÈ¡OracleÊı¾İ¿âÖ¸¶¨ĞòÁĞµÄÏÂÒ»¸öĞòÁĞÖµ£¬for Oracle Only¡£
-     * 	 ¶ÔÓÚOracleÈç¹ûÊÇÊ¹ÓÃĞòÁĞ·¢ÉúÆ÷À´µÃµ½id,¿ÉÒÔ²»Ìá½»£¬Òò´Ë¿ÉÒÔ¹²ÓÃconn¡£
+     * è·å–Oracleæ•°æ®åº“æŒ‡å®šåºåˆ—çš„ä¸‹ä¸€ä¸ªåºåˆ—å€¼ï¼Œfor Oracle Onlyã€‚
+     * 	 å¯¹äºOracleå¦‚æœæ˜¯ä½¿ç”¨åºåˆ—å‘ç”Ÿå™¨æ¥å¾—åˆ°id,å¯ä»¥ä¸æäº¤ï¼Œå› æ­¤å¯ä»¥å…±ç”¨connã€‚
      * 
-     * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏó¡£
-     * @param seqName ĞòÁĞ¶ÔÏóÃû³Æ
-     * @return ĞòÁĞµÄÏÂÒ»¸öÖµ
-     * @throws SQLException Êı¾İ¿â²Ù×÷Ê§°ÜÒì³£¡£
+     * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡ã€‚
+     * @param seqName åºåˆ—å¯¹è±¡åç§°
+     * @return åºåˆ—çš„ä¸‹ä¸€ä¸ªå€¼
+     * @throws SQLException æ•°æ®åº“æ“ä½œå¤±è´¥å¼‚å¸¸ã€‚
      */
 	public long getIdentityValue( String tblName, Connection conn ) throws SQLException {
 	   	
@@ -122,22 +122,22 @@ public class OracleDatabase implements DatabaseManager {
     	PreparedStatement pstmt = null;
         ResultSet rs = null;
     	long nextVal=0;
-    	boolean isConnCreated = false;		// »ñÈ¡µÄµØ·½Ò»¶¨Í¬ÊÂ Ìá½»/»Ø¹ö£¬¹Ø±Õ¡£
-    	log.debug("¿ªÊ¼Ö´ĞĞ getIdentityValue");
+    	boolean isConnCreated = false;		// è·å–çš„åœ°æ–¹ä¸€å®šåŒäº‹ æäº¤/å›æ»šï¼Œå…³é—­ã€‚
+    	log.debug("å¼€å§‹æ‰§è¡Œ getIdentityValue");
         try {
         	if( conn==null || conn.isClosed() ){
         		conn = ApplicationContext.getInstance().getDataSourceManager().getConnection();
         		isConnCreated = true ;
-            	log.debug("»ñÈ¡ÁËĞÂµÄÁ¬½Ó");
+            	log.debug("è·å–äº†æ–°çš„è¿æ¥");
         	}else{
-        		log.debug("Ê¹ÓÃÏÖÓĞµÄÁ¬½Ó");
+        		log.debug("ä½¿ç”¨ç°æœ‰çš„è¿æ¥");
         	}
         	
         	/// conn = getConnection();
             pstmt = conn.prepareStatement( "SELECT SEQ_"+tblName+".Nextval FROM DUAL");
-    		log.debug("¿ªÊ¼Ö´ĞĞ²éÑ¯");
+    		log.debug("å¼€å§‹æ‰§è¡ŒæŸ¥è¯¢");
             rs = pstmt.executeQuery();
-    		log.debug("²éÑ¯Ö´ĞĞÍê³É");
+    		log.debug("æŸ¥è¯¢æ‰§è¡Œå®Œæˆ");
             if(rs.next()){
             	nextVal = rs.getLong(1);
             }
@@ -150,8 +150,8 @@ public class OracleDatabase implements DatabaseManager {
         	throw e;
 
         } finally {
-        	log.debug("¿ªÊ¼¹Ø±Õ¶ÔÏó");
-    		if( isConnCreated ){		//´´½¨ÁË¾Í¹Ø±Õ
+        	log.debug("å¼€å§‹å…³é—­å¯¹è±¡");
+    		if( isConnCreated ){		//åˆ›å»ºäº†å°±å…³é—­
     			wzw.util.DbUtils.closeQuietly(conn, pstmt, rs);
     		}else{
     			wzw.util.DbUtils.closeQuietly(null, pstmt, rs);
@@ -168,10 +168,10 @@ public class OracleDatabase implements DatabaseManager {
 	 */
 	public RowSet resultSet2RowSet(ResultSet rs) throws SQLException {
 
-		// ²ÉÓÃOracleµÄÊµÏÖÕë¶Ô Oracle10 Êı¾İ¿â
+		// é‡‡ç”¨Oracleçš„å®ç°é’ˆå¯¹ Oracle10 æ•°æ®åº“
 		oracle.jdbc.rowset.OracleCachedRowSet crs= new oracle.jdbc.rowset.OracleCachedRowSet();
 		
-		// ÏÂÃæÊÇ·µ»Ø
+		// ä¸‹é¢æ˜¯è¿”å›
 		crs.populate( rs );
 		
 		//log.debug(" ----------------- ok ");
@@ -183,11 +183,11 @@ public class OracleDatabase implements DatabaseManager {
 
 
 	/**
-	 *  ¸ù¾İĞèÒª²éÑ¯µÄÄ³¶ÎÊı¾İĞĞ£¬°ü×°µ±Ç°µÄsql statement and return.
-	 * @param sql Ô­sql statement
-	 * @param offset ÆğÊ¼Î»ÖÃ£¬µÚÒ»ĞĞÎª[1]
-	 * @param row_count ĞèÒª»ñÈ¡µÄĞĞÊı
-	 * @return °ü×°Ö®ºóµÄ sql statement
+	 *  æ ¹æ®éœ€è¦æŸ¥è¯¢çš„æŸæ®µæ•°æ®è¡Œï¼ŒåŒ…è£…å½“å‰çš„sql statement and return.
+	 * @param sql åŸsql statement
+	 * @param offset èµ·å§‹ä½ç½®ï¼Œç¬¬ä¸€è¡Œä¸º[1]
+	 * @param row_count éœ€è¦è·å–çš„è¡Œæ•°
+	 * @return åŒ…è£…ä¹‹åçš„ sql statement
 	 */
 	public String getSubResultSetSql(String sql, int offset, int row_count) {
 		if(sql==null) {
@@ -205,13 +205,13 @@ public class OracleDatabase implements DatabaseManager {
 
 
 	/**
-	 * ½«Ö¸¶¨µÄÎÄ¼şÄÚÈİ¸üĞÂµ½OracleÊı¾İ¿âµÄBLOB×Ö¶Î¡£
-	 * @param tableName ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param strPath Òª·ÅÈëÊı¾İ¿âµÄÎÄ¼şµÄÈ«Â·¾¶£¬Èç "D:/upload/a.txe","D:\\upload\\a.txt"
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°ÜÅ×³öÒì³£
-	 * @exception Èç¹û²úÉú²Ù×÷Òì³££¬ÏòÍâ²¿Å×³ö
+	 * å°†æŒ‡å®šçš„æ–‡ä»¶å†…å®¹æ›´æ–°åˆ°Oracleæ•°æ®åº“çš„BLOBå­—æ®µã€‚
+	 * @param tableName è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param strPath è¦æ”¾å…¥æ•°æ®åº“çš„æ–‡ä»¶çš„å…¨è·¯å¾„ï¼Œå¦‚ "D:/upload/a.txe","D:\\upload\\a.txt"
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥æŠ›å‡ºå¼‚å¸¸
+	 * @exception å¦‚æœäº§ç”Ÿæ“ä½œå¼‚å¸¸ï¼Œå‘å¤–éƒ¨æŠ›å‡º
 	 */	
 	public boolean updateBlobColumn(String tableName, 
 								   String picField, 
@@ -224,10 +224,10 @@ public class OracleDatabase implements DatabaseManager {
 		boolean isConnCreated = false;
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			if(conn==null || conn.isClosed()){
 				conn = DbUtils.getConnection();
-				isConnCreated = true ;				// Èç¹ûÊÇ×Ô¼º»ñÈ¡µÄÁ¬½Ó£¬¾Í×Ô¼º´¦Àí »ñÈ¡¡¢Ìá½»/»Ø¹ö¡¢¹Ø±Õ ËùÓĞÊÂÎñÖ®ÀàµÄ²Ù×÷£¬·ñÔò²»´¦ÀíÌá½»¡¢»Ø¹ö¡¢¹Ø±Õ¡£
+				isConnCreated = true ;				// å¦‚æœæ˜¯è‡ªå·±è·å–çš„è¿æ¥ï¼Œå°±è‡ªå·±å¤„ç† è·å–ã€æäº¤/å›æ»šã€å…³é—­ æ‰€æœ‰äº‹åŠ¡ä¹‹ç±»çš„æ“ä½œï¼Œå¦åˆ™ä¸å¤„ç†æäº¤ã€å›æ»šã€å…³é—­ã€‚
 			}
 			
 			conn.setAutoCommit(false) ;
@@ -257,21 +257,21 @@ public class OracleDatabase implements DatabaseManager {
 				pstmt.executeUpdate();
 				pstmt.close();
 				
-				if(isConnCreated){		// ×Ô¼º´´½¨µÄ²ÅÌá½»
+				if(isConnCreated){		// è‡ªå·±åˆ›å»ºçš„æ‰æäº¤
 					conn.commit();
 				}
 				return   true ;
       
 			}catch(java.io.FileNotFoundException e){
-				if(isConnCreated){		// ×Ô¼º´´½¨µÄ²Å»Ø¹ö
+				if(isConnCreated){		// è‡ªå·±åˆ›å»ºçš„æ‰å›æ»š
 					conn.rollback();
 				}
 				log.debug("debug", e);
 				/// e.pri ntStackTrace();
-				throw new Exception ("ÉÏ´«µÄÎÄ¼şÃ»ÕÒµ½£¬¿ÉÄÜÊÇÎÄ¼şÃ»ÓĞÉÏ´«µ½·şÎñÆ÷ÉÏ£¬µ¼ÖÂÃ»ÓĞÊı¾İĞ´ÈëÊı¾İ¿â" + e.getMessage());
+				throw new Exception ("ä¸Šä¼ çš„æ–‡ä»¶æ²¡æ‰¾åˆ°ï¼Œå¯èƒ½æ˜¯æ–‡ä»¶æ²¡æœ‰ä¸Šä¼ åˆ°æœåŠ¡å™¨ä¸Šï¼Œå¯¼è‡´æ²¡æœ‰æ•°æ®å†™å…¥æ•°æ®åº“" + e.getMessage());
 				
 			}finally{
-				if(isConnCreated && conn!=null){	// ×Ô¼º´´½¨µÄ²Å¹Ø±Õ
+				if(isConnCreated && conn!=null){	// è‡ªå·±åˆ›å»ºçš„æ‰å…³é—­
 					conn.close();      	
 				}
 				
@@ -285,13 +285,13 @@ public class OracleDatabase implements DatabaseManager {
 	}
 
 	/**
-	 * ½«Ö¸¶¨µÄÎÄ¼şÄÚÈİ¸üĞÂµ½OracleÊı¾İ¿âµÄBLOB×Ö¶Î¡£
-	 * @param tableName ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param strPath Òª·ÅÈëÊı¾İ¿âµÄÎÄ¼şµÄÈ«Â·¾¶£¬Èç "D:/upload/a.txe","D:\\upload\\a.txt"
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°ÜÅ×³öÒì³£
-	 * @exception Èç¹û²úÉú²Ù×÷Òì³££¬ÏòÍâ²¿Å×³ö
+	 * å°†æŒ‡å®šçš„æ–‡ä»¶å†…å®¹æ›´æ–°åˆ°Oracleæ•°æ®åº“çš„BLOBå­—æ®µã€‚
+	 * @param tableName è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param strPath è¦æ”¾å…¥æ•°æ®åº“çš„æ–‡ä»¶çš„å…¨è·¯å¾„ï¼Œå¦‚ "D:/upload/a.txe","D:\\upload\\a.txt"
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥æŠ›å‡ºå¼‚å¸¸
+	 * @exception å¦‚æœäº§ç”Ÿæ“ä½œå¼‚å¸¸ï¼Œå‘å¤–éƒ¨æŠ›å‡º
 	 */	
 	public boolean updateBlobColumn(String tableName, 
 								   String picField, 
@@ -306,17 +306,17 @@ public class OracleDatabase implements DatabaseManager {
 
 
 	/**
-	 * ½«×Ö·û´®ÄÚÈİ¸üĞÂµ½OracleÊı¾İ¿âµÄCLOB×Ö¶Î¡£
+	 * å°†å­—ç¬¦ä¸²å†…å®¹æ›´æ–°åˆ°Oracleæ•°æ®åº“çš„CLOBå­—æ®µã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£©
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰
 	 *        
-	 * @param tableName ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param content ÎÄ±¾ÄÚÈİ
-	 * @param conn Êı¾İ¿âÁ¬½Ó¶ÔÏóµÄÒıÓÃ
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°ÜÅ×³öÒì³£
-	 * @exception Èç¹û²úÉú²Ù×÷Òì³££¬ÏòÍâ²¿Å×³ö
+	 * @param tableName è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param content æ–‡æœ¬å†…å®¹
+	 * @param conn æ•°æ®åº“è¿æ¥å¯¹è±¡çš„å¼•ç”¨
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥æŠ›å‡ºå¼‚å¸¸
+	 * @exception å¦‚æœäº§ç”Ÿæ“ä½œå¼‚å¸¸ï¼Œå‘å¤–éƒ¨æŠ›å‡º
 	 */
 	public boolean updateClobColumn(String tableName, 
 			   					String picField, 
@@ -332,13 +332,13 @@ public class OracleDatabase implements DatabaseManager {
 		boolean isConnCreated = false;
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			if(conn==null || conn.isClosed()){
 				conn = DbUtils.getConnection();
 				isConnCreated = true ;
 			}
 			
-			conn.setAutoCommit(false);  //connÎªConnection¶ÔÏó
+			conn.setAutoCommit(false);  //connä¸ºConnectionå¯¹è±¡
 
 			//set clob column to empty first.
 			str_sql="UPDATE " + tableName + " SET " +   picField +"=empty_clob() "+ sqlWhere;
@@ -357,7 +357,7 @@ public class OracleDatabase implements DatabaseManager {
 
 				Object dsp = ApplicationContext.getInstance().getDataSourceManager();
 				Object clob = null;
-				// ÏÔÊ¾µ±Ç°jdbc»·¾³
+				// æ˜¾ç¤ºå½“å‰jdbcç¯å¢ƒ
 				log.debug("I'm \n" + dsp.getClass() +"\n" );
 //							+ conn.getClass() +"\n" 
 //							+ rs.getClass() +"\n" 
@@ -365,12 +365,12 @@ public class OracleDatabase implements DatabaseManager {
 //				if( dsp instanceof WebLogicContainer)  {
 //					
 //					clob = rs.getClob( picField );
-//					// wzw:ĞèÒªÌí¼Ó£º/bea/weblogic/server/lib/weblogic.jar °ü
+//					// wzw:éœ€è¦æ·»åŠ ï¼š/bea/weblogic/server/lib/weblogic.jar åŒ…
 //					log.info("need : /bea/weblogic/server/lib/weblogic.jar");
 //					//out = new BufferedWriter( ((weblogic.jdbc.vendor.oracle.OracleThinClob)clob).getCharacterOutputStream());
 //				
 //				}else if( dsp instanceof TomcatContainer )  {
-//					// wzw:ĞèÒªÌí¼Ó£ºTomcat/common/lib/naming-factory-dbcp.jar °ü
+//					// wzw:éœ€è¦æ·»åŠ ï¼šTomcat/common/lib/naming-factory-dbcp.jar åŒ…
 //					org.apache.tomcat.dbcp.dbcp.DelegatingResultSet drs = (org.apache.tomcat.dbcp.dbcp.DelegatingResultSet)rs;
 //					clob = ((oracle.jdbc.OracleResultSet)drs.getDelegate()).getCLOB( picField );
 //					out = new BufferedWriter( ( (oracle.sql.CLOB)clob).getCharacterOutputStream() );
@@ -381,7 +381,7 @@ public class OracleDatabase implements DatabaseManager {
 					oracle.jdbc.driver.OracleResultSet ors =
 						 (oracle.jdbc.driver.OracleResultSet)rs;
 					clob = ors.getClob(picField);
-					// wzw :Èç¹ûÕâÀï±¨NullPointException£¬ÔòÓĞ¿ÉÄÜÊı¾İ¿âµÄ×Ö¶Î²»ÊÇClobÀàĞÍ£¬¶øÊÇVarchar2ÀàĞÍ£¬Ğè¼ì²é±í½á¹¹¡£
+					// wzw :å¦‚æœè¿™é‡ŒæŠ¥NullPointExceptionï¼Œåˆ™æœ‰å¯èƒ½æ•°æ®åº“çš„å­—æ®µä¸æ˜¯Clobç±»å‹ï¼Œè€Œæ˜¯Varchar2ç±»å‹ï¼Œéœ€æ£€æŸ¥è¡¨ç»“æ„ã€‚
 					out = new BufferedWriter( ( (oracle.sql.CLOB)clob).getCharacterOutputStream() );
 					
 //				}
@@ -412,14 +412,14 @@ public class OracleDatabase implements DatabaseManager {
 			}
 			
 			// commit all.
-			if( isConnCreated ){		// ×Ô¼º´´½¨µÄ²ÅÌá½»
+			if( isConnCreated ){		// è‡ªå·±åˆ›å»ºçš„æ‰æäº¤
 				conn.commit();
 			}
 			
 			return true;
 			
 		}catch (Exception e){
-			if( isConnCreated ){		// ×Ô¼º´´½¨µÄ²Å»Ø¹ö
+			if( isConnCreated ){		// è‡ªå·±åˆ›å»ºçš„æ‰å›æ»š
 				conn.rollback();
 			}
 			log.error("SQL=" + str_sql + "\ncontent="+content );
@@ -428,7 +428,7 @@ public class OracleDatabase implements DatabaseManager {
 			throw e;
 			
 		}finally{
-			if(isConnCreated){		//// ×Ô¼º´´½¨µÄ²Å¹Ø±Õ
+			if(isConnCreated){		//// è‡ªå·±åˆ›å»ºçš„æ‰å…³é—­
 				DbUtils.closeQuietly(conn, pstmt, rs);
 			}else{
 				DbUtils.closeQuietly(null, pstmt, rs);
@@ -437,16 +437,16 @@ public class OracleDatabase implements DatabaseManager {
 	}
 
 	/**
-	 * ½«×Ö·û´®ÄÚÈİ¸üĞÂµ½OracleÊı¾İ¿âµÄCLOB×Ö¶Î¡£
+	 * å°†å­—ç¬¦ä¸²å†…å®¹æ›´æ–°åˆ°Oracleæ•°æ®åº“çš„CLOBå­—æ®µã€‚
 	 *   CLOB(Character   Large   Object)   
-	 *     ÓÃÓÚ´æ´¢¶ÔÓ¦ÓÚÊı¾İ¿â¶¨ÒåµÄ×Ö·û¼¯µÄ×Ö·ûÊı¾İ¡££¨ÀàËÆÓÚlongÀàĞÍ£©
+	 *     ç”¨äºå­˜å‚¨å¯¹åº”äºæ•°æ®åº“å®šä¹‰çš„å­—ç¬¦é›†çš„å­—ç¬¦æ•°æ®ã€‚ï¼ˆç±»ä¼¼äºlongç±»å‹ï¼‰
 	 *        
-	 * @param tableName ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param content ÎÄ±¾ÄÚÈİ
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°ÜÅ×³öÒì³£
-	 * @exception Èç¹û²úÉú²Ù×÷Òì³££¬ÏòÍâ²¿Å×³ö
+	 * @param tableName è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param content æ–‡æœ¬å†…å®¹
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥æŠ›å‡ºå¼‚å¸¸
+	 * @exception å¦‚æœäº§ç”Ÿæ“ä½œå¼‚å¸¸ï¼Œå‘å¤–éƒ¨æŠ›å‡º
 	 */
 	public boolean updateClobColumn(String tableName, 
 			   					String picField, 
@@ -460,14 +460,14 @@ public class OracleDatabase implements DatabaseManager {
 	}
 
 	/**
-	 * ½«×Ö·û´®ÄÚÈİ¸üĞÂµ½OracleÊı¾İ¿âµÄCLOB×Ö¶Î¡£
-	 * ¶ÀÁ¢µÄÊÂÎñ¡£
-	 * @param tableName ±íÃû³Æ
-	 * @param picField ÁĞÃû³Æ
-	 * @param sqlWhere sqlµÄwhere Óï¾ä£¬Èç "where id='123456'"
-	 * @param content ÎÄ±¾ÄÚÈİ
-	 * @return ³É¹¦·µ»Øtrue£¬Ê§°ÜÅ×³öÒì³£
-	 * @exception Èç¹û²úÉú²Ù×÷Òì³££¬ÏòÍâ²¿Å×³ö
+	 * å°†å­—ç¬¦ä¸²å†…å®¹æ›´æ–°åˆ°Oracleæ•°æ®åº“çš„CLOBå­—æ®µã€‚
+	 * ç‹¬ç«‹çš„äº‹åŠ¡ã€‚
+	 * @param tableName è¡¨åç§°
+	 * @param picField åˆ—åç§°
+	 * @param sqlWhere sqlçš„where è¯­å¥ï¼Œå¦‚ "where id='123456'"
+	 * @param content æ–‡æœ¬å†…å®¹
+	 * @return æˆåŠŸè¿”å›trueï¼Œå¤±è´¥æŠ›å‡ºå¼‚å¸¸
+	 * @exception å¦‚æœäº§ç”Ÿæ“ä½œå¼‚å¸¸ï¼Œå‘å¤–éƒ¨æŠ›å‡º
 	 */
 	public String getClobColumn(String sql) throws Exception { 
 		Connection conn = null;
@@ -477,9 +477,9 @@ public class OracleDatabase implements DatabaseManager {
         StringBuffer sb = new StringBuffer();
 		
 		try{
-			//¿ªÊ¼¶ÔÊı¾İ¿â²Ù×÷£»
+			//å¼€å§‹å¯¹æ•°æ®åº“æ“ä½œï¼›
 			conn = DbUtils.getConnection();
-			conn.setAutoCommit(false);  //connÎªConnection¶ÔÏó
+			conn.setAutoCommit(false);  //connä¸ºConnectionå¯¹è±¡
 
 			pstmt = conn.prepareStatement( sql );
 			rs = pstmt.executeQuery(sql);
@@ -551,7 +551,7 @@ public class OracleDatabase implements DatabaseManager {
 
 
 	/**
-	 * ·µ»Ø»ñÈ¡Êı¾İ¿âÏµÍ³Ê±¼äµÄ sql Æ¬¶Ï¡£
+	 * è¿”å›è·å–æ•°æ®åº“ç³»ç»Ÿæ—¶é—´çš„ sql ç‰‡æ–­ã€‚
 	 */
 	public String sysDatetime() {
 		return "sysdate";
@@ -559,7 +559,7 @@ public class OracleDatabase implements DatabaseManager {
 	
 
 	/**
-	 * ·µ»Ø»ñÈ¡ĞòÁĞµÄ sql Æ¬¶Ï¡£
+	 * è¿”å›è·å–åºåˆ—çš„ sql ç‰‡æ–­ã€‚
 	 */
 	public String identity(String tblName) {
 		return "SEQ_"+tblName+".nextVal";
@@ -583,31 +583,31 @@ public class OracleDatabase implements DatabaseManager {
 
 
 	/**
-	 * Oracle ÔİÊ±²»Ê¹ÓÃÕâÖÖÏÈ²åÈëºó»ñÈ¡µÄ·½Ê½£¬¶øÊÇÏÈ»ñÈ¡ºó²åÈë£¬ÒòÎªOracle ²»Ìá¹©×Ô¶¯Ôö³¤ÁĞ¡£
+	 * Oracle æš‚æ—¶ä¸ä½¿ç”¨è¿™ç§å…ˆæ’å…¥åè·å–çš„æ–¹å¼ï¼Œè€Œæ˜¯å…ˆè·å–åæ’å…¥ï¼Œå› ä¸ºOracle ä¸æä¾›è‡ªåŠ¨å¢é•¿åˆ—ã€‚
 	 */
 	public int getLastInsertIdentity( Connection conn  ) throws SQLException {
-		throw new SQLException("Oracle ÖĞ²»ÒªÊ¹ÓÃ±¾ÌØĞÔ£¬ÇëÊ¹ÓÃ getIdentityValue ·½·¨¡£"); 
+		throw new SQLException("Oracle ä¸­ä¸è¦ä½¿ç”¨æœ¬ç‰¹æ€§ï¼Œè¯·ä½¿ç”¨ getIdentityValue æ–¹æ³•ã€‚"); 
 		// return -1;
 	}
 
 
 	/**
-	 * ¸ù¾İµ±Ç°µÄÊı¾İ¿âµÄÌØÊâ¹æÔò¶ÔĞèÒª²åÈëµÄÄÚÈİ²ÉÓÃÕıÔò±í´ïÊ½×öÌØÊâ´¦Àí¡£
-	 * 		Õë¶Ô×Ö·û´®ÀàĞÍ(Varchar)£¬Êı×Ö(Number)¡¢ÈÕÆÚ(Date)ºÍ¶ş½øÖÆ(LOB)ÀàĞÍ²»ÓÃÕâ¸ö´¦Àí¡£
-	 * 		-- µ±Ç°ÊÇÕë¶Ô Oracle Êı¾İ¿â£¬½« ' ·ûºÅ Ìæ»»Îª '' £¬²ÅÄÜ²åÈëµ½Êı¾İ¿âÖĞ¡£
+	 * æ ¹æ®å½“å‰çš„æ•°æ®åº“çš„ç‰¹æ®Šè§„åˆ™å¯¹éœ€è¦æ’å…¥çš„å†…å®¹é‡‡ç”¨æ­£åˆ™è¡¨è¾¾å¼åšç‰¹æ®Šå¤„ç†ã€‚
+	 * 		é’ˆå¯¹å­—ç¬¦ä¸²ç±»å‹(Varchar)ï¼Œæ•°å­—(Number)ã€æ—¥æœŸ(Date)å’ŒäºŒè¿›åˆ¶(LOB)ç±»å‹ä¸ç”¨è¿™ä¸ªå¤„ç†ã€‚
+	 * 		-- å½“å‰æ˜¯é’ˆå¯¹ Oracle æ•°æ®åº“ï¼Œå°† ' ç¬¦å· æ›¿æ¢ä¸º '' ï¼Œæ‰èƒ½æ’å…¥åˆ°æ•°æ®åº“ä¸­ã€‚
 	 * <pre>
 	 * escape2Sql("ab'cd")			="ab''cd"
 	 * escape2Sql("ab'c'd")			="ab''c''d"
 	 * escape2Sql("ab''cd")			="ab''''cd"
 	 * </pre>
-	 * @param src ĞèÒª±£´æµ½Êı¾İ¿âµÄÒ»¸ö×Ö¶Î¡£
+	 * @param src éœ€è¦ä¿å­˜åˆ°æ•°æ®åº“çš„ä¸€ä¸ªå­—æ®µã€‚
 	 * @return
 	 */
 	public String escape2Sql(String src) {
 		if(src==null) {
 			return null;
 		}
-		// ¿ÉÒÔ²Î¿¼ return wzw.lang.Escaper.escape2Sql( src );	
+		// å¯ä»¥å‚è€ƒ return wzw.lang.Escaper.escape2Sql( src );	
 		return StringUtils.replace(src, "'", "''");
 	}
 

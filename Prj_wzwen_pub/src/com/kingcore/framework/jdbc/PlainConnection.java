@@ -18,7 +18,7 @@ import com.kingcore.framework.context.DatabaseManager;
 
 
 /**
- * <p>°ü×°Ò»¸öConnectionÀà,Ö÷Òª·â×°ÊÇÔö¼Ó¶ÔÏó dataSourceManager¡£</p>
+ * <p>åŒ…è£…ä¸€ä¸ªConnectionç±»,ä¸»è¦å°è£…æ˜¯å¢åŠ å¯¹è±¡ dataSourceManagerã€‚</p>
  * <p>Copyright: Copyright (c) 2005</p>
  * <p>Company: Kingnor Soft</p>
  * @author	WUZEWEN 2005-1-18
@@ -229,7 +229,7 @@ public class PlainConnection implements Connection // abstract
    }
 
 	/**
-	 * WZW 2005.03.20 Ìí¼ÓÈçÏÂ·½·¨
+	 * WZW 2005.03.20 æ·»åŠ å¦‚ä¸‹æ–¹æ³•
 	 */
 	public void setHoldability(int holdability)
                     throws SQLException
@@ -237,7 +237,7 @@ public class PlainConnection implements Connection // abstract
 		con.setHoldability(holdability) ;
 	}
 	/**
-	 * WZW 2005.03.20 Ìí¼ÓÈçÏÂ·½·¨
+	 * WZW 2005.03.20 æ·»åŠ å¦‚ä¸‹æ–¹æ³•
 	 */
 	public int getHoldability()
                    throws SQLException{
@@ -256,7 +256,7 @@ public class PlainConnection implements Connection // abstract
 	 * for jdk update to 1.6
 	 */
 	public <T> T unwrap(Class<T> iface) throws SQLException {
-		System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞ»¹Ã»ÓĞÊµÏÖ");
+		System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­è¿˜æ²¡æœ‰å®ç°");
 		return null;
 	}
 
@@ -264,7 +264,7 @@ public class PlainConnection implements Connection // abstract
 	 * for jdk update to 1.6
 	 */
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		System.err.println("±¾·½·¨ÔÚjdk1.5Éı¼¶µ½1.6¹ı³ÌÖĞ»¹Ã»ÓĞÊµÏÖ");
+		System.err.println("æœ¬æ–¹æ³•åœ¨jdk1.5å‡çº§åˆ°1.6è¿‡ç¨‹ä¸­è¿˜æ²¡æœ‰å®ç°");
 		return false;
 	}
 

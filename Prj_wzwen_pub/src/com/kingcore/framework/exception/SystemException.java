@@ -17,7 +17,7 @@ package com.kingcore.framework.exception;
 import java.util.HashMap;
 
 /** 
- * <p>ÏµÍ³Òì³££¬ËùÓÐÏµÍ³Òì³£À©Õ¹¸ÃÀà¡£</p>
+ * <p>ç³»ç»Ÿå¼‚å¸¸ï¼Œæ‰€æœ‰ç³»ç»Ÿå¼‚å¸¸æ‰©å±•è¯¥ç±»ã€‚</p>
  * @author	WUZEWEN on 2006.03.21
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

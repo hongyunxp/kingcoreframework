@@ -18,9 +18,9 @@ import java.util.StringTokenizer;
 public class ConvertPassword
 {
     /**
-     * ÃÜÂë¼ÓÃÜ
-     * @param passwd:String ĞèÒª¼ÓÃÜµÄ×Ö·û´®
-     * @return String ·µ»Ø¼ÓÃÜÒÔºó×Ö·û´®£¬Èç¹û·µ»ØÎª""£¬ÄÇÃ´±íÊ¾ÊäÈëµÄÃÜÂë°üº¬ÁË²»ºÏ·¨×Ö·û
+     * å¯†ç åŠ å¯†
+     * @param passwd:String éœ€è¦åŠ å¯†çš„å­—ç¬¦ä¸²
+     * @return String è¿”å›åŠ å¯†ä»¥åå­—ç¬¦ä¸²ï¼Œå¦‚æœè¿”å›ä¸º""ï¼Œé‚£ä¹ˆè¡¨ç¤ºè¾“å…¥çš„å¯†ç åŒ…å«äº†ä¸åˆæ³•å­—ç¬¦
      */
     public static String expressPassword(String psPass) throws Exception
     {
@@ -28,8 +28,8 @@ public class ConvertPassword
         char vcChar, vcBegin, vcEnd;
         String vsModStr, vsDevStr, vsTemp;
 
-        /*¼ì²é¿ÚÁîÊÇ·ñºÏ·¨£¬Èç²»ºÏ·¨Ôò·µ»Ø*/
-        // ¿ÚÁî³¤¶ÈÒªÇó´óÓÚ3²¢ÇÒĞ¡ÓÚ30
+        /*æ£€æŸ¥å£ä»¤æ˜¯å¦åˆæ³•ï¼Œå¦‚ä¸åˆæ³•åˆ™è¿”å›*/
+        // å£ä»¤é•¿åº¦è¦æ±‚å¤§äº3å¹¶ä¸”å°äº30
         psPass = psPass.trim();
         if (psPass.length() < 3)
         {
@@ -40,7 +40,7 @@ public class ConvertPassword
             return "";
         }
 
-        // ¿ÚÁîÒªÇóµÚÒ»¸öÎª×ÖÄ¸
+        // å£ä»¤è¦æ±‚ç¬¬ä¸€ä¸ªä¸ºå­—æ¯
         viTemp = psPass.charAt(0);
         if (viTemp < 'A' || viTemp > 'z' || (viTemp > 'Z' && viTemp < 'a'))
         {
@@ -50,7 +50,7 @@ public class ConvertPassword
         for (i = 0; i < psPass.length(); i++)
         {
             vcChar = psPass.charAt(i);
-            // ¿ÚÁî±ØĞëÊÇ×ÖÄ¸ºÍÊı×ÖµÄ×éºÏ
+            // å£ä»¤å¿…é¡»æ˜¯å­—æ¯å’Œæ•°å­—çš„ç»„åˆ
             if (vcChar > 'z'
                 || (vcChar > 'Z' && vcChar < 'a')
                 || vcChar < '0'
@@ -80,7 +80,7 @@ public class ConvertPassword
         vsModStr = vsModStr.substring(1);
         vsDevStr = vsDevStr.substring(1);
 
-        /*Ëæ»úÇó³öASCIIÂë²îÖµÄÜ±íÊ¾viMaxModµÄÈÎÒâÁ½×ÖÄ¸*/
+        /*éšæœºæ±‚å‡ºASCIIç å·®å€¼èƒ½è¡¨ç¤ºviMaxModçš„ä»»æ„ä¸¤å­—æ¯*/
         viTemp = (int) (Math.random() * (26 - viMaxMod));
         vcBegin = (char) (viTemp + 96);
         vcEnd = (char) (viTemp + viSumMod + 96);
@@ -95,7 +95,7 @@ public class ConvertPassword
         }
         vsDevStr = vsTemp.substring(1);
 
-        /*ĞÎ³É¼ÓÃÜ¿ÚÁî*/
+        /*å½¢æˆåŠ å¯†å£ä»¤*/
         psPass = "";
         i = 0;
         st = new StringTokenizer(vsDevStr, ",");
@@ -116,9 +116,9 @@ public class ConvertPassword
         return psPass;
     }
     /**
-     * ÃÜÂë½âÃÜ
-     * @param passwd:String ĞèÒª½âÃÜµÄ×Ö·û´®
-     * @return String ·µ»Ø½âÃÜÒÔºó×Ö·û´® 
+     * å¯†ç è§£å¯†
+     * @param passwd:String éœ€è¦è§£å¯†çš„å­—ç¬¦ä¸²
+     * @return String è¿”å›è§£å¯†ä»¥åå­—ç¬¦ä¸² 
      */
     public static String expandPassword(String passwd) throws Exception
     {
@@ -129,7 +129,7 @@ public class ConvertPassword
         {
             passwd = passwd.trim();
 
-            /*Çó³ö±äÂë²îÖµ*/
+            /*æ±‚å‡ºå˜ç å·®å€¼*/
             vcBegin = passwd.charAt(0);
             vcEnd = passwd.charAt(passwd.length() - 1);
             viCz = vcEnd - vcBegin;

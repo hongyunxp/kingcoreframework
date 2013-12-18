@@ -25,10 +25,10 @@ public class EncodeHTMLTag extends BodyTagSupport {
      * result to the response body.
      */
     public int doAfterBody() throws JspException {
-    	//»ñÈ¡ĞĞÎªÌåÄÚÈİ
+    	//è·å–è¡Œä¸ºä½“å†…å®¹
         BodyContent bc = getBodyContent();
-        //»ñÈ¡out ¶ÔÏó   ×¢Òâ£º²»Ê¹ÓÃ getout()º¯Êı
-        //£¬ÒòÎªÊÇÏòÍâ²ãÊä³ö£¬Íâ²ã¿ÉÄÜÊÇÁíÒ»¸öÖµBodyContent¶ÔÏó¡£
+        //è·å–out å¯¹è±¡   æ³¨æ„ï¼šä¸ä½¿ç”¨ getout()å‡½æ•°
+        //ï¼Œå› ä¸ºæ˜¯å‘å¤–å±‚è¾“å‡ºï¼Œå¤–å±‚å¯èƒ½æ˜¯å¦ä¸€ä¸ªå€¼BodyContentå¯¹è±¡ã€‚
         JspWriter out = getPreviousOut();
         try {
             out.write(ConvertUtils.toHTMLString(bc.getString()));

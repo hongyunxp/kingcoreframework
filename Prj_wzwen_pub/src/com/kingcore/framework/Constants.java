@@ -17,29 +17,29 @@ public final class Constants
 {
 
 //	/**
-//	 * servlet ÈİÆ÷ÀàĞÍ£¬±ãÓÚÖ§³Ö¶àÖÖservletÈİÆ÷£»  ±»×¢Èë·½Ê½Ìæ´úÁË
+//	 * servlet å®¹å™¨ç±»å‹ï¼Œä¾¿äºæ”¯æŒå¤šç§servletå®¹å™¨ï¼›  è¢«æ³¨å…¥æ–¹å¼æ›¿ä»£äº†
 //	 */
 //	public final static int Servlet_Container_Type_Tomcat5    = 1;
 //	public final static int Servlet_Container_Type_Weblogic8  = 2;
 //	public final static int Servlet_Container_Type_Websphere6 = 3;
-//	// ÉèÖÃÄ¬ÈÏServletÈİÆ÷ÀàĞÍ
+//	// è®¾ç½®é»˜è®¤Servletå®¹å™¨ç±»å‹
 //	public static int Servlet_Container_Type = Constants.Servlet_Container_Type_Weblogic8;
 //
 //	/**
-//	 * DBMS ÀàĞÍ£¬±ãÓÚÖ§³Ö¶àÖÖ DBMS¡£  ±»×¢Èë·½Ê½Ìæ´úÁË
+//	 * DBMS ç±»å‹ï¼Œä¾¿äºæ”¯æŒå¤šç§ DBMSã€‚  è¢«æ³¨å…¥æ–¹å¼æ›¿ä»£äº†
 //	 */
 //	public final static int DBMS_Type_Oracle10 = 1;
 //	public final static int DBMS_Type_MSS2000  = 2;
 //	public final static int DBMS_Type_MySQL5   = 3;
-//	//ÉèÖÃÄ¬ÈÏÊı¾İ¿âÀàĞÍ
+//	//è®¾ç½®é»˜è®¤æ•°æ®åº“ç±»å‹
 //	public static int DBMS_Type = Constants.DBMS_Type_Oracle10;
 	
-	// Ó¦ÓÃÃû³Æ¼°°æ±¾
+	// åº”ç”¨åç§°åŠç‰ˆæœ¬
 	public final static String applicationName = "wpub framework";
 	public final static String version = "v2.0";
 	
 	/**
-	 * µÇÂ¼ºó´æ·ÅÓÃ»§µÇÂ¼ĞÕÃûµÄbeanµÄÃû³Æ
+	 * ç™»å½•åå­˜æ”¾ç”¨æˆ·ç™»å½•å§“åçš„beançš„åç§°
 	 */
 	public final static String USERLOGINBEAN = "UserLoginBean";
 	public final static String LOGIN_USERBEAN_KEY = "LoginUserBean";
@@ -48,15 +48,15 @@ public final class Constants
 	 */
 	public final static String USER_LOGIN_KEY = "UserLoginBean";
 	/**
-	 * ´æ´¢Êı¾İ¿âÀàĞÍµÄÃû³Æ
+	 * å­˜å‚¨æ•°æ®åº“ç±»å‹çš„åç§°
 	 */
 	public final static String DATABASE_TYPE = "DataBaseType";
 	/**
-	 * ´æ´¢½ÇÉ«ÁĞ±íµÄÃû³Æ
+	 * å­˜å‚¨è§’è‰²åˆ—è¡¨çš„åç§°
 	 */
 	public final static String ROLESLIST = "com.wuzewen.pub.RolesList";
 	/**
-	 * ½ÇÉ«´æ´¢µÄÃû³ÆµÄÇ°×º
+	 * è§’è‰²å­˜å‚¨çš„åç§°çš„å‰ç¼€
 	 */
 	public final static String ROLEPREFIX = "com.wuzewen.pub.roles.";
 }

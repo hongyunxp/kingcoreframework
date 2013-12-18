@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import wzw.sql.ResultSetConverter;
 
 /**
- * <p>½«ResuletSet×ªÎªÏàÓ¦µÄjava»ù±¾ÀàĞÍ·µ»Ø£¬Õë¶ÔÒ»ĞĞÒ»ÁĞ£¬ÄÚ²¿»áÔËĞĞrs.next()·½·¨¡£</p>
+ * <p>å°†ResuletSetè½¬ä¸ºç›¸åº”çš„javaåŸºæœ¬ç±»å‹è¿”å›ï¼Œé’ˆå¯¹ä¸€è¡Œä¸€åˆ—ï¼Œå†…éƒ¨ä¼šè¿è¡Œrs.next()æ–¹æ³•ã€‚</p>
  * @author Zeven on 2008-11-6
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

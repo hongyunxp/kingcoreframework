@@ -8,7 +8,7 @@ package com.kingcore.framework.util;
 
 /**
  * @author 
- * ÓÃÀ´±êÊ¶ÊÇSybaseÊı¾İ¿â
+ * ç”¨æ¥æ ‡è¯†æ˜¯Sybaseæ•°æ®åº“
  */
 public interface SybDatabaseInterface extends DatabaseInterface {
 

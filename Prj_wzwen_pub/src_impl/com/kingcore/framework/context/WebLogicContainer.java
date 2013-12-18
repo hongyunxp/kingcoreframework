@@ -27,8 +27,8 @@ import org.apache.log4j.Logger;
 import com.kingcore.framework.jdbc.ConnectionManager;
 
 /**
- * <p>WebLogic ÈİÆ÷Ìá¹©µÄÌØÓĞµÄÄÚÈİ¡£°üÀ¨DataSource µÈ¡£Ö§³Ö¶àÊı¾İÔ´¡£
- * 		µ±Ç°Õë¶ÔWebLogic8.1¡£</p>
+ * <p>WebLogic å®¹å™¨æä¾›çš„ç‰¹æœ‰çš„å†…å®¹ã€‚åŒ…æ‹¬DataSource ç­‰ã€‚æ”¯æŒå¤šæ•°æ®æºã€‚
+ * 		å½“å‰é’ˆå¯¹WebLogic8.1ã€‚</p>
  * @author Zeven on 2007-6-24
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -40,7 +40,7 @@ import com.kingcore.framework.jdbc.ConnectionManager;
 public class WebLogicContainer implements ServletContainer,DataSourceManager {
 
 	/**
-	 * ÈÕÖ¾¼ÇÂ¼¶ÔÏó¡£ 
+	 * æ—¥å¿—è®°å½•å¯¹è±¡ã€‚ 
 	 */
 	protected static Logger log=Logger.getLogger(com.kingcore.framework.context.WebLogicContainer.class);
     
@@ -53,12 +53,12 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 	}
 
 	/**
-	 * ±£´æDataSourceµÄÒıÓÃ£¬Ö§³Ö¶àÊı¾İÔ´£¬²»ÓÃÃ¿´Î»ñÈ¡
+	 * ä¿å­˜DataSourceçš„å¼•ç”¨ï¼Œæ”¯æŒå¤šæ•°æ®æºï¼Œä¸ç”¨æ¯æ¬¡è·å–
 	 */
 	private Map<String, DataSource> dataSourceMap = new HashMap<String, DataSource>();
 	
     /**
-     * »ñÈ¡Ä¬ÈÏµÄ DataSource.
+     * è·å–é»˜è®¤çš„ DataSource.
      * @return
      * @throws SQLException
      */
@@ -67,14 +67,14 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
     }
 
     /**
-     * »ñÈ¡Ãû³ÆÎªdataSourceNameµÄ DataSource.
+     * è·å–åç§°ä¸ºdataSourceNameçš„ DataSource.
      * @param dataSourceName
      * @return
      * @throws SQLException
      */
     public DataSource getDataSource(String dataSourceName) throws SQLException{
 
-    	// ÊÇ·ñÊÇÒÑ¾­»ñÈ¡µÄDataSource¶ÔÏó¡£
+    	// æ˜¯å¦æ˜¯å·²ç»è·å–çš„DataSourceå¯¹è±¡ã€‚
     	DataSource ods = dataSourceMap.get(dataSourceName);
 		if(ods!=null){
 			return ods;
@@ -83,17 +83,17 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 //		get DataSource by different Servlet Container Type.
 		DataSource ds = null;
 		
-//		1.´ÓÉÏÏÂÎÄ¸ù¾İJNDI»ñÈ¡DataSource
+//		1.ä»ä¸Šä¸‹æ–‡æ ¹æ®JNDIè·å–DataSource
 		Context initCtx = null;
 		try {
 	    	log.debug( "begin new InitialContext.");
-			initCtx = new InitialContext(); //´´½¨ÉÏÏÂÎÄÊµÀı
+			initCtx = new InitialContext(); //åˆ›å»ºä¸Šä¸‹æ–‡å®ä¾‹
 
 			
 			// Weblogic8
 			//DataSource ds = (DataSource)(((Context)getRequest().getSession().getServletContext()).lookup( Globals.DATA_SOURCE_KEY ));
 			ds = (DataSource)(initCtx.lookup( dataSourceName ));
-			dataSourceMap.put(dataSourceName, ds);    // »º´æÆğÀ´
+			dataSourceMap.put(dataSourceName, ds);    // ç¼“å­˜èµ·æ¥
 			return ds ;
 			
 		}catch (Exception ex) {
@@ -106,7 +106,7 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
     }
 
 	/**
-	 * »ñÈ¡ÏµÍ³Ä¬ÈÏµÄÊı¾İÔ´µÄÊı¾İ¿âÁ¬½Ó¡£
+	 * è·å–ç³»ç»Ÿé»˜è®¤çš„æ•°æ®æºçš„æ•°æ®åº“è¿æ¥ã€‚
 	 * @return
 	 */
 	public Connection getConnection() throws SQLException {
@@ -115,7 +115,7 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 
 	
 	/**
-	 * »ñÈ¡Ö¸¶¨Ãû³ÆµÄÊı¾İÔ´µÄÊı¾İ¿âÁ¬½Ó¡£
+	 * è·å–æŒ‡å®šåç§°çš„æ•°æ®æºçš„æ•°æ®åº“è¿æ¥ã€‚
 	 * @param dataSourceName
 	 * @return
 	 * @throws SQLException
@@ -125,12 +125,12 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 		
 		Connection conn = null ;
 	 
-		//	1.´ÓÉÏÏÂÎÄ¸ù¾İJNDI»ñÈ¡DataSource
+		//	1.ä»ä¸Šä¸‹æ–‡æ ¹æ®JNDIè·å–DataSource
 		DataSource ds = getDataSource( dataSourceName );
 
 		if (ds != null){
 			conn = ds.getConnection();
-			conn.setAutoCommit(false);		// WeblogicµÄDataSourceµÄJNDIÄ¬ÈÏÎª true.
+			conn.setAutoCommit(false);		// Weblogicçš„DataSourceçš„JNDIé»˜è®¤ä¸º true.
 			//log.debug("obtain a connection:   "+conn);
 			return conn;
 			
@@ -140,7 +140,7 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 		}
 			
 		
-		//	2.Èç¹ûjndiÖĞÃ»ÓĞ£¬´Ó¾²Ì¬ÀàÖĞ»ñÈ¡
+		//	2.å¦‚æœjndiä¸­æ²¡æœ‰ï¼Œä»é™æ€ç±»ä¸­è·å–
 		if(conn==null){
 			try{
 				conn = ConnectionManager.getInstance().getConnection() ;
@@ -164,14 +164,14 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 	}
 
 	/**
-	 * WebLogic ÈİÆ÷ÏÂµÄ request.getContextPath() ·µ»Ø±ê×¼»¯´¦Àí¡£
+	 * WebLogic å®¹å™¨ä¸‹çš„ request.getContextPath() è¿”å›æ ‡å‡†åŒ–å¤„ç†ã€‚
 	 */
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath()+"/";
 	}
 
 	/**
-	 * WebLogic ÈİÆ÷µÄincluded µÄ×ÓÒ³Ãæ²»ÄÜÖØ¸´Ö¸¶¨ contentType¡£ËùÒÔ²»ĞèÒª×öÈÎºÎ´¦Àí¡£
+	 * WebLogic å®¹å™¨çš„included çš„å­é¡µé¢ä¸èƒ½é‡å¤æŒ‡å®š contentTypeã€‚æ‰€ä»¥ä¸éœ€è¦åšä»»ä½•å¤„ç†ã€‚
 	 */
 	public void setIncludedPageContentType(HttpServletResponse response,String contentType) {
 		
@@ -179,7 +179,7 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 
 	
     /**
-     * È±Ê¡µÄDataSource µÄÃû³Æ¡£
+     * ç¼ºçœçš„DataSource çš„åç§°ã€‚
      */
 	protected String defaultDataSourceName = "jndi/jdbc";
 	private String configPath;
@@ -199,7 +199,7 @@ public class WebLogicContainer implements ServletContainer,DataSourceManager {
 	}
 
 	/**
-	 * WebLogic²»ÓÃ¶à´ÎÉèÖÃÃ¿¸öÒ³ÃæµÄContextType£¬ÉèÖÃÁË·´¶ø»á±¨´íÎóĞÅÏ¢£¬ÌáÊ¾²»ÄÜ¶à´ÎÉèÖÃ¡£
+	 * WebLogicä¸ç”¨å¤šæ¬¡è®¾ç½®æ¯ä¸ªé¡µé¢çš„ContextTypeï¼Œè®¾ç½®äº†åè€Œä¼šæŠ¥é”™è¯¯ä¿¡æ¯ï¼Œæç¤ºä¸èƒ½å¤šæ¬¡è®¾ç½®ã€‚
 	 */
 	public void setPageContentTypeIndividually(HttpServletResponse response, String contentType) {
 		

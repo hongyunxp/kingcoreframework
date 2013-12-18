@@ -18,7 +18,7 @@ import com.kingcore.framework.cache.CacheManager;
 import com.opensymphony.oscache.base.NeedsRefreshException;
 
 /**
- * Êı¾İ·ÃÎÊ»º´æ¹ÜÀíÆ÷¡£
+ * æ•°æ®è®¿é—®ç¼“å­˜ç®¡ç†å™¨ã€‚
  * @author	WUZEWEN on 2006-9-13
  *
  */

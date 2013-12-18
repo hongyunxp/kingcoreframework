@@ -33,7 +33,7 @@ import com.kingcore.framework.exception.UnsupportedConversionException;
 
 
 /**
- * <BLOCKQUOTE>SQLÏà¹ØµÄ¹¤¾ßÀà¡£</BLOCKQUOTE>
+ * <BLOCKQUOTE>SQLç›¸å…³çš„å·¥å…·ç±»ã€‚</BLOCKQUOTE>
  * @author	zewen.wu on 2004.03.18
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -45,7 +45,7 @@ import com.kingcore.framework.exception.UnsupportedConversionException;
 public class SQLUtils {
 
     /**
-     * logÊÇÒ»¸ö¶¨ÒåÈÕÖ¾µÄ±äÁ¿
+     * logæ˜¯ä¸€ä¸ªå®šä¹‰æ—¥å¿—çš„å˜é‡
      */
     public static final Logger log = Logger.getLogger(com.kingcore.framework.util.SQLUtils.class);
 
@@ -142,10 +142,10 @@ public class SQLUtils {
 
 	            }catch(UnsupportedConversionException e)
 				{
-					log.fatal("\nÀàĞÍ×ª»»Ê§°Ü!!") ;
+					log.fatal("\nç±»å‹è½¬æ¢å¤±è´¥!!") ;
 				}
 			} else {
-				log.fatal("\n²ÎÊıÎªnull !!") ;
+				log.fatal("\nå‚æ•°ä¸ºnull !!") ;
             	stmt.setNull(i + 1, Types.OTHER);
 			}
         }

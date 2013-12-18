@@ -16,9 +16,9 @@ import java.util.HashMap;
 import org.apache.commons.lang.StringEscapeUtils;
 
 /**
- * <p> ÌØÊâ×Ö·û×ªÒå´¦ÀíÆ÷Àà 
+ * <p> ç‰¹æ®Šå­—ç¬¦è½¬ä¹‰å¤„ç†å™¨ç±» 
  * 
- * 	²Î¿¼ÁĞ±í£º
+ * 	å‚è€ƒåˆ—è¡¨ï¼š
  * 		org.apache.commons.lang.* 
  * 
  * </p>
@@ -33,8 +33,8 @@ import org.apache.commons.lang.StringEscapeUtils;
 public class Escaper {
 
 	/**
-	 * Zeven: Java ×Ö·ûÊä³öÎª xml µÄÄÚÈİ¡£
-	 * 	¶ÔÓÚxmlÖµµÄ´¦Àí£¬»¹ÓĞÒ»¸ö·½·¨£º <text><![CDATA[ĞèÒªÔØÈëµÄÄÚÈİ]]></text>
+	 * Zeven: Java å­—ç¬¦è¾“å‡ºä¸º xml çš„å†…å®¹ã€‚
+	 * 	å¯¹äºxmlå€¼çš„å¤„ç†ï¼Œè¿˜æœ‰ä¸€ä¸ªæ–¹æ³•ï¼š <text><![CDATA[éœ€è¦è½½å…¥çš„å†…å®¹]]></text>
 	 * 
 	 * org.apache.commons.lang.StringEscapeUtils.escapeXml(arg0);
 	 *	 Escapes the characters in a String using XML entities.
@@ -56,7 +56,7 @@ public class Escaper {
 	
 	/**
 	 *  same to escapeJavaScript( escapeXml(in) ).
-	 * Java ×Ö·ûÊä³öÎª xml µÄÄÚÈİ£¬ÓÖ×öÎªScriptµÄÖµ£¬Ê¹ÓÃÒıºÅÒıÆğÀ´£¬±ÈÈçÓÃÔÚ JScript,Java ÖĞ ¡£
+	 * Java å­—ç¬¦è¾“å‡ºä¸º xml çš„å†…å®¹ï¼Œåˆåšä¸ºScriptçš„å€¼ï¼Œä½¿ç”¨å¼•å·å¼•èµ·æ¥ï¼Œæ¯”å¦‚ç”¨åœ¨ JScript,Java ä¸­ ã€‚
 	 * @param in
 	 * @return
 	 */
@@ -65,10 +65,10 @@ public class Escaper {
 	}
 	
 	/**
-	 * Zeven: ·â×°Ò»²ã±ÈÖ±½ÓÊ¹ÓÃµÚÈı·½ÒªºÃ£¬±È½ÏÊÊÓ¦±ä¶¯£¬Èç¹û±ä¶¯Ö»ĞèÒª¸Ä±äÕâ¸öÀà£¬
-	 * 			²»ĞèÒª¸Ä±äµÚÈı·½»òÕß´óÁ¿Ê¹ÓÃµÄµØ·½¡£ 
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * Zeven: å°è£…ä¸€å±‚æ¯”ç›´æ¥ä½¿ç”¨ç¬¬ä¸‰æ–¹è¦å¥½ï¼Œæ¯”è¾ƒé€‚åº”å˜åŠ¨ï¼Œå¦‚æœå˜åŠ¨åªéœ€è¦æ”¹å˜è¿™ä¸ªç±»ï¼Œ
+	 * 			ä¸éœ€è¦æ”¹å˜ç¬¬ä¸‰æ–¹æˆ–è€…å¤§é‡ä½¿ç”¨çš„åœ°æ–¹ã€‚ 
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	 */
 	private static String toXmlString(String in, boolean asParam) {
@@ -132,8 +132,8 @@ public class Escaper {
 
 	/**
 	 * <p>Zeven : escape java string to javaScript string.
-	 * 		> Ö»ĞèÒª´¦Àí ' "" ÕâÁ½¸öÒıºÅ£¬±ÜÃâÓëjs³åÍ»£»
-	 * 		> apache.common µÄescapeJavaScript·½·¨×ª»»ÄÚÈİ¹ı¶à£»
+	 * 		> åªéœ€è¦å¤„ç† ' "" è¿™ä¸¤ä¸ªå¼•å·ï¼Œé¿å…ä¸jså†²çªï¼›
+	 * 		> apache.common çš„escapeJavaScriptæ–¹æ³•è½¬æ¢å†…å®¹è¿‡å¤šï¼›
 	 * 
 	 * </p>
 	 * @param in
@@ -145,7 +145,7 @@ public class Escaper {
 			return null;
 		}
 
-		return in.replaceAll("['|\\|\"]", "\\\\$0"); //wzw ÕıÔò±í´ïÊ½
+		return in.replaceAll("['|\\|\"]", "\\\\$0"); //wzw æ­£åˆ™è¡¨è¾¾å¼
 
 //		///return org.apache.commons.lang.StringEscapeUtils.escapeJavaScript(in);
 //	    StringBuffer out = new StringBuffer();
@@ -182,9 +182,9 @@ public class Escaper {
 	
 	/**
 	 * Zeven : escape java string to sql string.
-	 * 		ËµÃ÷£º	Õë¶Ô±ê×¼Sql µÄ Ğ´·¨¡£
-	 * 		  ¶ÔÓÚOracle Êı¾İ¿â¿ÉÒÔ£»
-	 * 		  µ«ÊÇ¶ÔÓÚMySqlÊı¾İ¿â£¬ĞèÒª×ªÒå"'"¡¢"\"£¬Ôò²»ÄÜÓÃ£»
+	 * 		è¯´æ˜ï¼š	é’ˆå¯¹æ ‡å‡†Sql çš„ å†™æ³•ã€‚
+	 * 		  å¯¹äºOracle æ•°æ®åº“å¯ä»¥ï¼›
+	 * 		  ä½†æ˜¯å¯¹äºMySqlæ•°æ®åº“ï¼Œéœ€è¦è½¬ä¹‰"'"ã€"\"ï¼Œåˆ™ä¸èƒ½ç”¨ï¼›
 	 * @param in
 	 * @return
 	 */
@@ -195,8 +195,8 @@ public class Escaper {
 	
 	/**
 	 *
-	 * Zeven: ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë£¬×÷Îª±êÇ©µÄÖµ¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * Zeven: å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ï¼Œä½œä¸ºæ ‡ç­¾çš„å€¼ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 * org.apache.commons.lang.StringEscapeUtils.escapeHtml(arg0);
 	 *
 	 */  
@@ -207,8 +207,8 @@ public class Escaper {
 	
 	/**
 	 * escapeJavaScript( escapeHtml(in) )
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë£¬Êä³öµÄ´úÂëÊÇ×÷ÎªjsµÄ±äÁ¿Öµ¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ï¼Œè¾“å‡ºçš„ä»£ç æ˜¯ä½œä¸ºjsçš„å˜é‡å€¼ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	 */
 	public static String escape2HtmlForJavaScript(String in) {
@@ -217,8 +217,8 @@ public class Escaper {
 
 	/**
 	 *
-	 * ½«Ò»°ãµÄ×Ö·û´®×ªÎª HTML×Ö·û´®´úÂë¡£
-	 * @asParam html´úÂëÊÇ·ñ»á×÷ÎªÒ»¸ö²ÎÊı
+	 * å°†ä¸€èˆ¬çš„å­—ç¬¦ä¸²è½¬ä¸º HTMLå­—ç¬¦ä¸²ä»£ç ã€‚
+	 * @asParam htmlä»£ç æ˜¯å¦ä¼šä½œä¸ºä¸€ä¸ªå‚æ•°
 	 *
 	 */
 	private static String toHtmlString(String in, boolean asParam) {
@@ -291,15 +291,15 @@ public class Escaper {
 		System.out.println( Escaper.escape2Html("\"") );
 		System.out.println( Escaper.escape2Html("") );
 		
-		// javaÕıÔò±í´ïÊ½£º
+		// javaæ­£åˆ™è¡¨è¾¾å¼ï¼š
 		String in="fdfdsf'\\'''fd\"'";
-		System.out.println( in.replaceAll("['|\\|\"]", "\\\\$0")); //wzw£ºÌæ»»'"\Èı×Ö·û
+		System.out.println( in.replaceAll("['|\\|\"]", "\\\\$0")); //wzwï¼šæ›¿æ¢'"\ä¸‰å­—ç¬¦
 		
 		System.out.println("fdff[face02]fdaf".replaceAll("\\[face([0-9]{2})\\]",
-			"<img border=\"0\" src=\"/images/face/$1.gif\">"));  //wzw£ºÌæ»»±íÇé´úÂë
+			"<img border=\"0\" src=\"/images/face/$1.gif\">"));  //wzwï¼šæ›¿æ¢è¡¨æƒ…ä»£ç 
 
 		System.out.println("abchttp://fa.com.cn.cn/ftd/dfa.fdfd fdf".replaceAll("(http|ftp|https)(://)\\w+\\.\\w+([\\.\\w+]*)([/\\w+]*)",
-						"<a target='_blank' class='link_blueer12a' href='$0'>$0</a>"));  //wzw£ºÌæ»»testÎªurl
+						"<a target='_blank' class='link_blueer12a' href='$0'>$0</a>"));  //wzwï¼šæ›¿æ¢testä¸ºurl
 		
 		System.out.println("\"\'\\fsd");
 		

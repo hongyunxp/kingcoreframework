@@ -17,9 +17,9 @@ import java.util.HashMap;
 import org.apache.commons.codec.EncoderException;
 
 /**
- * <p>°üº¬¶ÔÓÚ URL,URI¶ÔÏóµÄÒ»Ğ©´¦Àí·½·¨µÄÀà¡£
+ * <p>åŒ…å«å¯¹äº URL,URIå¯¹è±¡çš„ä¸€äº›å¤„ç†æ–¹æ³•çš„ç±»ã€‚
  * 
- * 	²Î¿¼ÁĞ±í£º
+ * 	å‚è€ƒåˆ—è¡¨ï¼š
  * 		org.apache.commons.codec.* 
  * 
  * </p>
@@ -36,8 +36,8 @@ public class UrlEncoder {
 	/**
 	 * <p>This is used for full-url encoding to some charset,default charset is UTF-8,other like GBK,BIG5.
 	 * <pre>
-	 * URLEncoder.encode("ÖĞÎÄ")								= "%E4%B8%AD%E6%96%87"
-	 * URLEncoder.encode("getList.jhtml?id=123&name=ÖĞÎÄ")	= "getList.jhtml?id=123&name=%E4%B8%AD%E6%96%87"
+	 * URLEncoder.encode("ä¸­æ–‡")								= "%E4%B8%AD%E6%96%87"
+	 * URLEncoder.encode("getList.jhtml?id=123&name=ä¸­æ–‡")	= "getList.jhtml?id=123&name=%E4%B8%AD%E6%96%87"
 	 * </pre>
 	 * @param url
 	 * @param currentEncodoing the default value is UTF-8,not ANSI(GBK,Big5,...)
@@ -49,7 +49,7 @@ public class UrlEncoder {
 	}
 	
 	/**
-	 * Zeven: ¶ÔurlÖĞµÄ²¿·ÖÌØÊâ×Ö·û×ªÒå£¬Ö»ÊÇ´¦ÀíurlÖĞµÄ·ÇasciiÂë×Ö·û¡£ ascii×Ö·û²»´¦Àí¡£
+	 * Zeven: å¯¹urlä¸­çš„éƒ¨åˆ†ç‰¹æ®Šå­—ç¬¦è½¬ä¹‰ï¼Œåªæ˜¯å¤„ç†urlä¸­çš„éasciiç å­—ç¬¦ã€‚ asciiå­—ç¬¦ä¸å¤„ç†ã€‚
 	 * @param url
 	 * @param currentEncodoing
 	 * @return
@@ -81,7 +81,7 @@ public class UrlEncoder {
 		return encode( url, "UTF-8");
 	}
 	/**
-	 * Zeven£¬¶ÔurlÖĞµÄËùÓĞÌØÊâ×Ö·û×ªÒå£¬¶ÔÓ¦javaScriptÀïÃæµÄencodeURIComponent¡£
+	 * Zevenï¼Œå¯¹urlä¸­çš„æ‰€æœ‰ç‰¹æ®Šå­—ç¬¦è½¬ä¹‰ï¼Œå¯¹åº”javaScripté‡Œé¢çš„encodeURIComponentã€‚
 	 * 	  "http://www.sina.com.cn/abc.jhtml?a=b&c=d"  -->
 	 * 				http%3A%2F%2Fwww.sina.com.cn%2Fabc.jhtml%3Fa%3Db%26c%3Dd
 	 * 

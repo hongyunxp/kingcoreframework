@@ -27,9 +27,9 @@ import com.kingcore.framework.context.ApplicationContext;
 import com.kingcore.framework.context.DatabaseManager;
 
 /**
- * <p>±¾ÀàµÄ×÷ÓÃÊÇ×ª»»ResultSet¶ÔÏó£¬×ª»»ÎªRowSet£¬
- * 			ÓĞ»ú½áºÏSpring µÄ JdbcTemplate Óë Õ¹Ê¾²ã¿ÉÒÔÊ¹ÓÃµÄ¡¢¸ßĞ§µÄRowSet¶ÔÏó£¬
- * 			²ÉÓÃ¸÷¸öÊı¾İ¿â×Ô¼ºµÄ¡¢×îÓÅµÄRowSetÊµÏÖ¡£</p>
+ * <p>æœ¬ç±»çš„ä½œç”¨æ˜¯è½¬æ¢ResultSetå¯¹è±¡ï¼Œè½¬æ¢ä¸ºRowSetï¼Œ
+ * 			æœ‰æœºç»“åˆSpring çš„ JdbcTemplate ä¸ å±•ç¤ºå±‚å¯ä»¥ä½¿ç”¨çš„ã€é«˜æ•ˆçš„RowSetå¯¹è±¡ï¼Œ
+ * 			é‡‡ç”¨å„ä¸ªæ•°æ®åº“è‡ªå·±çš„ã€æœ€ä¼˜çš„RowSetå®ç°ã€‚</p>
  * @author Zeven on 2008-5-23
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -46,12 +46,12 @@ public class RowSetResultSetExtractor implements ResultSetExtractor {
 	public Object extractData(ResultSet rs, DatabaseManager database) throws SQLException,
 			DataAccessException {
 		return database.resultSet2RowSet(rs);
-		//Zeven, °ÑResultSet×ªÎªÏàÓ¦Êı¾İ¿âµÄRowSet¶ÔÏó¡£ ²»Í¬µÄÊı¾İ¿âjdbcÊµÏÖRowSet¿ÉÄÜ²»Í¬¡£
+		//Zeven, æŠŠResultSetè½¬ä¸ºç›¸åº”æ•°æ®åº“çš„RowSetå¯¹è±¡ã€‚ ä¸åŒçš„æ•°æ®åº“jdbcå®ç°RowSetå¯èƒ½ä¸åŒã€‚
 		//return ApplicationContext.getInstance().getDatabaseManager().resultSet2RowSet(rs);
 	}
 
 	/**
-	 * <p>java·½·¨µÄËµÃ÷...</p>
+	 * <p>javaæ–¹æ³•çš„è¯´æ˜...</p>
 	 * @author Zeven on 2008-5-23
 	 * @param args
 	 */
@@ -61,7 +61,7 @@ public class RowSetResultSetExtractor implements ResultSetExtractor {
 	}
 
 	/**
-	 * ÕâÀïĞèÒª¸Ä½ø£¬ÔİÊ±ÓÉDirectorÊ¹ÓÃ¡£
+	 * è¿™é‡Œéœ€è¦æ”¹è¿›ï¼Œæš‚æ—¶ç”±Directorä½¿ç”¨ã€‚
 	 */
 	public Object extractData(ResultSet rs) throws SQLException {
 		return  ApplicationContext.getInstance().getDatabaseManager().resultSet2RowSet(rs);

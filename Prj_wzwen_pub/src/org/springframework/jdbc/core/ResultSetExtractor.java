@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import org.springframework.dao.DataAccessException;
  
 /**
- * <p>java类文件的说明...</p>
+ * <p>java绫绘枃浠剁殑璇存槑...</p>
  * @author Zeven/wzw on Mar 3, 2009
  * @version	1.0
  * @see		Object#equals(java.lang.Object)

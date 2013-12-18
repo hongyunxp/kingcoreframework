@@ -39,20 +39,20 @@ import com.kingcore.framework.util.ConvertUtils;
 public class MoneyFormatTag extends TagSupport
 {
     /**
-     * ±íÊ¾½ğ¶îµÄ×Ö·û´®
+     * è¡¨ç¤ºé‡‘é¢çš„å­—ç¬¦ä¸²
      */
     private String money = null;
     /**
-     * ÓĞĞ§Ğ¡ÊıÎ»
-     * È±Ê¡Îª2
+     * æœ‰æ•ˆå°æ•°ä½
+     * ç¼ºçœä¸º2
      */
     private String point = "2";
     /**
-     * ÊÇ·ñ×öÉáÈë²Ù×÷
+     * æ˜¯å¦åšèˆå…¥æ“ä½œ
      */
     private String round = "true";
     /**
-     * ÉáÈëµÄ±ê×¼
+     * èˆå…¥çš„æ ‡å‡†
      */
     private String std = null;
     //-------------------------------set attribute

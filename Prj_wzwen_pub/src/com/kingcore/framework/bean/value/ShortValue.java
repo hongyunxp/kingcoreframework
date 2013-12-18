@@ -11,7 +11,7 @@ import com.kingcore.framework.bean.Value;
 public class ShortValue extends Value {
     private short value;
 
-	//´ÓÒ³ÃæµÃµ½µÄString±äÁ¿¹¹Ôì
+	//ä»é¡µé¢å¾—åˆ°çš„Stringå˜é‡æ„é€ 
     public ShortValue(String value) {
         this.value = Short.parseShort(value );
     }

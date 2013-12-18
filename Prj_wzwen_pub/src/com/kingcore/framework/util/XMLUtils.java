@@ -19,7 +19,7 @@ import org.jdom.input.SAXBuilder;
 
 
 /**
- * <BLOCKQUOTE>¶ÔXMLÎÄ¼ş´¦Àí¹¤¾ßÀà¡£</BLOCKQUOTE>
+ * <BLOCKQUOTE>å¯¹XMLæ–‡ä»¶å¤„ç†å·¥å…·ç±»ã€‚</BLOCKQUOTE>
  * @author	zewen.wu on 2005.03.19
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
@@ -30,18 +30,18 @@ import org.jdom.input.SAXBuilder;
 
 public class XMLUtils {
     /**
-     * log4jÈÕÖ¾¶ÔÏó¡£
+     * log4jæ—¥å¿—å¯¹è±¡ã€‚
      */
     public static Logger log = Logger.getLogger(com.kingcore.framework.util.XMLUtils.class);
 
 
 	/**
-     * ´ÓxmlÎÄ¼şÖĞÈ¡¶à¸öÖµ
+     * ä»xmlæ–‡ä»¶ä¸­å–å¤šä¸ªå€¼
 	 * @author WUZEWEN
      * @version V1.0.0(2005-07-24)
-	 * @param  InputStream is--ÎÄ¼şÊäÈëÁ÷¶ÔÏó
-	 * @param  Vector vec_str--ĞèÒªÈ¡µÄxmlµÄ½ÚµãÂ·¾¶¼¯
-     * @return Vector¶ÔÏó,È¡µ½µÄ½ÚµãµÄÖµµÄ¼¯
+	 * @param  InputStream is--æ–‡ä»¶è¾“å…¥æµå¯¹è±¡
+	 * @param  Vector vec_str--éœ€è¦å–çš„xmlçš„èŠ‚ç‚¹è·¯å¾„é›†
+     * @return Vectorå¯¹è±¡,å–åˆ°çš„èŠ‚ç‚¹çš„å€¼çš„é›†
      * @throws no Exception throw
 	 */
 	public static Vector getElementValues(java.io.InputStream inStream,Vector vec_str){
@@ -57,9 +57,9 @@ public class XMLUtils {
 
 			//create a new Document
 			SAXBuilder builder = new SAXBuilder(false);
-			//µÃµ½Document
+			//å¾—åˆ°Document
 			Document doc = builder.build( inStream );
-			//µÃµ½¸ù½ÚµãLIT:StuInfo
+			//å¾—åˆ°æ ¹èŠ‚ç‚¹LIT:StuInfo
 			Element element = null ;
 
 			Iterator it = vec_str.iterator() ;
@@ -69,7 +69,7 @@ public class XMLUtils {
 				params = (String)it.next() ;
 				//System.out.println("params="+params) ;
 				st = new StringTokenizer(params,"@") ;
-				//È¡µÃĞŞÒªµÄ½Úµã
+				//å–å¾—ä¿®è¦çš„èŠ‚ç‚¹
 				while( st.hasMoreTokens()) {
 					//System.out.println( element.getName() ) ;
 					noteName= st.nextToken();
@@ -87,7 +87,7 @@ public class XMLUtils {
 								break;
 						}
 					}else{
-						element = element.getChild(noteName) ;	//Ö»ÓĞÒ»¸öchild,¶à¸ö¿É²»¿ÉÒÔµÃµ½µÚÒ»¸ö£¿
+						element = element.getChild(noteName) ;	//åªæœ‰ä¸€ä¸ªchild,å¤šä¸ªå¯ä¸å¯ä»¥å¾—åˆ°ç¬¬ä¸€ä¸ªï¼Ÿ
 					}
 					//element = element.getChild( st.nextToken() ) ;
 					//System.out.println( element.getName() ) ;
@@ -104,7 +104,7 @@ public class XMLUtils {
 			//List menu01s = elmtStuInfo.getChildren("menu");
 			//p( "next menu is empty! " +menu01s.size()) ;
 
-			//ĞŞ¸ÄbigmouseµÄCAD·ÖÊı
+			//ä¿®æ”¹bigmouseçš„CADåˆ†æ•°
 			//for (int i = 0; i < menu01s.size(); i++)
 			//{
 
@@ -119,12 +119,12 @@ public class XMLUtils {
 	}
 
 	/**
-     * ´ÓxmlÎÄ¼şÖĞÈ¡¶à¸öÖµ
+     * ä»xmlæ–‡ä»¶ä¸­å–å¤šä¸ªå€¼
 	 * @author WUZEWEN
      * @version V1.0.0(2005-03-10)
-	 * @param  String fileURI--ÎÄ¼şÃû³Æ(°üº¬ÏêÏ¸Â·¾¶)
-	 * @param  Vector vec_str--ĞèÒªÈ¡µÄxmlµÄ½ÚµãÂ·¾¶¼¯
-     * @return Vector¶ÔÏó,È¡µ½µÄ½ÚµãµÄÖµµÄ¼¯
+	 * @param  String fileURI--æ–‡ä»¶åç§°(åŒ…å«è¯¦ç»†è·¯å¾„)
+	 * @param  Vector vec_str--éœ€è¦å–çš„xmlçš„èŠ‚ç‚¹è·¯å¾„é›†
+     * @return Vectorå¯¹è±¡,å–åˆ°çš„èŠ‚ç‚¹çš„å€¼çš„é›†
      * @throws no Exception throw
 	 */
 	public static Vector getElementValues(String fileURI,Vector vec_str)
@@ -135,12 +135,12 @@ public class XMLUtils {
 	}
 
     /**
-     * ´ÓxmlÎÄ¼şÖĞÈ¡Ò»¸öÖµ
+     * ä»xmlæ–‡ä»¶ä¸­å–ä¸€ä¸ªå€¼
      * @author WUZEWEN
      * @version V1.0.0(2005-03-10)
-     * @param  String fileURI--ÎÄ¼şÃû³Æ(°üº¬ÏêÏ¸Â·¾¶)
-     * @param  String parms--ĞèÒªÈ¡µÄxmlµÄ½ÚµãÂ·¾¶
-     * @return String¶ÔÏó,È¡µ½µÄ½ÚµãµÄÖµ
+     * @param  String fileURI--æ–‡ä»¶åç§°(åŒ…å«è¯¦ç»†è·¯å¾„)
+     * @param  String parms--éœ€è¦å–çš„xmlçš„èŠ‚ç‚¹è·¯å¾„
+     * @return Stringå¯¹è±¡,å–åˆ°çš„èŠ‚ç‚¹çš„å€¼
      * @throws no Exception throw
      */
 	public static String getElementValue(String fileURI,String parms)

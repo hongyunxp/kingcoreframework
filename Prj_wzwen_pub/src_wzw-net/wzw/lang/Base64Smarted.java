@@ -6,16 +6,16 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Zeven on 2008-12-17 : ±¾±àÂëÊµÏÖÁËÀàËÆtaobao¡¢»Û´ÏµÈÍøÕ¾²ÎÊý±àÂëÊµÏÖ£¬¼ûmain·½·¨¡£
- *   Èç£ºhttp://search1.taobao.com/browse/0/t-g,mfqq----------------40--commend-0-1,2-0.htm?at_topsearch=1
+ * Zeven on 2008-12-17 : æœ¬ç¼–ç å®žçŽ°äº†ç±»ä¼¼taobaoã€æ…§èªç­‰ç½‘ç«™å‚æ•°ç¼–ç å®žçŽ°ï¼Œè§mainæ–¹æ³•ã€‚
+ *   å¦‚ï¼šhttp://search1.taobao.com/browse/0/t-g,mfqq----------------40--commend-0-1,2-0.htm?at_topsearch=1
  * 	  aa --> mfqq
  * 
- * ×Ö·û´®µÄ(±àÂë/¼ÓÃÜ)Óë(½âÂë/½âÃÜ)¡£
+ * å­—ç¬¦ä¸²çš„(ç¼–ç /åŠ å¯†)ä¸Ž(è§£ç /è§£å¯†)ã€‚
  * 
- * ¹æÔò£º
+ * è§„åˆ™ï¼š
  * 
- * ÔÚBase64ÖÐ£¬Âë±íÊÇÓÉ[A-Z,a-z,0-9,+,/,=(pad)]×é³ÉµÄ¡£ 
- * ¶øÔÚÕâÀï£¬Âë±íÓÉ[a-z,2-7]×é³ÉµÄ£º
+ * åœ¨Base64ä¸­ï¼Œç è¡¨æ˜¯ç”±[A-Z,a-z,0-9,+,/,=(pad)]ç»„æˆçš„ã€‚ 
+ * è€Œåœ¨è¿™é‡Œï¼Œç è¡¨ç”±[a-z,2-7]ç»„æˆçš„ï¼š
  * -----------------------------------------------
  * a b c d e f g h i j k  l  m  n  o  p  q  r 
  * 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
@@ -24,76 +24,76 @@ import java.io.UnsupportedEncodingException;
  * 18 19 20 21 22 23 24 25 26 27 28 29 30 31
  * ------------------------------------------------
  * 
- * ÔÚBase64ÖÐ£¬ÊÇ½«¶þ½øÖÆÁ¬³ÉÒ»´®£¬È»ºóÔÙ°´6Î»À´·Ö¸î£¬·Ö¸îÍêºóÔÚÇ°Ãæ²¹0£¬Õâ¸öµØÇòÈË¶¼ÖªµÀ£¬²»¶àËµÁË¡£
- * ¶øÔÚÕâÀï£¬ÔÚ·Ö¸îµÄÄÇÒ»²½ÉÔÎ¢ÓÐ±ä¶¯£¬ÊÇ°´5Î»À´·Ö¸î£¬Èç¹û¸ÕºÃ¹»·Ö£¬ÄÇ¾ÍºÃÁË£¬Èç¹û²»¹»£¬ÄÇÕ¦°ìÄØ£¿
+ * åœ¨Base64ä¸­ï¼Œæ˜¯å°†äºŒè¿›åˆ¶è¿žæˆä¸€ä¸²ï¼Œç„¶åŽå†æŒ‰6ä½æ¥åˆ†å‰²ï¼Œåˆ†å‰²å®ŒåŽåœ¨å‰é¢è¡¥0ï¼Œè¿™ä¸ªåœ°çƒäººéƒ½çŸ¥é“ï¼Œä¸å¤šè¯´äº†ã€‚
+ * è€Œåœ¨è¿™é‡Œï¼Œåœ¨åˆ†å‰²çš„é‚£ä¸€æ­¥ç¨å¾®æœ‰å˜åŠ¨ï¼Œæ˜¯æŒ‰5ä½æ¥åˆ†å‰²ï¼Œå¦‚æžœåˆšå¥½å¤Ÿåˆ†ï¼Œé‚£å°±å¥½äº†ï¼Œå¦‚æžœä¸å¤Ÿï¼Œé‚£å’‹åŠžå‘¢ï¼Ÿ
  * 
- * ÔÚBase64ÖÐ£¬ÊÇÓÃ"="À´½â¾öµÄ°É¡£
- * ¶øÔÚÕâÀï£¬¾ÍÊÇÔÚÇ°Ãæ²¹0£¬È»ºóÔÚºóÃæÔÙ²¹Áã¡£
+ * åœ¨Base64ä¸­ï¼Œæ˜¯ç”¨"="æ¥è§£å†³çš„å§ã€‚
+ * è€Œåœ¨è¿™é‡Œï¼Œå°±æ˜¯åœ¨å‰é¢è¡¥0ï¼Œç„¶åŽåœ¨åŽé¢å†è¡¥é›¶ã€‚
  * 
- * ÀýÈç£º×Ö·û´® "aaa"£¬(±àÂë/¼ÓÃÜ)ºóÊÇ "mfqwc"
+ * ä¾‹å¦‚ï¼šå­—ç¬¦ä¸² "aaa"ï¼Œ(ç¼–ç /åŠ å¯†)åŽæ˜¯ "mfqwc"
  * 
- * ¶þ½øÖÆ£º01100001 01100001 01100001
- * ×ª»»ºó£º(000)01100 (000)00101 (000)10000 (000)10110 (000)0001(0)
- * Ê®½øÖÆ£º    12          5          16         22          2
- * Âë±í¶ÔÓ¦£º   m           f          q          w           c
+ * äºŒè¿›åˆ¶ï¼š01100001 01100001 01100001
+ * è½¬æ¢åŽï¼š(000)01100 (000)00101 (000)10000 (000)10110 (000)0001(0)
+ * åè¿›åˆ¶ï¼š    12          5          16         22          2
+ * ç è¡¨å¯¹åº”ï¼š   m           f          q          w           c
  * 
- * (½âÂë/½âÃÜ)¾Í¸ü¼òµ¥ÁË£º
+ * (è§£ç /è§£å¯†)å°±æ›´ç®€å•äº†ï¼š
  * 
- * Âë±í¶ÔÓ¦£º    m       f        q        w       c
- * Ê®½øÖÆ£º     12       5       16       22       2
- * ¶þ½øÖÆ£º 00001100 00000101 00010000 00010110 00000010
- * È¥Ç°0ºó£º01100 00101 10000 10110 00010
- * ºÏ²¢ºó£º 0110000101100001011000010
+ * ç è¡¨å¯¹åº”ï¼š    m       f        q        w       c
+ * åè¿›åˆ¶ï¼š     12       5       16       22       2
+ * äºŒè¿›åˆ¶ï¼š 00001100 00000101 00010000 00010110 00000010
+ * åŽ»å‰0åŽï¼š01100 00101 10000 10110 00010
+ * åˆå¹¶åŽï¼š 0110000101100001011000010
  * 
- * È»ºó°ÑºÏ²¢ºóµÄ´®µÄ³¤¶È³ýÒ»ÏÂ8£¬·¢ÏÖ¶àÁË¸ö0£º
+ * ç„¶åŽæŠŠåˆå¹¶åŽçš„ä¸²çš„é•¿åº¦é™¤ä¸€ä¸‹8ï¼Œå‘çŽ°å¤šäº†ä¸ª0ï¼š
  * 
- * ¶þ½øÖÆ£º01100001 01100001 01100001 0
+ * äºŒè¿›åˆ¶ï¼š01100001 01100001 01100001 0
  * 
- * ¶àÁË¾ÍËãÁË£¬²»ÒªÁË£¨ÆäÊµÊÇÔÚ{±àÂë/¼ÓÃÜ}µÄ·Ö¸îÊ±ºò£¬ÔÚ·ÖÊ£µÄÓàÊýµÄºóÃæ²¹µÄ0£©¡£
- * È»ºóÔÙ½« byte[] ×ª»Ø×Ö·û´®£¬OK£¡ÓÖ¼û"aaa"ÁË¡£
+ * å¤šäº†å°±ç®—äº†ï¼Œä¸è¦äº†ï¼ˆå…¶å®žæ˜¯åœ¨{ç¼–ç /åŠ å¯†}çš„åˆ†å‰²æ—¶å€™ï¼Œåœ¨åˆ†å‰©çš„ä½™æ•°çš„åŽé¢è¡¥çš„0ï¼‰ã€‚
+ * ç„¶åŽå†å°† byte[] è½¬å›žå­—ç¬¦ä¸²ï¼ŒOKï¼åˆè§"aaa"äº†ã€‚
  * 
- * ÓÐÒ»µãÖµµÃ×¢ÒâµÄ£¬UTF-8¡¢GBK¡¢GB18030 Ò»°ã¶¼Ã»Ê²Ã´ÎÊÌâ£¬
- * µ«ÊÇ GB2312 ¿ÉÄÜ×Ö·û¼¯²»¹»·á¸»£¬·±Ìå×ÖÔÚdecodeµÄÊ±ºò³ÉÎÊºÅÁË¡£
+ * æœ‰ä¸€ç‚¹å€¼å¾—æ³¨æ„çš„ï¼ŒUTF-8ã€GBKã€GB18030 ä¸€èˆ¬éƒ½æ²¡ä»€ä¹ˆé—®é¢˜ï¼Œ
+ * ä½†æ˜¯ GB2312 å¯èƒ½å­—ç¬¦é›†ä¸å¤Ÿä¸°å¯Œï¼Œç¹ä½“å­—åœ¨decodeçš„æ—¶å€™æˆé—®å·äº†ã€‚
  * 
  * 
  * @author gembler
- * @version 2008-12-3 ÏÂÎç03:01:50
+ * @version 2008-12-3 ä¸‹åˆ03:01:50
  * 
  */
 public class Base64Smarted {
 
 	/**
-	 * Âë±í
+	 * ç è¡¨
 	 */
 	private final static String CODEC_TABLE = "abcdefghijklmnopqrstuvwxyz234567";
 
 	/**
-	 * ±íÊ¾5bitµÄ×Ö½Ú
+	 * è¡¨ç¤º5bitçš„å­—èŠ‚
 	 */
 	public final static int FIVE_BIT = 5;
 
 	/**
-	 * ±íÊ¾8bitµÄ×Ö½Ú
+	 * è¡¨ç¤º8bitçš„å­—èŠ‚
 	 */
 	public final static int EIGHT_BIT = 8;
 
 	/**
-	 * ±íÊ¾¶þ½øÖÆ
+	 * è¡¨ç¤ºäºŒè¿›åˆ¶
 	 */
 	public final static int BINARY = 2;
 
 	/**
-	 *  Zeven: ½«nullÐÞ¸ÄÎªÄ¬ÈÏ utf-8¡£
+	 *  Zeven: å°†nullä¿®æ”¹ä¸ºé»˜è®¤ utf-8ã€‚
 	 *  
-	 * (±àÂë/¼ÓÃÜ)×Ö·û´®£¬²ÉÓÃÄ¬ÈÏÓïÑÔ»·¾³µÄ character set¡£
+	 * (ç¼–ç /åŠ å¯†)å­—ç¬¦ä¸²ï¼Œé‡‡ç”¨é»˜è®¤è¯­è¨€çŽ¯å¢ƒçš„ character setã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:14:36
+	 * @version 2008-12-3 ä¸‹åˆ03:14:36
 	 * 
 	 * @param keys
-	 *            ÐèÒª(±àÂë/¼ÓÃÜ)µÄ×Ö·û´®
+	 *            éœ€è¦(ç¼–ç /åŠ å¯†)çš„å­—ç¬¦ä¸²
 	 * 
-	 * @return (±àÂë/¼ÓÃÜ)ºóµÄ×Ö·û´®
+	 * @return (ç¼–ç /åŠ å¯†)åŽçš„å­—ç¬¦ä¸²
 	 */
 	public static String encode(String keys) {
 
@@ -103,17 +103,17 @@ public class Base64Smarted {
 	}
 
 	/**
-	 * (±àÂë/¼ÓÃÜ)×Ö·û´®
+	 * (ç¼–ç /åŠ å¯†)å­—ç¬¦ä¸²
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:14:39
+	 * @version 2008-12-3 ä¸‹åˆ03:14:39
 	 * 
 	 * @param keys
-	 *            ÐèÒª(±àÂë/¼ÓÃÜ)µÄ×Ö·û´®
+	 *            éœ€è¦(ç¼–ç /åŠ å¯†)çš„å­—ç¬¦ä¸²
 	 * @param characterSet
-	 *            ×Ö·û¼¯
+	 *            å­—ç¬¦é›†
 	 * 
-	 * @return (±àÂë/¼ÓÃÜ)ºóµÄ×Ö·û´®
+	 * @return (ç¼–ç /åŠ å¯†)åŽçš„å­—ç¬¦ä¸²
 	 */
 	public static String encode(String keys, String characterSet) {
 
@@ -125,14 +125,14 @@ public class Base64Smarted {
 
 		if (characterSet == null || characterSet.length() < 1) {
 
-			// ²ÉÓÃÄ¬ÈÏÓïÑÔ»·¾³µÄ character set¡£
+			// é‡‡ç”¨é»˜è®¤è¯­è¨€çŽ¯å¢ƒçš„ character setã€‚
 			keyBytes = keys.getBytes();
 
 		} else {
 
 			try {
 
-				// ²ÉÓÃÖ¸¶¨µÄ character set¡£
+				// é‡‡ç”¨æŒ‡å®šçš„ character setã€‚
 				keyBytes = keys.getBytes(characterSet);
 
 			} catch (UnsupportedEncodingException e) {
@@ -144,15 +144,15 @@ public class Base64Smarted {
 	}
 
 	/**
-	 * (±àÂë/¼ÓÃÜ)×Ö½ÚÊý×é
+	 * (ç¼–ç /åŠ å¯†)å­—èŠ‚æ•°ç»„
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:14:43
+	 * @version 2008-12-3 ä¸‹åˆ03:14:43
 	 * 
 	 * @param keyBytes
-	 *            ÐèÒª(±àÂë/¼ÓÃÜ)µÄ×Ö½ÚÊý×é
+	 *            éœ€è¦(ç¼–ç /åŠ å¯†)çš„å­—èŠ‚æ•°ç»„
 	 * 
-	 * @return (±àÂë/¼ÓÃÜ)ºóµÄ×Ö·û´®
+	 * @return (ç¼–ç /åŠ å¯†)åŽçš„å­—ç¬¦ä¸²
 	 */
 	private static String encode(byte[] keyBytes) {
 
@@ -163,8 +163,8 @@ public class Base64Smarted {
 		}
 
 		/*
-		 * ºÏ²¢¶þ½øÖÆÂë£¬ 
-		 * Èç£º 
+		 * åˆå¹¶äºŒè¿›åˆ¶ç ï¼Œ 
+		 * å¦‚ï¼š 
 		 *     00101010 11010011 00101101 10100011 
 		 *   to 
 		 *     00101010110100110010110110100011
@@ -179,21 +179,21 @@ public class Base64Smarted {
 		}
 
 		/*
-		 * ÒÔ5¸öbitÎªµ¥Î»£¬¼ÆËãÄÜ·Ö¶àÉÙ×é£¬
-		 * Èç£º
+		 * ä»¥5ä¸ªbitä¸ºå•ä½ï¼Œè®¡ç®—èƒ½åˆ†å¤šå°‘ç»„ï¼Œ
+		 * å¦‚ï¼š
          *     00101010110100110010110110100011
 		 *   to
 		 *     00101 01011 01001 10010 11011 01000 11
 		 *                                          |
-		 *                                   £¨Õâ¸ö11ÎªÓàÏÂµÄÎ»£©
+		 *                                   ï¼ˆè¿™ä¸ª11ä¸ºä½™ä¸‹çš„ä½ï¼‰
 		 */
 
 		int groupCount = mergrd.length() / FIVE_BIT;
 
-		// ¼ÆËãÓàÏÂµÄÎ»Êý
+		// è®¡ç®—ä½™ä¸‹çš„ä½æ•°
 		int lastCount = mergrd.length() % FIVE_BIT;
 
-		// ÀàËÆÊý¾Ý·ÖÒ³µÄËã·¨£¬ÓÐÓàÊýµÄÇé¿öÏÂÐèÒª¼Ó 1¡£
+		// ç±»ä¼¼æ•°æ®åˆ†é¡µçš„ç®—æ³•ï¼Œæœ‰ä½™æ•°çš„æƒ…å†µä¸‹éœ€è¦åŠ  1ã€‚
 		if (lastCount > 0) {
 
 			groupCount += 1;
@@ -201,35 +201,35 @@ public class Base64Smarted {
 		}
 
 		/*
-		 * (±àÂë/¼ÓÃÜ)
+		 * (ç¼–ç /åŠ å¯†)
 		 */
 
 		StringBuffer sbEncoded = new StringBuffer();
 
-		// Ñ­»·ËùÐèµÄÌõ¼þ
+		// å¾ªçŽ¯æ‰€éœ€çš„æ¡ä»¶
 		int forMax = groupCount * FIVE_BIT;
 
-		// Ã¿´ÎµÝÔö5Î»À´½ØÈ¡
+		// æ¯æ¬¡é€’å¢ž5ä½æ¥æˆªå–
 		for (int i = 0; i < forMax; i += FIVE_BIT) {
 
-			// ½áÊøµã
+			// ç»“æŸç‚¹
 			int end = i + FIVE_BIT;
 
 			/*
-			 * Èç¹û½áÊøµã±ÈÒÑºÏ²¢µÄ¶þ½øÖÆÂë´®µÄ³¤¶ÈÒª´ó£¬
-			 * Ïàµ±ÓÚÓÐÓàÊý£¬
-             * ²¢ÇÒ±íÊ¾µ±Ç°Ñ­»·µ½ÁË£¨ÒÑºÏ²¢µÄ¶þ½øÖÆÂë´®µÄ³¤¶È % FIVE_BIT£©µÄÄÇÒ»½Ø¡£
+			 * å¦‚æžœç»“æŸç‚¹æ¯”å·²åˆå¹¶çš„äºŒè¿›åˆ¶ç ä¸²çš„é•¿åº¦è¦å¤§ï¼Œ
+			 * ç›¸å½“äºŽæœ‰ä½™æ•°ï¼Œ
+             * å¹¶ä¸”è¡¨ç¤ºå½“å‰å¾ªçŽ¯åˆ°äº†ï¼ˆå·²åˆå¹¶çš„äºŒè¿›åˆ¶ç ä¸²çš„é•¿åº¦ % FIVE_BITï¼‰çš„é‚£ä¸€æˆªã€‚
 			 */
 
-			// ±ê¼ÇÊÇ·ñµ½ÁËÓàÊýµÄÄÇÒ»½Ø
+			// æ ‡è®°æ˜¯å¦åˆ°äº†ä½™æ•°çš„é‚£ä¸€æˆª
 			boolean flag = false;
 
 			if (end > mergrd.length()) {
 
 				/*
-				 * Èç¹û½áÊøµã±ÈÒÑºÏ²¢µÄ¶þ½øÖÆÂë´®µÄ³¤¶ÈÒª´ó£¬
-				 * ½áÊøµãÐèÒª±»ÖØÉèÎª£º 
-				 * ÒÑºÏ²¢µÄ¶þ½øÖÆÂë´®µÄ³¤¶È£¬µÈ¼ÛÓÚ£¨i + lastCount). ²¢ÇÒÖØÉè±ê¼Ç¡£
+				 * å¦‚æžœç»“æŸç‚¹æ¯”å·²åˆå¹¶çš„äºŒè¿›åˆ¶ç ä¸²çš„é•¿åº¦è¦å¤§ï¼Œ
+				 * ç»“æŸç‚¹éœ€è¦è¢«é‡è®¾ä¸ºï¼š 
+				 * å·²åˆå¹¶çš„äºŒè¿›åˆ¶ç ä¸²çš„é•¿åº¦ï¼Œç­‰ä»·äºŽï¼ˆi + lastCount). å¹¶ä¸”é‡è®¾æ ‡è®°ã€‚
 				 */
 
 				end = (i + lastCount);
@@ -238,26 +238,26 @@ public class Base64Smarted {
 
 			}
 
-			// ½ØÈ¡
+			// æˆªå–
 			String strFiveBit = mergrd.substring(i, end);
 
-			// ½ØÈ¡ºó´Ó¶þ½øÖÆ×ªÎªÊ®½øÖÆ
+			// æˆªå–åŽä»ŽäºŒè¿›åˆ¶è½¬ä¸ºåè¿›åˆ¶
 			int intFiveBit = Integer.parseInt(strFiveBit, BINARY);
 
 			if (flag) {
 
 				/*
-				 * Èç¹û½áÊøµã±ÈÒÑºÏ²¢µÄ¶þ½øÖÆÂë´®µÄ³¤¶ÈÒª´ó£¬
-				 * »òÕßÊÇµ½ÁËÓàÊýµÄÄÇÒ»½Ø£º 
-				 * ÐèÒª×óÒÆ²Ù×÷£¬¼ÙÉèÓàÏÂµÄ¶þ½øÖÆÎ»Îª£º11£¬
-				 * ÄÇÃ´ÐèÒª´ÓºóÃæ²¹0£¬×óÒÆ²Ù×÷ºóÎª (000)11(000)
+				 * å¦‚æžœç»“æŸç‚¹æ¯”å·²åˆå¹¶çš„äºŒè¿›åˆ¶ç ä¸²çš„é•¿åº¦è¦å¤§ï¼Œ
+				 * æˆ–è€…æ˜¯åˆ°äº†ä½™æ•°çš„é‚£ä¸€æˆªï¼š 
+				 * éœ€è¦å·¦ç§»æ“ä½œï¼Œå‡è®¾ä½™ä¸‹çš„äºŒè¿›åˆ¶ä½ä¸ºï¼š11ï¼Œ
+				 * é‚£ä¹ˆéœ€è¦ä»ŽåŽé¢è¡¥0ï¼Œå·¦ç§»æ“ä½œåŽä¸º (000)11(000)
 				 */
 
 				intFiveBit <<= (FIVE_BIT - lastCount);
 
 			}
 
-			// ÀûÓÃ¸ÃÊ®½øÖÆÊý×÷ÎªÂë±íµÄË÷Òý»ñÈ¡¶ÔÓ¦µÄ×Ö·û£¬²¢×·¼Óµ½sbEncoded
+			// åˆ©ç”¨è¯¥åè¿›åˆ¶æ•°ä½œä¸ºç è¡¨çš„ç´¢å¼•èŽ·å–å¯¹åº”çš„å­—ç¬¦ï¼Œå¹¶è¿½åŠ åˆ°sbEncoded
 			sbEncoded.append(CODEC_TABLE.charAt(intFiveBit));
 
 		}
@@ -267,17 +267,17 @@ public class Base64Smarted {
 	}
 
 	/**
-	 *  Zeven: ½«nullÐÞ¸ÄÎªÄ¬ÈÏ utf-8¡£
+	 *  Zeven: å°†nullä¿®æ”¹ä¸ºé»˜è®¤ utf-8ã€‚
 	 *  
-	 * (½âÂë/½âÃÜ)×Ö·û´®£¬²ÉÓÃÄ¬ÈÏÓïÑÔ»·¾³µÄ character set¡£
+	 * (è§£ç /è§£å¯†)å­—ç¬¦ä¸²ï¼Œé‡‡ç”¨é»˜è®¤è¯­è¨€çŽ¯å¢ƒçš„ character setã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:14:57
+	 * @version 2008-12-3 ä¸‹åˆ03:14:57
 	 * 
 	 * @param code
-	 *            ÐèÒª(½âÂë/½âÃÜ)µÄ×Ö·û´®
+	 *            éœ€è¦(è§£ç /è§£å¯†)çš„å­—ç¬¦ä¸²
 	 * 
-	 * @return (½âÂë/½âÃÜ)ºóµÄ×Ö·û´®
+	 * @return (è§£ç /è§£å¯†)åŽçš„å­—ç¬¦ä¸²
 	 */
 	public static String decode(String code) {
 
@@ -287,17 +287,17 @@ public class Base64Smarted {
 	}
 
 	/**
-	 * (½âÂë/½âÃÜ)×Ö·û´®
+	 * (è§£ç /è§£å¯†)å­—ç¬¦ä¸²
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:15:00
+	 * @version 2008-12-3 ä¸‹åˆ03:15:00
 	 * 
 	 * @param code
-	 *            ÐèÒª(½âÂë/½âÃÜ)µÄ×Ö·û´®
+	 *            éœ€è¦(è§£ç /è§£å¯†)çš„å­—ç¬¦ä¸²
 	 * @param characterSet
-	 *            ×Ö·û¼¯
+	 *            å­—ç¬¦é›†
 	 * 
-	 * @return (½âÂë/½âÃÜ)ºóµÄ×Ö·û´®
+	 * @return (è§£ç /è§£å¯†)åŽçš„å­—ç¬¦ä¸²
 	 */
 	public static String decode(String code, String characterSet) {
 
@@ -308,37 +308,37 @@ public class Base64Smarted {
 		}
 
 		/*
-		 * ²ð³ýÃ¿Ò»¸ö×Ö·û£¬´ÓÂë±íÀï»ñÈ¡ÏàÓ¦µÄË÷Òý¡£
+		 * æ‹†é™¤æ¯ä¸€ä¸ªå­—ç¬¦ï¼Œä»Žç è¡¨é‡ŒèŽ·å–ç›¸åº”çš„ç´¢å¼•ã€‚
 		 */
 
 		StringBuffer sbBinarys = new StringBuffer();
 
 		for (int i = 0; i < code.length(); i++) {
 
-			// ´ÓÂë±íÀï»ñÈ¡ÏàÓ¦µÄË÷Òý
+			// ä»Žç è¡¨é‡ŒèŽ·å–ç›¸åº”çš„ç´¢å¼•
 			int index = getCodecTableIndex(code.charAt(i));
 
-			// ½«Ê®½øÖÆµÄË÷Òý×ª»»Îª¶þ½øÖÆ´®
+			// å°†åè¿›åˆ¶çš„ç´¢å¼•è½¬æ¢ä¸ºäºŒè¿›åˆ¶ä¸²
 			String indexBinary = Integer.toBinaryString(index);
 
-			// È¥µôÇ°3¸ö0£¬²¢ÇÒ×·¼Óµ½sbBinarys
+			// åŽ»æŽ‰å‰3ä¸ª0ï¼Œå¹¶ä¸”è¿½åŠ åˆ°sbBinarys
 			FormatUtil.formatBinary(indexBinary, sbBinarys, FIVE_BIT);
 
 		}
 
 		/*
-		 * °´8¸öbit²ð·Ö£¬Ê£ÏÂµÄÓàÊýÈÓµô¡£
-		 * ÈÓµôµÄÓàÊýÊÇÔÚ(±àÂë/¼ÓÃÜ)µÄ·Ö¸îÊ±ºò£¬ÔÚ·ÖÊ£µÄÓàÊýµÄºóÃæ²¹µÄ0
+		 * æŒ‰8ä¸ªbitæ‹†åˆ†ï¼Œå‰©ä¸‹çš„ä½™æ•°æ‰”æŽ‰ã€‚
+		 * æ‰”æŽ‰çš„ä½™æ•°æ˜¯åœ¨(ç¼–ç /åŠ å¯†)çš„åˆ†å‰²æ—¶å€™ï¼Œåœ¨åˆ†å‰©çš„ä½™æ•°çš„åŽé¢è¡¥çš„0
 		 */
 
 		byte[] binarys = new byte[sbBinarys.length() / EIGHT_BIT];
 
 		for (int i = 0, j = 0; i < binarys.length; i++) {
 
-			// Ã¿8¸öbit½ØÈ¡Ò»·Ý
+			// æ¯8ä¸ªbitæˆªå–ä¸€ä»½
 			String sub = sbBinarys.substring(j, j += EIGHT_BIT);
 
-			// ½«½ØÈ¡ÏÂÀ´µÄ¶þ½øÖÆ´®×ª»»ÎªÊ®½øÖÆ
+			// å°†æˆªå–ä¸‹æ¥çš„äºŒè¿›åˆ¶ä¸²è½¬æ¢ä¸ºåè¿›åˆ¶
 			Integer intBinary = Integer.valueOf(sub, BINARY);
 
 			binarys[i] = intBinary.byteValue();
@@ -349,14 +349,14 @@ public class Base64Smarted {
 
 		if (characterSet == null || characterSet.length() < 1) {
 
-			// ²ÉÓÃÄ¬ÈÏÓïÑÔ»·¾³µÄ character set¡£
+			// é‡‡ç”¨é»˜è®¤è¯­è¨€çŽ¯å¢ƒçš„ character setã€‚
 			decoded = new String(binarys);
 
 		} else {
 
 			try {
 
-				// ²ÉÓÃÖ¸¶¨µÄ character set¡£
+				// é‡‡ç”¨æŒ‡å®šçš„ character setã€‚
 				return new String(binarys, characterSet);
 
 			} catch (UnsupportedEncodingException e) {
@@ -367,16 +367,16 @@ public class Base64Smarted {
 	}
 
 	/**
-	 * ¸ù¾ÝËù¸ø³öµÄ×Ö·û£¬±éÀúCODEC_TABLE£¬·µ»Ø¶ÔÓ¦µÄÏÂ±ê¡£
-	 * Èç¹ûÃ»ÕÒµ½£¬Ôò·µ»Ø -1¡£
+	 * æ ¹æ®æ‰€ç»™å‡ºçš„å­—ç¬¦ï¼ŒéåŽ†CODEC_TABLEï¼Œè¿”å›žå¯¹åº”çš„ä¸‹æ ‡ã€‚
+	 * å¦‚æžœæ²¡æ‰¾åˆ°ï¼Œåˆ™è¿”å›ž -1ã€‚
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:14:53
+	 * @version 2008-12-3 ä¸‹åˆ03:14:53
 	 * 
 	 * @param code
-	 *            ÔÚCODEC_TABLE·¶Î§ÄÚµÄ×Ö·û¡£
+	 *            åœ¨CODEC_TABLEèŒƒå›´å†…çš„å­—ç¬¦ã€‚
 	 * 
-	 * @return ×Ö·ûÔÚCODEC_TABLEÀï¶ÔÓ¦µÄÏÂ±ê£¬Èç¹ûÃ»ÕÒµ½£¬Ôò·µ»Ø -1¡£
+	 * @return å­—ç¬¦åœ¨CODEC_TABLEé‡Œå¯¹åº”çš„ä¸‹æ ‡ï¼Œå¦‚æžœæ²¡æ‰¾åˆ°ï¼Œåˆ™è¿”å›ž -1ã€‚
 	 */
 	private static int getCodecTableIndex(char code) {
 
@@ -395,10 +395,10 @@ public class Base64Smarted {
 	}
 
 	/**
-	 * ²âÊÔ
+	 * æµ‹è¯•
 	 * 
 	 * @author gembler
-	 * @version 2008-12-3 ÏÂÎç03:05:52
+	 * @version 2008-12-3 ä¸‹åˆ03:05:52
 	 * 
 	 * @param args
 	 */
@@ -411,7 +411,7 @@ public class Base64Smarted {
 
 			while (true) {
 
-				System.out.print("ÊäÈë×Ö·ûºÅ´®£º");
+				System.out.print("è¾“å…¥å­—ç¬¦å·ä¸²ï¼š");
 
 				String in = br.readLine();
 

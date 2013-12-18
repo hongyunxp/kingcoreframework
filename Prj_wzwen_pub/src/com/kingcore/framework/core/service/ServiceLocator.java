@@ -21,7 +21,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 
 /**
- * <p>»ùÀà£ºÏîÄ¿ÖĞµÄ HandlerLocator ¶ÔÏó£¬µ÷ÓÃspring bean¶ÔÏóµÄÈë¿ÚÇĞÈë¹ÜÀíÀà¡£</p>
+ * <p>åŸºç±»ï¼šé¡¹ç›®ä¸­çš„ HandlerLocator å¯¹è±¡ï¼Œè°ƒç”¨spring beanå¯¹è±¡çš„å…¥å£åˆ‡å…¥ç®¡ç†ç±»ã€‚</p>
  * @author Zeven on 2008-5-31
  * @version	2.0
  * @see		Object#equals(java.lang.Object)
@@ -60,17 +60,17 @@ public class ServiceLocator {
 	}
 
 	/**
-	 * ¸ù¾İ servletContext À´³õÊ¼ applicationContext£¬¶ø²»ÓÃÖ±½ÓÉèÖÃapplication¡£
-	 *    ÊÇ¼àÌıÆ÷·ÅÖÃµ½ servletContext ÖĞÈ¥µÄ£¬Ô­ÀíÊÇÏÈÆô¶¯¼àÌıÆ÷£¬ÔÙÔÚServlet³õÊ¼ÖĞÔËĞĞ±¾·½·¨¡£
+	 * æ ¹æ® servletContext æ¥åˆå§‹ applicationContextï¼Œè€Œä¸ç”¨ç›´æ¥è®¾ç½®applicationã€‚
+	 *    æ˜¯ç›‘å¬å™¨æ”¾ç½®åˆ° servletContext ä¸­å»çš„ï¼ŒåŸç†æ˜¯å…ˆå¯åŠ¨ç›‘å¬å™¨ï¼Œå†åœ¨Servletåˆå§‹ä¸­è¿è¡Œæœ¬æ–¹æ³•ã€‚
 	 *    
-	 *    ?? Ê¹ÓÃListon/ServletÔØÈëSpring·ÅÓÚContextµÄ²ÎÊıÊÇ£ºWebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE
-	 *    ?? Ê¹ÓÃContextLoaderPlugInÔØÈëSpring·ÅÓÚContextµÄ²ÎÊıÊÇ£ºContextLoaderPlugIn.SERVLET_CONTEXT_PREFIX+ModuleConfig.getPrefix()£¨¾ßÌåÇë²é¿´Ô´´úÂë£©
+	 *    ?? ä½¿ç”¨Liston/Servletè½½å…¥Springæ”¾äºContextçš„å‚æ•°æ˜¯ï¼šWebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE
+	 *    ?? ä½¿ç”¨ContextLoaderPlugInè½½å…¥Springæ”¾äºContextçš„å‚æ•°æ˜¯ï¼šContextLoaderPlugIn.SERVLET_CONTEXT_PREFIX+ModuleConfig.getPrefix()ï¼ˆå…·ä½“è¯·æŸ¥çœ‹æºä»£ç ï¼‰
 	 * @param servletContext
 	 */
 	public static void initApplicationContext(ServletContext servletContext) {
-		//WebApplicationContext applContext = DelegatingActionUtils.findRequiredWebApplicationContext( servletContext,  null );	// Õâ¶Î´úÂëÒ²¿ÉÒÔ
-		//ApplicationContext applContext = (ApplicationContext) servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE); // Õâ¶Î´úÂëÒ²¿ÉÒÔ
-		WebApplicationContext applContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);	// Õâ¶Î´úÂëÒ²¿ÉÒÔ
+		//WebApplicationContext applContext = DelegatingActionUtils.findRequiredWebApplicationContext( servletContext,  null );	// è¿™æ®µä»£ç ä¹Ÿå¯ä»¥
+		//ApplicationContext applContext = (ApplicationContext) servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE); // è¿™æ®µä»£ç ä¹Ÿå¯ä»¥
+		WebApplicationContext applContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);	// è¿™æ®µä»£ç ä¹Ÿå¯ä»¥
 		applicationContext = applContext;
 	}
 	
