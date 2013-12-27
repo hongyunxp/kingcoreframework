@@ -22,7 +22,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.log4j.Logger;
 
-import com.kingcore.framework.bean.Navigator;
+import com.kingcore.framework.bean.Pagination;
 
 
 /** 
@@ -162,18 +162,18 @@ public class NavigatorTag extends TagSupport {
         String val="";
         // 根据导航类型，调用对象相应的导航方法。  path/commandName 参数都放入导航器了，
         // 不放在jsp，而是放在action中设置。
-        if(obj!=null && obj instanceof Navigator ){
+        if(obj!=null && obj instanceof Pagination ){
         	if(this.getType().equals("pnfl")){
-        		val = ((Navigator)obj).getPagesPnfl( );
+        		val = ((Pagination)obj).getPagesPnfl( );
         		
         	}else if(this.getType().equals("pnfl_2")){
-        		val = ((Navigator)obj).getPagesPnfl2( );
+        		val = ((Pagination)obj).getPagesPnfl2( );
         		
         	}else if(this.getType().equals("pn")){
-        		val = ((Navigator)obj).getPagesPn( );        	
+        		val = ((Pagination)obj).getPagesPn( );        	
         		
         	}else{
-        		val = ((Navigator)obj).getPagesPnfl( );
+        		val = ((Pagination)obj).getPagesPnfl( );
 
         	}
         }

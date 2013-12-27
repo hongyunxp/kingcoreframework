@@ -139,7 +139,7 @@
 		
 		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="D:\Program Files\Kingcore\Director\lib" overwrite="true"/>
 		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="E:\Woo_Java\Prj_wzwen_pda\pda\WEB-INF\lib" overwrite="true"/>
-		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="E:\Woo_Java\Prj_zeven_admin\sysadmin\WEB-INF\lib" overwrite="true"/>
+		<copy file="${project.lib}/kingcore-${prj.version}.jar" todir="E:\Woo_Java\Prj_KingCore_Commerce\WebRoot\WEB-INF\lib" overwrite="true"/>
 		
 		<!-- copy zeven.tld -->
 		<copy file="${project.build}/tld/zeven.tld" todir="E:/Work_Java/Prj_vangv_net/wangwin/WEB-INF/tld"/>
