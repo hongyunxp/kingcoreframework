@@ -31,7 +31,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import wzw.util.DbUtils;
 
 import com.kingcore.framework.base.dao.DaoJdbc;
-import com.kingcore.framework.bean.Navigator;
+import com.kingcore.framework.bean.Pagination;
 import com.kingcore.framework.context.ApplicationContext;
 import com.kingcore.framework.context.DatabaseManager;
 import com.kingcore.framework.jdbc.PlainResultSetBeanExtractor;
@@ -162,14 +162,14 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * <pre>获取指定翻页的RowSet。
 	 * 	使用Statement，而不是PreparedStatement，需要使用PreparedStatement则使用重载的方法。</pre>
 	 * @author Zeven on 2008-5-26
-	 * @param navigator 翻页信息数组[Paginated]
+	 * @param pagination 翻页信息数组[Paginated]
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @return
 	 */
-	protected RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas) {
+	protected RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas) {
 
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas );
+		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas );
 		
 		return this.queryForRowSet( sql_datas );	// not PreparedStatement
 		
@@ -180,16 +180,16 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * 
 	 * <pre>获取指定翻页的RowSet。</pre>
 	 * @author Zeven on 2008-5-26
-	 * @param navigator 翻页信息数组[Paginated]
+	 * @param pagination 翻页信息数组[Paginated]
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @param args 参数数组
 	 * @param argTypes 参数类型数组
 	 * @return
 	 */
-	protected RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
+	protected RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
 
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas );
+		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas );
 		
 		return this.queryForRowSet( sql_datas , args, argTypes);	//PreparedStatement
 		
@@ -230,16 +230,16 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	/**
 	 * <pre>获取指定翻页的List<ModelObject>。
 	 * 	    使用Statement，而不是PreparedStatement，需要使用PreparedStatement则使用重载的方法。</pre>
-	 * @param navigator 翻页信息数组[Paginated]
+	 * @param pagination 翻页信息数组[Paginated]
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @param clazz List里面的对象，对应一行数据，可以为null
 	 * @return
 	 */
-	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Class clazz) {
+	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas, Class clazz) {
 
 		
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas);
+		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
 		
 		return this.queryForList(sql_datas, clazz);	// return List<Bean>
 		
@@ -248,7 +248,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	
 	/**
 	 * <pre>获取指定翻页的List<ModelObject>。 是PreparedStatement方式。</pre>
-	 * @param navigator 翻页信息数组[Paginated]
+	 * @param pagination 翻页信息数组[Paginated]
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @param args 参数数组 
@@ -256,10 +256,10 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param clazz List中每行对象的模型对象javaBean
 	 * @return
 	 */
-	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Object[] args, int[] argTypes, Class clazz) {
+	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes, Class clazz) {
 
 		
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas);
+		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
 		
 		return this.queryForList(sql_datas, args, argTypes, clazz);	// return List<Bean>
 		
@@ -299,14 +299,14 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	/**
 	 * <pre>获取指定翻页的List，每行使用一个Map封装数据。
 	 * 	使用Statement，而不是PreparedStatement，需要使用PreparedStatement则使用重载的方法。</pre>
-	 * @param navigator 翻页信息数组[Paginated]
+	 * @param pagination 翻页信息数组[Paginated]
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @return
 	 */
-	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas) {
+	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas) {
 		
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas);
+		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
 		
 		return this.getJdbcTemplate().queryForList(sql_datas);		// return List<Map>
 		
@@ -315,16 +315,16 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	/**
 	 * <pre>获取指定翻页的List，每行使用一个Map封装数据，即List<Map>。
 	 * 		PreparedStatement方式。</pre>
-	 * @param navigator 翻页信息数组[Paginated]
+	 * @param pagination 翻页信息数组[Paginated]
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @param args 参数数组
 	 * @param argTypes 参数类型数组
 	 * @return
 	 */
-	protected List queryForPagedList(Navigator navigator, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
+	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
 		
-		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas);
+		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
 		
 		return this.getJdbcTemplate().queryForList(sql_datas, args, argTypes);		// return List<Map>
 		
@@ -636,12 +636,12 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param dataSet 数据载体，包含了取数的信息
 	 * @return 根据取数信息进行包装之后的 sql statement.
 	 */
-	protected String createSqlForPage(Navigator navigator, String sql_count, String sql_datas ) {
+	protected String createSqlForPage(Pagination pagination, String sql_count, String sql_datas ) {
 
 		// 是否更新总行数信息
-		int rowCount = navigator.getRowCount();
-		int pageSize = navigator.getPageSize();
-		int pageNumber = navigator.getPageNumber();		
+		int rowCount = pagination.getRowCount();
+		int pageSize = pagination.getPageSize();
+		int pageNumber = pagination.getPageNumber();		
 		//String action = "query";
 		
 		//处理翻页操作
@@ -654,7 +654,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 					+"\n\tsql="+sql_count);
 
 			rowCount = this.getJdbcTemplate().queryForInt( sql_count );	
-			navigator.setRowCount(rowCount);	// 更改总行数
+			pagination.setRowCount(rowCount);	// 更改总行数
 		}
 		
 		String sql = ApplicationContext.getInstance().getDatabaseManager().getSubResultSetSql( sql_datas, 

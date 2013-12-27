@@ -100,7 +100,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	private List dataList ;	// add by Zeven on 2008-08-16。纯粹保存List对象，如List<Bean>, List<Map>，对于dataList的操作，必须直接先获datList。
 	
 
-	protected Navigator navigator = null;
+	protected Pagination pagination = null;
 	
 	/**
 	 * 最后一次查询的SQL语句
@@ -137,6 +137,9 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 
 
 	private String path;
+
+
+	private Integer rowCount = -1;
 	
 	/**
 	 * 暂时不需要的变量
@@ -203,7 +206,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public int getPageNumber()
 	{
-		return this.navigator.getPageNumber();
+		return this.pagination.getPageNumber();
 	}
 	
 	/**
@@ -300,7 +303,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public void setPageCount(int pageCount)
 	{
-		this.navigator.setPageCount(pageCount);
+		this.pagination.setPageCount(pageCount);
 	}
 
 	/**
@@ -309,7 +312,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public int getPageCount()
 	{
-		return this.navigator.getPageCount();
+		return this.pagination.getPageCount();
 	}
 	
 	/**
@@ -318,7 +321,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public int getPageSize()
 	{
-		return this.navigator.getPageSize();
+		return this.pagination.getPageSize();
 	}
 
 
@@ -326,7 +329,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 * 
 	 */
 	public void setPageSize(int pageSize) {
-		this.navigator.setPageSize(pageSize);
+		this.pagination.setPageSize(pageSize);
 	}
 	
 	/**
@@ -335,11 +338,11 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public int getRowCount()
 	{
-		return this.navigator.getRowCount();
+		return this.pagination.getRowCount();
 	}
 	
 	public void setRowCount(int rowCount) {
-		this.navigator.setRowCount(rowCount);
+		this.pagination.setRowCount(rowCount);
 	}
 	
 	/**
@@ -347,7 +350,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public void setPageNumber(int index)
 	{
-		this.navigator.setPageNumber( index );
+		this.pagination.setPageNumber( index );
 	}
 	
 	/**
@@ -372,7 +375,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public int getShowRows()
 	{
-		return this.navigator.getPageNumber()==getPageCount()?( getRowCount()-(getPageCount()-1)*getPageSize() ):getPageSize() ;
+		return this.pagination.getPageNumber()==getPageCount()?( getRowCount()-(getPageCount()-1)*getPageSize() ):getPageSize() ;
 	}
 
 	/**
@@ -381,7 +384,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public boolean isFirstPage()
 	{
-		return this.navigator.isFirstPage();
+		return this.pagination.isFirstPage();
 		
 	}
 	
@@ -391,7 +394,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public boolean isLastPage()
 	{
-		return this.navigator.isLastPage();
+		return this.pagination.isLastPage();
 	}
 	
 	/**
@@ -400,7 +403,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public boolean hasNextPage()
 	{		
-		return this.navigator.hasNextPage();
+		return this.pagination.hasNextPage();
 	}
 	
 	/**
@@ -409,7 +412,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public boolean hasPreviousPage()
 	{
-		return this.navigator.hasPreviousPage();
+		return this.pagination.hasPreviousPage();
 	}
 	
 	/**
@@ -418,7 +421,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public boolean isNeedPaged(int forPageIndex)
 	{
-		if (forPageIndex != this.navigator.getPageNumber() )  //this.currentPageIndex)
+		if (forPageIndex != this.pagination.getPageNumber() )  //this.currentPageIndex)
 		{
 			this.isPaged = true;
 		}
@@ -438,8 +441,8 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 //		if ( this.currentPageIndex < this.pageCount)
 //			this.currentPageIndex++;
 
-		if ( this.navigator.getPageNumber() < this.navigator.getPageCount() ){
-			this.navigator.setPageNumber( this.navigator.getPageNumber()+1 ) ;
+		if ( this.pagination.getPageNumber() < this.pagination.getPageCount() ){
+			this.pagination.setPageNumber( this.pagination.getPageNumber()+1 ) ;
 		}
 	}
 	
@@ -515,12 +518,12 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 * @param datas
 	 * @throws SQLException
 	 */
-	public QueryDataSet( Navigator navigator, String path, RowSet datas) 
+	public QueryDataSet( Pagination pagination, String path, RowSet datas) 
 	{
 		/// this.datas = datas;
 		this.crs = datas;
 		this.path = path;
-		this.navigator = navigator;
+		this.pagination = pagination;
 		
 		doinit() ;
 	}
@@ -531,14 +534,14 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 * @param datas
 	 * @throws SQLException
 	 */
-	public QueryDataSet( Navigator navigator, String path, List dataList) 
+	public QueryDataSet( Pagination pagination, String path, List dataList) 
 	{
 		/// this.datas = datas;
 		this.dataList = dataList;
 		this.crs = datas;
 		this.path = path;
 
-		this.navigator = navigator;
+		this.pagination = pagination;
 		
 		doinit() ;
 	}
@@ -552,8 +555,8 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	{
 		this.beginIndex = 0;
 		this.endIndex = getPageSize() - 1;
-		if( this.navigator.getRowCount()<0){
-			this.navigator.setRowCount( 0 ) ;
+		if( this.pagination.getRowCount()<0){
+			this.pagination.setRowCount( 0 ) ;
 		}
 	}
 	
@@ -852,7 +855,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 			return ((List)this.crs).size();
 			
 		}else{
-			return this.navigator.getRowCount();
+			return this.pagination.getRowCount();
 			
 		}   // 这里只是暂时使用
 		
@@ -869,17 +872,17 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	*/
 	public String getPagesPnfl( )
 	{
-		return this.navigator.getPagesPnfl( ); //8, commandName
+		return this.pagination.getPagesPnfl( ); //8, commandName
 	}
 	public String getPagesPnfl2( )
 	{
-		return this.navigator.getPagesPnfl2( );//commandName
+		return this.pagination.getPagesPnfl2( );//commandName
 	}
 
 
 	public String getPagesPn( ) {
 
-		return this.navigator.getPagesPn( ); //commandName
+		return this.pagination.getPagesPn( ); //commandName
 	}
  
 	
@@ -903,7 +906,16 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 */
 	public void setPath(String path) {
 		this.path = path ;
-		this.navigator.setPath(path);  //修改导航对象的path属性
+		this.pagination.setPath(path);  //修改导航对象的path属性
+		
+	}
+
+	public int getOffset() {
+		return 0;
+	}
+
+	public void setRowCount(Integer rowCount) {
+		this.rowCount = rowCount ;
 		
 	}
 

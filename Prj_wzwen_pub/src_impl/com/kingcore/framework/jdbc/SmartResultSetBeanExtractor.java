@@ -100,9 +100,11 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	                    try {   
 	                        //JavaBean内部属性和ResultSet中一致时候   
 	                        Method setMethod = bean.getMethod(     //.getClass()
-	                                setMethodName, value.getClass());   
+	                                setMethodName, convertSqlType(value.getClass()) );   
 	                        setMethod.invoke(obj, value);   
 	                    } catch (Exception e) {   
+							log.error("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
+									e.getMessage() );
 	                        //JavaBean内部属性和ResultSet中不一致时候，使用String来输入值。   
 	                        Method setMethod;
 							try {
@@ -111,8 +113,8 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 		                        setMethod.invoke(obj, value.toString());   
 		                        
 							} catch (Exception e1) {
-								log.warn("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName,
-												e1);
+								log.error("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
+										e1.getMessage());
 							}
 	                    }   
 	                }   
@@ -127,7 +129,15 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	    return objList;   
 	}
 
-    private static Pattern pattern = Pattern.compile("(_[a-z]{1})");
+    private Class<?> convertSqlType(Class<? extends Object> clazz) {
+		if (clazz.equals( java.sql.Date.class )
+				|| clazz.equals( java.sql.Timestamp.class )) {
+			return java.util.Date.class;
+		}
+		return clazz;
+	}
+
+	private static Pattern pattern = Pattern.compile("(_[a-z]{1})");
 	/**
 	 * 将数据库的列明格式为Bean的属性名，可以根据自己的规则over write本方法。
 	 *    比如数据库列名 user_name -->属性名 userName

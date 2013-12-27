@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-import com.kingcore.framework.bean.Navigator;
+import com.kingcore.framework.bean.Pagination;
 
 /**
  * <p>web 页面使用的导航翻页对象，支持getter,在页面可使用标签获取。</p>
@@ -27,7 +27,7 @@ import com.kingcore.framework.bean.Navigator;
  * @since	JDK5
  */
 
-public class WebPageNavigator implements Navigator {
+public class WebPageNavigator implements Pagination {
 
 
 	/**
@@ -784,7 +784,7 @@ public class WebPageNavigator implements Navigator {
 //	 *  基本构造函数。
 //	 * @param pageParams
 //	 */
-//	public Navigator(int[] pageParams) {
+//	public Pagination(int[] pageParams) {
 //	}
 	
 	//------------------------------------------------- 
@@ -924,7 +924,7 @@ public class WebPageNavigator implements Navigator {
 	 */
 	public static void main(String[] args) {
 		// 注意：接口里面的成员对象，是final类型，不能被修改的。
-		Navigator wng = new WebPageNavigator();
+		Pagination wng = new WebPageNavigator();
 		System.out.println("=="+wng.getPageNumber() );
 		wng.setPageNumber( wng.getPageNumber()+2 );
 		System.out.println("=="+wng.getPageNumber());
@@ -937,6 +937,15 @@ public class WebPageNavigator implements Navigator {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public int getOffset() {
+		return 0;
+	}
+
+	public void setRowCount(Integer rowCount) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

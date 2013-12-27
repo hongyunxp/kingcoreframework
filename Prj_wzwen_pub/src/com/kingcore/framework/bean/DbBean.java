@@ -93,10 +93,10 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		return super.createSqlForCount(sql_datas);
 	}
 
-	public String createSqlForPage(Navigator navigator, String sql_count,
+	public String createSqlForPage(Pagination pagination, String sql_count,
 			String sql_datas) throws SQLException {
 		
-		return super.createSqlForPage(navigator, sql_count, sql_datas);
+		return super.createSqlForPage(pagination, sql_count, sql_datas);
 	}
 
 	public String date2Char(String colName) {
@@ -263,44 +263,44 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		return super.queryForMap(sql);
 	}
 
-	public List<?> queryForPagedList(Navigator navigator, Class<?> clazz, String sql_count,
+	public List<?> queryForPagedList(Pagination pagination, Class<?> clazz, String sql_count,
 			String sql_datas) throws SQLException {
 		
-		return super.queryForPagedList(navigator, clazz, sql_count, sql_datas);
+		return super.queryForPagedList(pagination, clazz, sql_count, sql_datas);
 	}
 
-//	public List<?> queryForPagedList(Navigator navigator, Class<?> clazz, String sql_count,
+//	public List<?> queryForPagedList(Pagination pagination, Class<?> clazz, String sql_count,
 //			String sql_datas, Object[] args, int[] argTypes)
 //			throws SQLException {
 //		
-//		return super.queryForPagedList(navigator, clazz, sql_count, sql_datas, args, argTypes);
+//		return super.queryForPagedList(pagination, clazz, sql_count, sql_datas, args, argTypes);
 //	}
 
-//	public List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count,
+//	public List<Map<String,Object>> queryForPagedList(Pagination pagination, String sql_count,
 //			String sql_datas, Object[] args, int[] argTypes)
 //			throws SQLException {
 //		
-//		return super.queryForPagedList(navigator, sql_count, sql_datas, args, argTypes);
+//		return super.queryForPagedList(pagination, sql_count, sql_datas, args, argTypes);
 //	}
 
-	public List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count,
+	public List<Map<String,Object>> queryForPagedList(Pagination pagination, String sql_count,
 			String sql_datas) throws SQLException {
 		
-		return super.queryForPagedList(navigator, sql_count, sql_datas);
+		return super.queryForPagedList(pagination, sql_count, sql_datas);
 	}
 
-//	public RowSet queryForPagedRowSet(Navigator navigator, String sql_count,
+//	public RowSet queryForPagedRowSet(Pagination pagination, String sql_count,
 //			String sql_datas, Object[] args, int[] argTypes)
 //			throws SQLException {
 //		
-//		return super.queryForPagedRowSet(navigator, sql_count, sql_datas, args,
+//		return super.queryForPagedRowSet(pagination, sql_count, sql_datas, args,
 //				argTypes);
 //	}
 
-	public RowSet queryForPagedRowSet(Navigator navigator, String sql_count,
+	public RowSet queryForPagedRowSet(Pagination pagination, String sql_count,
 			String sql_datas) throws SQLException {
 		
-		return super.queryForPagedRowSet(navigator, sql_count, sql_datas);
+		return super.queryForPagedRowSet(pagination, sql_count, sql_datas);
 	}
 
 //	public RowSet queryForRowSet(String sql, Object[] args, int[] argTypes)
@@ -460,24 +460,24 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		return super.queryForRowSet(sql, args);
 	}
 	@Override
-	public RowSet queryForPagedRowSet(Navigator navigator, String sql_count,
+	public RowSet queryForPagedRowSet(Pagination pagination, String sql_count,
 			String sql_datas, Object[] args) throws SQLException {
 		
-		return super.queryForPagedRowSet(navigator, sql_count, sql_datas, args);
+		return super.queryForPagedRowSet(pagination, sql_count, sql_datas, args);
 	}
 	@Override
-	public List<Map<String, Object>> queryForPagedList(Navigator navigator,
+	public List<Map<String, Object>> queryForPagedList(Pagination pagination,
 			String sql_count, String sql_datas, Object[] args)
 			throws SQLException {
 		
-		return super.queryForPagedList(navigator, sql_count, sql_datas, args);
+		return super.queryForPagedList(pagination, sql_count, sql_datas, args);
 	}
 	@Override
-	public List<?> queryForPagedList(Navigator navigator, Class<?> dataBean,
+	public List<?> queryForPagedList(Pagination pagination, Class<?> dataBean,
 			String sql_count, String sql_datas, Object[] args)
 			throws SQLException {
 		
-		return super.queryForPagedList(navigator, dataBean, sql_count, sql_datas, args);
+		return super.queryForPagedList(pagination, dataBean, sql_count, sql_datas, args);
 	}
 	@Override
 	public Object queryForType(int type, String sql, Object arg)
