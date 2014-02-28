@@ -103,7 +103,7 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	                                setMethodName, convertSqlType(value.getClass()) );   
 	                        setMethod.invoke(obj, value);   
 	                    } catch (Exception e) {   
-							log.error("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
+							log.info("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
 									e.getMessage() );
 	                        //JavaBean内部属性和ResultSet中不一致时候，使用String来输入值。   
 	                        Method setMethod;
@@ -113,7 +113,7 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 		                        setMethod.invoke(obj, value.toString());   
 		                        
 							} catch (Exception e1) {
-								log.error("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
+								log.info("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
 										e1.getMessage());
 							}
 	                    }   
