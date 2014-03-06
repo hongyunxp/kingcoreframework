@@ -924,11 +924,11 @@ public class WebPageNavigator implements Pagination {
 	 */
 	public static void main(String[] args) {
 		// 注意：接口里面的成员对象，是final类型，不能被修改的。
-		Pagination wng = new WebPageNavigator();
-		System.out.println("=="+wng.getPageNumber() );
-		wng.setPageNumber( wng.getPageNumber()+2 );
-		System.out.println("=="+wng.getPageNumber());
-		
+//		Pagination wng = new WebPageNavigator();
+//		System.out.println("=="+wng.getPageNumber() );
+//		wng.setPageNumber( wng.getPageNumber()+2 );
+//		System.out.println("=="+wng.getPageNumber());
+//		
 	}
 
 	public String getPath() {
