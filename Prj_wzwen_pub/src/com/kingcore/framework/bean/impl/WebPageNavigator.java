@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-import com.kingcore.framework.bean.Pagination;
+import com.kingcore.framework.bean.Navigator;
 
 /**
  * <p>web 页面使用的导航翻页对象，支持getter,在页面可使用标签获取。</p>
@@ -27,7 +27,7 @@ import com.kingcore.framework.bean.Pagination;
  * @since	JDK5
  */
 
-public class WebPageNavigator implements Pagination {
+public class WebPageNavigator implements Navigator {
 
 
 	/**

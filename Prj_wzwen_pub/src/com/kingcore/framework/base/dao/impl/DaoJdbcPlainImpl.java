@@ -32,6 +32,7 @@ import wzw.sql.SqlUtils;
 import wzw.util.DbUtils;
 
 import com.kingcore.framework.base.dao.DaoJdbc;
+import com.kingcore.framework.bean.Navigator;
 import com.kingcore.framework.bean.Pagination;
 import com.kingcore.framework.context.ApplicationContext;
 import com.kingcore.framework.context.DatabaseManager;
@@ -92,7 +93,60 @@ public class DaoJdbcPlainImpl
 //		}
 //	}
 
+	/**
+	 * wzw:与hibernate的接口保持一致
+	 * @version 3.3
+	 * @param clazz
+	 * @param sql_count
+	 * @param sql_datas
+	 * @param pageNo
+	 * @param pageSize
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	protected Pagination queryForPage(Class<?> clazz,
+			String sql_count, String sql_datas, int pageNo, int pageSize,
+			Object[] params) throws Exception {
+		
+		String sql_datas_page = createSqlForPage(sql_datas, pageNo, pageSize);
+		Integer rowCount = queryForInt(sql_count, params);
+		List<?> list = queryForList(clazz, sql_datas_page, params);
+		return new Pagination(pageNo, pageSize, rowCount, list);
+	}
+	
+	protected Pagination queryForPage(Class<?> clazz,
+			String sql_count, String sql_datas, int pageNo, int pageSize) throws Exception {
+		
+		return queryForPage(clazz, sql_count, sql_datas, pageNo, pageSize, null);
+	}
+	
 
+	/**
+	 * @version 3.3
+	 * @param navigator
+	 * @param sql_count
+	 * @param sql_datas
+	 * @param args
+	 * @param argTypes
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Pagination queryForPage(String sql_count, String sql_datas, int pageNo, int pageSize,
+					Object[] params) throws SQLException {
+
+		String sql_datas_page = createSqlForPage(sql_datas, pageNo, pageSize);
+		Integer rowCount = queryForInt(sql_count, params);
+		List<?> list = queryForList( sql_datas_page, params);
+		return new Pagination(pageNo, pageSize, rowCount, list);
+	}
+
+	protected Pagination queryForPage(String sql_count, String sql_datas, int pageNo, int pageSize) throws SQLException {
+
+		return queryForPage( sql_count, sql_datas, pageNo, pageSize, null);
+	}
+
+	
 	/**
 	 * <pre>执行列表查询处理。</pre>
 	 * @deprecated this method is replace by another one，请使用 doQueryDataSet( String sql_datas,String sql_count, int[] pageParams) 方法.
@@ -717,9 +771,9 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException 
 	 */
-	protected List<?> queryForList(Class<?> dataBean, String sql_datas) throws SQLException {
+	protected List<?> queryForList(Class<?> beanClass, String sql_datas) throws SQLException {
 
-		return queryForList(dataBean, sql_datas, null, null );
+		return queryForList(beanClass, sql_datas, null, null );
 		
 //		RowSet rs = this.doQuery( sql_datas );
 //		return ResultSetConverter.toBeanList(rs, modelObject);
@@ -728,29 +782,29 @@ public class DaoJdbcPlainImpl
 
 	/**
 	 * add in  2013
-	 * @param dataBean
+	 * @param beanClass
 	 * @param sql_datas
 	 * @param args
 	 * @param argTypes
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForList(Class<?> dataBean, String sql_datas, Object arg) throws SQLException {
+	protected List<?> queryForList(Class<?> beanClass, String sql_datas, Object arg) throws SQLException {
 
-		return (List<?>)queryBean(dataBean, sql_datas, new Object[]{arg}, null, true );	
+		return (List<?>)queryBean(beanClass, sql_datas, new Object[]{arg}, null, true );	
 	}
 	
 	/**
 	 * @version 3.2
-	 * @param dataBean
+	 * @param beanClass
 	 * @param sql_datas
 	 * @param args
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForList(Class<?> dataBean, String sql_datas, Object[] args ) throws SQLException {
+	protected List<?> queryForList(Class<?> beanClass, String sql_datas, Object[] args ) throws SQLException {
 
-		return (List<?>)queryBean(dataBean, sql_datas, args, null, true );	
+		return (List<?>)queryBean(beanClass, sql_datas, args, null, true );	
 	}
 	
 	/**
@@ -762,9 +816,9 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	private List<?> queryForList(Class<?> dataBean, String sql_datas, Object[] args, int[] argTypes ) throws SQLException {
+	private List<?> queryForList(Class<?> beanClass, String sql_datas, Object[] args, int[] argTypes ) throws SQLException {
 
-		return (List<?>)queryBean(dataBean, sql_datas, args, argTypes, true );	
+		return (List<?>)queryBean(beanClass, sql_datas, args, argTypes, true );	
 	}
 
 
@@ -867,47 +921,47 @@ public class DaoJdbcPlainImpl
 	 * <pre>获取指定翻页的RowSet。
 	 * 	使用Statement，而不是PreparedStatement，需要使用PreparedStatement则使用重载的方法。</pre>
 	 * @author Zeven on 2008-5-26
-	 * @param pagination 翻页信息数组
+	 * @param navigator 翻页信息数组
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @return
 	 * @throws SQLException 
 	 */
-	protected RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas) throws SQLException {
+	protected RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );		
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );		
 		return queryForRowSet(sql);
 		
 	}
 
 	/**
 	 * 
-	 * @param pagination
+	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
 	 * @param args
 	 * @return
 	 * @throws SQLException
 	 */
-	protected RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas,
+	protected RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas,
 					Object[] args ) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
 		return queryForRowSet(sql, args, null);
 		
 	}
 	/**
 	 * PrepareStatement方式的queryForPagedRowSet。
-	 * @param pagination
+	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
 	 * @return
 	 * @throws SQLException
 	 */
-	private RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas,
+	private RowSet queryForPagedRowSet(Navigator navigator, String sql_count, String sql_datas,
 					Object[] args, int[] argTypes) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
 		return queryForRowSet(sql, args, argTypes);
 		
 	}
@@ -916,21 +970,23 @@ public class DaoJdbcPlainImpl
 	/**
 	 * <pre>获取指定翻页的List，每行使用一个Map封装数据，即返回类型为List<Map>。
 	 * 	使用Statement，而不是PreparedStatement，需要使用PreparedStatement则使用重载的方法。</pre>
-	 * @param pagination 翻页信息数组
+	 * @deprecated 已经被 queryForPage(...)替换
+	 * @param navigator 翻页信息数组
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @return
 	 */
-	protected List<Map<String,Object>> queryForPagedList(Pagination pagination, String sql_count, String sql_datas) throws SQLException {
+	protected List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count, String sql_datas) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
 		return this.queryForList(sql);
 	
 	}
 
 	/**
 	 * @version 3.2
-	 * @param pagination
+	 * @deprecated 已经被 queryForPage(...)替换
+	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
 	 * @param args
@@ -938,25 +994,27 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<Map<String,Object>> queryForPagedList(Pagination pagination, String sql_count, String sql_datas,
+	protected List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count, String sql_datas,
 					Object[] args) throws SQLException {
 		
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
 		return this.queryForList(sql, args, null);
 	}
+	
 	/**
 	 * <pre>获取指定翻页的List，每行使用一个Map封装数据，即返回类型为List<Map>。
 	 * 	 使用PreparedStatement方式。</pre>
-	 * @param pagination
+	 * @deprecated 已经被 queryForPage(...)替换
+	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
 	 * @return
 	 * @throws SQLException
 	 */
-	private List<Map<String,Object>> queryForPagedList(Pagination pagination, String sql_count, String sql_datas,
+	private List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count, String sql_datas,
 					Object[] args, int[] argTypes) throws SQLException {
 		
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
 		return this.queryForList(sql, args, argTypes);
 	}
 
@@ -964,21 +1022,23 @@ public class DaoJdbcPlainImpl
 	/**
 	 * <pre>获取指定翻页的List<JavaBean>。
 	 * 	    使用Statement，而不是PreparedStatement，需要使用PreparedStatement则使用重载的方法。</pre>
-	 * @param pagination 翻页信息数组
+	 * @deprecated 已经被 queryForPage(...)替换
+	 * @param navigator 翻页信息数组
 	 * @param sql_count 获取总数量的sql语句
 	 * @param sql_datas 获取数据的sql语句
 	 * @param clazz List里面的对象，对应一行数据，可以为null
 	 * @return
 	 */
-	protected List<?> queryForPagedList(Pagination pagination, Class<?> dataBean, String sql_count, String sql_datas ) throws SQLException {
+	protected List<?> queryForPagedList(Navigator navigator, Class<?> beanClass, String sql_count, String sql_datas ) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
-		return this.queryForList(dataBean, sql);
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
+		return this.queryForList(beanClass, sql);
 	}
 	
 	/**
 	 * @version 3.2
-	 * @param pagination
+	 * @deprecated 已经被 queryForPage(...)替换
+	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
 	 * @param args
@@ -987,28 +1047,29 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected List<?> queryForPagedList(Pagination pagination, Class<?> dataBean, 
+	protected List<?> queryForPagedList(Navigator navigator, Class<?> beanClass, 
 			String sql_count, String sql_datas,Object[] args ) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas, args );
-		return this.queryForList(dataBean, sql, args, null);
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas, args );
+		return this.queryForList(beanClass, sql, args, null);
 	}
 	
 	/**
 	 * <pre>获取指定翻页的List<JavaBean>。
 	 * 	    使用PreparedStatement方式。</pre>
-	 * @param pagination
+	 * @deprecated 已经被 queryForPage(...)替换
+	 * @param navigator
 	 * @param sql_count
 	 * @param sql_datas
 	 * @param clazz
 	 * @return
 	 * @throws SQLException
 	 */
-	private List<?> queryForPagedList(Pagination pagination, Class<?> dataBean, String sql_count, String sql_datas, 
+	private List<?> queryForPagedList(Navigator navigator, Class<?> beanClass, String sql_count, String sql_datas, 
 				Object[] args, int[] argTypes) throws SQLException {
 
-		String sql = this.createSqlForPage(pagination, sql_count, sql_datas );
-		return this.queryForList(dataBean, sql, args, argTypes );
+		String sql = this.createSqlForPage(navigator, sql_count, sql_datas );
+		return this.queryForList(beanClass, sql, args, argTypes );
 	}
 	
 	
@@ -1518,13 +1579,13 @@ public class DaoJdbcPlainImpl
 //	 * @param sql_datas 查询数据的sql语句
 //	 * 
 //	 */
-//	protected NavigableDataSet executeQueryDataSet( Pagination pagination,
+//	protected NavigableDataSet executeQueryDataSet( Pagination navigator,
 //			String sql_count, String sql_datas) throws Exception
 //	{
 //		
-//		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas );
+//		sql_datas = this.createSqlForPage(navigator, sql_count, sql_datas );
 //		RowSet crs = this.queryForRowSet( sql_datas );
-//		NavigableDataSet dataSet = new QueryDataSet(pagination,null,crs);	//
+//		NavigableDataSet dataSet = new QueryDataSet(navigator,null,crs);	//
 //		
 //		return dataSet;	// not PreparedStatement
 //
@@ -1574,28 +1635,34 @@ public class DaoJdbcPlainImpl
 ////		/// this.executeQuery(mapping, request, sql);
 //		
 //	}
- 
 
-	protected String createSqlForPage(Pagination pagination, String sql_count, String sql_datas ) throws SQLException{
-		return createSqlForPage(pagination, sql_count, sql_datas, null);
+	protected String createSqlForPage(String sql_datas, int pageNo, int pageSize) throws SQLException{
+
+		DatabaseManager dbm = getCurrentDatabaseManager();
+		String sql = dbm.getSubResultSetSql( sql_datas, pageSize*(pageNo-1)+1,  pageSize  );
+		return sql;
+	}
+
+	protected String createSqlForPage(Navigator navigator, String sql_count, String sql_datas ) throws SQLException{
+		return createSqlForPage(navigator, sql_count, sql_datas, null);
 	}
 	/**
 	 *  <pre>根据翻页信息，修改查询数据的 sql statement.
 	 *  	对所有支持的数据库作统一的处理。 不同的数据库类型处理不相同。
-	 *      pagination 参数是in/out类型，其中的值可能被修改，比如总行数信息。
-	 *      >>>注意，这里的参数 (pagination,sql_count,sql_datas) 与 doQueryDataSet(sql_datas,sql_count,pagination) 相反了。
+	 *      navigator 参数是in/out类型，其中的值可能被修改，比如总行数信息。
+	 *      >>>注意，这里的参数 (navigator,sql_count,sql_datas) 与 doQueryDataSet(sql_datas,sql_count,navigator) 相反了。
 	 *     --- 设置为protected而不是使用private，是为了便于后面灵活的后面的翻页控制放在什么位置。</pre>
 	 * @param sql 包装之前的数据查询 statement
 	 * @param dataSet 数据载体，包含了取数的信息
 	 * @return 根据取数信息进行包装之后的 sql statement.
 	 * @throws SQLException 
 	 */
-	protected String createSqlForPage(Pagination pagination, String sql_count, String sql_datas,Object[] args ) throws SQLException {
+	protected String createSqlForPage(Navigator navigator, String sql_count, String sql_datas,Object[] args ) throws SQLException {
 
 		// 是否更新总行数信息
-		int rowCount = pagination.getRowCount();
-		int pageSize = pagination.getPageSize();
-		int pageNumber = pagination.getPageNumber();
+		int rowCount = navigator.getRowCount();
+		int pageSize = navigator.getPageSize();
+		int pageNumber = navigator.getPageNumber();
 		//String action = "query";
 		
 		//处理翻页操作
@@ -1609,7 +1676,7 @@ public class DaoJdbcPlainImpl
 
 			rowCount = this.queryForInt( sql_count, args);	
 			//pageParams[0] = rowCount;	// 更改总行数
-			pagination.setRowCount(rowCount);
+			navigator.setRowCount(rowCount);
 		}
 
 		DatabaseManager dbm = getCurrentDatabaseManager();
@@ -1865,7 +1932,7 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	private Object queryBean(Class<?> dataBean, String sql, Object[] args, int[] argTypes, boolean isList) throws SQLException {  //ResultSetExtractor rse
+	private Object queryBean(Class<?> beanClass, String sql, Object[] args, int[] argTypes, boolean isList) throws SQLException {  //ResultSetExtractor rse
 		
 		boolean isConnCreated = false;
 		PreparedStatement ps = null;
@@ -1906,7 +1973,7 @@ public class DaoJdbcPlainImpl
 
 	        //crs.populate( rs ) ;
 	        //RowSet crs = resultSet2RowSet( rs ) ;
-	        objReturn =  ApplicationContext.getInstance().getResultSetBeanExtractor().extractData(rs, dataBean, isList );
+	        objReturn =  ApplicationContext.getInstance().getResultSetBeanExtractor().extractData(rs, beanClass, isList );
 
 		}finally{
 
@@ -2014,32 +2081,32 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(Class<?> dataBean, String sql) throws SQLException {
-		return queryForBean(dataBean, sql, null, null);
+	protected Object queryForBean(Class<?> beanClass, String sql) throws SQLException {
+		return queryForBean(beanClass, sql, null, null);
 	}
 	
 	/**
 	 * a
 	 * @param sql
 	 * @param args
-	 * @param dataBean
+	 * @param beanClass
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(Class<?> dataBean, String sql, Object arg) throws SQLException {
-		return queryForBean(dataBean, sql, new Object[]{arg}, null );
+	protected Object queryForBean(Class<?> beanClass, String sql, Object arg) throws SQLException {
+		return queryForBean(beanClass, sql, new Object[]{arg}, null );
 	}
 	
 	/**
 	 * add on 2013
 	 * @param sql
 	 * @param args
-	 * @param dataBean
+	 * @param beanClass
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Object queryForBean(Class<?> dataBean, String sql, Object[] args ) throws SQLException {
-		return queryForBean(dataBean, sql, args, null );
+	protected Object queryForBean(Class<?> beanClass, String sql, Object[] args ) throws SQLException {
+		return queryForBean(beanClass, sql, args, null );
 	}
 	
 	/**
@@ -2055,8 +2122,8 @@ public class DaoJdbcPlainImpl
 	 * @return
 	 * @throws SQLException
 	 */
-	private Object queryForBean(Class<?> dataBean, String sql, Object[] args, int[] argTypes ) throws SQLException {
-		return queryBean(dataBean, sql, args, argTypes, false );  
+	private Object queryForBean(Class<?> beanClass, String sql, Object[] args, int[] argTypes ) throws SQLException {
+		return queryBean(beanClass, sql, args, argTypes, false );  
 	}	
 
 

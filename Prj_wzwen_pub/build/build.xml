@@ -3,7 +3,7 @@
 <project name="scm" default="makeear" basedir=".">
 	<target name="init">
 		<property name="prj.root" location="${basedir}\.."/>	
-		<property name="prj.version" value="3.2"/>
+		<property name="prj.version" value="3.3"/>
 		<property name="kingcore.src" location="${prj.root}\src;${prj.root}\src_impl;${prj.root}\src_wzw-net"/>
         <property name="kingcore.build" location="${prj.root}\Tmp\classes"/>
 		<property name="build.home" value="${prj.root}\build"/>

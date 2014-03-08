@@ -100,7 +100,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	private List dataList ;	// add by Zeven on 2008-08-16。纯粹保存List对象，如List<Bean>, List<Map>，对于dataList的操作，必须直接先获datList。
 	
 
-	protected Pagination pagination = null;
+	protected Navigator pagination = null;
 	
 	/**
 	 * 最后一次查询的SQL语句
@@ -518,7 +518,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 * @param datas
 	 * @throws SQLException
 	 */
-	public QueryDataSet( Pagination pagination, String path, RowSet datas) 
+	public QueryDataSet( Navigator pagination, String path, RowSet datas) 
 	{
 		/// this.datas = datas;
 		this.crs = datas;
@@ -534,7 +534,7 @@ public class QueryDataSet implements NavigableDataSet, Serializable
 	 * @param datas
 	 * @throws SQLException
 	 */
-	public QueryDataSet( Pagination pagination, String path, List dataList) 
+	public QueryDataSet( Navigator pagination, String path, List dataList) 
 	{
 		/// this.datas = datas;
 		this.dataList = dataList;
