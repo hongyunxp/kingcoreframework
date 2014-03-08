@@ -23,7 +23,7 @@ import javax.sql.RowSet;
  * @since	JDK5
  */
 
-public interface NavigableDataSet extends DataSet, Pagination{
+public interface NavigableDataSet extends DataSet, Navigator{
 
 	
 	/**

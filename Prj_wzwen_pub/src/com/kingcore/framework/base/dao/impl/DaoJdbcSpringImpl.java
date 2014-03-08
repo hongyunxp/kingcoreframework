@@ -31,7 +31,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import wzw.util.DbUtils;
 
 import com.kingcore.framework.base.dao.DaoJdbc;
-import com.kingcore.framework.bean.Pagination;
+import com.kingcore.framework.bean.Navigator;
 import com.kingcore.framework.context.ApplicationContext;
 import com.kingcore.framework.context.DatabaseManager;
 import com.kingcore.framework.jdbc.PlainResultSetBeanExtractor;
@@ -167,7 +167,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param sql_datas 获取数据的sql语句
 	 * @return
 	 */
-	protected RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas) {
+	protected RowSet queryForPagedRowSet(Navigator pagination, String sql_count, String sql_datas) {
 
 		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas );
 		
@@ -187,7 +187,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param argTypes 参数类型数组
 	 * @return
 	 */
-	protected RowSet queryForPagedRowSet(Pagination pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
+	protected RowSet queryForPagedRowSet(Navigator pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
 
 		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas );
 		
@@ -236,7 +236,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param clazz List里面的对象，对应一行数据，可以为null
 	 * @return
 	 */
-	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas, Class clazz) {
+	protected List queryForPagedList(Navigator pagination, String sql_count, String sql_datas, Class clazz) {
 
 		
 		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
@@ -256,7 +256,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param clazz List中每行对象的模型对象javaBean
 	 * @return
 	 */
-	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes, Class clazz) {
+	protected List queryForPagedList(Navigator pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes, Class clazz) {
 
 		
 		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
@@ -304,7 +304,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param sql_datas 获取数据的sql语句
 	 * @return
 	 */
-	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas) {
+	protected List queryForPagedList(Navigator pagination, String sql_count, String sql_datas) {
 		
 		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
 		
@@ -322,7 +322,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param argTypes 参数类型数组
 	 * @return
 	 */
-	protected List queryForPagedList(Pagination pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
+	protected List queryForPagedList(Navigator pagination, String sql_count, String sql_datas, Object[] args, int[] argTypes) {
 		
 		sql_datas = this.createSqlForPage(pagination, sql_count, sql_datas);
 		
@@ -636,7 +636,7 @@ public class DaoJdbcSpringImpl  extends JdbcDaoSupport
 	 * @param dataSet 数据载体，包含了取数的信息
 	 * @return 根据取数信息进行包装之后的 sql statement.
 	 */
-	protected String createSqlForPage(Pagination pagination, String sql_count, String sql_datas ) {
+	protected String createSqlForPage(Navigator pagination, String sql_count, String sql_datas ) {
 
 		// 是否更新总行数信息
 		int rowCount = pagination.getRowCount();
