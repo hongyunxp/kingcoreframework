@@ -1970,6 +1970,9 @@ public class DaoJdbcPlainImpl
 		        rs = ps.executeQuery();
 		        stmt = ps; //用于后面关闭。
 			}
+			if(rs.next()){
+				System.out.println( rs.getString(1) );
+			}
 
 	        //crs.populate( rs ) ;
 	        //RowSet crs = resultSet2RowSet( rs ) ;
