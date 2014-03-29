@@ -183,166 +183,152 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 	}
 
 	public Object queryForBean(Class<?> beanClass, String sql )
-			throws SQLException {
-		
-		return super.queryForBean(beanClass, sql);
+			throws RuntimeException { 
+		try {
+			return super.queryForBean(beanClass, sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
-//	public Object queryForBean(Class<?> beanClass, String sql, Object[] args, int[] argTypes ) throws SQLException {
-//		
-//		return super.queryForBean(beanClass, sql, args, argTypes);
-//	}
-
-//	public int queryForInt(String sql, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForInt(sql, args, argTypes);
-//	}
-
-	public int queryForInt(String sql) throws SQLException {
+	public int queryForInt(String sql) throws RuntimeException {
 		
-		return super.queryForInt(sql);
+		try {
+			return super.queryForInt(sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
 	public List<?> queryForList(Class<?> beanClass, String sql_datas)
-			throws SQLException {
-		
-		return super.queryForList(beanClass, sql_datas);
+					 throws RuntimeException {
+		try {
+			return super.queryForList(beanClass, sql_datas);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 	
 	/**
 	 * @param type java.sql.Tpyes 里面的值，表示返回类型
 	 */
-	public List<?> queryForList(int type, String sql_datas) throws SQLException {
+	public List<?> queryForList(int type, String sql_datas) throws RuntimeException {
 		
-		return super.queryForList(type, sql_datas);
+		try {
+			return super.queryForList(type, sql_datas);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
-//	public List<?> queryForList(Class<?> beanClass, String sql_datas, Object[] args,
-//			int[] argTypes) throws SQLException {
-//		
-//		return super.queryForList(beanClass, sql_datas, args, argTypes);
-//	}
-
-//	public List<?> queryForList(int type, String sql_datas, Object[] args,
-//			int[] argTypes) throws SQLException {
-//		
-//		return super.queryForList(type, sql_datas, args, argTypes);
-//	}
-
-//	public List<Map<String,Object>> queryForList(String sql_datas, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForList(sql_datas, args, argTypes);
-//	}
-
-	public List<Map<String,Object>> queryForList(String sql_datas) throws SQLException {
+	public List<Map<String,Object>> queryForList(String sql_datas) throws RuntimeException {
 		
-		return super.queryForList(sql_datas);
+		try {
+			return super.queryForList(sql_datas);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
-//	public long queryForLong(String sql, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForLong(sql, args, argTypes);
-//	}
-
-	public long queryForLong(String sql) throws SQLException {
+	public long queryForLong(String sql) throws RuntimeException {
 		
-		return super.queryForLong(sql);
+		try {
+			return super.queryForLong(sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
-//	public Map<String, ?> queryForMap(String sql, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForMap(sql, args, argTypes);
-//	}
-
-	public Map<String, ?> queryForMap(String sql) throws SQLException {
+	public Map<String, ?> queryForMap(String sql) throws RuntimeException {
 		
-		return super.queryForMap(sql);
+		try {
+			return super.queryForMap(sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
 	 * @deprecated replaced by queryForPage(...)
 	 */
 	public List<?> queryForPagedList(Navigator navigator, Class<?> clazz, String sql_count,
-			String sql_datas) throws SQLException {
+			String sql_datas) throws RuntimeException {
+				
+		try {
+			return super.queryForPagedList(navigator, clazz, sql_count, sql_datas);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 		
-		return super.queryForPagedList(navigator, clazz, sql_count, sql_datas);
 	}
-
-//	public List<?> queryForPagedList(Pagination navigator, Class<?> clazz, String sql_count,
-//			String sql_datas, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForPagedList(navigator, clazz, sql_count, sql_datas, args, argTypes);
-//	}
-
-//	public List<Map<String,Object>> queryForPagedList(Pagination navigator, String sql_count,
-//			String sql_datas, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForPagedList(navigator, sql_count, sql_datas, args, argTypes);
-//	}
 
 	/**
 	 * @deprecated replaced by queryForPage(...)
 	 */
 	public List<Map<String,Object>> queryForPagedList(Navigator navigator, String sql_count,
-			String sql_datas) throws SQLException {
+			String sql_datas) throws RuntimeException {
+				
+		try {
+			return super.queryForPagedList(navigator, sql_count, sql_datas);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 		
-		return super.queryForPagedList(navigator, sql_count, sql_datas);
 	}
 
-//	public RowSet queryForPagedRowSet(Pagination navigator, String sql_count,
-//			String sql_datas, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForPagedRowSet(navigator, sql_count, sql_datas, args,
-//				argTypes);
-//	}
 
 	public RowSet queryForPagedRowSet(Navigator navigator, String sql_count,
-			String sql_datas) throws SQLException {
-		
-		return super.queryForPagedRowSet(navigator, sql_count, sql_datas);
+			String sql_datas) throws RuntimeException {
+				
+		try {
+			return super.queryForPagedRowSet(navigator, sql_count, sql_datas);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
-//	public RowSet queryForRowSet(String sql, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForRowSet(sql, args, argTypes);
-//	}
-
-	public RowSet queryForRowSet(String sql) throws SQLException {
+	public RowSet queryForRowSet(String sql) throws RuntimeException {
 		
-		return super.queryForRowSet(sql);
+		try {
+			return super.queryForRowSet(sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
-//	public String queryForString(String sql, Object[] args, int[] argTypes)
-//			throws SQLException {
-//		
-//		return super.queryForString(sql, args, argTypes);
-//	}
-
-	public String queryForString(String sql) throws SQLException {
+	public String queryForString(String sql) throws RuntimeException {
 		
-		return super.queryForString(sql);
+		try {
+			return super.queryForString(sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
 	 * @param type java.sql.Tpyes 里面的值，表示返回类型
 	 */
-	public Object queryForType(int type, String sql) throws SQLException {
+	public Object queryForType(int type, String sql) throws RuntimeException {
 		
-		return super.queryForType(type, sql);
+		try {
+			return super.queryForType(type, sql);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
-
-//	public Object queryForType(int type, String sql, Object[] args, int[] argTypes) throws SQLException {
-//		
-//		return super.queryForType(type, sql, args, argTypes);
-//	}
 
 	public RowSet resultSet2RowSet(ResultSet rs, DatabaseManager dbm)
 			throws SQLException {
@@ -392,84 +378,171 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 		
 		return super.executeUpdate(sql, arg);
 	}
+	
 	@Override
-	public int queryForInt(String sql, Object arg) throws SQLException {
+	public int queryForInt(String sql, Object arg) throws RuntimeException {
 		
-		return super.queryForInt(sql, arg);
+		try {
+			return super.queryForInt(sql, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
-	public int queryForInt(String sql, Object[] args) throws SQLException {
+	public int queryForInt(String sql, Object[] args) throws RuntimeException {
 		
-		return super.queryForInt(sql, args);
+		try {
+			return super.queryForInt(sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
-	public String queryForString(String sql, Object arg) throws SQLException {
+	public String queryForString(String sql, Object arg) throws RuntimeException {
 		
-		return super.queryForString(sql, arg);
+		try {
+			return super.queryForString(sql, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public String queryForString(String sql, Object[] args)
-			throws SQLException {
+					throws RuntimeException {
 		
-		return super.queryForString(sql, args);
+		try {
+			return super.queryForString(sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
-	public long queryForLong(String sql, Object arg) throws SQLException {
+	public long queryForLong(String sql, Object arg) throws RuntimeException {
 		
-		return super.queryForLong(sql, arg);
+		try {
+			return super.queryForLong(sql, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
-	public long queryForLong(String sql, Object[] args) throws SQLException {
+	public long queryForLong(String sql, Object[] args) throws RuntimeException {
 		
-		return super.queryForLong(sql, args);
+		try {
+			return super.queryForLong(sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
-	public List<Map<String, Object>> queryForList(String sql_datas,
-			Object arg) throws SQLException {
+	public List<Map<String, Object>> queryForList(String sql_datas, Object arg)
+			throws RuntimeException {
 		
-		return super.queryForList(sql_datas, arg);
+		try {
+			return super.queryForList(sql_datas, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
-	public List<Map<String, Object>> queryForList(String sql_datas,
-			Object[] args) throws SQLException {
-		
-		return super.queryForList(sql_datas, args);
+	public List<Map<String, Object>> queryForList(String sql_datas, Object[] args)
+			    throws RuntimeException {
+				
+		try {
+			return super.queryForList(sql_datas, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public List<?> queryForList(Class<?> beanClass, String sql_datas,
-			Object arg) throws SQLException {
-		
-		return super.queryForList(beanClass, sql_datas, arg);
+			Object arg) throws RuntimeException {
+				
+		try {
+			return super.queryForList(beanClass, sql_datas, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public List<?> queryForList(Class<?> beanClass, String sql_datas,
-			Object[] args) throws SQLException {
-		
-		return super.queryForList(beanClass, sql_datas, args);
+			Object[] args) throws RuntimeException {
+				
+		try {
+			return super.queryForList(beanClass, sql_datas, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public List<?> queryForList(int type, String sql_datas, Object arg)
-			throws SQLException {
+			 throws RuntimeException {
 		
-		return super.queryForList(type, sql_datas, arg);
+		try {
+			return super.queryForList(type, sql_datas, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
+	
 	@Override
 	public List<?> queryForList(int type, String sql_datas, Object[] args)
-			throws SQLException {
+				throws RuntimeException {
 		
-		return super.queryForList(type, sql_datas, args);
+		try {
+			return super.queryForList(type, sql_datas, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
+	
 	@Override
 	public RowSet queryForRowSet(String sql, Object[] args)
-			throws SQLException {
+				throws RuntimeException {
 		
-		return super.queryForRowSet(sql, args);
+		try {
+			return super.queryForRowSet(sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
+	
 	@Override
 	public RowSet queryForPagedRowSet(Navigator navigator, String sql_count,
-			String sql_datas, Object[] args) throws SQLException {
-		
-		return super.queryForPagedRowSet(navigator, sql_count, sql_datas, args);
+			String sql_datas, Object[] args) throws RuntimeException {
+				
+		try {
+			return super.queryForPagedRowSet(navigator, sql_count, sql_datas, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -478,9 +551,14 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 	@Override
 	public List<Map<String, Object>> queryForPagedList(Navigator navigator,
 			String sql_count, String sql_datas, Object[] args)
-			throws SQLException {
-		
-		return super.queryForPagedList(navigator, sql_count, sql_datas, args);
+					 throws RuntimeException {
+							
+		try {
+			return super.queryForPagedList(navigator, sql_count, sql_datas, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -489,69 +567,133 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 	@Override
 	public List<?> queryForPagedList(Navigator navigator, Class<?> beanClass,
 			String sql_count, String sql_datas, Object[] args)
-			throws SQLException {
-		
-		return super.queryForPagedList(navigator, beanClass, sql_count, sql_datas, args);
+					 throws RuntimeException {
+							
+		try {
+			return super.queryForPagedList(navigator, beanClass, sql_count, sql_datas, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public Object queryForType(int type, String sql, Object arg)
-			throws SQLException {
+			 throws RuntimeException {
 		
-		return super.queryForType(type, sql, arg);
+		try {
+			return super.queryForType(type, sql, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
+	
 	@Override
 	public Object queryForType(int type, String sql, Object[] args)
-			throws SQLException {
+				throws RuntimeException {
 		
-		return super.queryForType(type, sql, args);
+		try {
+			return super.queryForType(type, sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
+	
 	@Override
 	public Object queryForBean(Class<?> beanClass, String sql, Object arg)
-			throws SQLException {
-		
-		return super.queryForBean(beanClass, sql, arg);
+				throws RuntimeException { 
+		try {
+			return super.queryForBean(beanClass, sql, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public Object queryForBean(Class<?> beanClass, String sql, Object[] args)
-			throws SQLException {
-		
-		return super.queryForBean(beanClass, sql, args);
+				throws RuntimeException { 
+		try {
+			return super.queryForBean(beanClass, sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public Map<String, ?> queryForMap(String sql, Object arg)
-			throws SQLException {
+				throws RuntimeException {
 		
-		return super.queryForMap(sql, arg);
+		try {
+			return super.queryForMap(sql, arg);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
+	
 	@Override
 	public Map<String, ?> queryForMap(String sql, Object[] args)
-			throws SQLException {
+				throws RuntimeException {
 		
-		return super.queryForMap(sql, args);
+		try {
+			return super.queryForMap(sql, args);
+			
+		} catch (SQLException e) { 
+			throw new RuntimeException(e);
+		}
+		
 	}
 	
 	/**************** add by wzw for v3.3 begin *********************************/
 	@Override
 	public Pagination queryForPage(Class<?> clazz, String sql_count,
 			String sql_datas, int pageNo, int pageSize, Object[] params)
-			throws Exception {
-		return super
-				.queryForPage(clazz, sql_count, sql_datas, pageNo, pageSize, params);
+						throws RuntimeException {
+		try {
+			return super.queryForPage(clazz, sql_count, sql_datas, pageNo, pageSize, params);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public Pagination queryForPage(Class<?> clazz, String sql_count,
-			String sql_datas, int pageNo, int pageSize) throws Exception {
-		return super.queryForPage(clazz, sql_count, sql_datas, pageNo, pageSize);
+			String sql_datas, int pageNo, int pageSize) throws RuntimeException {
+		
+		try {
+			return super.queryForPage(clazz, sql_count, sql_datas, pageNo, pageSize);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public Pagination queryForPage(String sql_count, String sql_datas,
-			int pageNo, int pageSize, Object[] params) throws SQLException {
-		return super.queryForPage(sql_count, sql_datas, pageNo, pageSize, params);
+			int pageNo, int pageSize, Object[] params) throws RuntimeException {
+				
+		try {
+			return super.queryForPage(sql_count, sql_datas, pageNo, pageSize, params);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
+	
 	@Override
 	public Pagination queryForPage(String sql_count, String sql_datas,
-			int pageNo, int pageSize) throws SQLException {
-		return super.queryForPage(sql_count, sql_datas, pageNo, pageSize);
+			int pageNo, int pageSize) throws RuntimeException {
+				
+		try {
+			return super.queryForPage(sql_count, sql_datas, pageNo, pageSize);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 	/**************** add by wzw for v3.3 end *********************************/	
 	
@@ -559,3 +701,4 @@ public class DbBean extends DaoJdbcPlainImpl implements Serializable {
 	
 	
 }
+
