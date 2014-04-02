@@ -95,12 +95,26 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 	                if (methods[j].getName().equalsIgnoreCase(setMethodName)) { 
 	                    setMethodName = methods[j].getName();   
 	                    Object value = rs.getObject(columnLabels[i]);  
+	                    if(value==null){
+	                    	continue;
+	                    }
+	                    Class<?> paramType = null;
 
+	            		Class<?> clazz = value.getClass();
+	                	if (clazz.equals( java.sql.Date.class )
+	            				|| clazz.equals( java.sql.Timestamp.class )) {
+	                		paramType = java.util.Date.class;
+	            		}else if ( clazz.equals( Short.class ) ) { //for sql server
+	            			value = ((Short)value).intValue();
+	            			paramType = Integer.class;
+	            		}else{
+	            			paramType = clazz;
+	            		}
 	                    //实行Set方法   
 	                    try {   
 	                        //JavaBean内部属性和ResultSet中一致时候   
 	                        Method setMethod = bean.getMethod(     //.getClass()
-	                                setMethodName, convertSqlType(value.getClass()) );   
+	                                setMethodName, paramType );  // convertType(value) );   
 	                        setMethod.invoke(obj, value);   
 	                    } catch (Exception e) {   
 							log.info("设置属性失败：beanName="+bean.getName()+" 属性="+setMethodName + "," +
@@ -126,13 +140,33 @@ public class SmartResultSetBeanExtractor implements ResultSetBeanExtractor {
 				return obj ;
 			}
 	    }
-	    return objList;   
+	    // no data
+        if (isList) {
+    		return objList; 
+		} else {
+			return obj;
+		}
 	}
 
-    private Class<?> convertSqlType(Class<? extends Object> clazz) {
+
+	private Class<?> convertSqlType(Class<? extends Object> clazz) {
 		if (clazz.equals( java.sql.Date.class )
 				|| clazz.equals( java.sql.Timestamp.class )) {
 			return java.util.Date.class;
+		}else if ( clazz.equals( Short.class ) ) {
+			return Integer.class;
+		}
+		return clazz;
+	}
+
+    private Class<?> convertType(Object obj) {
+		Class<?> clazz = obj.getClass();
+    	if (clazz.equals( java.sql.Date.class )
+				|| clazz.equals( java.sql.Timestamp.class )) {
+			return java.util.Date.class;
+		}else if ( clazz.equals( Short.class ) ) { //for sql server
+			obj = ((Short)obj).intValue();
+			return Integer.class;
 		}
 		return clazz;
 	}
