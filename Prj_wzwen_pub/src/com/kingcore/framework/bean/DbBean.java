@@ -9,6 +9,7 @@
  * with WuZeven.
  */
 
+
 package com.kingcore.framework.bean;
 
 import java.io.Serializable;
@@ -23,6 +24,8 @@ import java.util.Map;
 import javax.sql.RowSet;
 
 import com.kingcore.framework.base.dao.impl.DaoJdbcPlainImpl;
+import com.kingcore.framework.bean.Navigator;
+import com.kingcore.framework.bean.Pagination;
 import com.kingcore.framework.context.DatabaseManager;
 import com.kingcore.framework.jdbc.PlainConnection;
 
